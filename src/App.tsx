@@ -1,4 +1,6 @@
+import { useState, useRef, useEffect } from 'react';
 import { Routes, Route, useNavigate, useParams, Link } from 'react-router-dom';
+import { Search, Microscope, Atom, Calculator, Laptop, Activity, BookOpen, Dna } from 'lucide-react';
 import Layout from './components/Layout';
 
 // Class 8 Computer Additions
@@ -320,6 +322,108 @@ import LabC11AcidsBases from './components/LabC11AcidsBases';
 import LabC11EnvironmentalChem from './components/LabC11EnvironmentalChem';
 import LabC11OrganicAnalysis from './components/LabC11OrganicAnalysis';
 import LabC11OrganicSynthesis from './components/LabC11OrganicSynthesis';
+
+// Class 11 Physics Additions
+import LabP11PhysicalQuantities from './components/LabP11PhysicalQuantities';
+import LabP11Vectors from './components/LabP11Vectors';
+import LabP11TranslatoryMotion from './components/LabP11TranslatoryMotion';
+import LabP11RotationalMotion from './components/LabP11RotationalMotion';
+import LabP11WorkEnergy from './components/LabP11WorkEnergy';
+import LabP11FluidMechanics from './components/LabP11FluidMechanics';
+import LabP11Solids from './components/LabP11Solids';
+import LabP11Thermodynamics from './components/LabP11Thermodynamics';
+import LabP11Waves from './components/LabP11Waves';
+import LabP11Electrostatics from './components/LabP11Electrostatics';
+import LabP11Electricity from './components/LabP11Electricity';
+import LabP11Electromagnetism from './components/LabP11Electromagnetism';
+import LabP11ModernPhysics from './components/LabP11ModernPhysics';
+
+// Class 11 Computer Science Additions
+import LabCS11SystemsNetworks from './components/LabCS11SystemsNetworks';
+import LabCS11Algorithms from './components/LabCS11Algorithms';
+import LabCS11Python from './components/LabCS11Python';
+import LabCS11DataScience from './components/LabCS11DataScience';
+import LabCS11Applications from './components/LabCS11Applications';
+import LabCS11Impacts from './components/LabCS11Impacts';
+import LabCS11Research from './components/LabCS11Research';
+import LabCS11ProductDev from './components/LabCS11ProductDev';
+
+// Class 11 Biology Additions
+import LabB11Cytology from './components/LabB11Cytology';
+import LabB11Biomolecules from './components/LabB11Biomolecules';
+import LabB11Enzymes from './components/LabB11Enzymes';
+import LabB11Bioenergetics from './components/LabB11Bioenergetics';
+import LabB11Microbiology from './components/LabB11Microbiology';
+import LabB11Fungi from './components/LabB11Fungi';
+import LabB11PlantPhysiology from './components/LabB11PlantPhysiology';
+import LabB11Inheritance from './components/LabB11Inheritance';
+import LabB11Genetics from './components/LabB11Genetics';
+
+// Class 12 Biology Additions
+import LabB12Digestive from './components/LabB12Digestive';
+import LabB12Cardiorespiratory from './components/LabB12Cardiorespiratory';
+import LabB12Urinary from './components/LabB12Urinary';
+import LabB12NeuroEndocrine from './components/LabB12NeuroEndocrine';
+import LabB12Skeletal from './components/LabB12Skeletal';
+import LabB12Immunity from './components/LabB12Immunity';
+import LabB12Biotechnology from './components/LabB12Biotechnology';
+import Login from './components/Login';
+import { useHistory } from './store';
+import LabB12StructuralStats from './components/LabB12StructuralStats';
+import LabB12PharmacologyEcology from './components/LabB12PharmacologyEcology';
+
+// Class 12 Physics Additions
+import LabP12Gravitation from './components/LabP12Gravitation';
+import LabP12ThermoMechanics from './components/LabP12ThermoMechanics';
+import LabP12SHM from './components/LabP12SHM';
+import LabP12Diffraction from './components/LabP12Diffraction';
+import LabP12ElectricPotential from './components/LabP12ElectricPotential';
+import LabP12AlternatingCurrent from './components/LabP12AlternatingCurrent';
+import LabP12QuantumNuclear from './components/LabP12QuantumNuclear';
+import LabP12CosmologyClimate from './components/LabP12CosmologyClimate';
+import LabP12MedicalImaging from './components/LabP12MedicalImaging';
+
+// Class 12 Chemistry Additions
+import LabC12Electrochemistry from './components/LabC12Electrochemistry';
+import LabC12EquilibriumAcidBase from './components/LabC12EquilibriumAcidBase';
+import LabC12TransitionMetals from './components/LabC12TransitionMetals';
+import LabC12OrganicSynthesis from './components/LabC12OrganicSynthesis';
+import LabC12Biochemistry from './components/LabC12Biochemistry';
+import LabC12SpectroscopyChromatography from './components/LabC12SpectroscopyChromatography';
+import LabC12Medicine from './components/LabC12Medicine';
+import LabC12Agriculture from './components/LabC12Agriculture';
+import LabC12IndustryMaterials from './components/LabC12IndustryMaterials';
+
+// Class 12 CS Additions
+import LabCS12HCI from './components/LabCS12HCI';
+import LabCS12DataStructures from './components/LabCS12DataStructures';
+import LabCS12Programming from './components/LabCS12Programming';
+import LabCS12MachineLearning from './components/LabCS12MachineLearning';
+import LabCS12DeepLearning from './components/LabCS12DeepLearning';
+import LabCS12IoTCloud from './components/LabCS12IoTCloud';
+import LabCS12Cybersecurity from './components/LabCS12Cybersecurity';
+import LabCS12DigitalLiteracy from './components/LabCS12DigitalLiteracy';
+import LabCS12Entrepreneurship from './components/LabCS12Entrepreneurship';
+
+// Class 11 Mathematics Additions
+import LabM11ComplexNumbers from './components/LabM11ComplexNumbers';
+import LabM11Matrices from './components/LabM11Matrices';
+import LabM11Vectors from './components/LabM11Vectors';
+import LabM11SequencesSeries from './components/LabM11SequencesSeries';
+import LabM11Polynomials from './components/LabM11Polynomials';
+import LabM11Trigonometry from './components/LabM11Trigonometry';
+import LabM11Permutations from './components/LabM11Permutations';
+import LabM11BinomialInduction from './components/LabM11BinomialInduction';
+
+// Class 12 Mathematics Additions
+import LabM12Derivatives from './components/LabM12Derivatives';
+import LabM12Integration from './components/LabM12Integration';
+import LabM12DifferentialEq from './components/LabM12DifferentialEq';
+import LabM12Conics from './components/LabM12Conics';
+import LabM12AnalyticalGeometry from './components/LabM12AnalyticalGeometry';
+import LabM12Kinematics from './components/LabM12Kinematics';
+import LabM12Functions from './components/LabM12Functions';
+import LabM12InverseTrig from './components/LabM12InverseTrig';
 
 // Class 6 Science Additions
 import LabS6Microscope from './components/LabS6Microscope';
@@ -681,10 +785,110 @@ const LAB_MODULES = [
   { id: 'c11_7', classLevel: '11', subject: 'chemistry', title: 'Ch 9: Acids & Bases', desc: 'Perform drop-by-drop pH titrations and explore biological blood buffers.', built: true, bg: 'from-red-700 to-rose-900' },
   { id: 'c11_8', classLevel: '11', subject: 'chemistry', title: 'Ch 12-14: Environmental Chem', desc: 'Run a municipal water treatment plant and analyze photochemical smog.', built: true, bg: 'from-teal-600 to-cyan-800' },
   { id: 'c11_9', classLevel: '11', subject: 'chemistry', title: 'Ch 18-21: Organic Analysis', desc: 'Use Tollens, Lucas, and 2,4-DNPH tests to identify unknown compounds.', built: true, bg: 'from-orange-600 to-red-800' },
-  { id: 'c11_10', classLevel: '11', subject: 'chemistry', title: 'Ch 15-22: Organic Synthesis', desc: 'Distill petrochemicals and perform Retrosynthetic Analysis on complex drugs.', built: true, bg: 'from-slate-700 to-gray-900' }
+  { id: 'c11_10', classLevel: '11', subject: 'chemistry', title: 'Ch 15-22: Organic Synthesis', desc: 'Distill petrochemicals and perform Retrosynthetic Analysis on complex drugs.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 11 Physics
+  { id: 'p11_1', classLevel: '11', subject: 'physics', title: 'Unit 1: Physical Quantities', desc: 'Target shooting for precision/accuracy and estimating daily physics.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'p11_2', classLevel: '11', subject: 'physics', title: 'Unit 2: Vectors', desc: 'Calculate GPS navigation vectors and horizontal force components.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'p11_3', classLevel: '11', subject: 'physics', title: 'Unit 3: Translatory Motion', desc: 'Calculate projectile air resistance and explosive rocket momentum.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'p11_4', classLevel: '11', subject: 'physics', title: 'Unit 4: Rotational Motion', desc: 'Bank high-speed corners, use centrifuges, and spin ice skaters.', built: true, bg: 'from-rose-700 to-pink-900' },
+  { id: 'p11_5', classLevel: '11', subject: 'physics', title: 'Unit 5: Work & Energy', desc: 'Measure weightlifting biomechanics and parachute resistive work.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'p11_6', classLevel: '11', subject: 'physics', title: 'Unit 6: Fluid Mechanics', desc: 'Test submarine buoyancy, wind tunnel aerodynamics, and Bernoulli airfoils.', built: true, bg: 'from-violet-700 to-fuchsia-900' },
+  { id: 'p11_7', classLevel: '11', subject: 'physics', title: 'Unit 7: Physics of Solids', desc: 'Test Young\'s Modulus on suspension bridges and analyze graphene.', built: true, bg: 'from-slate-600 to-gray-800' },
+  { id: 'p11_8', classLevel: '11', subject: 'physics', title: 'Unit 8: Thermodynamics', desc: 'Operate 4-stroke IC engines and reverse-flow refrigerator pumps.', built: true, bg: 'from-red-700 to-orange-900' },
+  { id: 'p11_9', classLevel: '11', subject: 'physics', title: 'Unit 9: Waves', desc: 'Track objects with Doppler Radar, observe earthquakes, and LIGO interferometers.', built: true, bg: 'from-teal-600 to-cyan-800' },
+  { id: 'p11_10', classLevel: '11', subject: 'physics', title: 'Unit 10: Electrostatics', desc: 'Shield objects inside Faraday cages and manipulate MRI ferrofluids.', built: true, bg: 'from-fuchsia-700 to-purple-900' },
+  { id: 'p11_11', classLevel: '11', subject: 'physics', title: 'Unit 11: Electricity', desc: 'Build circuits with LDRs and test carbon-fiber concrete resistance.', built: true, bg: 'from-indigo-600 to-blue-800' },
+  { id: 'p11_12', classLevel: '11', subject: 'physics', title: 'Unit 12: Electromagnetism', desc: 'Filter particles with velocity selectors and build seismic detectors.', built: true, bg: 'from-orange-600 to-red-800' },
+  { id: 'p11_13', classLevel: '11', subject: 'physics', title: 'Unit 13-14: Modern Physics', desc: 'Convert mass to energy, execute PET scans, and operate Synchrotrons.', built: true, bg: 'from-zinc-700 to-black' },
+
+  // Class 11 Computer Science
+  { id: 'cs11_1', classLevel: '11', subject: 'computer', title: 'Unit 1: Systems & Networks', desc: 'Logic Gate breadboards, Load Testing, and Firewall Cybersecurity.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'cs11_2', classLevel: '11', subject: 'computer', title: 'Unit 2: Algorithms', desc: 'Navigate Jeroo grids, trace tables, and track memory sorting arrays.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'cs11_3', classLevel: '11', subject: 'computer', title: 'Unit 3: Python Fundamentals', desc: 'Draw 2D Turtle graphics, manipulate lists, and use IDE debuggers.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'cs11_4', classLevel: '11', subject: 'computer', title: 'Unit 4: Data Science', desc: 'Run A/B testing, Pandas Visualizations, and K-means Clustering.', built: true, bg: 'from-rose-600 to-pink-800' },
+  { id: 'cs11_5', classLevel: '11', subject: 'computer', title: 'Unit 5: Applications of CS', desc: 'Interact with IoT PIR sensors and trace Blockchain ledgers.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'cs11_6', classLevel: '11', subject: 'computer', title: 'Unit 6: Impacts of Computing', desc: 'Evaluate dataset Bias and test Assistive Screen Readers.', built: true, bg: 'from-violet-600 to-fuchsia-800' },
+  { id: 'cs11_7', classLevel: '11', subject: 'computer', title: 'Unit 7: Digital Research', desc: 'Design Google Forms surveys and translate data into Infographics.', built: true, bg: 'from-teal-500 to-emerald-700' },
+  { id: 'cs11_8', classLevel: '11', subject: 'computer', title: 'Unit 8: Product Development', desc: 'Neuro-Mat startup simulator: build an MVP and track hardware costs.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 11 Biology
+  { id: 'b11_1', classLevel: '11', subject: 'biology', title: 'Unit 1: Cytology', desc: 'View cell topography with 50-million-x SEM and route stem cells.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'b11_2', classLevel: '11', subject: 'biology', title: 'Unit 2: Biomolecules', desc: 'Biochemical tests: Iodine, Benedicts, Biuret, and Sudan-III rings.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'b11_3', classLevel: '11', subject: 'biology', title: 'Unit 3: Enzymes', desc: 'Filter lactose with alginate beads and evaluate diagnostic blood panels.', built: true, bg: 'from-purple-700 to-fuchsia-900' },
+  { id: 'b11_4', classLevel: '11', subject: 'biology', title: 'Unit 4: Bioenergetics', desc: 'Measure chlorophyll absorption spectra with a Spectrophotometer.', built: true, bg: 'from-green-600 to-emerald-800' },
+  { id: 'b11_5', classLevel: '11', subject: 'biology', title: 'Unit 5-6: Microbiology', desc: 'Test agar plate antibiotics, construct Phage libraries, and treat HIV.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'b11_6', classLevel: '11', subject: 'biology', title: 'Unit 7: Fungi', desc: 'Control Rhizopus incubation and track Saccharomyces industrial brewing.', built: true, bg: 'from-amber-700 to-orange-900' },
+  { id: 'b11_7', classLevel: '11', subject: 'biology', title: 'Unit 8-9: Botany', desc: 'Graph water potential, test hydroponics, and trace xylem capillary dye.', built: true, bg: 'from-lime-700 to-green-900' },
+  { id: 'b11_8', classLevel: '11', subject: 'biology', title: 'Unit 12: Inheritance', desc: 'Transfuse ABO/Rh blood types and extract amniotic fluid via CVS.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'b11_9', classLevel: '11', subject: 'biology', title: 'Unit 13: Genetics', desc: 'Centrifuge Meselson-Stahl DNA isotopes and trace Hershey-Chase phages.', built: true, bg: 'from-indigo-700 to-violet-900' },
+
+  // Class 12 Biology
+  { id: 'b12_1', classLevel: '12', subject: 'biology', title: 'Unit 1: Digestive', desc: 'Run Biochemical food tests for starch (Iodine) and proteins (NaOH).', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'b12_2', classLevel: '12', subject: 'biology', title: 'Unit 2-3: Cardio/Resp', desc: 'Read Electrocardiograms (ECGs) and perform timed CPR intervals.', built: true, bg: 'from-rose-700 to-red-900' },
+  { id: 'b12_3', classLevel: '12', subject: 'biology', title: 'Unit 4: Urinary', desc: 'Simulate Haemodialysis filtering and operate ESWL kidney stone lasers.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'b12_4', classLevel: '12', subject: 'biology', title: 'Unit 5-6: Neuro/Endo', desc: 'Track NSAID painkillers blocking enzymes and measure reaction times.', built: true, bg: 'from-violet-700 to-fuchsia-900' },
+  { id: 'b12_5', classLevel: '12', subject: 'biology', title: 'Unit 7: Skeletal', desc: 'Perform Titanium Arthroplasty and map the 4-step bone repair cycle.', built: true, bg: 'from-amber-700 to-orange-900' },
+  { id: 'b12_6', classLevel: '12', subject: 'biology', title: 'Unit 9: Immunity', desc: 'Engineer Monoclonal Antibodies (mAbs) and track transplant rejections.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'b12_7', classLevel: '12', subject: 'biology', title: 'Unit 10: Biotechnology', desc: 'Splice human insulin into bacterial plasmids and run a PCR thermocycler.', built: true, bg: 'from-indigo-700 to-purple-900' },
+  { id: 'b12_8', classLevel: '12', subject: 'biology', title: 'Unit 11-12: Structural', desc: 'Analyze X-Ray Crystallography diffractions and calculate Standard Dev.', built: true, bg: 'from-slate-700 to-gray-900' },
+  { id: 'b12_9', classLevel: '12', subject: 'biology', title: 'Unit 13-15: Pharma', desc: 'Run 4-Phase Clinical Drug Trials and track Ocean Acidification.', built: true, bg: 'from-teal-700 to-emerald-900' },
+
+  // Class 11 Mathematics
+  { id: 'm11_1', classLevel: '11', subject: 'math', title: 'Unit 1: Complex Numbers', desc: 'Graph complex AC currents and model Simple Harmonic Motion waves.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'm11_2', classLevel: '11', subject: 'math', title: 'Unit 2: Matrices', desc: 'Encrypt messages with Matrix keys and translate 2D coordinate planes.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'm11_3', classLevel: '11', subject: 'math', title: 'Unit 3: Vectors in Space', desc: 'Navigate airplane crosswinds and calculate torque cross-products.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'm11_4', classLevel: '11', subject: 'math', title: 'Unit 4: Sequences', desc: 'Track geometric swinging pendulums and radioactive half-life decay.', built: true, bg: 'from-rose-600 to-pink-800' },
+  { id: 'm11_5', classLevel: '11', subject: 'math', title: 'Unit 5: Polynomials', desc: 'Use Remainder Theorems for ballistics and factor 3D architecture.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'm11_6', classLevel: '11', subject: 'math', title: 'Unit 6: Combinatorics', desc: 'Calculate permutation scrambles for Number Plates and Passwords.', built: true, bg: 'from-violet-600 to-fuchsia-800' },
+  { id: 'm11_7', classLevel: '11', subject: 'math', title: 'Unit 7: Induction & Binomial', desc: 'Prove formulas via Domino Effects and map probability with Pascal.', built: true, bg: 'from-teal-600 to-emerald-800' },
+  { id: 'm11_8', classLevel: '11', subject: 'math', title: 'Unit 8-9: Trigonometry', desc: 'Graph the periodic sinusoidal heights of rotating Ferris Wheels.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 12 Mathematics
+  { id: 'm12_1', classLevel: '12', subject: 'math', title: 'Unit 2: Derivatives', desc: 'Optimize architectural dimensions and calculate marginal business revenue.', built: true, bg: 'from-red-600 to-rose-800' },
+  { id: 'm12_2', classLevel: '12', subject: 'math', title: 'Unit 3: Integration', desc: 'Map Dam hydrostatic force and generate 3D Solids of Revolution.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'm12_3', classLevel: '12', subject: 'math', title: 'Unit 4: Differential Eq', desc: 'Track Newtons Law of Cooling and ballistics with air resistance.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'm12_4', classLevel: '12', subject: 'math', title: 'Unit 7: Conics', desc: 'Model Hyperbolic nuclear cooling towers and Elliptical orbits.', built: true, bg: 'from-violet-600 to-fuchsia-800' },
+  { id: 'm12_5', classLevel: '12', subject: 'math', title: 'Unit 6: Analytical Geo', desc: 'Map urban traffic intersections and calculate landscaping costs.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'm12_6', classLevel: '12', subject: 'math', title: 'Unit 5: Kinematics', desc: 'Graph 3D particle trajectories and displacement-time vehicular models.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'm12_7', classLevel: '12', subject: 'math', title: 'Unit 1: Functions', desc: 'Calculate Market Equilibrium points and compound interest growth.', built: true, bg: 'from-indigo-600 to-violet-800' },
+  { id: 'm12_8', classLevel: '12', subject: 'math', title: 'Unit 8: Inverse Trig', desc: 'Reverse-engineer 3D rendering algorithms and optics angles.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 12 Physics
+  { id: 'p12_1', classLevel: '12', subject: 'physics', title: 'Unit 15: Gravitation', desc: 'Simulate Newtons Cannonball and calculate LEO satellite orbits.', built: true, bg: 'from-blue-700 to-slate-900' },
+  { id: 'p12_2', classLevel: '12', subject: 'physics', title: 'Unit 16: Thermodynamics', desc: 'Levitate Superconducting Maglevs and balance White Dwarf star pressure.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'p12_3', classLevel: '12', subject: 'physics', title: 'Unit 17: SHM', desc: 'Dampen automotive shock absorbers and generate Acoustic Standing Waves.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'p12_4', classLevel: '12', subject: 'physics', title: 'Unit 18: Diffraction', desc: 'Use destructive interference for noise-canceling headphones.', built: true, bg: 'from-violet-700 to-fuchsia-900' },
+  { id: 'p12_5', classLevel: '12', subject: 'physics', title: 'Unit 19: Electric Potential', desc: 'Track Action Potentials in electric eels and charge RC flash circuits.', built: true, bg: 'from-amber-700 to-yellow-900' },
+  { id: 'p12_6', classLevel: '12', subject: 'physics', title: 'Unit 20: AC Current', desc: 'Build Full-Wave AC-to-DC Bridge Rectifiers with Capacitive Filters.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'p12_7', classLevel: '12', subject: 'physics', title: 'Unit 21-22: Quantum/Nuclear', desc: 'Control Nuclear Fission reactors and track PET Scan Pair Annihilation.', built: true, bg: 'from-indigo-700 to-purple-900' },
+  { id: 'p12_8', classLevel: '12', subject: 'physics', title: 'Unit 23-24: Cosmology', desc: 'Calculate star surface temperatures and map Red-Shift Doppler effects.', built: true, bg: 'from-slate-700 to-gray-900' },
+  { id: 'p12_9', classLevel: '12', subject: 'physics', title: 'Unit 25-26: Medical Imaging', desc: 'Simulate Piezoelectric Ultrasonic Sonography and X-Ray bone absorption.', built: true, bg: 'from-teal-700 to-emerald-900' },
+
+  // Class 12 Chemistry
+  { id: 'c12_1', classLevel: '12', subject: 'chemistry', title: 'Unit 2: Electrochemistry', desc: 'Build Galvanic Cells and calculate Avogadros number via Electrolysis.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'c12_2', classLevel: '12', subject: 'chemistry', title: 'Unit 3-4: Equilibrium/Acid', desc: 'Titrate pH equivalence curves and formulate blood plasma buffers.', built: true, bg: 'from-amber-700 to-orange-900' },
+  { id: 'c12_3', classLevel: '12', subject: 'chemistry', title: 'Unit 5-6: Transition Metals', desc: 'Perform metallic Flame Tests and map d-orbital Ligand Exchange.', built: true, bg: 'from-rose-700 to-pink-900' },
+  { id: 'c12_4', classLevel: '12', subject: 'chemistry', title: 'Unit 7-14: Organic Synthesis', desc: 'Synthesize Azo-Dyes and run AI Retrosynthetic Drug Analysis.', built: true, bg: 'from-violet-700 to-purple-900' },
+  { id: 'c12_5', classLevel: '12', subject: 'chemistry', title: 'Unit 12-15: Biochemistry', desc: 'Run amino acid Electrophoresis and perform DNA Fingerprinting.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'c12_6', classLevel: '12', subject: 'chemistry', title: 'Unit 17-19: Spectroscopy', desc: 'Analyze molecular structures with NMR, IR, Mass Spec, and TLC.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'c12_7', classLevel: '12', subject: 'chemistry', title: 'Unit 21: Pharmacology', desc: 'Inhibit COX with Aspirin and rupture cell walls with Penicillin.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'c12_8', classLevel: '12', subject: 'chemistry', title: 'Unit 22: Agriculture', desc: 'Apply NPK Fertilizers and track Acid Rain soil leaching.', built: true, bg: 'from-green-700 to-emerald-900' },
+  { id: 'c12_9', classLevel: '12', subject: 'chemistry', title: 'Unit 20-23: Industry', desc: 'Operate a 1450C Cement Kiln and perform Petrochemical Cracking.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 12 Computer Science
+  { id: 'cs12_1', classLevel: '12', subject: 'computer', title: 'Unit 1: Computer Systems', desc: 'Simulate A/B Testing, Accessibility, and balance MFA vs Usability.', built: true, bg: 'from-blue-800 to-slate-900' },
+  { id: 'cs12_2', classLevel: '12', subject: 'computer', title: 'Unit 2: Data Structures', desc: 'Manipulate Stacks, Queues, Graphs, and Binary Tree traversals.', built: true, bg: 'from-emerald-800 to-teal-900' },
+  { id: 'cs12_3', classLevel: '12', subject: 'computer', title: 'Unit 3: Programming', desc: 'Model OOP Encapsulation and execute SQLite 3NF Database Normalization.', built: true, bg: 'from-violet-800 to-purple-900' },
+  { id: 'cs12_4', classLevel: '12', subject: 'computer', title: 'Unit 4: Data & Analysis', desc: 'Train ML models calculating Accuracy, Precision, and P-Values.', built: true, bg: 'from-rose-800 to-red-900' },
+  { id: 'cs12_5', classLevel: '12', subject: 'computer', title: 'Unit 5: Deep Learning', desc: 'Trace Neural Network Feedforward/Backpropagation pathways.', built: true, bg: 'from-amber-800 to-orange-900' },
+  { id: 'cs12_6', classLevel: '12', subject: 'computer', title: 'Unit 5: IoT & Cloud', desc: 'Deploy an IoT sensor array and track Blockchain ledger hashes.', built: true, bg: 'from-cyan-800 to-blue-900' },
+  { id: 'cs12_7', classLevel: '12', subject: 'computer', title: 'Unit 6: Cybersecurity', desc: 'Defend against DDoS and encode data via Asymmetric Cryptography.', built: true, bg: 'from-indigo-800 to-violet-900' },
+  { id: 'cs12_8', classLevel: '12', subject: 'computer', title: 'Unit 7: Digital Literacy', desc: 'Master advanced database searches and GDPR Data Anonymization.', built: true, bg: 'from-teal-800 to-emerald-900' },
+  { id: 'cs12_9', classLevel: '12', subject: 'computer', title: 'Unit 8: Entrepreneurship', desc: 'Simulate launching an MVP and analyzing Beta Testing metrics.', built: true, bg: 'from-slate-800 to-gray-900' }
 ];
 
-const CLASSES = ['6', '7', '8', '9', '10', '11'];
+const CLASSES = ['6', '7', '8', '9', '10', '11', '12'];
 
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
@@ -721,10 +925,102 @@ function Breadcrumbs() {
 
 function ClassSelection() {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const filteredSearchModules = LAB_MODULES.filter(m => {
+    if (!searchQuery.trim()) return false;
+    const query = searchQuery.toLowerCase();
+    return (
+      m.title.toLowerCase().includes(query) ||
+      m.desc.toLowerCase().includes(query) ||
+      m.subject.toLowerCase().includes(query) ||
+      `class ${m.classLevel}`.includes(query)
+    );
+  }).slice(0, 8); // Limit to 8 results
+
   return (
     <Layout>
-      <div className="flex flex-col">
+      <div className="flex flex-col relative">
         <Breadcrumbs />
+
+        {/* Hero Section */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 p-10 mb-12 shadow-2xl">
+          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl"></div>
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 font-outfit tracking-tight">
+              Welcome to Virtual<span className="text-blue-300">Lab</span>
+            </h1>
+            <p className="text-blue-100 text-lg max-w-2xl mx-auto mb-8 font-medium">
+              Explore our massive library of <span className="font-bold text-white bg-blue-500/30 px-2 py-0.5 rounded">384 interactive modules</span> across Physics, Chemistry, Biology, Mathematics, and Computer Science.
+            </p>
+          </div>
+        </div>
+        
+        {/* Search Bar */}
+        <div ref={searchRef} className="relative max-w-2xl mx-auto w-full mb-10 z-50">
+          <div className="relative">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setIsDropdownOpen(true);
+              }}
+              onFocus={() => setIsDropdownOpen(true)}
+              placeholder="Search by topic, chapter, subject, or class..."
+              className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 shadow-sm text-lg outline-none transition-all"
+            />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6" />
+          </div>
+
+          {/* Auto-complete Dropdown */}
+          {isDropdownOpen && searchQuery.trim() !== '' && (
+            <div className="absolute top-full mt-2 w-full bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden z-50">
+              {filteredSearchModules.length > 0 ? (
+                <ul className="max-h-96 overflow-y-auto py-2">
+                  {filteredSearchModules.map(module => (
+                    <li key={module.id}>
+                      <button
+                        onClick={() => {
+                          setIsDropdownOpen(false);
+                          setSearchQuery('');
+                          navigate(`/class/${module.classLevel}/${module.subject}/lab/${module.id}`);
+                        }}
+                        className="w-full text-left px-6 py-3 hover:bg-slate-50 transition-colors flex flex-col gap-1 border-b border-slate-50 last:border-0"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold text-slate-800">{module.title}</span>
+                          <span className="text-xs font-medium px-2 py-1 bg-slate-100 text-slate-600 rounded">
+                            Class {module.classLevel} &bull; {formatSubject(module.subject)}
+                          </span>
+                        </div>
+                        <span className="text-sm text-slate-500 line-clamp-1">{module.desc}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div className="p-6 text-center text-slate-500">
+                  No labs found matching "{searchQuery}"
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
         <div>
           <h2 className="text-3xl font-bold text-slate-800 tracking-tight">Select Class</h2>
           <p className="text-slate-500 mt-1 mb-6">Choose your grade level to browse available experiments.</p>
@@ -734,12 +1030,13 @@ function ClassSelection() {
               <button 
                 key={cls}
                 onClick={() => navigate(`/class/${cls}`)}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:border-blue-400 hover:shadow-md transition-all duration-200 group flex flex-col items-center justify-center gap-3"
+                className="glass p-8 rounded-3xl hover:border-blue-400 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group flex flex-col items-center justify-center gap-4 relative overflow-hidden"
               >
-                <div className="w-16 h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-2xl font-bold group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-600 flex items-center justify-center text-3xl font-extrabold shadow-inner group-hover:bg-gradient-to-br group-hover:from-blue-600 group-hover:to-indigo-600 group-hover:text-white group-hover:rotate-6 transition-all duration-300 font-outfit">
                   {cls}
                 </div>
-                <span className="text-lg font-semibold text-slate-700 group-hover:text-blue-700">Class {cls}</span>
+                <span className="text-xl font-bold text-slate-700 group-hover:text-blue-700 font-outfit transition-colors">Class {cls}</span>
               </button>
             ))}
           </div>
@@ -748,6 +1045,18 @@ function ClassSelection() {
     </Layout>
   );
 }
+
+const getSubjectIcon = (subject: string) => {
+  switch (subject.toLowerCase()) {
+    case 'physics': return <Atom className="w-7 h-7" />;
+    case 'chemistry': return <Microscope className="w-7 h-7" />;
+    case 'biology': return <Dna className="w-7 h-7" />;
+    case 'mathematics': return <Calculator className="w-7 h-7" />;
+    case 'computer': return <Laptop className="w-7 h-7" />;
+    case 'science': return <Activity className="w-7 h-7" />;
+    default: return <BookOpen className="w-7 h-7" />;
+  }
+};
 
 function SubjectSelection() {
   const { classId } = useParams();
@@ -768,16 +1077,15 @@ function SubjectSelection() {
               <button 
                 key={subject}
                 onClick={() => navigate(`/class/${classId}/${subject}`)}
-                className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-indigo-400 hover:shadow-md transition-all duration-200 group flex items-center gap-4 text-left"
+                className="glass p-6 rounded-2xl hover:border-indigo-400 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex items-center gap-4 text-left relative overflow-hidden"
               >
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-100 to-blue-50 text-indigo-600 flex items-center justify-center shadow-inner group-hover:bg-gradient-to-br group-hover:from-indigo-600 group-hover:to-blue-600 group-hover:text-white transition-all duration-300">
+                  {getSubjectIcon(subject)}
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-indigo-700">{formatSubject(subject)}</h3>
-                  <span className="text-sm text-slate-400">View Modules</span>
+                  <h3 className="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors font-outfit">{formatSubject(subject)}</h3>
+                  <span className="text-sm font-medium text-slate-400 group-hover:text-indigo-500 transition-colors">Explore Interactive Modules</span>
                 </div>
               </button>
             ))}
@@ -816,39 +1124,51 @@ function ModuleSelection() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredModules.map(lab => (
-                <div key={lab.id} className={`bg-white rounded-2xl shadow-sm border ${lab.built ? 'border-slate-200/60 hover:shadow-md hover:border-slate-300 cursor-pointer' : 'border-dashed border-slate-300 opacity-80'} overflow-hidden transition-all duration-300 group flex flex-col h-full`}>
-                  <div className={`h-40 bg-gradient-to-br ${lab.bg} relative overflow-hidden ${!lab.built && 'grayscale-[50%]'}`}>
+                <div 
+                  key={lab.id} 
+                  onClick={() => lab.built && navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
+                  className={`glass rounded-3xl ${lab.built ? 'hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 border-white/40 cursor-pointer' : 'border-dashed border-slate-300 opacity-80'} overflow-hidden transition-all duration-300 group flex flex-col h-full relative`}
+                >
+                  {lab.built && <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-10 pointer-events-none"></div>}
+                  <div className={`h-48 relative overflow-hidden ${!lab.built && 'grayscale-[50%]'}`}>
+                    {/* Unique 2D SVG Cover Image */}
+                    <img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${lab.id}&backgroundColor=transparent`} alt={lab.title} className="absolute inset-0 w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3" loading="lazy" />
+                    
+                    {/* Gradient & Pattern Overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${lab.bg} mix-blend-color opacity-90`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-br ${lab.bg} opacity-70`}></div>
                     <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
-                    <div className="absolute bottom-4 left-4">
-                      <span className="bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-md">{formatSubject(lab.subject)}</span>
+                    
+                    <div className="absolute bottom-4 left-4 flex gap-2 z-10">
+                      <span className="bg-white/30 backdrop-blur-md border border-white/40 text-white text-xs font-bold tracking-wide px-3 py-1.5 rounded-full shadow-sm">{formatSubject(lab.subject)}</span>
+                      <span className="bg-black/30 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wide px-3 py-1.5 rounded-full shadow-sm">Class {lab.classLevel}</span>
                     </div>
                   </div>
-                  <div className="p-5 flex-1 flex flex-col">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className={`text-lg font-bold ${lab.built ? 'text-slate-800 group-hover:text-blue-600' : 'text-slate-600'} transition-colors`}>{lab.title}</h3>
+                  <div className="p-6 flex-1 flex flex-col relative bg-white/60 backdrop-blur-sm">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className={`text-xl font-bold font-outfit ${lab.built ? 'text-slate-800 group-hover:text-blue-700' : 'text-slate-600'} transition-colors leading-tight`}>{lab.title}</h3>
                     </div>
-                    <p className="text-sm text-slate-500 line-clamp-2 mb-4">
+                    <p className="text-sm text-slate-600 line-clamp-3 mb-6 font-medium">
                       {lab.desc}
                     </p>
-                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-100">
-                      <div className="flex items-center gap-2">
-                        <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-slate-200/60">
+                      <div className="flex items-center gap-2 bg-slate-100/80 px-2.5 py-1 rounded-md">
+                        <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-xs font-medium text-slate-500">15 mins</span>
+                        <span className="text-xs font-bold text-slate-600">15 MIN</span>
                       </div>
                       {lab.built ? (
                         <button 
-                          onClick={() => navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
-                          className="text-sm font-semibold text-blue-600 group-hover:text-blue-700 flex items-center gap-1 transition-colors z-10"
+                          className="px-4 py-2 bg-blue-600 text-white text-sm font-bold rounded-xl hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 transition-all z-20 transform group-hover:scale-105 pointer-events-none"
                         >
-                          Start Lab
-                          <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          Launch
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                           </svg>
                         </button>
                       ) : (
-                        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider bg-slate-100 px-2 py-1 rounded">Coming Soon</span>
+                        <span className="text-xs font-bold text-slate-500 uppercase tracking-wider bg-slate-200 px-3 py-1.5 rounded-lg border border-slate-300">Coming Soon</span>
                       )}
                     </div>
                   </div>
@@ -1213,11 +1533,192 @@ function LabRunner() {
   if (moduleId === 'c11_9') return <LabC11OrganicAnalysis onExit={handleExit} />;
   if (moduleId === 'c11_10') return <LabC11OrganicSynthesis onExit={handleExit} />;
 
+  if (moduleId === 'p11_1') return <LabP11PhysicalQuantities onExit={handleExit} />;
+  if (moduleId === 'p11_2') return <LabP11Vectors onExit={handleExit} />;
+  if (moduleId === 'p11_3') return <LabP11TranslatoryMotion onExit={handleExit} />;
+  if (moduleId === 'p11_4') return <LabP11RotationalMotion onExit={handleExit} />;
+  if (moduleId === 'p11_5') return <LabP11WorkEnergy onExit={handleExit} />;
+  if (moduleId === 'p11_6') return <LabP11FluidMechanics onExit={handleExit} />;
+  if (moduleId === 'p11_7') return <LabP11Solids onExit={handleExit} />;
+  if (moduleId === 'p11_8') return <LabP11Thermodynamics onExit={handleExit} />;
+  if (moduleId === 'p11_9') return <LabP11Waves onExit={handleExit} />;
+  if (moduleId === 'p11_10') return <LabP11Electrostatics onExit={handleExit} />;
+  if (moduleId === 'p11_11') return <LabP11Electricity onExit={handleExit} />;
+  if (moduleId === 'p11_12') return <LabP11Electromagnetism onExit={handleExit} />;
+  if (moduleId === 'p11_13') return <LabP11ModernPhysics onExit={handleExit} />;
+
+  if (moduleId === 'cs11_1') return <LabCS11SystemsNetworks onExit={handleExit} />;
+  if (moduleId === 'cs11_2') return <LabCS11Algorithms onExit={handleExit} />;
+  if (moduleId === 'cs11_3') return <LabCS11Python onExit={handleExit} />;
+  if (moduleId === 'cs11_4') return <LabCS11DataScience onExit={handleExit} />;
+  if (moduleId === 'cs11_5') return <LabCS11Applications onExit={handleExit} />;
+  if (moduleId === 'cs11_6') return <LabCS11Impacts onExit={handleExit} />;
+  if (moduleId === 'cs11_7') return <LabCS11Research onExit={handleExit} />;
+  if (moduleId === 'cs11_8') return <LabCS11ProductDev onExit={handleExit} />;
+
+  if (moduleId === 'b11_1') return <LabB11Cytology onExit={handleExit} />;
+  if (moduleId === 'b11_2') return <LabB11Biomolecules onExit={handleExit} />;
+  if (moduleId === 'b11_3') return <LabB11Enzymes onExit={handleExit} />;
+  if (moduleId === 'b11_4') return <LabB11Bioenergetics onExit={handleExit} />;
+  if (moduleId === 'b11_5') return <LabB11Microbiology onExit={handleExit} />;
+  if (moduleId === 'b11_6') return <LabB11Fungi onExit={handleExit} />;
+  if (moduleId === 'b11_7') return <LabB11PlantPhysiology onExit={handleExit} />;
+  if (moduleId === 'b11_8') return <LabB11Inheritance onExit={handleExit} />;
+  if (moduleId === 'b11_9') return <LabB11Genetics onExit={handleExit} />;
+
+  if (moduleId === 'b12_1') return <LabB12Digestive onExit={handleExit} />;
+  if (moduleId === 'b12_2') return <LabB12Cardiorespiratory onExit={handleExit} />;
+  if (moduleId === 'b12_3') return <LabB12Urinary onExit={handleExit} />;
+  if (moduleId === 'b12_4') return <LabB12NeuroEndocrine onExit={handleExit} />;
+  if (moduleId === 'b12_5') return <LabB12Skeletal onExit={handleExit} />;
+  if (moduleId === 'b12_6') return <LabB12Immunity onExit={handleExit} />;
+  if (moduleId === 'b12_7') return <LabB12Biotechnology onExit={handleExit} />;
+  if (moduleId === 'b12_8') return <LabB12StructuralStats onExit={handleExit} />;
+  if (moduleId === 'b12_9') return <LabB12PharmacologyEcology onExit={handleExit} />;
+
+  if (moduleId === 'p12_1') return <LabP12Gravitation onExit={handleExit} />;
+  if (moduleId === 'p12_2') return <LabP12ThermoMechanics onExit={handleExit} />;
+  if (moduleId === 'p12_3') return <LabP12SHM onExit={handleExit} />;
+  if (moduleId === 'p12_4') return <LabP12Diffraction onExit={handleExit} />;
+  if (moduleId === 'p12_5') return <LabP12ElectricPotential onExit={handleExit} />;
+  if (moduleId === 'p12_6') return <LabP12AlternatingCurrent onExit={handleExit} />;
+  if (moduleId === 'p12_7') return <LabP12QuantumNuclear onExit={handleExit} />;
+  if (moduleId === 'p12_8') return <LabP12CosmologyClimate onExit={handleExit} />;
+  if (moduleId === 'p12_9') return <LabP12MedicalImaging onExit={handleExit} />;
+
+  if (moduleId === 'c12_1') return <LabC12Electrochemistry onExit={handleExit} />;
+  if (moduleId === 'c12_2') return <LabC12EquilibriumAcidBase onExit={handleExit} />;
+  if (moduleId === 'c12_3') return <LabC12TransitionMetals onExit={handleExit} />;
+  if (moduleId === 'c12_4') return <LabC12OrganicSynthesis onExit={handleExit} />;
+  if (moduleId === 'c12_5') return <LabC12Biochemistry onExit={handleExit} />;
+  if (moduleId === 'c12_6') return <LabC12SpectroscopyChromatography onExit={handleExit} />;
+  if (moduleId === 'c12_7') return <LabC12Medicine onExit={handleExit} />;
+  if (moduleId === 'c12_8') return <LabC12Agriculture onExit={handleExit} />;
+  if (moduleId === 'c12_9') return <LabC12IndustryMaterials onExit={handleExit} />;
+
+  if (moduleId === 'cs12_1') return <LabCS12HCI onExit={handleExit} />;
+  if (moduleId === 'cs12_2') return <LabCS12DataStructures onExit={handleExit} />;
+  if (moduleId === 'cs12_3') return <LabCS12Programming onExit={handleExit} />;
+  if (moduleId === 'cs12_4') return <LabCS12MachineLearning onExit={handleExit} />;
+  if (moduleId === 'cs12_5') return <LabCS12DeepLearning onExit={handleExit} />;
+  if (moduleId === 'cs12_6') return <LabCS12IoTCloud onExit={handleExit} />;
+  if (moduleId === 'cs12_7') return <LabCS12Cybersecurity onExit={handleExit} />;
+  if (moduleId === 'cs12_8') return <LabCS12DigitalLiteracy onExit={handleExit} />;
+  if (moduleId === 'cs12_9') return <LabCS12Entrepreneurship onExit={handleExit} />;
+
+  if (moduleId === 'm11_1') return <LabM11ComplexNumbers onExit={handleExit} />;
+  if (moduleId === 'm11_2') return <LabM11Matrices onExit={handleExit} />;
+  if (moduleId === 'm11_3') return <LabM11Vectors onExit={handleExit} />;
+  if (moduleId === 'm11_4') return <LabM11SequencesSeries onExit={handleExit} />;
+  if (moduleId === 'm11_5') return <LabM11Polynomials onExit={handleExit} />;
+  if (moduleId === 'm11_6') return <LabM11Trigonometry onExit={handleExit} />;
+  if (moduleId === 'm11_7') return <LabM11Permutations onExit={handleExit} />;
+  if (moduleId === 'm11_8') return <LabM11BinomialInduction onExit={handleExit} />;
+
+  if (moduleId === 'm12_1') return <LabM12Derivatives onExit={handleExit} />;
+  if (moduleId === 'm12_2') return <LabM12Integration onExit={handleExit} />;
+  if (moduleId === 'm12_3') return <LabM12DifferentialEq onExit={handleExit} />;
+  if (moduleId === 'm12_4') return <LabM12Conics onExit={handleExit} />;
+  if (moduleId === 'm12_5') return <LabM12AnalyticalGeometry onExit={handleExit} />;
+  if (moduleId === 'm12_6') return <LabM12Kinematics onExit={handleExit} />;
+  if (moduleId === 'm12_7') return <LabM12Functions onExit={handleExit} />;
+  if (moduleId === 'm12_8') return <LabM12InverseTrig onExit={handleExit} />;
+
   return (
     <Layout>
-      <div className="p-10 text-center">
-        <h2 className="text-2xl font-bold text-slate-800">Lab Not Found</h2>
-        <button onClick={handleExit} className="mt-4 px-4 py-2 bg-blue-600 text-white rounded">Go Back</button>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] bg-white rounded-2xl border border-slate-200">
+        <h2 className="text-2xl font-bold text-slate-800 mb-2">Module Not Found</h2>
+        <p className="text-slate-500 mb-6">The module "{moduleId}" does not exist or is still under construction.</p>
+        <button onClick={handleExit} className="px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition-colors">
+          Return to Dashboard
+        </button>
+      </div>
+    </Layout>
+  );
+}
+
+function HistoryDashboard() {
+  const { history } = useHistory();
+
+  return (
+    <Layout>
+      <div className="flex flex-col min-h-[70vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-8 p-12">
+        <div className="flex items-center gap-4 mb-10 border-b border-slate-100 pb-6">
+          <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
+            <svg className="w-8 h-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h2 className="text-3xl font-bold text-slate-800 font-outfit tracking-tight">Lab History</h2>
+            <p className="text-slate-500 text-lg">Verified telemetry and performance metrics from your completed labs.</p>
+          </div>
+        </div>
+
+        {history.length === 0 ? (
+          <div className="flex-1 flex flex-col items-center justify-center py-20">
+            <svg className="w-16 h-16 text-slate-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <h3 className="text-xl font-bold text-slate-700 mb-2">No Labs Visited Yet</h3>
+            <p className="text-slate-500 max-w-sm text-center">Your completed labs and measured results will appear here automatically.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {history.map((record, i) => (
+              <div key={i} className="border border-slate-200 rounded-2xl p-6 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all group bg-gradient-to-b from-white to-slate-50/50">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">{record.subject}</span>
+                  <span className="text-sm font-medium text-slate-400">{new Date(record.timestamp).toLocaleDateString()}</span>
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2 line-clamp-2 leading-tight">{record.title}</h3>
+                
+                {record.experimentData && Object.keys(record.experimentData).length > 0 && (
+                  <div className="mt-4 mb-2 bg-slate-50 rounded-lg p-3 border border-slate-100 shadow-inner">
+                    <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 border-b border-slate-200 pb-1">Experiment Data</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {Object.entries(record.experimentData).map(([key, value]) => (
+                        <div key={key} className="flex flex-col">
+                          <span className="text-[10px] text-slate-500 font-medium truncate">{key}</span>
+                          <span className="text-sm font-bold text-slate-700">{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Score</span>
+                    <span className={`text-2xl font-bold font-outfit ${record.score >= (record.maxScore * 0.8) ? 'text-emerald-500' : 'text-amber-500'}`}>
+                      {record.score} <span className="text-sm text-slate-400 font-medium">/ {record.maxScore}</span>
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-end">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Time</span>
+                    <span className="text-lg font-bold text-slate-600">{Math.floor(record.timeSpentSeconds / 60)}m {record.timeSpentSeconds % 60}s</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </Layout>
+  );
+}
+
+function SettingsPanel() {
+  return (
+    <Layout>
+      <div className="flex flex-col items-center justify-center min-h-[60vh] bg-white rounded-3xl border border-slate-200 shadow-sm mt-8 p-12">
+        <div className="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center mb-6">
+          <svg className="w-12 h-12 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h2 className="text-3xl font-bold text-slate-800 mb-4 font-outfit tracking-tight">Platform Settings</h2>
+        <p className="text-slate-500 max-w-md text-center text-lg">Accessibility controls, audio settings, and theme configurations will be available here soon.</p>
       </div>
     </Layout>
   );
@@ -1227,6 +1728,10 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<ClassSelection />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/progress" element={<HistoryDashboard />} />
+      <Route path="/history" element={<HistoryDashboard />} />
+      <Route path="/settings" element={<SettingsPanel />} />
       <Route path="/class/:classId" element={<SubjectSelection />} />
       <Route path="/class/:classId/:subjectId" element={<ModuleSelection />} />
       <Route path="/class/:classId/:subjectId/lab/:moduleId" element={<LabRunner />} />
