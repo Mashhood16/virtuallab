@@ -237,6 +237,18 @@ import LabM10TangentConstruction from './components/LabM10TangentConstruction';
 import LabM10CommonTangents from './components/LabM10CommonTangents';
 import LabM10StatisticsWheels from './components/LabM10StatisticsWheels';
 
+// Class 10 Mathematics Phase 2 Additions
+import LabM10ComplexApplications from './components/LabM10ComplexApplications';
+import LabM10QuadraticApplications from './components/LabM10QuadraticApplications';
+import LabM10MatrixApplications from './components/LabM10MatrixApplications';
+import LabM10InequalityApplications from './components/LabM10InequalityApplications';
+import LabM10FractionApplications from './components/LabM10FractionApplications';
+import LabM10FunctionApplications from './components/LabM10FunctionApplications';
+import LabM10VectorApplications from './components/LabM10VectorApplications';
+import LabM10TrigApplications from './components/LabM10TrigApplications';
+import LabM10CircleApplications from './components/LabM10CircleApplications';
+import LabM10StatsApplications from './components/LabM10StatsApplications';
+
 // Class 6 Science Additions
 import LabS6Microscope from './components/LabS6Microscope';
 import LabS6Unit1Projects from './components/LabS6Unit1Projects';
@@ -513,7 +525,19 @@ const LAB_MODULES = [
   { id: 'm10_11_1', classLevel: '10', subject: 'math', title: 'Unit 11: Circle Basics', desc: 'Draft circles, locate centers, and complete broken arcs using a compass.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
   { id: 'm10_11_2', classLevel: '10', subject: 'math', title: 'Unit 11: Tangent Construction', desc: 'Construct tangents on arcs and circles from external points and angles.', built: true, bg: 'from-sky-500 to-blue-600' },
   { id: 'm10_11_3', classLevel: '10', subject: 'math', title: 'Unit 11: Common Tangents', desc: 'Draft direct and transverse common tangents for multi-circle systems.', built: true, bg: 'from-violet-600 to-purple-800' },
-  { id: 'm10_12_1', classLevel: '10', subject: 'math', title: 'Unit 12: Basic Statistics', desc: 'Spin a probability wheel to calculate percentiles and experimental probabilities.', built: true, bg: 'from-emerald-500 to-green-700' }
+  { id: 'm10_12_1', classLevel: '10', subject: 'math', title: 'Unit 12: Basic Statistics', desc: 'Spin a probability wheel to calculate percentiles and experimental probabilities.', built: true, bg: 'from-emerald-500 to-green-700' },
+
+  // Class 10 Mathematics Phase 2 (Applications)
+  { id: 'm10_app_1', classLevel: '10', subject: 'math', title: 'Unit 1: Complex Apps', desc: 'Simulate AC Circuits and model imaginary wave oscillations.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'm10_app_2', classLevel: '10', subject: 'math', title: 'Unit 2: Quadratic Apps', desc: 'Analyze projectile motion, architectural area, and vehicular braking distance.', built: true, bg: 'from-red-500 to-orange-700' },
+  { id: 'm10_app_3', classLevel: '10', subject: 'math', title: 'Unit 3: Matrix Apps', desc: 'Apply Cramer\'s rule for cost analysis, chemical mixing, and resource allocation.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'm10_app_4', classLevel: '10', subject: 'math', title: 'Unit 4: Inequality Apps', desc: 'Graph feasible regions for budgeting and absolute deviation limits.', built: true, bg: 'from-purple-600 to-fuchsia-800' },
+  { id: 'm10_app_5', classLevel: '10', subject: 'math', title: 'Unit 5: Fraction Apps', desc: 'Solve logistical travel equations and combined worker rate problems.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'm10_app_6', classLevel: '10', subject: 'math', title: 'Unit 6: Function Apps', desc: 'Model machine depreciation and the exponential spread of diseases.', built: true, bg: 'from-rose-500 to-pink-700' },
+  { id: 'm10_app_7', classLevel: '10', subject: 'math', title: 'Unit 7: Vector Apps', desc: 'Calculate aviation crosswinds, swimming trajectories, and resultant pulling forces.', built: true, bg: 'from-slate-600 to-zinc-800' },
+  { id: 'm10_app_8', classLevel: '10', subject: 'math', title: 'Unit 8: Trig Apps', desc: 'Measure inaccessible heights and calculate irregular land plot areas.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'm10_app_9', classLevel: '10', subject: 'math', title: 'Unit 9-11: Circle Apps', desc: 'Analyze mechanical tangency, arched bridges, and GPS satellite distances.', built: true, bg: 'from-indigo-500 to-violet-700' },
+  { id: 'm10_app_12', classLevel: '10', subject: 'math', title: 'Unit 12: Stats Apps', desc: 'Analyze salary percentiles, BMI scatter plots, and QC probability trees.', built: true, bg: 'from-teal-500 to-green-700' }
 ];
 
 const CLASSES = ['6', '7', '8', '10'];
@@ -960,6 +984,18 @@ function LabRunner() {
   if (moduleId === 'm10_11_2') return <LabM10TangentConstruction onExit={handleExit} />;
   if (moduleId === 'm10_11_3') return <LabM10CommonTangents onExit={handleExit} />;
   if (moduleId === 'm10_12_1') return <LabM10StatisticsWheels onExit={handleExit} />;
+
+  // Class 10 Mathematics Phase 2
+  if (moduleId === 'm10_app_1') return <LabM10ComplexApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_2') return <LabM10QuadraticApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_3') return <LabM10MatrixApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_4') return <LabM10InequalityApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_5') return <LabM10FractionApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_6') return <LabM10FunctionApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_7') return <LabM10VectorApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_8') return <LabM10TrigApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_9') return <LabM10CircleApplications onExit={handleExit} />;
+  if (moduleId === 'm10_app_12') return <LabM10StatsApplications onExit={handleExit} />;
 
   return (
     <Layout>
