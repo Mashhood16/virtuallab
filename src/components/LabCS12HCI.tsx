@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { ArrowLeft, Monitor, Shield, Activity, Eye, CheckCircle, XCircle, Save } from 'lucide-react';
 import { useHistory } from '../store';
 
@@ -89,7 +89,7 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
         {/* Simulation Column */}
         <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2">UI Configurator Simulator</h2>
-          
+
           <div className="flex-1 flex flex-col gap-4">
             <div className={`flex-1 rounded-lg border-2 border-dashed p-4 flex flex-col items-center justify-center transition-all ${contrast === 'High' ? 'bg-black text-yellow-400 border-yellow-400' : 'bg-slate-100 text-slate-800 border-slate-300'}`}>
               <h3 className={`font-bold mb-2 ${fontSize === 'Large' ? 'text-3xl' : 'text-xl'}`}>
@@ -137,19 +137,19 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
 
             <div className="grid grid-cols-4 gap-2 mt-2">
               <div className="bg-slate-50 p-2 rounded text-center">
-                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Eye size={12}/> A11y</div>
+                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Eye size={12} /> A11y</div>
                 <div className={`text-lg font-bold ${accessibility >= 90 ? 'text-green-600' : 'text-slate-700'}`}>{accessibility}</div>
               </div>
               <div className="bg-slate-50 p-2 rounded text-center">
-                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Shield size={12}/> Sec</div>
+                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Shield size={12} /> Sec</div>
                 <div className={`text-lg font-bold ${security >= 80 ? 'text-green-600' : 'text-slate-700'}`}>{security}</div>
               </div>
               <div className="bg-slate-50 p-2 rounded text-center">
-                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Monitor size={12}/> Usability</div>
+                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Monitor size={12} /> Usability</div>
                 <div className="text-lg font-bold text-slate-700">{usability}</div>
               </div>
               <div className="bg-slate-50 p-2 rounded text-center">
-                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Activity size={12}/> Conv</div>
+                <div className="text-xs text-slate-500 font-bold flex items-center justify-center gap-1"><Activity size={12} /> Conv</div>
                 <div className="text-lg font-bold text-slate-700">{conversion}%</div>
               </div>
             </div>
@@ -159,21 +159,21 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
         {/* Assessment Column */}
         <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2">Analysis & Assessment</h2>
-          
+
           <div className="space-y-6 flex-1">
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
               <h3 className="font-bold text-slate-800 mb-2">Task 1: Accessible Design</h3>
               <p className="text-sm text-slate-600 mb-3">
                 Configure the UI to achieve an <strong>Accessibility score of 90 or higher</strong> while keeping the <strong>Usability score at 70 or higher</strong>.
               </p>
-              <button 
+              <button
                 onClick={checkQ1}
                 className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 Check Configuration
               </button>
-              {q1Answer === true && <p className="text-green-600 mt-2 text-sm font-bold flex items-center gap-1"><CheckCircle size={16}/> Target reached!</p>}
-              {q1Answer === false && <p className="text-red-500 mt-2 text-sm font-bold flex items-center gap-1"><XCircle size={16}/> Criteria not met yet.</p>}
+              {q1Answer === true && <p className="text-green-600 mt-2 text-sm font-bold flex items-center gap-1"><CheckCircle size={16} /> Target reached!</p>}
+              {q1Answer === false && <p className="text-red-500 mt-2 text-sm font-bold flex items-center gap-1"><XCircle size={16} /> Criteria not met yet.</p>}
             </div>
 
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -181,16 +181,16 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
               <p className="text-sm text-slate-600 mb-3">
                 Configure the UI to achieve a <strong>Security score of 80 or higher</strong> while maintaining a <strong>Conversion rate of 50% or higher</strong>.
               </p>
-              <button 
+              <button
                 onClick={checkQ2}
                 className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md font-semibold transition-colors flex items-center justify-center gap-2"
               >
                 Check Configuration
               </button>
-              {q2Answer === true && <p className="text-green-600 mt-2 text-sm font-bold flex items-center gap-1"><CheckCircle size={16}/> Target reached!</p>}
-              {q2Answer === false && <p className="text-red-500 mt-2 text-sm font-bold flex items-center gap-1"><XCircle size={16}/> Criteria not met yet.</p>}
+              {q2Answer === true && <p className="text-green-600 mt-2 text-sm font-bold flex items-center gap-1"><CheckCircle size={16} /> Target reached!</p>}
+              {q2Answer === false && <p className="text-red-500 mt-2 text-sm font-bold flex items-center gap-1"><XCircle size={16} /> Criteria not met yet.</p>}
             </div>
-            
+
             <div className="bg-amber-50 p-4 rounded-lg border border-amber-200 text-sm text-amber-800">
               <p className="font-bold mb-1">Engineering Takeaway</p>
               <p>In software engineering, every UI/UX and security decision requires a trade-off. Extreme security reduces user conversions, while high accessibility requires specialized UI layouts.</p>
@@ -198,7 +198,7 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="pt-4 border-t border-slate-200 mt-auto">
-            <button 
+            <button
               onClick={handleComplete}
               className="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-lg shadow-lg shadow-emerald-500/30 transition-all flex items-center justify-center gap-2 transform hover:-translate-y-1"
             >
