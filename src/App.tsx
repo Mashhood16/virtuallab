@@ -258,6 +258,69 @@ import LabB10NervousSystem from './components/LabB10NervousSystem';
 import LabB10Genetics from './components/LabB10Genetics';
 import LabB10Biostatistics from './components/LabB10Biostatistics';
 
+// Class 9 Biology Additions
+import LabB9Biodiversity from './components/LabB9Biodiversity';
+import LabB9Microscopy from './components/LabB9Microscopy';
+import LabB9Biochemistry from './components/LabB9Biochemistry';
+import LabB9Enzymes from './components/LabB9Enzymes';
+import LabB9PlantPhysiology from './components/LabB9PlantPhysiology';
+import LabB9PlantReproduction from './components/LabB9PlantReproduction';
+
+// Class 9 Chemistry Additions
+import LabC9StatesOfMatter from './components/LabC9StatesOfMatter';
+import LabC9AtomicStructure from './components/LabC9AtomicStructure';
+import LabC9Electrochemistry from './components/LabC9Electrochemistry';
+import LabC9EnvironmentalChem from './components/LabC9EnvironmentalChem';
+import LabC9OrganicChem from './components/LabC9OrganicChem';
+import LabC9SeparationTech from './components/LabC9SeparationTech';
+import LabC9QualitativeAnalysis from './components/LabC9QualitativeAnalysis';
+
+// Class 9 Physics Additions
+import LabP9MeasurementTools from './components/LabP9MeasurementTools';
+import LabP9VolumeDensity from './components/LabP9VolumeDensity';
+import LabP9Kinematics from './components/LabP9Kinematics';
+import LabP9Inertia from './components/LabP9Inertia';
+import LabP9Friction from './components/LabP9Friction';
+import LabP9Pressure from './components/LabP9Pressure';
+import LabP9Springs from './components/LabP9Springs';
+import LabP9MagnetismFields from './components/LabP9MagnetismFields';
+import LabP9MagnetismInduction from './components/LabP9MagnetismInduction';
+import LabP9EverydayPhysics from './components/LabP9EverydayPhysics';
+
+// Class 9 Computer Science Additions
+import LabCS9ComputerSystems from './components/LabCS9ComputerSystems';
+import LabCS9Algorithms from './components/LabCS9Algorithms';
+import LabCS9WebBasics from './components/LabCS9WebBasics';
+import LabCS9JavaScript from './components/LabCS9JavaScript';
+import LabCS9WebProjects from './components/LabCS9WebProjects';
+import LabCS9DataAnalysis from './components/LabCS9DataAnalysis';
+import LabCS9AIApplications from './components/LabCS9AIApplications';
+import LabCS9CyberSafety from './components/LabCS9CyberSafety';
+import LabCS9Entrepreneurship from './components/LabCS9Entrepreneurship';
+
+// Class 9 Mathematics Additions
+import LabM9RealNumbers from './components/LabM9RealNumbers';
+import LabM9Logarithms from './components/LabM9Logarithms';
+import LabM9SetsRelations from './components/LabM9SetsRelations';
+import LabM9AlgebraicManipulation from './components/LabM9AlgebraicManipulation';
+import LabM9Trigonometry from './components/LabM9Trigonometry';
+import LabM9CoordinateGeometry from './components/LabM9CoordinateGeometry';
+import LabM9LinearGraphs from './components/LabM9LinearGraphs';
+import LabM9GeometryPolygons from './components/LabM9GeometryPolygons';
+import LabM9BasicStatistics from './components/LabM9BasicStatistics';
+
+// Class 11 Chemistry Additions
+import LabC11AtomicStructure from './components/LabC11AtomicStructure';
+import LabC11MolecularBonding from './components/LabC11MolecularBonding';
+import LabC11Stoichiometry from './components/LabC11Stoichiometry';
+import LabC11PhasesOfMatter from './components/LabC11PhasesOfMatter';
+import LabC11EnergeticsKinetics from './components/LabC11EnergeticsKinetics';
+import LabC11IndustrialEquilibrium from './components/LabC11IndustrialEquilibrium';
+import LabC11AcidsBases from './components/LabC11AcidsBases';
+import LabC11EnvironmentalChem from './components/LabC11EnvironmentalChem';
+import LabC11OrganicAnalysis from './components/LabC11OrganicAnalysis';
+import LabC11OrganicSynthesis from './components/LabC11OrganicSynthesis';
+
 // Class 6 Science Additions
 import LabS6Microscope from './components/LabS6Microscope';
 import LabS6Unit1Projects from './components/LabS6Unit1Projects';
@@ -555,10 +618,73 @@ const LAB_MODULES = [
   { id: 'b10_4', classLevel: '10', subject: 'biology', title: 'Unit 4: Urinary System', desc: 'Dissect a virtual goat kidney to identify the cortex, medulla, and pelvis.', built: true, bg: 'from-fuchsia-600 to-purple-800' },
   { id: 'b10_5', classLevel: '10', subject: 'biology', title: 'Unit 5: Nervous System', desc: 'Trigger a knee jerk reflex and analyze the 50ms monosynaptic reflex arc.', built: true, bg: 'from-emerald-500 to-green-700' },
   { id: 'b10_7', classLevel: '10', subject: 'biology', title: 'Unit 7: Inheritance', desc: 'Simulate Mendel\'s laws of segregation using interactive colored beads.', built: true, bg: 'from-indigo-500 to-blue-800' },
-  { id: 'b10_11', classLevel: '10', subject: 'biology', title: 'Unit 11: Biostatistics', desc: 'Calculate medians and construct biological bar charts on digital graph paper.', built: true, bg: 'from-slate-600 to-zinc-800' }
+  { id: 'b10_11', classLevel: '10', subject: 'biology', title: 'Unit 11: Biostatistics', desc: 'Calculate medians and construct biological bar charts on digital graph paper.', built: true, bg: 'from-slate-600 to-zinc-800' },
+
+  // Class 9 Biology
+  { id: 'b9_1', classLevel: '9', subject: 'biology', title: 'Unit 1-2: Biodiversity', desc: 'Sort organisms by taxonomy and build a biodiversity collage.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'b9_3', classLevel: '9', subject: 'biology', title: 'Unit 3-5: Microscopy', desc: 'Stain and squash onion roots, swab cheek cells, and view animal tissues.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'b9_6', classLevel: '9', subject: 'biology', title: 'Unit 6: Biochemistry', desc: 'Use reagents to test for proteins, lipids, and carbohydrates.', built: true, bg: 'from-purple-600 to-fuchsia-800' },
+  { id: 'b9_7', classLevel: '9', subject: 'biology', title: 'Unit 7: Enzymes', desc: 'Test Amylase and Pepsin in interactive water baths across different pH and temps.', built: true, bg: 'from-red-500 to-orange-700' },
+  { id: 'b9_8', classLevel: '9', subject: 'biology', title: 'Unit 8: Plant Physiology', desc: 'Measure transpiration with a Potometer and test Hydrilla for oxygen.', built: true, bg: 'from-green-500 to-emerald-700' },
+  { id: 'b9_9', classLevel: '9', subject: 'biology', title: 'Unit 9: Reproduction', desc: 'Dissect flowers to create herbariums and track seed germination.', built: true, bg: 'from-pink-500 to-rose-700' },
+
+  // Class 9 Chemistry
+  { id: 'c9_1', classLevel: '9', subject: 'chemistry', title: 'Unit 2: States of Matter', desc: 'Create super-saturated solutions and trigger sudden crystallization.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'c9_2', classLevel: '9', subject: 'chemistry', title: 'Unit 3-4: Atomic Structure', desc: 'Visualize U-238 alpha decay and Halogen displacement reactions.', built: true, bg: 'from-emerald-600 to-teal-800' },
+  { id: 'c9_3', classLevel: '9', subject: 'chemistry', title: 'Unit 7-8: Electrochemistry', desc: 'Perform KMnO4 redox titrations and track exothermic temperature changes.', built: true, bg: 'from-purple-600 to-fuchsia-800' },
+  { id: 'c9_4', classLevel: '9', subject: 'chemistry', title: 'Unit 10-12: Environmental Chem', desc: 'Simulate Catalytic Converters and test water purity melting points.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'c9_5', classLevel: '9', subject: 'chemistry', title: 'Unit 14: Organic Chemistry', desc: 'Hydrogenate Ethene with Nickel catalysts and Halogenate Methane.', built: true, bg: 'from-orange-500 to-red-700' },
+  { id: 'c9_6', classLevel: '9', subject: 'chemistry', title: 'Unit 17-19: Separation Tech', desc: 'Operate a distillation apparatus and measure Rf values in Chromatography.', built: true, bg: 'from-rose-500 to-pink-700' },
+  { id: 'c9_7', classLevel: '9', subject: 'chemistry', title: 'Unit 18: Qualitative Analysis', desc: 'Perform Flame Tests, Pop Tests, and Limewater gas detection tests.', built: true, bg: 'from-yellow-500 to-amber-700' },
+
+  // Class 9 Physics
+  { id: 'p9_1', classLevel: '9', subject: 'physics', title: 'Unit 1: Measurement Tools', desc: 'Interactive Vernier Calipers and Screw Gauge for precise measurements.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'p9_2', classLevel: '9', subject: 'physics', title: 'Unit 1 & 7: Volume & Density', desc: 'Measure density of unknown liquids and irregular solids via displacement.', built: true, bg: 'from-cyan-700 to-sky-900' },
+  { id: 'p9_3', classLevel: '9', subject: 'physics', title: 'Unit 1 & 2: Kinematics', desc: 'Use a stopwatch to calculate bowling speed on a cricket pitch.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'p9_4', classLevel: '9', subject: 'physics', title: 'Unit 3: Inertia', desc: 'Flick a card to drop a coin into a glass and test stacked coin inertia.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'p9_5', classLevel: '9', subject: 'physics', title: 'Unit 4: Friction', desc: 'Test sliding friction vs rolling friction by sliding heavy books.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'p9_6', classLevel: '9', subject: 'physics', title: 'Unit 5: Liquid Pressure', desc: 'Drill holes in a water can to observe how liquid pressure increases with depth.', built: true, bg: 'from-blue-500 to-blue-700' },
+  { id: 'p9_7', classLevel: '9', subject: 'physics', title: 'Unit 5: Springs', desc: 'Hang multiple spring balances in series to observe force readings.', built: true, bg: 'from-violet-600 to-purple-800' },
+  { id: 'p9_8', classLevel: '9', subject: 'physics', title: 'Unit 8: Magnetic Fields', desc: 'Plot invisible magnetic fields using compasses and iron filings.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
+  { id: 'p9_9', classLevel: '9', subject: 'physics', title: 'Unit 8: Magnetization', desc: 'Induce magnetization via the stroking and hammering methods.', built: true, bg: 'from-indigo-600 to-blue-800' },
+  { id: 'p9_10', classLevel: '9', subject: 'physics', title: 'Unit 9: Everyday Physics', desc: 'Identify physical phenomena at work in a virtual classroom environment.', built: true, bg: 'from-slate-600 to-gray-800' },
+
+  // Class 9 Computer Science
+  { id: 'cs9_1', classLevel: '9', subject: 'computer_science', title: 'Unit 1: Computer Systems', desc: 'Assemble hardware components and assign roles in the OSI Model.', built: true, bg: 'from-slate-700 to-gray-900' },
+  { id: 'cs9_2', classLevel: '9', subject: 'computer_science', title: 'Unit 2: Algorithms', desc: 'Build logic flowcharts and IPO charts to solve computational problems.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'cs9_3', classLevel: '9', subject: 'computer_science', title: 'Unit 3: Web Basics', desc: 'Write HTML/CSS to build lists and tables with a live browser preview.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'cs9_4', classLevel: '9', subject: 'computer_science', title: 'Unit 3: JavaScript', desc: 'Write JavaScript grading logic and run it against an automated test suite.', built: true, bg: 'from-yellow-500 to-amber-700' },
+  { id: 'cs9_5', classLevel: '9', subject: 'computer_science', title: 'Unit 3: Web Projects', desc: 'Develop major web projects like an E-Commerce Food website.', built: true, bg: 'from-cyan-700 to-sky-900' },
+  { id: 'cs9_6', classLevel: '9', subject: 'computer_science', title: 'Unit 4: Data Analysis', desc: 'Enter survey data to generate dynamic Bar and Pie charts.', built: true, bg: 'from-purple-700 to-fuchsia-900' },
+  { id: 'cs9_7', classLevel: '9', subject: 'computer_science', title: 'Unit 5: AI Applications', desc: 'Explore the functional and ethical issues of AI in various industries.', built: true, bg: 'from-rose-600 to-pink-800' },
+  { id: 'cs9_8', classLevel: '9', subject: 'computer_science', title: 'Unit 6: Cyber Safety', desc: 'Navigate scenario-based challenges involving fake news and cyberbullying.', built: true, bg: 'from-red-600 to-orange-800' },
+  { id: 'cs9_9', classLevel: '9', subject: 'computer_science', title: 'Unit 7: Entrepreneurship', desc: 'Calculate cost of production and build digital business plans.', built: true, bg: 'from-emerald-600 to-green-800' },
+
+  // Class 9 Mathematics
+  { id: 'm9_1', classLevel: '9', subject: 'mathematics', title: 'Unit 1: Real Numbers', desc: 'Calculate fractions and distances for financial and real-world logistics.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'm9_2', classLevel: '9', subject: 'mathematics', title: 'Unit 2: Logarithms', desc: 'Measure earthquakes on the Richter Scale and use Scientific Notation.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'm9_3', classLevel: '9', subject: 'mathematics', title: 'Unit 3: Sets & Relations', desc: 'Categorize demographic survey data into overlapping Venn Diagrams.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'm9_4', classLevel: '9', subject: 'mathematics', title: 'Unit 4-5: Algebraic Manipulation', desc: 'Optimize architectural volume and focal lengths using algebraic inequalities.', built: true, bg: 'from-rose-700 to-pink-900' },
+  { id: 'm9_5', classLevel: '9', subject: 'mathematics', title: 'Unit 6: Trigonometry', desc: 'Measure tree heights with shadow angles and plot ship bearings.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'm9_6', classLevel: '9', subject: 'mathematics', title: 'Unit 7: Coordinate Geometry', desc: 'Plot maps and use distance formulas for urban planning scenarios.', built: true, bg: 'from-violet-700 to-fuchsia-900' },
+  { id: 'm9_7', classLevel: '9', subject: 'mathematics', title: 'Unit 8: Linear Graphs', desc: 'Calculate linear slopes for taxi fares and pollution indexing.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'm9_8', classLevel: '9', subject: 'mathematics', title: 'Unit 9-10: Geometry & Polygons', desc: 'Estimate landscaping costs and interactively find the Centroid of a triangle.', built: true, bg: 'from-orange-500 to-amber-700' },
+  { id: 'm9_9', classLevel: '9', subject: 'mathematics', title: 'Unit 11: Basic Statistics', desc: 'Plot histograms and determine probability flaws in factory shipments.', built: true, bg: 'from-slate-700 to-gray-900' },
+
+  // Class 11 Chemistry
+  { id: 'c11_1', classLevel: '11', subject: 'chemistry', title: 'Ch 2: Atomic Structure', desc: 'Mass Spectrometry, semiconductor doping, and emission line spectra.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  { id: 'c11_2', classLevel: '11', subject: 'chemistry', title: 'Ch 3: Chemical Bonding', desc: 'Use VSEPR theory to shape synthetic drugs to fit enzyme active sites.', built: true, bg: 'from-emerald-700 to-teal-900' },
+  { id: 'c11_3', classLevel: '11', subject: 'chemistry', title: 'Ch 4: Stoichiometry', desc: 'Synthesize Aspirin in a wet-lab and calculate Theoretical vs Actual Yield.', built: true, bg: 'from-rose-700 to-pink-900' },
+  { id: 'c11_4', classLevel: '11', subject: 'chemistry', title: 'Ch 5: Phases of Matter', desc: 'Vacuum distillation, pressure cookers, and liquid crystal properties.', built: true, bg: 'from-amber-600 to-orange-800' },
+  { id: 'c11_5', classLevel: '11', subject: 'chemistry', title: 'Ch 6-7: Energetics & Kinetics', desc: 'Measure calorimetry heat flow and explore catalytic converter reactions.', built: true, bg: 'from-cyan-700 to-blue-900' },
+  { id: 'c11_6', classLevel: '11', subject: 'chemistry', title: 'Ch 8 & 11: Industrial Eq.', desc: 'Master Le Chateliers Principle in Haber & Contact process control panels.', built: true, bg: 'from-purple-700 to-fuchsia-900' },
+  { id: 'c11_7', classLevel: '11', subject: 'chemistry', title: 'Ch 9: Acids & Bases', desc: 'Perform drop-by-drop pH titrations and explore biological blood buffers.', built: true, bg: 'from-red-700 to-rose-900' },
+  { id: 'c11_8', classLevel: '11', subject: 'chemistry', title: 'Ch 12-14: Environmental Chem', desc: 'Run a municipal water treatment plant and analyze photochemical smog.', built: true, bg: 'from-teal-600 to-cyan-800' },
+  { id: 'c11_9', classLevel: '11', subject: 'chemistry', title: 'Ch 18-21: Organic Analysis', desc: 'Use Tollens, Lucas, and 2,4-DNPH tests to identify unknown compounds.', built: true, bg: 'from-orange-600 to-red-800' },
+  { id: 'c11_10', classLevel: '11', subject: 'chemistry', title: 'Ch 15-22: Organic Synthesis', desc: 'Distill petrochemicals and perform Retrosynthetic Analysis on complex drugs.', built: true, bg: 'from-slate-700 to-gray-900' }
 ];
 
-const CLASSES = ['6', '7', '8', '10'];
+const CLASSES = ['6', '7', '8', '9', '10', '11'];
 
 const getSubjectsForClass = (classLevel: string) => {
   const num = parseInt(classLevel);
@@ -1023,6 +1149,69 @@ function LabRunner() {
   if (moduleId === 'b10_5') return <LabB10NervousSystem onExit={handleExit} />;
   if (moduleId === 'b10_7') return <LabB10Genetics onExit={handleExit} />;
   if (moduleId === 'b10_11') return <LabB10Biostatistics onExit={handleExit} />;
+
+  // Class 9 Biology
+  if (moduleId === 'b9_1') return <LabB9Biodiversity onExit={handleExit} />;
+  if (moduleId === 'b9_3') return <LabB9Microscopy onExit={handleExit} />;
+  if (moduleId === 'b9_6') return <LabB9Biochemistry onExit={handleExit} />;
+  if (moduleId === 'b9_7') return <LabB9Enzymes onExit={handleExit} />;
+  if (moduleId === 'b9_8') return <LabB9PlantPhysiology onExit={handleExit} />;
+  if (moduleId === 'b9_9') return <LabB9PlantReproduction onExit={handleExit} />;
+
+  // Class 9 Chemistry
+  if (moduleId === 'c9_1') return <LabC9StatesOfMatter onExit={handleExit} />;
+  if (moduleId === 'c9_2') return <LabC9AtomicStructure onExit={handleExit} />;
+  if (moduleId === 'c9_3') return <LabC9Electrochemistry onExit={handleExit} />;
+  if (moduleId === 'c9_4') return <LabC9EnvironmentalChem onExit={handleExit} />;
+  if (moduleId === 'c9_5') return <LabC9OrganicChem onExit={handleExit} />;
+  if (moduleId === 'c9_6') return <LabC9SeparationTech onExit={handleExit} />;
+  if (moduleId === 'c9_7') return <LabC9QualitativeAnalysis onExit={handleExit} />;
+
+  // Class 9 Physics
+  if (moduleId === 'p9_1') return <LabP9MeasurementTools onExit={handleExit} />;
+  if (moduleId === 'p9_2') return <LabP9VolumeDensity onExit={handleExit} />;
+  if (moduleId === 'p9_3') return <LabP9Kinematics onExit={handleExit} />;
+  if (moduleId === 'p9_4') return <LabP9Inertia onExit={handleExit} />;
+  if (moduleId === 'p9_5') return <LabP9Friction onExit={handleExit} />;
+  if (moduleId === 'p9_6') return <LabP9Pressure onExit={handleExit} />;
+  if (moduleId === 'p9_7') return <LabP9Springs onExit={handleExit} />;
+  if (moduleId === 'p9_8') return <LabP9MagnetismFields onExit={handleExit} />;
+  if (moduleId === 'p9_9') return <LabP9MagnetismInduction onExit={handleExit} />;
+  if (moduleId === 'p9_10') return <LabP9EverydayPhysics onExit={handleExit} />;
+
+  // Class 9 Computer Science
+  if (moduleId === 'cs9_1') return <LabCS9ComputerSystems onExit={handleExit} />;
+  if (moduleId === 'cs9_2') return <LabCS9Algorithms onExit={handleExit} />;
+  if (moduleId === 'cs9_3') return <LabCS9WebBasics onExit={handleExit} />;
+  if (moduleId === 'cs9_4') return <LabCS9JavaScript onExit={handleExit} />;
+  if (moduleId === 'cs9_5') return <LabCS9WebProjects onExit={handleExit} />;
+  if (moduleId === 'cs9_6') return <LabCS9DataAnalysis onExit={handleExit} />;
+  if (moduleId === 'cs9_7') return <LabCS9AIApplications onExit={handleExit} />;
+  if (moduleId === 'cs9_8') return <LabCS9CyberSafety onExit={handleExit} />;
+  if (moduleId === 'cs9_9') return <LabCS9Entrepreneurship onExit={handleExit} />;
+
+  // Class 9 Mathematics
+  if (moduleId === 'm9_1') return <LabM9RealNumbers onExit={handleExit} />;
+  if (moduleId === 'm9_2') return <LabM9Logarithms onExit={handleExit} />;
+  if (moduleId === 'm9_3') return <LabM9SetsRelations onExit={handleExit} />;
+  if (moduleId === 'm9_4') return <LabM9AlgebraicManipulation onExit={handleExit} />;
+  if (moduleId === 'm9_5') return <LabM9Trigonometry onExit={handleExit} />;
+  if (moduleId === 'm9_6') return <LabM9CoordinateGeometry onExit={handleExit} />;
+  if (moduleId === 'm9_7') return <LabM9LinearGraphs onExit={handleExit} />;
+  if (moduleId === 'm9_8') return <LabM9GeometryPolygons onExit={handleExit} />;
+  if (moduleId === 'm9_9') return <LabM9BasicStatistics onExit={handleExit} />;
+
+  // Class 11 Chemistry
+  if (moduleId === 'c11_1') return <LabC11AtomicStructure onExit={handleExit} />;
+  if (moduleId === 'c11_2') return <LabC11MolecularBonding onExit={handleExit} />;
+  if (moduleId === 'c11_3') return <LabC11Stoichiometry onExit={handleExit} />;
+  if (moduleId === 'c11_4') return <LabC11PhasesOfMatter onExit={handleExit} />;
+  if (moduleId === 'c11_5') return <LabC11EnergeticsKinetics onExit={handleExit} />;
+  if (moduleId === 'c11_6') return <LabC11IndustrialEquilibrium onExit={handleExit} />;
+  if (moduleId === 'c11_7') return <LabC11AcidsBases onExit={handleExit} />;
+  if (moduleId === 'c11_8') return <LabC11EnvironmentalChem onExit={handleExit} />;
+  if (moduleId === 'c11_9') return <LabC11OrganicAnalysis onExit={handleExit} />;
+  if (moduleId === 'c11_10') return <LabC11OrganicSynthesis onExit={handleExit} />;
 
   return (
     <Layout>
