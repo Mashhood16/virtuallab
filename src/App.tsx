@@ -179,6 +179,64 @@ import LabP10ExpansionLiquids from './components/LabP10ExpansionLiquids';
 import LabP10GasPressureBalloon from './components/LabP10GasPressureBalloon';
 import LabP10LatentHeat from './components/LabP10LatentHeat';
 
+// Class 10 Chemistry Additions
+import LabC10DiluteSolution from './components/LabC10DiluteSolution';
+import LabC10StandardizationTitration from './components/LabC10StandardizationTitration';
+import LabC10SaltTitration from './components/LabC10SaltTitration';
+import LabC10SaltExcessMetal from './components/LabC10SaltExcessMetal';
+import LabC10SaltExcessBase from './components/LabC10SaltExcessBase';
+import LabC10SaltExcessCarbonate from './components/LabC10SaltExcessCarbonate';
+import LabC10MetalReactivity from './components/LabC10MetalReactivity';
+import LabC10SaturatedUnsaturated from './components/LabC10SaturatedUnsaturated';
+import LabC10AceticAcidMetal from './components/LabC10AceticAcidMetal';
+import LabC10AceticAcidCarbonate from './components/LabC10AceticAcidCarbonate';
+
+// Class 10 Chemistry Phase 2 Additions
+import LabC10DownsCell from './components/LabC10DownsCell';
+import LabC10MoltenLeadChloride from './components/LabC10MoltenLeadChloride';
+import LabC10AqueousElectrolysis from './components/LabC10AqueousElectrolysis';
+import LabC10CopperRefining from './components/LabC10CopperRefining';
+import LabC10Electroplating from './components/LabC10Electroplating';
+import LabC10DanielCell from './components/LabC10DanielCell';
+import LabC10FuelCell from './components/LabC10FuelCell';
+import LabC10SurfaceAreaRate from './components/LabC10SurfaceAreaRate';
+import LabC10ConcentrationRate from './components/LabC10ConcentrationRate';
+import LabC10Esterification from './components/LabC10Esterification';
+import LabC10EthanolFermentation from './components/LabC10EthanolFermentation';
+import LabC10EthanolHydration from './components/LabC10EthanolHydration';
+import LabC10AlcoholCombustion from './components/LabC10AlcoholCombustion';
+import LabC10AdditionPolymerisation from './components/LabC10AdditionPolymerisation';
+import LabC10CondensationPolymerisation from './components/LabC10CondensationPolymerisation';
+import LabC10PETAcidHydrolysis from './components/LabC10PETAcidHydrolysis';
+import LabC10BiochemicalTest from './components/LabC10BiochemicalTest';
+
+// Class 10 Computer Science Additions
+import LabCS10NumberSystems from './components/LabCS10NumberSystems';
+import LabCS10HelloWorld from './components/LabCS10HelloWorld';
+import LabCS10ComputationalThinking from './components/LabCS10ComputationalThinking';
+import LabCS10HTMLCSS from './components/LabCS10HTMLCSS';
+import LabCS10JSAlgorithms from './components/LabCS10JSAlgorithms';
+import LabCS10DynamicList from './components/LabCS10DynamicList';
+import LabCS10DataVisualization from './components/LabCS10DataVisualization';
+import LabCS10ChurnPrediction from './components/LabCS10ChurnPrediction';
+import LabCS10FutureTech from './components/LabCS10FutureTech';
+import LabCS10CyberSafety from './components/LabCS10CyberSafety';
+import LabCS10DigitalMarketing from './components/LabCS10DigitalMarketing';
+import LabCS10MarketResearch from './components/LabCS10MarketResearch';
+import LabCS10Financials from './components/LabCS10Financials';
+import LabCS10BusinessPitch from './components/LabCS10BusinessPitch';
+
+// Class 10 Mathematics Additions
+import LabM10Vectors from './components/LabM10Vectors';
+import LabM10ChordBisectors from './components/LabM10ChordBisectors';
+import LabM10EqualChords from './components/LabM10EqualChords';
+import LabM10TangentProperties from './components/LabM10TangentProperties';
+import LabM10CircleAngles from './components/LabM10CircleAngles';
+import LabM10CircleBasics from './components/LabM10CircleBasics';
+import LabM10TangentConstruction from './components/LabM10TangentConstruction';
+import LabM10CommonTangents from './components/LabM10CommonTangents';
+import LabM10StatisticsWheels from './components/LabM10StatisticsWheels';
+
 // Class 6 Science Additions
 import LabS6Microscope from './components/LabS6Microscope';
 import LabS6Unit1Projects from './components/LabS6Unit1Projects';
@@ -393,7 +451,69 @@ const LAB_MODULES = [
   { id: 'p10_19_1', classLevel: '10', subject: 'physics', title: 'Unit 19: Radio Transmission', desc: 'Trace the signal flow from microphone to speaker via radio waves.', built: true, bg: 'from-cyan-600 to-blue-800' },
   { id: 'p10_19_2', classLevel: '10', subject: 'physics', title: 'Unit 19: Optical Fibers', desc: 'Observe total internal reflection transmitting light through a bent glass fiber.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
   { id: 'p10_20_1', classLevel: '10', subject: 'physics', title: 'Unit 20: Radioactivity', desc: 'Observe how Alpha, Beta, and Gamma radiation deflects in a magnetic field.', built: true, bg: 'from-emerald-600 to-teal-800' },
-  { id: 'p10_20_2', classLevel: '10', subject: 'physics', title: 'Unit 20: Half-Life Simulation', desc: 'Observe the random decay of radioactive nuclei over time.', built: true, bg: 'from-rose-600 to-pink-800' }
+  { id: 'p10_20_2', classLevel: '10', subject: 'physics', title: 'Unit 20: Half-Life Simulation', desc: 'Observe the random decay of radioactive nuclei over time.', built: true, bg: 'from-rose-600 to-pink-800' },
+  // Class 10 Chemistry
+  { id: 'c10_3_1', classLevel: '10', subject: 'chemistry', title: 'Unit 3: Dilute Solution Prep', desc: 'Prepare a 0.1M HCl solution from concentrated acid using M1V1=M2V2.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  { id: 'c10_3_2', classLevel: '10', subject: 'chemistry', title: 'Unit 3: Titration Standardization', desc: 'Standardize HCl by titrating it against standard NaOH.', built: true, bg: 'from-emerald-500 to-green-600' },
+  { id: 'c10_6_1', classLevel: '10', subject: 'chemistry', title: 'Unit 6: Salt via Titration', desc: 'Prepare NaCl crystals by neutralizing HCl with NaOH.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'c10_6_2', classLevel: '10', subject: 'chemistry', title: 'Unit 6: Salt via Excess Metal', desc: 'Prepare ZnSO4 from Zinc and Sulphuric Acid.', built: true, bg: 'from-sky-500 to-indigo-600' },
+  { id: 'c10_6_3', classLevel: '10', subject: 'chemistry', title: 'Unit 6: Salt via Excess Base', desc: 'Prepare CuSO4 from Copper(II) Oxide and Sulphuric Acid.', built: true, bg: 'from-blue-500 to-indigo-700' },
+  { id: 'c10_6_4', classLevel: '10', subject: 'chemistry', title: 'Unit 6: Salt via Excess Carbonate', desc: 'Prepare CaCl2 from Calcium Carbonate and HCl.', built: true, bg: 'from-indigo-500 to-purple-600' },
+  { id: 'c10_7_1', classLevel: '10', subject: 'chemistry', title: 'Unit 7: Metal Reactivity', desc: 'Compare reactivity of Mg, Zn, Fe, and Cu with HCl.', built: true, bg: 'from-purple-500 to-fuchsia-600' },
+  { id: 'c10_9_1', classLevel: '10', subject: 'chemistry', title: 'Unit 9: Saturated & Unsaturated', desc: 'Use Bromine water to test butter and vegetable oil.', built: true, bg: 'from-fuchsia-500 to-pink-600' },
+  { id: 'c10_11_1', classLevel: '10', subject: 'chemistry', title: 'Unit 11: Acetic Acid + Metal', desc: 'React vinegar with sodium metal to produce hydrogen gas.', built: true, bg: 'from-rose-500 to-red-600' },
+  { id: 'c10_11_2', classLevel: '10', subject: 'chemistry', title: 'Unit 11: Acetic Acid + Carbonate', desc: 'React vinegar with sodium carbonate to produce CO2 gas.', built: true, bg: 'from-red-500 to-orange-600' },
+  
+  // Class 10 Chemistry Phase 2
+  { id: 'c10_4_1', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Downs Cell', desc: 'Electrolysis of molten sodium chloride to produce liquid sodium.', built: true, bg: 'from-orange-500 to-red-600' },
+  { id: 'c10_4_2', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Molten Lead Chloride', desc: 'Electrolysis of molten PbCl2.', built: true, bg: 'from-slate-500 to-zinc-700' },
+  { id: 'c10_4_3', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Aqueous Electrolysis', desc: 'Electrolysis of concentrated brine vs dilute NaCl/H2SO4.', built: true, bg: 'from-blue-500 to-indigo-600' },
+  { id: 'c10_4_4', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Copper Refining', desc: 'Purifying copper using an electrolytic cell.', built: true, bg: 'from-amber-600 to-orange-700' },
+  { id: 'c10_4_5', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Electroplating', desc: 'Electroplating steel with Zinc, Tin, or Chromium.', built: true, bg: 'from-cyan-500 to-blue-600' },
+  { id: 'c10_4_6', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Daniel Cell', desc: 'Generate electricity using a spontaneous redox reaction with a salt bridge.', built: true, bg: 'from-emerald-500 to-teal-600' },
+  { id: 'c10_4_7', classLevel: '10', subject: 'chemistry', title: 'Unit 4: Fuel Cell', desc: 'Hydrogen-Oxygen fuel cell producing water and electricity.', built: true, bg: 'from-sky-500 to-blue-600' },
+  
+  { id: 'c10_5_1', classLevel: '10', subject: 'chemistry', title: 'Unit 5: Surface Area Kinetics', desc: 'Effect of solid vs powdered zinc on reaction rate.', built: true, bg: 'from-pink-500 to-rose-600' },
+  { id: 'c10_5_2', classLevel: '10', subject: 'chemistry', title: 'Unit 5: Concentration Kinetics', desc: 'Effect of concentration on antacid neutralization rate.', built: true, bg: 'from-purple-500 to-indigo-600' },
+  
+  { id: 'c10_8_1', classLevel: '10', subject: 'chemistry', title: 'Unit 8: Esterification', desc: 'React an alcohol with a carboxylic acid to produce a fruity ester.', built: true, bg: 'from-fuchsia-500 to-purple-600' },
+  
+  { id: 'c10_10_1', classLevel: '10', subject: 'chemistry', title: 'Unit 10: Fermentation', desc: 'Anaerobic yeast fermentation to manufacture ethanol.', built: true, bg: 'from-lime-500 to-green-600' },
+  { id: 'c10_10_2', classLevel: '10', subject: 'chemistry', title: 'Unit 10: Ethene Hydration', desc: 'Industrial manufacture of ethanol via hydration of ethene.', built: true, bg: 'from-cyan-600 to-teal-700' },
+  { id: 'c10_10_3', classLevel: '10', subject: 'chemistry', title: 'Unit 10: Alcohol Combustion', desc: 'Measure the heat energy released by burning alcohols.', built: true, bg: 'from-red-500 to-orange-600' },
+  
+  { id: 'c10_12_1', classLevel: '10', subject: 'chemistry', title: 'Unit 12: Addition Polymerisation', desc: 'Join ethene monomers to form polyethylene chains.', built: true, bg: 'from-indigo-500 to-blue-600' },
+  { id: 'c10_12_2', classLevel: '10', subject: 'chemistry', title: 'Unit 12: Condensation Polymerisation', desc: 'React diol with dicarboxylic acid to form PET.', built: true, bg: 'from-violet-500 to-purple-600' },
+  { id: 'c10_12_3', classLevel: '10', subject: 'chemistry', title: 'Unit 12: PET Hydrolysis', desc: 'Chemical recycling of PET back into monomers using acid.', built: true, bg: 'from-teal-500 to-emerald-600' },
+  
+  { id: 'c10_13_1', classLevel: '10', subject: 'chemistry', title: 'Unit 13: Biochemical Testing', desc: 'Analyze hCG hormone concentration in a pregnancy test simulation.', built: true, bg: 'from-rose-400 to-pink-500' },
+  
+  // Class 10 Computer Science
+  { id: 'cs10_1_1', classLevel: '10', subject: 'computer', title: 'Unit 1: Number Systems', desc: 'Interactive calculator for binary/hex conversions and 2s complement.', built: true, bg: 'from-blue-600 to-indigo-800' },
+  { id: 'cs10_1_2', classLevel: '10', subject: 'computer', title: 'Unit 1: Hello World!', desc: 'Code a dynamic webpage using HTML, CSS, and JS in a simulated editor.', built: true, bg: 'from-sky-500 to-blue-700' },
+  { id: 'cs10_2_1', classLevel: '10', subject: 'computer', title: 'Unit 2: Computational Thinking', desc: 'Practice map abstraction and modular program design with flowcharts.', built: true, bg: 'from-cyan-600 to-teal-800' },
+  { id: 'cs10_3_1', classLevel: '10', subject: 'computer', title: 'Unit 3: HTML & CSS', desc: 'Build a travel form, timetable, and CSS color-transition animation.', built: true, bg: 'from-emerald-600 to-green-800' },
+  { id: 'cs10_3_2', classLevel: '10', subject: 'computer', title: 'Unit 3: JS Algorithms', desc: 'Simulate search algorithms and array comparisons in JavaScript.', built: true, bg: 'from-yellow-500 to-amber-700' },
+  { id: 'cs10_3_3', classLevel: '10', subject: 'computer', title: 'Unit 3: Dynamic Lists', desc: 'Visually insert, find, and remove items from an array structure.', built: true, bg: 'from-orange-500 to-red-700' },
+  { id: 'cs10_4_1', classLevel: '10', subject: 'computer', title: 'Unit 4: Data Visualization', desc: 'Clean datasets, calculate mean/median, and render interactive charts.', built: true, bg: 'from-purple-600 to-fuchsia-800' },
+  { id: 'cs10_4_2', classLevel: '10', subject: 'computer', title: 'Unit 4: Churn Prediction', desc: 'Analyze customer metrics to predict churn and apply retention promos.', built: true, bg: 'from-pink-600 to-rose-800' },
+  { id: 'cs10_5_1', classLevel: '10', subject: 'computer', title: 'Unit 5: Applications & AI', desc: 'Simulate cloud docs, build an IoT smart home, and analyze AI bias.', built: true, bg: 'from-indigo-600 to-violet-800' },
+  { id: 'cs10_6_1', classLevel: '10', subject: 'computer', title: 'Unit 6: Impacts of Computing', desc: 'Design safe internet and anti-cyberbullying campaign posters.', built: true, bg: 'from-slate-600 to-zinc-800' },
+  { id: 'cs10_7_1', classLevel: '10', subject: 'computer', title: 'Unit 7: Digital Literacy', desc: 'Design a digital billboard and simulate an AI social media product launch.', built: true, bg: 'from-teal-600 to-cyan-800' },
+  { id: 'cs10_8_1', classLevel: '10', subject: 'computer', title: 'Unit 8: Market Research', desc: 'Categorize variables, calculate CAC, and define a Unique Selling Proposition.', built: true, bg: 'from-rose-500 to-red-700' },
+  { id: 'cs10_8_2', classLevel: '10', subject: 'computer', title: 'Unit 8: Financial Projections', desc: 'Calculate 1st-year projected revenue, expenses, and profitability.', built: true, bg: 'from-green-600 to-emerald-800' },
+  { id: 'cs10_8_3', classLevel: '10', subject: 'computer', title: 'Unit 8: Business Pitch', desc: 'Run a timed elevator pitch, brainstorm problems, and analyze documents.', built: true, bg: 'from-blue-700 to-indigo-900' },
+  
+  // Class 10 Mathematics
+  { id: 'm10_7_1', classLevel: '10', subject: 'math', title: 'Unit 7: Vectors in Plane', desc: 'Categorize physical measurements into Scalar and Vector quantities.', built: true, bg: 'from-indigo-600 to-purple-800' },
+  { id: 'm10_9_1', classLevel: '10', subject: 'math', title: 'Unit 9: Chord Bisectors', desc: 'Verify circle properties through 3 non-collinear points and bisectors.', built: true, bg: 'from-teal-500 to-emerald-700' },
+  { id: 'm10_9_2', classLevel: '10', subject: 'math', title: 'Unit 9: Equal Chords', desc: 'Verify equidistant chords and congruent arcs using a digital protractor.', built: true, bg: 'from-cyan-600 to-blue-800' },
+  { id: 'm10_10_1', classLevel: '10', subject: 'math', title: 'Unit 10: Tangent Properties', desc: 'Prove tangents are perpendicular to radii and analyze touching circles.', built: true, bg: 'from-rose-500 to-red-700' },
+  { id: 'm10_10_2', classLevel: '10', subject: 'math', title: 'Unit 10: Circle Angles', desc: 'Explore alternate segments, cyclic quads, and angles within segments.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'm10_11_1', classLevel: '10', subject: 'math', title: 'Unit 11: Circle Basics', desc: 'Draft circles, locate centers, and complete broken arcs using a compass.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
+  { id: 'm10_11_2', classLevel: '10', subject: 'math', title: 'Unit 11: Tangent Construction', desc: 'Construct tangents on arcs and circles from external points and angles.', built: true, bg: 'from-sky-500 to-blue-600' },
+  { id: 'm10_11_3', classLevel: '10', subject: 'math', title: 'Unit 11: Common Tangents', desc: 'Draft direct and transverse common tangents for multi-circle systems.', built: true, bg: 'from-violet-600 to-purple-800' },
+  { id: 'm10_12_1', classLevel: '10', subject: 'math', title: 'Unit 12: Basic Statistics', desc: 'Spin a probability wheel to calculate percentiles and experimental probabilities.', built: true, bg: 'from-emerald-500 to-green-700' }
 ];
 
 const CLASSES = ['6', '7', '8', '10'];
@@ -778,6 +898,68 @@ function LabRunner() {
   if (moduleId === 'p10_19_2') return <LabP10OpticalFibers onExit={handleExit} />;
   if (moduleId === 'p10_20_1') return <LabP10Radioactivity onExit={handleExit} />;
   if (moduleId === 'p10_20_2') return <LabP10HalfLife onExit={handleExit} />;
+
+  if (moduleId === 'c10_3_1') return <LabC10DiluteSolution onExit={handleExit} />;
+  if (moduleId === 'c10_3_2') return <LabC10StandardizationTitration onExit={handleExit} />;
+  if (moduleId === 'c10_6_1') return <LabC10SaltTitration onExit={handleExit} />;
+  if (moduleId === 'c10_6_2') return <LabC10SaltExcessMetal onExit={handleExit} />;
+  if (moduleId === 'c10_6_3') return <LabC10SaltExcessBase onExit={handleExit} />;
+  if (moduleId === 'c10_6_4') return <LabC10SaltExcessCarbonate onExit={handleExit} />;
+  if (moduleId === 'c10_7_1') return <LabC10MetalReactivity onExit={handleExit} />;
+  if (moduleId === 'c10_9_1') return <LabC10SaturatedUnsaturated onExit={handleExit} />;
+  if (moduleId === 'c10_11_1') return <LabC10AceticAcidMetal onExit={handleExit} />;
+  if (moduleId === 'c10_11_2') return <LabC10AceticAcidCarbonate onExit={handleExit} />;
+
+  // Class 10 Chemistry Phase 2
+  if (moduleId === 'c10_4_1') return <LabC10DownsCell onExit={handleExit} />;
+  if (moduleId === 'c10_4_2') return <LabC10MoltenLeadChloride onExit={handleExit} />;
+  if (moduleId === 'c10_4_3') return <LabC10AqueousElectrolysis onExit={handleExit} />;
+  if (moduleId === 'c10_4_4') return <LabC10CopperRefining onExit={handleExit} />;
+  if (moduleId === 'c10_4_5') return <LabC10Electroplating onExit={handleExit} />;
+  if (moduleId === 'c10_4_6') return <LabC10DanielCell onExit={handleExit} />;
+  if (moduleId === 'c10_4_7') return <LabC10FuelCell onExit={handleExit} />;
+  
+  if (moduleId === 'c10_5_1') return <LabC10SurfaceAreaRate onExit={handleExit} />;
+  if (moduleId === 'c10_5_2') return <LabC10ConcentrationRate onExit={handleExit} />;
+  
+  if (moduleId === 'c10_8_1') return <LabC10Esterification onExit={handleExit} />;
+  
+  if (moduleId === 'c10_10_1') return <LabC10EthanolFermentation onExit={handleExit} />;
+  if (moduleId === 'c10_10_2') return <LabC10EthanolHydration onExit={handleExit} />;
+  if (moduleId === 'c10_10_3') return <LabC10AlcoholCombustion onExit={handleExit} />;
+  
+  if (moduleId === 'c10_12_1') return <LabC10AdditionPolymerisation onExit={handleExit} />;
+  if (moduleId === 'c10_12_2') return <LabC10CondensationPolymerisation onExit={handleExit} />;
+  if (moduleId === 'c10_12_3') return <LabC10PETAcidHydrolysis onExit={handleExit} />;
+  
+  if (moduleId === 'c10_13_1') return <LabC10BiochemicalTest onExit={handleExit} />;
+
+  // Class 10 Computer Science
+  if (moduleId === 'cs10_1_1') return <LabCS10NumberSystems onExit={handleExit} />;
+  if (moduleId === 'cs10_1_2') return <LabCS10HelloWorld onExit={handleExit} />;
+  if (moduleId === 'cs10_2_1') return <LabCS10ComputationalThinking onExit={handleExit} />;
+  if (moduleId === 'cs10_3_1') return <LabCS10HTMLCSS onExit={handleExit} />;
+  if (moduleId === 'cs10_3_2') return <LabCS10JSAlgorithms onExit={handleExit} />;
+  if (moduleId === 'cs10_3_3') return <LabCS10DynamicList onExit={handleExit} />;
+  if (moduleId === 'cs10_4_1') return <LabCS10DataVisualization onExit={handleExit} />;
+  if (moduleId === 'cs10_4_2') return <LabCS10ChurnPrediction onExit={handleExit} />;
+  if (moduleId === 'cs10_5_1') return <LabCS10FutureTech onExit={handleExit} />;
+  if (moduleId === 'cs10_6_1') return <LabCS10CyberSafety onExit={handleExit} />;
+  if (moduleId === 'cs10_7_1') return <LabCS10DigitalMarketing onExit={handleExit} />;
+  if (moduleId === 'cs10_8_1') return <LabCS10MarketResearch onExit={handleExit} />;
+  if (moduleId === 'cs10_8_2') return <LabCS10Financials onExit={handleExit} />;
+  if (moduleId === 'cs10_8_3') return <LabCS10BusinessPitch onExit={handleExit} />;
+
+  // Class 10 Mathematics
+  if (moduleId === 'm10_7_1') return <LabM10Vectors onExit={handleExit} />;
+  if (moduleId === 'm10_9_1') return <LabM10ChordBisectors onExit={handleExit} />;
+  if (moduleId === 'm10_9_2') return <LabM10EqualChords onExit={handleExit} />;
+  if (moduleId === 'm10_10_1') return <LabM10TangentProperties onExit={handleExit} />;
+  if (moduleId === 'm10_10_2') return <LabM10CircleAngles onExit={handleExit} />;
+  if (moduleId === 'm10_11_1') return <LabM10CircleBasics onExit={handleExit} />;
+  if (moduleId === 'm10_11_2') return <LabM10TangentConstruction onExit={handleExit} />;
+  if (moduleId === 'm10_11_3') return <LabM10CommonTangents onExit={handleExit} />;
+  if (moduleId === 'm10_12_1') return <LabM10StatisticsWheels onExit={handleExit} />;
 
   return (
     <Layout>

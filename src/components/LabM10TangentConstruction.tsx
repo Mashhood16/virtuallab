@@ -1,0 +1,205 @@
+import { useState, useEffect } from 'react';
+import { Settings, Calculator, CheckCircle, XCircle, ChevronLeft } from 'lucide-react';
+
+interface LabProps {
+  onExit?: () => void;
+}
+
+export default function LabM10TangentConstruction({ onExit }: LabProps) {
+  const [radius, setRadius] = useState<number>(5);
+  const [distance, setDistance] = useState<number>(13);
+  const [showTangents, setShowTangents] = useState<boolean>(false);
+
+  const [ansLength, setAnsLength] = useState<string>('');
+  const [ansAngle, setAnsAngle] = useState<string>('');
+  const [feedback, setFeedback] = useState<{length: boolean | null, angle: boolean | null}>({length: null, angle: null});
+
+  useEffect(() => {
+    setShowTangents(false);
+    setAnsLength('');
+    setAnsAngle('');
+    setFeedback({length: null, angle: null});
+  }, [radius, distance]);
+
+  const checkAnswers = () => {
+    const trueLength = Math.sqrt(distance * distance - radius * radius);
+    const alpha = Math.asin(radius / distance) * (180 / Math.PI);
+    const trueAngle = 2 * alpha;
+
+    const lengthCorrect = Math.abs(parseFloat(ansLength) - trueLength) < 0.1;
+    const angleCorrect = Math.abs(parseFloat(ansAngle) - trueAngle) < 0.5;
+
+    setFeedback({ length: lengthCorrect, angle: angleCorrect });
+  };
+
+  const scale = 15;
+  const cx = 100;
+  const cy = 200;
+  const px = cx + distance * scale;
+  const py = cy;
+  const rScale = radius * scale;
+
+  const alphaRad = Math.asin(radius / distance);
+  const t1x = cx + rScale * Math.cos(alphaRad);
+  const t1y = cy - rScale * Math.sin(alphaRad);
+  const t2x = cx + rScale * Math.cos(-alphaRad);
+  const t2y = cy - rScale * Math.sin(-alphaRad);
+
+  return (
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
+      <div className="bg-blue-600 text-white p-4 flex items-center justify-between shadow-md">
+        <div className="flex items-center gap-4">
+          <button onClick={onExit} className="hover:bg-blue-700 p-2 rounded-full transition-colors">
+            <ChevronLeft size={24} />
+          </button>
+          <h1 className="text-xl font-bold">Tangents to a Circle from an External Point</h1>
+        </div>
+      </div>
+
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
+        {/* Column 1: Setup */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+          <div className="flex items-center gap-2 mb-4 text-blue-800">
+            <Settings className="w-6 h-6" />
+            <h2 className="text-lg font-semibold">Construction Setup</h2>
+          </div>
+          
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                Circle Radius (r): {radius} cm
+              </label>
+              <input 
+                type="range" min="3" max="8" step="1" 
+                value={radius} onChange={(e) => setRadius(Number(e.target.value))}
+                className="w-full accent-blue-600"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-1">
+                Distance to P (d): {distance} cm
+              </label>
+              <input 
+                type="range" min={radius + 2} max="20" step="1" 
+                value={distance} onChange={(e) => setDistance(Number(e.target.value))}
+                className="w-full accent-blue-600"
+              />
+            </div>
+            
+            <button 
+              onClick={() => setShowTangents(!showTangents)}
+              className="w-full py-2 px-4 bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium rounded-lg transition-colors border border-slate-300"
+            >
+              {showTangents ? "Hide Tangents" : "Construct Tangents"}
+            </button>
+            
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-100 text-sm text-blue-800 mt-4">
+              <p><strong>Theory:</strong></p>
+              <ul className="list-disc ml-5 mt-2 space-y-1">
+                <li>The tangent to a circle is perpendicular to the radius at the point of contact.</li>
+                <li>Lengths of two tangents drawn from an external point to a circle are equal.</li>
+                <li>By Pythagoras theorem: PT = √(OP² - OT²)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Column 2: Simulation */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center justify-center min-h-[400px]">
+          <h2 className="text-lg font-semibold text-slate-800 mb-4">Interactive Canvas</h2>
+          <svg width="450" height="400" className="bg-slate-50 border border-slate-200 rounded-lg shadow-inner">
+            {/* Grid */}
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" strokeWidth="1"/>
+            </pattern>
+            <rect width="450" height="400" fill="url(#grid)" />
+
+            {/* Base Lines */}
+            <line x1={cx} y1={cy} x2={px} y2={cy} stroke="#94a3b8" strokeWidth="2" strokeDasharray="4 4" />
+            
+            {/* Circle */}
+            <circle cx={cx} cy={cy} r={rScale} fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" />
+            <circle cx={cx} cy={cy} r="3" fill="#0369a1" />
+            <text x={cx - 15} y={cy + 15} fill="#0369a1" fontSize="14" fontWeight="bold">O</text>
+
+            {/* Point P */}
+            <circle cx={px} cy={py} r="4" fill="#ef4444" />
+            <text x={px + 10} y={py + 5} fill="#ef4444" fontSize="14" fontWeight="bold">P</text>
+
+            {showTangents && (
+              <>
+                {/* Tangent Lines */}
+                <line x1={px} y1={py} x2={t1x} y2={t1y} stroke="#f59e0b" strokeWidth="2" />
+                <line x1={px} y1={py} x2={t2x} y2={t2y} stroke="#f59e0b" strokeWidth="2" />
+                
+                {/* Radii to tangents */}
+                <line x1={cx} y1={cy} x2={t1x} y2={t1y} stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" />
+                <line x1={cx} y1={cy} x2={t2x} y2={t2y} stroke="#10b981" strokeWidth="2" strokeDasharray="4 4" />
+                
+                {/* Tangent Points */}
+                <circle cx={t1x} cy={t1y} r="3" fill="#f59e0b" />
+                <circle cx={t2x} cy={t2y} r="3" fill="#f59e0b" />
+                
+                <text x={t1x - 10} y={t1y - 10} fill="#f59e0b" fontSize="14" fontWeight="bold">T1</text>
+                <text x={t2x - 10} y={t2y + 20} fill="#f59e0b" fontSize="14" fontWeight="bold">T2</text>
+              </>
+            )}
+          </svg>
+        </div>
+
+        {/* Column 3: Assessment */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+          <div className="flex items-center gap-2 mb-4 text-emerald-700">
+            <Calculator className="w-6 h-6" />
+            <h2 className="text-lg font-semibold">Calculations</h2>
+          </div>
+          
+          <div className="space-y-6">
+            <p className="text-sm text-slate-600">
+              Based on the parameters set in the setup, solve the following questions.
+            </p>
+            
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                1. What is the length of the tangent segment PT (in cm)? (1 decimal place)
+              </label>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="number" step="0.1"
+                  value={ansLength} onChange={(e) => setAnsLength(e.target.value)}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  placeholder="e.g. 12.0"
+                />
+                {feedback.length === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
+                {feedback.length === false && <XCircle className="text-red-500 w-6 h-6" />}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                2. What is the angle between the two tangents (in degrees)? (1 decimal place)
+              </label>
+              <div className="flex items-center gap-2">
+                <input 
+                  type="number" step="0.1"
+                  value={ansAngle} onChange={(e) => setAnsAngle(e.target.value)}
+                  className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  placeholder="e.g. 45.0"
+                />
+                {feedback.angle === true && <CheckCircle className="text-emerald-500 w-6 h-6" />}
+                {feedback.angle === false && <XCircle className="text-red-500 w-6 h-6" />}
+              </div>
+            </div>
+
+            <button 
+              onClick={checkAnswers}
+              className="w-full py-2 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded-lg transition-colors"
+            >
+              Check Answers
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
