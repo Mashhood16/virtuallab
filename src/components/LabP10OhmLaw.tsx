@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Activity } from 'lucide-react';
+import { RefreshCw, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -59,24 +60,13 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 16: Ohm's Law (Quantitative)</h1>
-            <p className="text-sm text-slate-500">Determine unknown resistance by plotting a V-I graph.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 16: Ohm's Law (Quantitative)" subtitle="Determine unknown resistance by plotting a V-I graph." rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Panel: Theory & Setup */}
         <div className="lg:col-span-1 flex flex-col gap-6">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory</h2>
             <div className="text-sm text-slate-600 space-y-3">
               <p>Ohm's Law states that current (I) is directly proportional to voltage (V) in an ohmic conductor.</p>
@@ -87,7 +77,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Controls</h2>
             
             <div className="space-y-6">
@@ -98,7 +88,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
                     <button 
                       key={r.id}
                       onClick={() => { setResistor(r); reset(); }}
-                      className={`flex-1 py-2 rounded text-sm font-bold border transition-colors ${resistor.id === r.id ? 'bg-slate-800 text-white border-slate-800' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'}`}
+                      className={`flex-1 py-2 rounded text-sm font-bold border transition-colors ${resistor.id === r.id ? 'bg-slate-800 text-white border-slate-800' : 'bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-50'}`}
                     >
                       {r.id}
                     </button>
@@ -130,7 +120,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Analysis</h2>
             <div className="space-y-3">
               <label className="block text-sm font-medium text-slate-700">Calculate Resistance (Ω):</label>
@@ -155,24 +145,24 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
 
         {/* Center Panel: Circuit & Graph */}
         <div className="lg:col-span-2 flex flex-col gap-6">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[300px]">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[300px]">
             <h3 className="absolute top-4 left-4 font-bold text-slate-700">Circuit Diagram</h3>
             
             <div className="w-full max-w-lg relative h-[250px] border-2 border-slate-200 rounded-xl bg-slate-50 mt-8">
                {/* Power Supply */}
-               <div className="absolute left-[15%] top-[40%] flex flex-col items-center bg-white p-3 border-2 border-amber-400 rounded-lg z-10 shadow-sm">
+               <div className="absolute left-[15%] top-[40%] flex flex-col items-center bg-slate-50 p-3 border-2 border-amber-400 rounded-lg z-10 shadow-sm">
                  <div className="text-xs font-bold text-slate-500 mb-1">DC Supply</div>
                  <div className="text-2xl font-mono text-amber-600 font-bold">{voltage.toFixed(1)}V</div>
                </div>
 
                {/* Resistor */}
-               <div className="absolute right-[15%] top-[40%] flex flex-col items-center bg-white p-3 border-2 border-slate-300 rounded-lg z-10 shadow-sm">
+               <div className="absolute right-[15%] top-[40%] flex flex-col items-center bg-slate-50 p-3 border-2 border-slate-300 rounded-lg z-10 shadow-sm">
                  <div className="text-xs font-bold text-slate-500 mb-1">Resistor {resistor.id}</div>
                  <div className={`w-12 h-6 ${resistor.color} rounded my-1`} />
                </div>
 
                {/* Ammeter */}
-               <div className="absolute left-[40%] top-[10%] flex flex-col items-center bg-white p-2 border-2 border-blue-400 rounded-full w-20 h-20 justify-center z-10 shadow-sm">
+               <div className="absolute left-[40%] top-[10%] flex flex-col items-center bg-slate-50 p-2 border-2 border-blue-400 rounded-full w-20 h-20 justify-center z-10 shadow-sm">
                  <div className="text-sm font-bold text-slate-500">Ammeter</div>
                  <div className="text-lg font-mono text-blue-600 font-bold">{measuredCurrent.toFixed(2)}A</div>
                </div>
@@ -194,7 +184,7 @@ export default function LabP10OhmLaw({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col flex-1 min-h-[300px]">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col flex-1 min-h-[300px]">
             <h3 className="font-bold text-slate-700 mb-4">V-I Data & Graph</h3>
             <div className="flex flex-col md:flex-row gap-6 h-full">
               

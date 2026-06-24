@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Layout, Activity, CheckCircle2, XCircle, Code2, Play } from 'lucide-react';
+import { BookOpen, Layout, Activity, CheckCircle2, XCircle, Code2, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -84,22 +85,13 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-600" />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800">Advanced HTML & CSS Web Builder</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Advanced HTML & CSS Web Builder" />
 
       <div className="flex-1 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
           
           {/* Column 1: Theory */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
             <div className="flex items-center gap-2 mb-4 text-pink-600">
               <BookOpen className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Theory: Forms, Tables & CSS</h2>
@@ -124,7 +116,7 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation/Builder */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 text-indigo-600 mb-4">
               <Layout className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Interactive Builder</h2>
@@ -155,14 +147,14 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
               {activeTab === 'form' && (
                 <div className="flex flex-col gap-4">
                   <div className="bg-slate-100 p-3 rounded-lg text-sm flex gap-2 flex-wrap">
-                    <button onClick={() => addField('text')} className="bg-white border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Text Input</button>
-                    <button onClick={() => addField('email')} className="bg-white border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Email</button>
-                    <button onClick={() => addField('date')} className="bg-white border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Date</button>
-                    <button onClick={() => addField('select')} className="bg-white border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Select</button>
+                    <button onClick={() => addField('text')} className="bg-slate-50 border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Text Input</button>
+                    <button onClick={() => addField('email')} className="bg-slate-50 border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Email</button>
+                    <button onClick={() => addField('date')} className="bg-slate-50 border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Date</button>
+                    <button onClick={() => addField('select')} className="bg-slate-50 border px-2 py-1 rounded text-xs hover:bg-slate-50">+ Select</button>
                     <button onClick={() => addField('submit')} className="bg-blue-100 border-blue-300 text-blue-800 px-2 py-1 rounded text-xs hover:bg-blue-200">+ Submit Button</button>
                     <button onClick={clearForm} className="bg-red-100 text-red-800 border-red-300 px-2 py-1 rounded text-xs hover:bg-red-200">Clear</button>
                   </div>
-                  <div className="flex-1 border-2 border-dashed border-slate-300 rounded p-4 bg-white min-h-[200px] flex flex-col gap-3">
+                  <div className="flex-1 border-2 border-dashed border-slate-300 rounded p-4 bg-slate-50 min-h-[200px] flex flex-col gap-3">
                     {formFields.length === 0 && <span className="text-slate-400 text-center mt-10">Add fields to build your form</span>}
                     {formFields.map((field, i) => renderFormElement(field, i))}
                   </div>
@@ -183,7 +175,7 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
                       <div className="text-center text-xs">{tableCols}</div>
                     </div>
                   </div>
-                  <div className="flex-1 overflow-auto border rounded p-2 bg-white">
+                  <div className="flex-1 overflow-auto border rounded p-2 bg-slate-50">
                     <table className="w-full border-collapse">
                       <thead>
                         <tr>
@@ -219,7 +211,7 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
                     </div>
                   </div>
                   
-                  <div className="flex-1 border-2 border-dashed border-slate-300 rounded flex items-center justify-center bg-white p-8">
+                  <div className="flex-1 border-2 border-dashed border-slate-300 rounded flex items-center justify-center bg-slate-50 p-8">
                     <div 
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
@@ -251,7 +243,7 @@ export default function LabCS10HTMLCSS({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Analysis/Assessment */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-emerald-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>

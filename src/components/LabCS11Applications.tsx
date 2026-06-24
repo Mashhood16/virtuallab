@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Cpu, Radio, Shield, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
+import { Cpu, Radio, Shield, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabCS11Applications({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'iot' | 'blockchain'>('iot');
@@ -66,33 +67,22 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Cpu className="text-blue-400" /> Lab: Advanced Tech Applications
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Advanced Tech Applications" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden min-h-0">
         {/* Left Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 shrink-0">Concepts & Theory</h2>
           
           <div className="flex gap-2 bg-slate-100 p-1 rounded-lg shrink-0">
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'iot' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'iot' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setActiveTab('iot'); setFeedback(null); setAssessmentAns(''); }}
             >
               IoT Systems
             </button>
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-white shadow text-purple-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'blockchain' ? 'bg-slate-50 shadow text-purple-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setActiveTab('blockchain'); setFeedback(null); setAssessmentAns(''); }}
             >
               Blockchain
@@ -128,7 +118,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Middle Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">
             {activeTab === 'iot' ? 'IoT Testbench Simulator' : 'Distributed Ledger Simulator'}
           </h2>
@@ -136,7 +126,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
           {activeTab === 'iot' ? (
             <div className="flex-1 flex flex-col items-center justify-center gap-8 border rounded-lg bg-slate-50 p-6 min-h-[400px]">
               <div className="flex flex-wrap gap-8 items-center w-full justify-center">
-                <div className="flex flex-col items-center gap-4 bg-white p-4 rounded-xl border shadow-sm w-48">
+                <div className="flex flex-col items-center gap-4 bg-slate-50 p-4 rounded-xl border shadow-sm w-48">
                   <div className="font-semibold text-slate-700 flex items-center gap-2">
                     <Radio size={18} className="text-blue-500" /> PIR Sensor
                   </div>
@@ -149,7 +139,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                   <span className="text-xs text-slate-500 uppercase tracking-wider">Toggle Motion</span>
                 </div>
 
-                <div className="flex flex-col items-center gap-4 bg-white p-4 rounded-xl border shadow-sm w-48">
+                <div className="flex flex-col items-center gap-4 bg-slate-50 p-4 rounded-xl border shadow-sm w-48">
                   <div className="font-semibold text-slate-700 flex items-center gap-2">
                     <Cpu size={18} className="text-orange-500" /> Pressure Pad
                   </div>
@@ -223,7 +213,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
                           </button>
                         </div>
                       </div>
-                      <div className="col-span-2 flex justify-between bg-white p-3 rounded-lg border shadow-sm mt-1">
+                      <div className="col-span-2 flex justify-between bg-slate-50 p-3 rounded-lg border shadow-sm mt-1">
                         <div className="flex flex-col w-1/2 pr-3 border-r text-xs">
                           <span className="text-slate-400 font-bold uppercase mb-1">Previous Hash</span>
                           <span className="font-mono text-slate-600 text-lg tracking-widest">{block.prevHash.toString().padStart(4, '0')}</span>
@@ -242,7 +232,7 @@ export default function LabCS11Applications({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">Assessment & Validation</h2>
           
           <div className="space-y-6 flex-1 pr-2">

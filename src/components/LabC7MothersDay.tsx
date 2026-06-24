@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Save, Palette, Type, Image as ImageIcon } from 'lucide-react';
+import { Save, Palette, Type, Image as ImageIcon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -18,17 +19,14 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Mother's Day Card Competition" />
 
         <h1 className="text-3xl font-bold mb-2">Mother's Day Card Competition</h1>
         <p className="text-slate-600 mb-8">Design a creative greeting card applying your digital art skills.</p>
 
         <div className="flex gap-8 max-w-5xl mx-auto w-full flex-1">
           {/* Toolbar */}
-          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-8">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-8">
             <div>
               <h3 className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-3 flex items-center"><Palette className="w-4 h-4 mr-2" /> Card Color</h3>
               <div className="flex gap-2">

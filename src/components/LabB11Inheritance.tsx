@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, HeartPulse, ShieldAlert, CheckCircle, XCircle } from 'lucide-react';
+import { Activity, HeartPulse, ShieldAlert, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'transfusion' | 'hdn'>('transfusion');
@@ -81,24 +82,13 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
       <header className="bg-rose-700 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={onExit}
-            className="p-2 hover:bg-rose-600 rounded-full transition-colors"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Genetics & Inheritance Lab</h1>
-            <p className="text-sm text-rose-100">Blood Typing, Transfusions & HDN</p>
-          </div>
-        </div>
+        <LabHeader onExit={onExit} title="Genetics & Inheritance Lab" />
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 border-r overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-r overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
@@ -136,7 +126,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
         {/* Column 2: Simulator */}
         <div className="bg-slate-100 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-white rounded-lg p-1 shadow-sm mb-6 shrink-0">
+          <div className="flex bg-slate-50 rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'transfusion' ? 'bg-rose-100 text-rose-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => { setActiveTab('transfusion'); setTransfusionResult('idle'); }}
@@ -153,7 +143,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'transfusion' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <h3 className="font-bold text-gray-800 mb-4">Cross-Match Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -242,7 +232,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'hdn' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <h3 className="font-bold text-gray-800 mb-4">Pregnancy & HDN Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
@@ -269,7 +259,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
                   </div>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" checked={rhogamGiven} onChange={(e) => {setRhogamGiven(e.target.checked); setHdnResult('idle');}} />
-                    <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
 
@@ -309,7 +299,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white p-6 border-l flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-l flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment</h2>
           
           <div className="bg-rose-50 rounded-xl p-5 border border-rose-100 flex-1 flex flex-col">

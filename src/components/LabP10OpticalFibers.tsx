@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Activity, Table2, Info, BookOpen } from 'lucide-react';
+import { RefreshCw, Activity, Table2, Info, BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -89,24 +90,13 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 19: Optical Fibers & Total Internal Reflection</h1>
-            <p className="text-sm text-slate-500">Quantitative analysis of critical angles and macrobending loss.</p>
-          </div>
-        </div>
-        <button onClick={() => { setIsLaserOn(false); setLoggedData([]); setBendRadius(50); }} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 19: Optical Fibers & Total Internal Reflection" subtitle="Quantitative analysis of critical angles and macrobending loss." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* LEFT: Theory & Setup */}
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-blue-600"/> Theory</h2>
             <p className="text-sm text-slate-600 mb-4">
               Total Internal Reflection (TIR) occurs when light travels from a denser to a less dense medium (n₁ {'>'} n₂) and the angle of incidence exceeds the <strong>critical angle</strong> (θ_c):
@@ -119,7 +109,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-indigo-600"/> Setup</h2>
             
             <div className="space-y-5">
@@ -236,7 +226,7 @@ export default function LabP10OpticalFibers({ onExit }: LabProps) {
 
         {/* RIGHT: Data & Assessment */}
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-[400px]">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-[400px]">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Table2 className="w-5 h-5 text-emerald-600"/> Data Log</h2>
               <button 

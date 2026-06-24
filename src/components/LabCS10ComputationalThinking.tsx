@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Map, Settings, Activity, CheckCircle2, XCircle, Grid } from 'lucide-react';
+import { BookOpen, Map, Settings, Activity, CheckCircle2, XCircle, Grid } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -97,22 +98,13 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-600" />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800">Computational Thinking Lab</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Computational Thinking Lab" />
 
       <div className="flex-1 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
           
           {/* Column 1: Theory */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
             <div className="flex items-center gap-2 mb-4 text-rose-600">
               <BookOpen className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Theory: Core Concepts</h2>
@@ -141,7 +133,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2 text-cyan-600">
                 <Settings className="w-5 h-5" />
@@ -244,7 +236,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
                         draggable
                         onDragStart={() => handleDragStart(mod.id)}
                         style={{ left: mod.x, top: mod.y, position: 'absolute' }}
-                        className="bg-white border-2 border-blue-400 shadow-md rounded p-3 cursor-grab active:cursor-grabbing text-sm font-semibold text-blue-800 flex items-center gap-2"
+                        className="bg-slate-50 border-2 border-blue-400 shadow-md rounded p-3 cursor-grab active:cursor-grabbing text-sm font-semibold text-blue-800 flex items-center gap-2"
                       >
                         <Grid className="w-4 h-4 text-blue-400" />
                         {mod.name}
@@ -272,7 +264,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Analysis/Assessment */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-blue-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>

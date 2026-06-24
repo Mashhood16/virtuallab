@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -60,21 +61,13 @@ export default function LabDigitalMarketing({ onExit }: LabProps) {
   return (
     <div className="w-full h-screen bg-slate-100 flex flex-col font-sans">
       <header className="bg-emerald-800 text-white p-4 shadow-md flex justify-between items-center z-20">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-emerald-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Act 6.2: Digital Marketing Strategy</h1>
-            <p className="text-sm text-emerald-200">Promote Pakistan Airlines (PIA) incentives via digital channels.</p>
-          </div>
-        </div>
+        <LabHeader onExit={onExit} title="Act 6.2: Digital Marketing Strategy" />
       </header>
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Strategy Panel */}
-        <div className="w-1/2 bg-white p-12 overflow-y-auto border-r border-slate-300 shadow-[10px_0_20px_rgba(0,0,0,0.05)] z-10">
+        <div className="w-1/2 bg-slate-50 p-12 overflow-y-auto border-r border-slate-300 shadow-[10px_0_20px_rgba(0,0,0,0.05)] z-10">
            
            <div className="flex justify-between items-end mb-8 border-b-2 border-emerald-100 pb-4">
              <div>
@@ -181,7 +174,7 @@ export default function LabDigitalMarketing({ onExit }: LabProps) {
            {/* Ad Preview */}
            <div className="mt-auto">
              <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-4">Ad Creative Preview</h3>
-             <div className="bg-white rounded-xl overflow-hidden shadow-2xl max-w-sm mx-auto">
+             <div className="bg-slate-50 rounded-xl overflow-hidden shadow-2xl max-w-sm mx-auto">
                 <div className="h-32 bg-green-800 flex items-center justify-center relative">
                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-40"></div>
                    <h2 className="text-3xl font-black text-white relative z-10 italic tracking-tighter">PIA</h2>

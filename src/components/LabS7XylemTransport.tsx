@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Droplet } from 'lucide-react';
+import { Clock, Droplet } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -23,15 +24,10 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-blue-50 font-sans">
-      <div className="bg-white border-b border-blue-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 1: Xylem Transport Demonstration</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 1: Xylem Transport Demonstration" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-blue-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-blue-800 mb-4">Capillary Action in Xylem</h2>
           <p className="text-slate-600 mb-6">Observe how a white flower changes color over time when its stem is placed in colored water. This demonstrates how xylem vessels transport water upwards from the roots to the leaves.</p>
           
@@ -54,7 +50,7 @@ export default function LabS7XylemTransport({ onExit }: LabProps) {
         </div>
 
         {/* Experiment Setup */}
-        <div className="w-96 h-96 relative flex justify-center items-end p-8 bg-white rounded-3xl shadow-sm border border-slate-200">
+        <div className="w-96 h-96 relative flex justify-center items-end p-8 bg-slate-50 rounded-3xl shadow-sm border border-slate-200">
           {/* Beaker */}
           <div className="w-32 h-40 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-xl relative flex justify-center overflow-hidden">
             {/* Colored Water */}

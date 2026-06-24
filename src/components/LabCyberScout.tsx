@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -47,9 +48,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-200 flex flex-col font-sans">
       <header className="bg-sky-700 text-white p-4 shadow-md flex justify-between items-center z-20 border-b-4 border-sky-600">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-sky-800 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 5.1: Cyber Scout Registration" />
           <div>
             <h1 className="text-xl font-bold">Act 5.1: Cyber Scout Registration</h1>
             <p className="text-sm text-sky-200">Practice filling out secure online forms on the NR3C portal.</p>
@@ -60,7 +59,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
       <div className="flex-1 flex overflow-hidden p-8 justify-center items-center bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]">
         
         {/* Browser Window Mockup */}
-        <div className="w-[800px] bg-white rounded-xl shadow-2xl flex flex-col overflow-hidden border border-slate-300">
+        <div className="w-[800px] bg-slate-50 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-slate-300">
            
            {/* Browser Tab/Address Bar */}
            <div className="bg-slate-200 h-12 flex items-center px-4 gap-4 border-b border-slate-300">
@@ -69,7 +68,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               </div>
-              <div className="flex-1 bg-white h-8 rounded-full border border-slate-300 flex items-center px-4 text-sm font-mono text-slate-500">
+              <div className="flex-1 bg-slate-50 h-8 rounded-full border border-slate-300 flex items-center px-4 text-sm font-mono text-slate-500">
                  <svg className="w-4 h-4 mr-2 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
                  https://www.nr3c.gov.pk/cyber-scout/register
               </div>

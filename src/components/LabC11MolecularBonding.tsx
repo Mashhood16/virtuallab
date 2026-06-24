@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Database, Calculator, Box, Hexagon, Target } from 'lucide-react';
+import { Database, Calculator, Box, Hexagon, Target } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void }) {
   const [centralAtom, setCentralAtom] = useState('C');
@@ -50,22 +51,12 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Hexagon className="w-6 h-6 text-fuchsia-600" />
-            VSEPR Theory & Molecular Bonding
-          </h1>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="VSEPR Theory & Molecular Bonding" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
               <Box className="w-5 h-5 text-fuchsia-500" />
@@ -111,7 +102,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
         </div>
 
         {/* Column 2: 3D Visualizer Simulator */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold text-slate-800 w-full mb-4">3D Molecular Projection</h2>
           
           <svg viewBox="0 0 400 400" className="w-full h-80 bg-slate-900 rounded-lg shadow-inner">
@@ -155,7 +146,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />
@@ -199,7 +190,7 @@ export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void
             <div className="flex gap-2">
               <select 
                 value={answerShape} onChange={(e) => setAnswerShape(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 bg-white"
+                className="flex-1 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-rose-500 bg-slate-50"
               >
                 <option value="">Select Shape...</option>
                 <option value="Linear">Linear</option>

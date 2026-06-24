@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Microscope, Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
+import { Microscope, Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'sem' | 'stem'>('sem');
@@ -83,34 +84,13 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-slate-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Grade 11: Advanced Cytology & Stem Cells</h1>
-        </div>
-        <div className="flex gap-2">
-          <button 
-            onClick={() => setActiveTab('sem')}
-            className={`px-4 py-2 rounded-md font-semibold transition-colors ${activeTab === 'sem' ? 'bg-blue-600' : 'bg-slate-700 hover:bg-slate-600'}`}
-          >
-            <Microscope className="inline mr-2" size={18} /> SEM Simulator
-          </button>
-          <button 
-            onClick={() => setActiveTab('stem')}
-            className={`px-4 py-2 rounded-md font-semibold transition-colors ${activeTab === 'stem' ? 'bg-emerald-600' : 'bg-slate-700 hover:bg-slate-600'}`}
-          >
-            <Target className="inline mr-2" size={18} /> Stem Cell Therapy
-          </button>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Grade 11: Advanced Cytology & Stem Cells" />
 
       {/* Main Grid */}
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2">Theory & Context</h2>
           {activeTab === 'sem' ? (
             <div className="text-slate-600 space-y-4">
@@ -118,7 +98,7 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
               <p>Using an electron beam instead of light, modern electron microscopes can achieve magnifications up to <strong>50,000,000x</strong>.</p>
               <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
                 <h3 className="font-bold text-blue-800 mb-2">Magnification Formula</h3>
-                <p className="font-mono text-sm bg-white p-2 rounded border border-blue-200 text-center">Magnification (M) = Image Size (I) / Actual Size (A)</p>
+                <p className="font-mono text-sm bg-slate-50 p-2 rounded border border-blue-200 text-center">Magnification (M) = Image Size (I) / Actual Size (A)</p>
                 <p className="text-sm mt-2 text-blue-700">Remember to convert your units! 1 mm = 1000 µm = 1,000,000 nm.</p>
               </div>
             </div>
@@ -214,7 +194,7 @@ export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
         </section>
 
         {/* Column 3: Assessment */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-blue-600" /> Lab Assessment
           </h2>

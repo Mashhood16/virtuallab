@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Hand, Info } from 'lucide-react';
+import { Hand, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabS8ReflexTimeProps {
   onExit?: () => void;
@@ -65,23 +66,11 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 2.3: Reflex Action Time</h1>
-            <p className="text-sm text-slate-500">Measure human reaction time</p>
-          </div>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 2.3: Reflex Action Time" subtitle="Measure human reaction time" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Interactive */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           
           <div className="w-full flex justify-between items-center mb-6">
             <button 
@@ -161,7 +150,7 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
             <p className="text-sm text-blue-800 mb-2">
               Unlike a knee-jerk reflex, catching a ruler is a voluntary action processed by the brain. It takes time for the eye to see it drop, the brain to process it, and a signal to reach the hand muscles.
             </p>
-            <p className="text-xs text-blue-700 bg-white p-2 rounded border border-blue-200 font-mono text-center">
+            <p className="text-xs text-blue-700 bg-slate-50 p-2 rounded border border-blue-200 font-mono text-center">
               t = √(2d / g)
             </p>
           </div>

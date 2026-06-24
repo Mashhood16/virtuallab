@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Square, Circle, Triangle, Play, MousePointer2 } from 'lucide-react';
+import { Square, Circle, Triangle, Play, MousePointer2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -29,16 +30,13 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-100 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Geometry Presentation" />
 
         <h1 className="text-3xl font-bold mb-2">Geometry Presentation</h1>
         <p className="text-slate-600 mb-6">Insert geometrical figures onto the slide, apply animations to them, and set a slide transition.</p>
 
         {/* Ribbon Toolbar */}
-        <div className="bg-white rounded-t-xl border border-slate-300 p-2 flex gap-6 w-full max-w-4xl mx-auto shadow-sm">
+        <div className="bg-slate-50 rounded-t-xl border border-slate-300 p-2 flex gap-6 w-full max-w-4xl mx-auto shadow-sm">
           {/* Insert Shapes */}
           <div className="flex flex-col border-r border-slate-200 pr-6">
             <span className="text-[10px] uppercase font-bold text-slate-400 mb-1">Insert Shapes</span>
@@ -89,7 +87,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
 
         {/* Slide Canvas */}
         <div className="w-full max-w-4xl mx-auto flex-1 flex items-center justify-center relative p-8">
-          <div className={`w-full aspect-[16/9] bg-white shadow-2xl border-4 border-slate-200 relative overflow-hidden
+          <div className={`w-full aspect-[16/9] bg-slate-50 shadow-2xl border-4 border-slate-200 relative overflow-hidden
             ${isPlaying && transition === 'fade' ? 'animate-in fade-in duration-1000' : ''}
             ${isPlaying && transition === 'slide' ? 'animate-in slide-in-from-right duration-1000' : ''}
           `}>

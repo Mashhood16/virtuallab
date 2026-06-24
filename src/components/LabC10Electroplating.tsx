@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
+import { Play, Pause, RotateCcw, Save, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 const METALS = {
   Zn: { name: 'Zinc', mass: 65.38, z: 2, color: '#e2e8f0', electrolyte: '#bfdbfe' },
@@ -53,7 +54,7 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
     const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.mass / maxM) * 100}`).join(' ');
 
     return (
-      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-white border rounded-lg p-2 overflow-visible">
+      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 border rounded-lg p-2 overflow-visible">
         <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
         <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
@@ -68,16 +69,11 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none p-4">
-      <div className="flex items-center mb-4">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-slate-900 mr-4">
-          <ArrowLeft className="w-5 h-5 mr-1" /> Back
-        </button>
-        <h1 className="text-2xl font-bold text-slate-800">Electroplating Virtual Lab</h1>
-      </div>
+<LabHeader onExit={onExit} title="Electroplating Virtual Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Theory & Setup</h2>
           <p className="text-slate-600 text-sm mb-4">
             Electroplating uses an electric current to reduce dissolved metal cations so that they form a coherent metal coating on an electrode.
@@ -112,7 +108,7 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-lg font-semibold text-slate-800 mb-4 self-start">Simulation Viewer</h2>
           
           <div className="w-full flex justify-center space-x-4 mb-6">
@@ -167,7 +163,7 @@ export default function LabC10Electroplating({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-slate-800">Data & Analysis</h2>
             <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Activity, CheckCircle, Calculator, Cylinder, Droplets, BringToFront } from 'lucide-react';
+import { BookOpen, Activity, CheckCircle, Calculator, Cylinder, Droplets, BringToFront } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
     const [tab, setTab] = useState<'solid' | 'dam' | 'spring'>('solid');
@@ -103,25 +104,11 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-                <div className="flex items-center">
-                    {onExit && (
-                        <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-slate-600" />
-                        </button>
-                    )}
-                    <h1 className="text-2xl font-bold text-slate-800">M12 Integration Lab</h1>
-                </div>
-                <div className="flex space-x-2 bg-slate-100 p-1 rounded-lg">
-                    <button onClick={() => setTab('solid')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'solid' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><Cylinder className="w-4 h-4 inline mr-2"/>Disc Method</button>
-                    <button onClick={() => setTab('dam')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'dam' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><Droplets className="w-4 h-4 inline mr-2"/>Hydrostatic Force</button>
-                    <button onClick={() => setTab('spring')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'spring' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><BringToFront className="w-4 h-4 inline mr-2"/>Hooke's Law</button>
-                </div>
-            </header>
+            <LabHeader onExit={onExit} title="M12 Integration Lab" />
 
             <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-grow">
                 {/* Theory Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
                     <div className="prose prose-slate prose-sm text-slate-600">
                         {tab === 'solid' && (
@@ -155,7 +142,7 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Interactive Simulator Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Visualizer</h2>
                     
                     {tab === 'solid' && (
@@ -212,7 +199,7 @@ export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
                     <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900">
                         {tab === 'solid' && <p>Calculate the exact volume of the solid of revolution for $k = {kSolid}$. (Use $\pi \approx 3.14159$).</p>}

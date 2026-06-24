@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+import { CheckCircle, XCircle, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
   const [flickForce, setFlickForce] = useState(50);
@@ -71,23 +72,11 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Zap className="text-blue-600" />
-            Physics Grade 9: Inertia
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Physics Grade 9: Inertia" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Theory: Newton's First Law</h2>
           <div className="prose prose-sm space-y-4">
             <p>
@@ -108,7 +97,7 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col items-center">
           <h2 className="text-lg font-bold border-b pb-2 w-full mb-6">Simulator</h2>
 
           <div className="relative w-64 h-80 bg-gradient-to-b from-blue-50 to-slate-100 rounded-xl border-2 border-slate-200 overflow-hidden mb-8 shadow-inner">
@@ -166,7 +155,7 @@ export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-6">
           <h2 className="text-lg font-bold border-b pb-2">Analysis</h2>
 
           <div className="space-y-4">

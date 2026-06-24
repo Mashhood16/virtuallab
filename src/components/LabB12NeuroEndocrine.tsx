@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Activity, Brain, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import { Activity, Brain, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }) {
   // Reaction time state
@@ -63,21 +64,13 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold">Interactive Neurology & Pharmacology</h1>
-          <p className="text-slate-300 text-sm">MRI/EEG Diagnostics, NSAIDs & Reaction Time</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Interactive Neurology & Pharmacology" />
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Brain className="mr-2 text-blue-500" /> Theory & Diagnostics
           </h2>
@@ -88,7 +81,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
                 Reaction time is the interval between the presentation of a stimulus and the initiation of the muscular response. 
                 Using a ruler-drop test, we can calculate reaction time using the kinematic equation: 
                 <br /><br />
-                <code className="bg-white px-2 py-1 rounded text-blue-900 font-mono">d = ½ g t²</code>
+                <code className="bg-slate-50 px-2 py-1 rounded text-blue-900 font-mono">d = ½ g t²</code>
                 <br /><br />
                 Where <strong>d</strong> is the distance the ruler fell, <strong>g</strong> is acceleration due to gravity (9.8 m/s²), and <strong>t</strong> is time in seconds.
               </p>
@@ -105,7 +98,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center relative overflow-hidden">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center relative overflow-hidden">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex w-full">
             <Activity className="mr-2 text-indigo-500" /> Visual Ruler-Drop Simulator
           </h2>
@@ -179,7 +172,7 @@ export default function LabB12NeuroEndocrine({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4">Data Analysis</h2>
           
           <div className="flex-grow space-y-6">

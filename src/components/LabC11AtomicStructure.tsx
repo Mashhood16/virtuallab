@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Activity, Atom, Target, Calculator, Database } from 'lucide-react';
+import { Play, Activity, Atom, Target, Calculator, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void }) {
   const [bField, setBField] = useState<number>(1.0);
@@ -52,23 +53,13 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Atom className="w-6 h-6 text-indigo-600" />
-            Atomic Structure & Mass Spectrometry
-          </h1>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Atomic Structure & Mass Spectrometry" />
 
       {/* Main Content Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
               <Activity className="w-5 h-5 text-indigo-500" />
@@ -113,7 +104,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 2: Simulation Visualizer */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold text-slate-800 w-full mb-4">Mass Spectrometer Tube</h2>
           
           <svg viewBox="0 0 400 300" className="w-full h-80 bg-slate-100 rounded-lg shadow-inner overflow-hidden">
@@ -151,7 +142,7 @@ export default function LabC11AtomicStructure({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Data Logging & Assessment */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, Pause, RotateCcw, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void }) {
   // Pendulum state
@@ -76,18 +77,11 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-indigo-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-indigo-700 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Sequences & Series: Geometric Decay</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Sequences & Series: Geometric Decay" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">
             <p>
@@ -117,7 +111,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Visualizer */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Interactive Pendulum</h2>
           
           <div className="w-full flex justify-center items-center bg-slate-100 rounded-lg p-4 mb-6 relative h-64 overflow-hidden">
@@ -138,10 +132,10 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
                 strokeDasharray="2 2"
               />
             </svg>
-            <div className="absolute top-2 right-2 bg-white/80 px-3 py-1 rounded shadow text-sm font-mono">
+            <div className="absolute top-2 right-2 bg-slate-50/80 px-3 py-1 rounded shadow text-sm font-mono">
               Angle: {Math.abs(currentAngle).toFixed(1)}°
             </div>
-            <div className="absolute top-10 right-2 bg-white/80 px-3 py-1 rounded shadow text-sm font-mono">
+            <div className="absolute top-10 right-2 bg-slate-50/80 px-3 py-1 rounded shadow text-sm font-mono">
               Swing: {swingCount}
             </div>
           </div>
@@ -193,7 +187,7 @@ export default function LabM11SequencesSeries({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-700 mb-4">Data Logging & Assessment</h2>
           
           <div className="mb-6">

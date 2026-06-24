@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Calculator, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
+import { RefreshCw, Calculator, ShieldCheck, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11Permutations({ onExit }: { onExit?: () => void }) {
     // State
@@ -92,14 +93,8 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            {/* Header */}
-            <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-                <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-                        <ArrowLeft size={24} />
-                    </button>
-                    <h1 className="text-xl font-bold">Grade 11: Permutations Lab</h1>
-                </div>
+            <LabHeader onExit={onExit} title="Grade 11: Permutations Lab" />
+            <div className="bg-slate-800 text-white p-2 flex justify-end shrink-0">
                 <div className="flex bg-slate-700 rounded-lg p-1">
                     <button onClick={() => { setScenario('plates'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} className={`px-4 py-2 rounded-md ${scenario === 'plates' ? 'bg-blue-600 text-white' : 'text-slate-300'}`}>Plates</button>
                     <button onClick={() => { setScenario('passwords'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} className={`px-4 py-2 rounded-md ${scenario === 'passwords' ? 'bg-blue-600 text-white' : 'text-slate-300'}`}>Passwords</button>
@@ -109,7 +104,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
 
             <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
                 {/* Left Column: Theory */}
-                <div className="p-6 bg-white border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
+                <div className="p-6 bg-slate-50 border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
                     <div>
                         <h2 className="text-2xl font-bold text-slate-800 mb-2">Permutations</h2>
                         <p className="text-slate-600 mb-4">A permutation is an arrangement of objects in a specific order. Order matters!</p>
@@ -124,7 +119,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                             <h3 className="font-semibold text-slate-800 mb-2">Vehicle Number Plates</h3>
                             <p className="text-sm text-slate-600 mb-2">Usually formed by selecting letters (A-Z) followed by digits (0-9). Repetition is typically allowed.</p>
-                            <p className="text-sm text-slate-600 font-mono bg-white p-2 rounded border mt-2">
+                            <p className="text-sm text-slate-600 font-mono bg-slate-50 p-2 rounded border mt-2">
                                 {"$$ Total = 26^L \\times 10^D $$"}
                             </p>
                         </div>
@@ -142,7 +137,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                             <h3 className="font-semibold text-slate-800 mb-2">Circular Permutations</h3>
                             <p className="text-sm text-slate-600 mb-2">Arranging objects in a circle is different from a line because there is no fixed start/end.</p>
-                            <p className="text-sm text-slate-600 font-mono bg-white p-2 rounded border mt-2">
+                            <p className="text-sm text-slate-600 font-mono bg-slate-50 p-2 rounded border mt-2">
                                 Formula: {"$$ (n-1)! $$"}
                             </p>
                             <p className="text-xs text-slate-500 mt-2">This is because fixing one person establishes a reference point, leaving $(n-1)$ people to arrange.</p>
@@ -168,7 +163,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     <RefreshCw size={16} /> Generate Random Plate
                                 </button>
                                 
-                                <div className="w-full bg-white p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
+                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
                                     <div className="mb-6">
                                         <label className="block text-sm font-semibold text-slate-700 mb-2">Letters (A-Z): {numLetters}</label>
                                         <input type="range" min="1" max="4" value={numLetters} onChange={e => setNumLetters(parseInt(e.target.value))} className="w-full" />
@@ -202,7 +197,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     </button>
                                 </div>
 
-                                <div className="w-full bg-white p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
+                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4">
                                     <div className="mb-6">
                                         <label className="block text-sm font-semibold text-slate-700 mb-2">Character Pool Size: {poolSize}</label>
                                         <input type="range" min="5" max="10" value={poolSize} onChange={e => setPoolSize(parseInt(e.target.value))} className="w-full" />
@@ -245,7 +240,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                                     })}
                                 </div>
 
-                                <div className="w-full bg-white p-6 rounded-xl shadow-sm border border-slate-200 mt-8">
+                                <div className="w-full bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-8">
                                     <div className="mb-6">
                                         <label className="block text-sm font-semibold text-slate-700 mb-2">Number of People: {numPeople}</label>
                                         <input type="range" min="3" max="10" value={numPeople} onChange={e => setNumPeople(parseInt(e.target.value))} className="w-full" />
@@ -266,7 +261,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                 </div>
 
                 {/* Right Column: Assessment */}
-                <div className="p-6 bg-white border-l border-slate-200 overflow-y-auto">
+                <div className="p-6 bg-slate-50 border-l border-slate-200 overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
                         <Calculator className="text-blue-600" /> Let's Solve
                     </h2>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Truck, MapPin, Package } from 'lucide-react';
+import { CheckCircle, XCircle, Truck, MapPin, Package } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -50,16 +51,11 @@ export default function LabM9RealNumbers({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex items-center gap-2"><MapPin /> Grade 9 Math: Real Numbers & Distance</h1>
-      </div>
+      <LabHeader onExit={onExit} title="<MapPin /> Grade 9 Math: Real Numbers & Distance" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory: Absolute Value & Percentages</h2>
           
           <div className="prose prose-slate">
@@ -83,7 +79,7 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         </div>
 
         {/* Interactive Simulator */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Truck className="text-blue-600" /> Logistics Simulator
           </h2>
@@ -143,7 +139,7 @@ export default function LabM9RealNumbers({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Analysis & Assessment</h2>
           
           <div className="flex-1 overflow-y-auto border rounded-lg bg-slate-50 p-2 min-h-[150px]">

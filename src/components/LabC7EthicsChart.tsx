@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Save, Layout, ShieldAlert, ShieldCheck } from 'lucide-react';
+import { Save, Layout, ShieldAlert, ShieldCheck } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -34,17 +35,14 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-100 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Digital Ethics Poster" />
 
         <h1 className="text-3xl font-bold mb-2">Digital Ethics Poster</h1>
         <p className="text-slate-600 mb-8">Design a classroom display chart about Ethical Use, Online Safety, or Cybercrimes.</p>
 
         <div className="flex gap-8 flex-1 w-full max-w-6xl mx-auto">
           {/* Library */}
-          <div className="w-80 bg-white p-6 rounded-xl shadow border border-slate-200 flex flex-col gap-4">
+          <div className="w-80 bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col gap-4">
             <h2 className="font-bold text-slate-700 uppercase tracking-wider text-sm flex items-center mb-2"><Layout className="w-4 h-4 mr-2"/> Components</h2>
             
             <div className="space-y-3 overflow-y-auto pr-2 pb-4">
@@ -77,7 +75,7 @@ export default function LabC7EthicsChart({ onExit }: LabProps) {
 
           {/* Canvas */}
           <div 
-            className="flex-1 bg-white border-4 border-slate-200 shadow-xl rounded-xl relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]"
+            className="flex-1 bg-slate-50 border-4 border-slate-200 shadow-xl rounded-xl relative overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]"
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleDrop}
           >

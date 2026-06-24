@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Activity } from 'lucide-react';
+import { RefreshCw, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
 const MATERIALS = [
   { id: 'Glass', n: 1.50, color: 'bg-cyan-400/20 border-cyan-300' },
   { id: 'Water', n: 1.33, color: 'bg-blue-400/20 border-blue-300' },
-  { id: 'Diamond', n: 2.42, color: 'bg-white/30 border-white' },
+  { id: 'Diamond', n: 2.42, color: 'bg-slate-50/30 border-white' },
   { id: 'Unknown', n: 1.75, color: 'bg-purple-400/20 border-purple-300' }, // Sapphire approx
 ];
 
@@ -64,24 +65,13 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 14: Refraction & Snell's Law</h1>
-            <p className="text-sm text-slate-500">Determine the refractive index by measuring incident and refracted angles.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 14: Refraction & Snell's Law" subtitle="Determine the refractive index by measuring incident and refracted angles." rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Left Panel: Theory & Controls */}
         <div className="lg:col-span-1 flex flex-col gap-6">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory: Snell's Law</h2>
             <div className="text-sm text-slate-600 space-y-3">
               <p>When light travels from air (less dense) into a block (more dense), it bends towards the normal.</p>
@@ -95,7 +85,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Setup</h2>
             <div className="space-y-6">
               <div>
@@ -105,7 +95,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
                     <button 
                       key={m.id}
                       onClick={() => { setMaterial(m); reset(); }}
-                      className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-slate-800 text-white border-slate-800' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'}`}
+                      className={`py-2 rounded text-sm font-bold border transition-colors ${material.id === m.id ? 'bg-slate-800 text-white border-slate-800' : 'bg-slate-50 text-slate-700 border-slate-300 hover:bg-slate-50'}`}
                     >
                       {m.id}
                     </button>
@@ -137,7 +127,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
             <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Analysis</h2>
             <div className="space-y-3">
               <label className="block text-sm font-medium text-slate-700">Calculate Refractive Index (n):</label>
@@ -208,7 +198,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col flex-1 min-h-[250px]">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col flex-1 min-h-[250px]">
             <h3 className="font-bold text-slate-700 mb-4">Experimental Data (Snell's Law Table)</h3>
             <div className="flex-1 border border-slate-200 rounded-lg overflow-y-auto">
               <table className="w-full text-sm text-center">

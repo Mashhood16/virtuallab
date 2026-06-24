@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Info } from 'lucide-react';
+import { Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -29,15 +30,10 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 1: Transpiration from Leaves</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 1: Transpiration from Leaves" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-blue-800 mb-4">Stomata and Water Vapour</h2>
           <p className="text-slate-600 mb-6">Attach dry blue cobalt chloride paper to both sides of a leaf. Cobalt chloride paper turns from blue to pink in the presence of water vapour. Let's see which side loses more water.</p>
           
@@ -65,7 +61,7 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
             <div className="relative w-48 h-64 bg-green-500 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] shadow-md border-t border-green-400 flex items-center justify-center">
                <div className="w-1 h-full bg-green-600 absolute"></div> {/* Midrib */}
                {/* Tape & Paper */}
-               <div className="w-24 h-12 bg-white/30 backdrop-blur-sm border border-white/50 absolute rotate-[-10deg] flex items-center justify-center z-10 shadow-sm">
+               <div className="w-24 h-12 bg-slate-50/30 backdrop-blur-sm border border-white/50 absolute rotate-[-10deg] flex items-center justify-center z-10 shadow-sm">
                  {/* Cobalt Paper */}
                  <div className={`w-16 h-8 transition-colors duration-1000 border border-slate-300 ${upperColor === 'blue' ? 'bg-blue-400' : 'bg-pink-400'}`}></div>
                </div>
@@ -83,7 +79,7 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
                {/* Stomata dots (stylized) */}
                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_30%,_rgba(0,100,0,1)_2px,_transparent_3px)] bg-[length:15px_15px]"></div>
                {/* Tape & Paper */}
-               <div className="w-24 h-12 bg-white/30 backdrop-blur-sm border border-white/50 absolute rotate-[5deg] flex items-center justify-center z-10 shadow-sm">
+               <div className="w-24 h-12 bg-slate-50/30 backdrop-blur-sm border border-white/50 absolute rotate-[5deg] flex items-center justify-center z-10 shadow-sm">
                  {/* Cobalt Paper */}
                  <div className={`w-16 h-8 transition-colors duration-1000 border border-slate-300 ${lowerColor === 'blue' ? 'bg-blue-400' : 'bg-pink-400'}`}></div>
                </div>
@@ -95,7 +91,7 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
         </div>
 
         {tested && (
-          <div className="mt-12 p-6 bg-white shadow-lg text-slate-800 rounded-xl border-l-4 border-blue-500 max-w-xl animate-bounce">
+          <div className="mt-12 p-6 bg-slate-50 shadow-lg text-slate-800 rounded-xl border-l-4 border-blue-500 max-w-xl animate-bounce">
             <h4 className="font-bold text-lg mb-2 flex items-center"><Info className="w-5 h-5 mr-2 text-blue-500"/> Observation Result</h4>
             <p>The paper on the <strong>lower surface</strong> turned pink, while the upper surface paper remained blue! This proves that transpiration occurs mainly through tiny pores called <strong>stomata</strong>, which are concentrated on the underside of leaves to reduce excessive water loss from direct sunlight.</p>
           </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import {  } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -17,22 +18,12 @@ export default function LabS8ElectronicConfig({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        {onExit && (
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        )}
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Act 5.2: Electronic Configuration</h1>
-          <p className="text-sm text-slate-500">Group IA vs Group IIA outermost shells</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.2: Electronic Configuration" subtitle="Group IA vs Group IIA outermost shells" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
         <div className="w-full md:w-64 flex flex-col gap-4">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-4">
             <h3 className="font-bold text-slate-700 mb-3 border-b pb-2">Group IA (Alkali)</h3>
             <div className="flex flex-col gap-2">
               {ELEMENTS.filter(e => e.group === 'IA').map(e => (
@@ -46,7 +37,7 @@ export default function LabS8ElectronicConfig({ onExit }: LabProps) {
               ))}
             </div>
           </div>
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-4">
             <h3 className="font-bold text-slate-700 mb-3 border-b pb-2">Group IIA (Alkaline Earth)</h3>
             <div className="flex flex-col gap-2">
               {ELEMENTS.filter(e => e.group === 'IIA').map(e => (

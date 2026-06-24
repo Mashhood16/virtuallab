@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Target, Rocket, CheckCircle2, XCircle } from 'lucide-react';
+import { Target, Rocket, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -94,19 +95,11 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-700 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-emerald-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <Rocket className="text-emerald-200" />
-          Quadratic Applications: Projectile Motion
-        </h1>
-      </div>
+      <LabHeader onExit={onExit} title="Quadratic Applications: Projectile Motion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-emerald-800 mb-4 flex items-center gap-2">
             <Target /> Theory & Context
           </h2>
@@ -132,7 +125,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-emerald-800 mb-4">Physics Cannon Simulator</h2>
           
           <div className="w-full max-w-md grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -166,7 +159,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
             </svg>
 
             {/* Telemetry overlay */}
-            <div className="absolute top-2 left-2 bg-white/80 p-2 rounded text-xs font-mono border border-slate-300">
+            <div className="absolute top-2 left-2 bg-slate-50/80 p-2 rounded text-xs font-mono border border-slate-300">
               <div>Time: {time.toFixed(2)} s</div>
               <div>Height: {Math.max(0, height + v0y * time - 0.5 * g * time * time).toFixed(1)} m</div>
               <div>Distance: {(v0x * time).toFixed(1)} m</div>
@@ -184,7 +177,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-emerald-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mb-6">
@@ -192,7 +185,7 @@ export default function LabM10QuadraticApplications({ onExit }: Props) {
             <p className="text-slate-700 mb-4 text-sm">
               Using the current simulator parameters, write the quadratic equation and determine the peak altitude of the projectile.
             </p>
-            <div className="bg-white p-3 rounded border border-slate-200 mb-4 font-mono text-xs">
+            <div className="bg-slate-50 p-3 rounded border border-slate-200 mb-4 font-mono text-xs">
               <p>v₀ = {velocity} m/s, θ = {angle}°</p>
               <p>v₀_y = {velocity} × sin({angle}°) ≈ {v0y.toFixed(2)} m/s</p>
               <p>h₀ = {height} m</p>

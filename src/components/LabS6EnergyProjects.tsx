@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Image as ImageIcon, CheckSquare } from 'lucide-react';
+import { Activity, Image as ImageIcon, CheckSquare } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -17,12 +18,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-purple-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 8: Energy Projects</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 8: Energy Projects" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
         
@@ -41,7 +37,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
           </button>
         </div>
 
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
           
           {activeProject === 'windmill' && (
             <div className="space-y-8">

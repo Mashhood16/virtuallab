@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Droplets } from 'lucide-react';
+import { CheckCircle, Droplets } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -47,24 +48,21 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Design Thinking Prototype" />
 
         <h1 className="text-3xl font-bold mb-2">Design Thinking Prototype</h1>
         <p className="text-slate-600 mb-8">Design a prototype to carry water from Point A to Point B without using standard kitchen tools.</p>
 
         <div className="flex gap-8 max-w-5xl mx-auto w-full">
           {/* Materials */}
-          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
             <h2 className="font-bold text-slate-700 mb-4 uppercase tracking-wider text-sm">Available Materials</h2>
             <div className="flex flex-col gap-3 mb-8">
               {materials.map(mat => (
                 <button
                   key={mat.id}
                   onClick={() => handleToggleMaterial(mat.id)}
-                  className={`p-3 rounded-lg border-2 text-left transition-all font-medium flex justify-between items-center ${usedMaterials.includes(mat.id) ? 'bg-blue-50 border-blue-500 text-blue-800 shadow-sm' : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300'}`}
+                  className={`p-3 rounded-lg border-2 text-left transition-all font-medium flex justify-between items-center ${usedMaterials.includes(mat.id) ? 'bg-blue-50 border-blue-500 text-blue-800 shadow-sm' : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'}`}
                 >
                   {mat.name}
                   {usedMaterials.includes(mat.id) && <CheckCircle className="w-4 h-4 text-blue-500" />}
@@ -84,7 +82,7 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
           </div>
 
           {/* Testing Area */}
-          <div className="flex-1 bg-white rounded-xl shadow-xl border-4 border-slate-200 relative overflow-hidden flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-xl border-4 border-slate-200 relative overflow-hidden flex flex-col">
             <div className="flex justify-between items-center p-6 border-b border-slate-100 bg-slate-50">
               <div className="text-center font-black text-2xl text-slate-400">POINT A</div>
               <div className="w-full max-w-[200px] h-2 bg-slate-200 mx-4 relative overflow-hidden rounded-full">
@@ -122,7 +120,7 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
                   <p className="text-xl font-medium text-rose-100 max-w-md text-center">
                     Remember: You cannot use standard kitchen tools like cups or spoons for this challenge. Think outside the box!
                   </p>
-                  <button onClick={() => setResult('none')} className="mt-8 bg-white text-rose-600 px-6 py-2 rounded-lg font-bold">Try Again</button>
+                  <button onClick={() => setResult('none')} className="mt-8 bg-slate-50 text-rose-600 px-6 py-2 rounded-lg font-bold">Try Again</button>
                 </div>
               )}
             </div>

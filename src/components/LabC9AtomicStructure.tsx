@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ClipboardList, CheckCircle, Activity, Zap } from 'lucide-react';
+import { ClipboardList, CheckCircle, Activity, Zap } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit: () => void;
 }
 
 const ChemicalBottle = ({ label, color, onClick, selected }: { label: string, color: string, onClick: () => void, selected?: boolean }) => (
-  <button onClick={onClick} className={`flex flex-col items-center p-2 bg-white border-2 rounded shadow transition-colors ${selected ? 'border-blue-500 bg-blue-50' : 'border-transparent hover:bg-slate-50'}`}>
+  <button onClick={onClick} className={`flex flex-col items-center p-2 bg-slate-50 border-2 rounded shadow transition-colors ${selected ? 'border-blue-500 bg-blue-50' : 'border-transparent hover:bg-slate-50'}`}>
     <div className="relative w-10 h-16 border-2 border-gray-400 rounded-b-lg rounded-t-sm overflow-hidden flex items-end">
       <div className="w-full" style={{ height: '60%', backgroundColor: color }}></div>
     </div>
@@ -124,18 +125,11 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="flex items-center p-4 bg-purple-900 text-white shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-purple-800 p-2 rounded"><ArrowLeft size={24} /></button>
-        <h1 className="text-2xl font-bold flex-grow">Grade 9 Chemistry: Atomic Structure & Reactivity</h1>
-        <div className="flex gap-2">
-          <button onClick={() => { setActiveTab('halogen'); resetSim(); }} className={`px-4 py-2 rounded ${activeTab === 'halogen' ? 'bg-purple-700' : 'bg-purple-800'}`}>Halogen Displacement</button>
-          <button onClick={() => { setActiveTab('alpha'); resetSim(); }} className={`px-4 py-2 rounded ${activeTab === 'alpha' ? 'bg-purple-700' : 'bg-purple-800'}`}>Alpha Decay</button>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} variant="blue" title="Grade 9 Chemistry: Atomic Structure & Reactivity" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
         {/* Theory Column */}
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800"><ClipboardList className="mr-2" /> Theory & Setup</h2>
           {activeTab === 'halogen' ? (
             <div className="space-y-4 text-slate-700">
@@ -158,7 +152,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800 w-full"><Activity className="mr-2" /> Interactive Simulator</h2>
           
           <EquationDisplay equation={equation} />
@@ -197,7 +191,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
             <div className="flex flex-col w-full items-center">
               <div className="relative w-64 h-64 border-2 border-dashed border-gray-300 rounded-full flex items-center justify-center bg-gray-50 overflow-hidden mb-6">
                 {/* Nucleus visualizer */}
-                <div className="text-center z-10 bg-white/80 p-2 rounded font-bold text-purple-900 border border-purple-200">
+                <div className="text-center z-10 bg-slate-50/80 p-2 rounded font-bold text-purple-900 border border-purple-200">
                   Parent: {u238Count} <br/> Daughter: {th234Count}
                 </div>
                 {/* Abstract representation of radiation */}
@@ -213,7 +207,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
         </div>
 
         {/* Data & Assessment Column */}
-        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center text-purple-800"><CheckCircle className="mr-2" /> Data & Analysis</h2>
           
           <div className="flex-grow overflow-y-auto mb-4 border rounded">

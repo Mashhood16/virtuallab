@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle, ArrowLeft, Cylinder } from 'lucide-react';
+import { Beaker, Info, Activity, Plus, RefreshCw, CheckCircle2, XCircle,  Cylinder } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }) {
   const [acidAdded, setAcidAdded] = useState(false);
@@ -85,20 +86,11 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-blue-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <Activity className="w-6 h-6" />
-          <h1 className="text-xl font-bold">Acid-Metal Reaction: Acetic Acid & Sodium</h1>
-        </div>
-        <button onClick={onExit} className="flex items-center gap-2 hover:bg-blue-700 px-3 py-1 rounded transition-colors">
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back</span>
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Acid-Metal Reaction: Acetic Acid & Sodium" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800">
             <Info className="w-5 h-5 text-blue-500" /> Theory & Setup
           </h2>
@@ -129,7 +121,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
         </div>
 
         {/* Simulation Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
           <div className="flex justify-around w-full mb-6 bg-slate-50 p-3 rounded-lg">
             <button onClick={addAcid} disabled={acidAdded} className="flex flex-col items-center p-2 border rounded hover:bg-blue-50 disabled:opacity-50 transition-colors">
               <Beaker className="text-blue-500 w-8 h-8 mb-1" />
@@ -147,7 +139,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
 
           <div className="relative w-full max-w-[300px] h-64 flex flex-col items-center justify-end bg-slate-50 rounded-xl p-4 border border-slate-200">
             {/* Gas Syringe */}
-            <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 rounded-sm flex bg-white overflow-hidden">
+            <div className="absolute top-4 right-4 w-40 h-8 border-2 border-slate-400 rounded-sm flex bg-slate-50 overflow-hidden">
                <div className="h-full bg-blue-100 transition-all" style={{ width: `${(gasVolume / 600) * 100}%` }}></div>
                <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-slate-700">
                  {gasVolume.toFixed(1)} mL H₂
@@ -203,7 +195,7 @@ export default function LabC10AceticAcidMetal({ onExit }: { onExit: () => void }
         </div>
 
         {/* Data Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800">
             <Activity className="w-5 h-5 text-green-500" /> Data & Analysis
           </h2>

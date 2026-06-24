@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, FastForward } from 'lucide-react';
+import { FastForward } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -47,16 +48,11 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-green-50 font-sans">
-      <div className="bg-white border-b border-green-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-green-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 11: Effect of Fertilizers on Plant Growth</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Effect of Fertilizers on Plant Growth" />
 
       <div className="flex-1 flex flex-col p-8 items-center">
         
-        <div className="w-full max-w-4xl bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 flex items-center justify-between">
+        <div className="w-full max-w-4xl bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 flex items-center justify-between">
           <div>
              <h2 className="text-2xl font-bold text-green-800">Time-Lapse Simulator</h2>
              <p className="text-slate-600">Observe growth over 4 weeks (28 days). Compare the control group (A) against fertilized groups (B & C).</p>
@@ -136,7 +132,7 @@ export default function LabS6PlantGrowth({ onExit }: LabProps) {
         </div>
 
         {day >= 28 && (
-          <div className="mt-8 p-6 bg-white border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
+          <div className="mt-8 p-6 bg-slate-50 border border-green-200 shadow-sm rounded-xl max-w-2xl w-full">
             <h3 className="font-bold text-lg text-green-800 mb-2">Experiment Conclusion</h3>
             <p className="text-slate-600">The plants in Pot C (10mg fertilizer) grew significantly taller and developed more leaves than Pot B (5mg) and the control Pot A (0mg). This demonstrates that appropriate application of fertilizer provides essential nutrients (like Nitrogen, Phosphorus, Potassium) that accelerate plant growth.</p>
           </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Edit2, CheckCircle, Leaf } from 'lucide-react';
+import { Edit2, CheckCircle, Leaf } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -19,15 +20,10 @@ export default function LabS6VegetativePropagation({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-emerald-50 font-sans">
-      <div className="bg-white border-b border-emerald-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-emerald-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 2: Vegetative Propagation Experiment</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 2: Vegetative Propagation Experiment" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
           
           <div className="flex items-start gap-4 mb-8 bg-emerald-50 border border-emerald-200 p-6 rounded-xl">
             <Leaf className="w-8 h-8 text-emerald-600 shrink-0 mt-1" />

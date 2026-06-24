@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, BookOpen, Activity, Plus, LineChart, Target, Beaker, CheckCircle, XCircle } from 'lucide-react';
+import { BookOpen, Activity, Plus, LineChart, Target, Beaker, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface DataPoint {
   id: number;
@@ -75,22 +76,11 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-700 text-white p-4 flex items-center shadow-md justify-between shrink-0">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-emerald-600 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Bioenergetics: Chlorophyll Spectrophotometry</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Beaker size={24} />
-          <span className="font-semibold">Virtual Lab B11</span>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} variant="emerald" title="Bioenergetics: Chlorophyll Spectrophotometry" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Controls */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div>
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-3">
               <BookOpen className="text-emerald-600" /> Theory & Setup
@@ -122,13 +112,13 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
               <div className="flex gap-2">
                 <button 
                   onClick={() => setIsUnknown(false)}
-                  className={`flex-1 py-2 text-sm rounded border transition-colors ${!isUnknown ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+                  className={`flex-1 py-2 text-sm rounded border transition-colors ${!isUnknown ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' : 'bg-slate-50 text-slate-600 hover:bg-slate-50'}`}
                 >
                   Known Standard
                 </button>
                 <button 
                   onClick={() => setIsUnknown(true)}
-                  className={`flex-1 py-2 text-sm rounded border transition-colors ${isUnknown ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-600 hover:bg-slate-50'}`}
+                  className={`flex-1 py-2 text-sm rounded border transition-colors ${isUnknown ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-slate-50 text-slate-600 hover:bg-slate-50'}`}
                 >
                   Unknown Sample
                 </button>
@@ -152,7 +142,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-center relative">
           <div className="absolute top-5 left-5 right-5 flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <Activity className="text-emerald-600" /> Virtual Spectrometer
@@ -176,7 +166,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
             />
 
             {/* Cuvette */}
-            <div className="absolute left-[210px] top-1/2 -translate-y-1/2 w-14 h-24 border-4 border-slate-400 bg-white/10 rounded-sm overflow-hidden flex flex-col justify-end">
+            <div className="absolute left-[210px] top-1/2 -translate-y-1/2 w-14 h-24 border-4 border-slate-400 bg-slate-50/10 rounded-sm overflow-hidden flex flex-col justify-end">
               <div className="w-full bg-green-500/40" style={{ height: '80%' }} />
               <div className="absolute top-1/2 -translate-y-1/2 w-full h-8" style={{ backgroundColor: beamColor, opacity: 0.4 }} />
             </div>
@@ -207,7 +197,7 @@ export default function LabB11Bioenergetics({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Column: Data & Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <LineChart className="text-emerald-600" /> Data Analysis

@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Info, RefreshCw, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Domain {
   id: number;
@@ -118,14 +119,11 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-900 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">Lab: Magnetic Induction</h1>
-        {onExit && <button onClick={onExit} className="px-4 py-2 bg-indigo-700 hover:bg-indigo-600 rounded-lg font-medium transition-colors">Exit</button>}
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Magnetic Induction" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-800">
             <Info className="mr-2" /> Theory & Context
           </h2>
@@ -153,7 +151,7 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 text-center">Interactive Simulator</h2>
           
           <div className="flex gap-4 mb-4 justify-center bg-slate-50 p-3 rounded-lg border border-slate-200">
@@ -222,7 +220,7 @@ export default function LabP9MagnetismInduction({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800">Data Logging & Analysis</h2>
           
           <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 rounded-lg max-h-64">

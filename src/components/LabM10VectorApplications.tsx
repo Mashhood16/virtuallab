@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Navigation, Anchor, Compass } from 'lucide-react';
+import { CheckCircle2, XCircle, Navigation, Anchor, Compass } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM10VectorApplications({ onExit }: { onExit: () => void }) {
   const [scenario, setScenario] = useState<'aviation' | 'river' | 'tractor'>('aviation');
@@ -56,17 +57,11 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white transition-colors">
-          <ArrowLeft className="mr-2" size={20} />
-          Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold ml-6">Vector Applications Lab</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Vector Applications Lab" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Formulas</h2>
           <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700">
             <p><strong>Vectors</strong> have both magnitude (size) and direction (angle).</p>
@@ -96,7 +91,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
         </div>
 
         {/* Interactive Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex space-x-2 mb-6 text-sm">
             <button 
               onClick={() => setScenario('aviation')}
@@ -119,7 +114,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
           </div>
 
           {/* Visualizer */}
-          <div className="relative h-64 bg-white rounded-xl mb-6 overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center">
+          <div className="relative h-64 bg-slate-50 rounded-xl mb-6 overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center">
             <svg viewBox="0 0 400 400" className="w-full h-full bg-slate-50">
               {/* Grid lines */}
               <line x1="0" y1="200" x2="400" y2="200" stroke="#cbd5e1" strokeWidth="1" />
@@ -193,7 +188,7 @@ export default function LabM10VectorApplications({ onExit }: { onExit: () => voi
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Data Analysis</h2>
           <div className="flex-1 space-y-4">
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Snowflake } from 'lucide-react';
+import { RefreshCw, Snowflake } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -26,28 +27,17 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 6.3: Endothermic Reaction</h1>
-            <p className="text-sm text-slate-500">Vinegar + Baking Soda (Absorbs Heat)</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium text-slate-700">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 6.3: Endothermic Reaction" subtitle="Vinegar + Baking Soda (Absorbs Heat)" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
+        <div className="bg-slate-50 p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
           
           <div className="flex gap-12 items-end mt-12 mb-16 relative">
             
             {/* Adding spoon */}
             <div className={`absolute -top-16 left-8 z-20 transition-all duration-1000 ${stage === 'initial' ? 'opacity-0 translate-y-[-20px]' : stage === 'adding' ? 'opacity-100 rotate-[-45deg] translate-y-10' : 'opacity-0'}`}>
               <div className="text-4xl -rotate-45">🥄</div>
-              <div className="absolute top-8 left-0 w-4 h-4 bg-white rounded-full shadow blur-[1px] animate-bounce" />
+              <div className="absolute top-8 left-0 w-4 h-4 bg-slate-50 rounded-full shadow blur-[1px] animate-bounce" />
             </div>
 
             {/* Beaker */}
@@ -57,7 +47,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
                   <div className="absolute inset-0">
                     {/* Bubbles / Gas */}
                     {Array.from({length: 20}).map((_, i) => (
-                      <div key={i} className="absolute w-2 h-2 bg-white rounded-full opacity-60 animate-[rise_1s_infinite]" style={{ left: `${Math.random() * 90}%`, animationDelay: `${Math.random() * 1}s` }} />
+                      <div key={i} className="absolute w-2 h-2 bg-slate-50 rounded-full opacity-60 animate-[rise_1s_infinite]" style={{ left: `${Math.random() * 90}%`, animationDelay: `${Math.random() * 1}s` }} />
                     ))}
                     {/* Frost Effect on glass */}
                     {temp < 20 && (

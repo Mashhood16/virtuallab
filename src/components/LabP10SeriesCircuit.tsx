@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -70,34 +71,13 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 16: Resistors in Series</h1>
-            <p className="text-sm text-slate-500">Analyze current and equivalent resistance in a series loop.</p>
-          </div>
-        </div>
-        <button 
-          onClick={() => { 
-            setNumResistors(3); setVoltage(12); setR1(50); setR2(50); setR3(50); setRInt(1); 
-            clearData(); setAssessmentStatus('idle'); setAssessmentAnswer(''); 
-          }} 
-          className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors"
-        >
-          <RefreshCw className="w-4 h-4" /> Reset Lab
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 16: Resistors in Series" subtitle="Analyze current and equivalent resistance in a series loop." />
 
       {/* Main Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
             <p className="text-slate-600 text-sm mb-3">
@@ -124,7 +104,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
                   <button 
                     key={n}
                     onClick={() => setNumResistors(n)}
-                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numResistors === n ? 'bg-white shadow-sm text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
+                    className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${numResistors === n ? 'bg-slate-50 shadow-sm text-blue-700' : 'text-slate-500 hover:text-slate-700'}`}
                   >
                     {n} Bulb{n > 1 ? 's' : ''}
                   </button>
@@ -215,7 +195,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
                          boxShadow: currentExact > 0 ? `0 0 ${40 * brightness}px ${20 * brightness}px #facc15` : 'none'
                        }} />
                        {/* The Bulb Physical */}
-                       <div className="w-10 h-10 bg-white/10 border-2 border-white/30 rounded-full z-10 flex flex-col items-center justify-end pb-1 backdrop-blur-sm">
+                       <div className="w-10 h-10 bg-slate-50/10 border-2 border-white/30 rounded-full z-10 flex flex-col items-center justify-end pb-1 backdrop-blur-sm">
                           <div className={`w-2 h-4 border rounded-t-full ${currentExact > 0 ? 'border-yellow-300' : 'border-zinc-500'}`} />
                        </div>
                        {/* Base */}
@@ -245,7 +225,7 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-slate-800">Data Logging</h2>
             <button 

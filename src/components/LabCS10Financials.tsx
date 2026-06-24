@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, TrendingUp, DollarSign, LineChart } from 'lucide-react';
+import { CheckCircle, TrendingUp, DollarSign, LineChart } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -76,12 +77,7 @@ export default function LabCS10Financials({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-emerald-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-emerald-700 rounded-full transition-colors" title="Exit Lab">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Lab: Financial Projections</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Lab: Financial Projections" />
         <div className="flex items-center gap-2">
           <TrendingUp size={20} />
           <span className="font-semibold">Grade 10 Computer Science</span>
@@ -91,7 +87,7 @@ export default function LabCS10Financials({ onExit }: Props) {
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <DollarSign className="text-emerald-600" /> Financial Concepts
           </h2>
@@ -121,7 +117,7 @@ export default function LabCS10Financials({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <LineChart className="text-emerald-600" /> Interactive Spreadsheet
           </h2>
@@ -192,7 +188,7 @@ export default function LabCS10Financials({ onExit }: Props) {
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-emerald-600" /> Data Logs & Assessment
           </h2>

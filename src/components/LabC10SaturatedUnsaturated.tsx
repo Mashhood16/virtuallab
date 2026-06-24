@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Droplets, Info, FlaskConical, Activity, Plus, RefreshCw, CheckCircle2, XCircle, ArrowLeft } from 'lucide-react';
+import { Droplets, Info, FlaskConical, Activity, Plus, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => void }) {
   const [flaskSample, setFlaskSample] = useState<'Oil' | 'Butter' | null>(null);
@@ -70,20 +71,11 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-orange-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <Activity className="w-6 h-6" />
-          <h1 className="text-xl font-bold">Bromine Water Test: Saturated vs Unsaturated</h1>
-        </div>
-        <button onClick={onExit} className="flex items-center gap-2 hover:bg-orange-700 px-3 py-1 rounded transition-colors">
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back</span>
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Bromine Water Test: Saturated vs Unsaturated" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800">
             <Info className="w-5 h-5 text-blue-500" /> Theory & Setup
           </h2>
@@ -111,7 +103,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
         </div>
 
         {/* Simulation Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
           <div className="flex justify-around w-full mb-6 bg-slate-50 p-3 rounded-lg">
             <button onClick={() => addSample('Oil')} disabled={flaskSample !== null} className="flex flex-col items-center p-2 border rounded hover:bg-yellow-50 disabled:opacity-50 transition-colors">
               <FlaskConical className="text-yellow-500 w-8 h-8 mb-1" />
@@ -151,7 +143,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
               )}
             </svg>
             {flaskSample && (
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-bold text-slate-800 bg-white/70 px-2 py-1 rounded">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-xs font-bold text-slate-800 bg-slate-50/70 px-2 py-1 rounded">
                 {flaskSample} ({sampleMass}g)<br/>
                 Br₂: {br2Volume}mL
               </div>
@@ -173,7 +165,7 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
         </div>
 
         {/* Data Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 text-slate-800">
             <Activity className="w-5 h-5 text-green-500" /> Data & Analysis
           </h2>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Beaker, Droplet, Filter, Activity, CheckCircle } from 'lucide-react';
+import { Beaker, Droplet, Filter, Activity, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -105,7 +106,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
     const minMass = maxMass - totalLoss - 1.0;
 
     return (
-      <svg viewBox="-30 -10 250 160" className="w-full h-48 bg-white rounded-lg shadow-sm border border-slate-200">
+      <svg viewBox="-30 -10 250 160" className="w-full h-48 bg-slate-50 rounded-lg shadow-sm border border-slate-200">
          {/* Axes */}
          <line x1="0" y1="120" x2="200" y2="120" stroke="#94a3b8" strokeWidth="2" />
          <line x1="0" y1="0" x2="0" y2="120" stroke="#94a3b8" strokeWidth="2" />
@@ -125,19 +126,12 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md shrink-0">
-        {onExit && (
-          <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-        )}
-        <h1 className="text-2xl font-bold">Preparation of Soluble Salt: Excess Carbonate Method</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Preparation of Soluble Salt: Excess Carbonate Method" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <Beaker className="text-slate-600" /> Theory & Setup
@@ -197,7 +191,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Virtual Workbench</h2>
           </div>
@@ -276,7 +270,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Kinetics & Analysis</h2>
           </div>

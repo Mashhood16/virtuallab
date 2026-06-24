@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Droplets } from 'lucide-react';
+import { RefreshCw, Droplets } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -30,22 +31,7 @@ export default function LabS8Density({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 5.5: Density</h1>
-            <p className="text-sm text-slate-500">Drop objects in water to test their density</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.5: Density" subtitle="Drop objects in water to test their density" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
@@ -55,7 +41,7 @@ export default function LabS8Density({ onExit }: LabProps) {
             <button 
               key={o.id}
               onClick={() => { setSelected(o); setDropped(false); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected?.id === o.id ? 'border-cyan-500 bg-cyan-50 text-cyan-700' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected?.id === o.id ? 'border-cyan-500 bg-cyan-50 text-cyan-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
             >
               {o.name}
             </button>
@@ -63,17 +49,17 @@ export default function LabS8Density({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           {/* Beaker with Water */}
           <div className="relative w-64 h-80 flex flex-col justify-end items-center">
             
             {/* Beaker Glass */}
-            <div className="absolute inset-0 border-x-4 border-b-4 border-white/80 bg-white/10 rounded-b-xl z-20 backdrop-blur-[2px] pointer-events-none shadow-[0_8px_32px_rgba(0,0,0,0.1)]" />
+            <div className="absolute inset-0 border-x-4 border-b-4 border-white/80 bg-slate-50/10 rounded-b-xl z-20 backdrop-blur-[2px] pointer-events-none shadow-[0_8px_32px_rgba(0,0,0,0.1)]" />
             
             {/* Measurement lines */}
             <div className="absolute left-2 top-10 bottom-10 w-4 border-r border-white/50 z-30 opacity-50">
-              {[0,1,2,3].map(i => <div key={i} className="w-2 h-px bg-white/50 absolute right-0" style={{top: `${i*25}%`}} />)}
+              {[0,1,2,3].map(i => <div key={i} className="w-2 h-px bg-slate-50/50 absolute right-0" style={{top: `${i*25}%`}} />)}
             </div>
 
             {/* The Dropped Object */}
@@ -88,9 +74,9 @@ export default function LabS8Density({ onExit }: LabProps) {
             <div className="w-full h-3/4 bg-cyan-400/40 relative z-0 border-t-2 border-cyan-300/60 overflow-hidden rounded-b-lg">
               {/* Bubbles */}
               <div className="absolute inset-0 opacity-30">
-                <div className="w-2 h-2 rounded-full bg-white absolute bottom-4 left-10 animate-[rise_2s_infinite]" />
-                <div className="w-3 h-3 rounded-full bg-white absolute bottom-10 right-16 animate-[rise_3s_infinite_1s]" />
-                <div className="w-1.5 h-1.5 rounded-full bg-white absolute bottom-20 left-24 animate-[rise_1.5s_infinite_0.5s]" />
+                <div className="w-2 h-2 rounded-full bg-slate-50 absolute bottom-4 left-10 animate-[rise_2s_infinite]" />
+                <div className="w-3 h-3 rounded-full bg-slate-50 absolute bottom-10 right-16 animate-[rise_3s_infinite_1s]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-50 absolute bottom-20 left-24 animate-[rise_1.5s_infinite_0.5s]" />
               </div>
             </div>
 

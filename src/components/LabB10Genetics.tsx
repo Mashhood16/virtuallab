@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Beaker, CheckCircle, RotateCcw, Dna, MousePointerClick } from 'lucide-react';
+import { Beaker, CheckCircle, RotateCcw, Dna, MousePointerClick } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type CrossType = 'monohybrid' | 'dihybrid';
 
@@ -127,18 +128,11 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white p-4 shadow-sm flex items-center gap-4">
-        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-600" />
-        </button>
-        <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <Dna className="w-8 h-8 text-blue-600" /> Virtual Lab: Mendelian Genetics
-        </h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Mendelian Genetics" />
 
       <main className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
               <Beaker className="w-6 h-6" />
@@ -168,7 +162,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Middle Column: Interactive Simulator */}
-        <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="lg:col-span-1 bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center">
           <div className="flex items-center justify-between w-full mb-6">
             <h2 className="text-xl font-bold text-slate-800">Fertilization Simulator</h2>
             <button
@@ -188,7 +182,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
             <button
               onClick={() => handleModeSwitch('monohybrid')}
               className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${
-                crossType === 'monohybrid' ? 'bg-white shadow text-blue-700' : 'text-slate-600 hover:bg-slate-200'
+                crossType === 'monohybrid' ? 'bg-slate-50 shadow text-blue-700' : 'text-slate-600 hover:bg-slate-200'
               }`}
             >
               Monohybrid
@@ -196,7 +190,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
             <button
               onClick={() => handleModeSwitch('dihybrid')}
               className={`flex-1 py-2 rounded-md font-semibold text-sm transition-colors ${
-                crossType === 'dihybrid' ? 'bg-white shadow text-purple-700' : 'text-slate-600 hover:bg-slate-200'
+                crossType === 'dihybrid' ? 'bg-slate-50 shadow text-purple-700' : 'text-slate-600 hover:bg-slate-200'
               }`}
             >
               Dihybrid
@@ -282,7 +276,7 @@ export default function LabB10Genetics({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <CheckCircle className="w-6 h-6 text-green-500" /> Analysis & Assessment
           </h2>

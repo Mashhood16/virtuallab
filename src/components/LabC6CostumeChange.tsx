@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Rocket } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -32,17 +33,14 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Costume Change Event" />
 
         <h1 className="text-3xl font-bold mb-2">Costume Change Event</h1>
         <p className="text-slate-600 mb-8">Press the 'c' key on your keyboard to trigger the event and change the Rocket's costume.</p>
 
         <div className="flex gap-8 flex-1">
           {/* Blocks Editor (Mock) */}
-          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
             <div className="bg-amber-500 text-white font-bold p-3 text-sm">Events & Looks</div>
             <div className="flex-1 p-6 flex flex-col gap-2 bg-slate-50/50">
               
@@ -63,12 +61,12 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
 
           {/* Stage Area */}
           <div className="flex-1 flex flex-col">
-            <div className="bg-white rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
+            <div className="bg-slate-50 rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
               <span className="font-bold text-sm text-slate-600">Scratch Stage</span>
               <span className="font-bold text-xs text-slate-400">Current Costume: {costume}</span>
             </div>
             
-            <div className="bg-white flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
+            <div className="bg-slate-50 flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
               
               <div className="absolute inset-0 bg-gradient-to-b from-blue-900 to-indigo-900">
                 {/* Stars */}

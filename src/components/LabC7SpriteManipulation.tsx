@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -24,17 +25,14 @@ export default function LabC7SpriteManipulation({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto items-center">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors self-start">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Sprite Coordinate Manipulation" />
 
         <h1 className="text-3xl font-bold mb-2">Sprite Coordinate Manipulation</h1>
         <p className="text-slate-600 mb-8">Change the X and Y coordinates to move the sprite across the 480x360 stage.</p>
 
         <div className="flex gap-8 max-w-5xl w-full">
           {/* Code/Input Panel */}
-          <div className="w-80 bg-white rounded-xl shadow-lg border border-slate-200 p-6 flex flex-col gap-6">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-6 flex flex-col gap-6">
             <h2 className="font-bold text-lg text-slate-700 mb-2">Properties</h2>
             
             <div className="flex items-center gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -74,7 +72,7 @@ export default function LabC7SpriteManipulation({ onExit }: LabProps) {
           </div>
 
           {/* Stage Area */}
-          <div className="flex-1 bg-white rounded-xl shadow-xl border-4 border-slate-300 p-4 relative flex items-center justify-center overflow-hidden">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-xl border-4 border-slate-300 p-4 relative flex items-center justify-center overflow-hidden">
             {/* Grid overlay */}
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 opacity-20 pointer-events-none">
               <div className="border-r-2 border-b-2 border-blue-500"></div>

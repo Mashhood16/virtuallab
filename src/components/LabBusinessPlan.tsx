@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -36,9 +37,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-50 flex flex-col font-sans">
       <header className="bg-purple-800 text-white p-4 shadow-md flex justify-between items-center z-20">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-purple-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 6.1: Business Plan Drafting" />
           <div>
             <h1 className="text-xl font-bold">Act 6.1: Business Plan Drafting</h1>
             <p className="text-sm text-purple-200">Draft your startup pitch deck and present it to partners.</p>
@@ -49,7 +48,7 @@ export default function LabBusinessPlan({ onExit }: LabProps) {
       <div className="flex-1 flex overflow-hidden">
         
         {/* Editor Area */}
-        <div className="flex-1 bg-white p-12 overflow-y-auto">
+        <div className="flex-1 bg-slate-50 p-12 overflow-y-auto">
           
           <div className="max-w-3xl mx-auto">
              <div className="border-b-4 border-purple-800 pb-4 mb-8 flex justify-between items-end">

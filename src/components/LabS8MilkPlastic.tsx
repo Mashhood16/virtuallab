@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,32 +12,21 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.3: Plastic from Milk</h1>
-            <p className="text-sm text-slate-500">Casein polymer extraction</p>
-          </div>
-        </div>
-        <button onClick={() => setVinegarDrops(0)} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.3: Plastic from Milk" subtitle="Casein polymer extraction" />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6 max-w-4xl mx-auto w-full">
         
-        <div className="bg-white p-8 rounded-3xl shadow-xl border border-slate-200 flex flex-col items-center w-full max-w-lg">
+        <div className="bg-slate-50 p-8 rounded-3xl shadow-xl border border-slate-200 flex flex-col items-center w-full max-w-lg">
           
           <div className="relative w-48 h-48 mb-8">
             {/* Beaker */}
             <div className="absolute inset-0 bg-slate-100/50 rounded-b-[40px] border-4 border-t-0 border-slate-300 flex flex-col justify-end overflow-hidden z-10">
                {/* Milk / Liquid */}
-               <div className={`w-full transition-all duration-1000 flex items-center justify-center ${isSeparated ? 'h-3/4 bg-yellow-100/80 backdrop-blur-sm' : 'h-3/4 bg-white shadow-[inset_0_-10px_20px_rgba(0,0,0,0.05)]'}`}>
+               <div className={`w-full transition-all duration-1000 flex items-center justify-center ${isSeparated ? 'h-3/4 bg-yellow-100/80 backdrop-blur-sm' : 'h-3/4 bg-slate-50 shadow-[inset_0_-10px_20px_rgba(0,0,0,0.05)]'}`}>
                  
                  {/* Curds (Casein) */}
                  {isSeparated && (
-                   <div className="w-24 h-16 bg-white border border-slate-100 rounded-3xl animate-bounce shadow-md flex items-center justify-center flex-wrap gap-1 p-2">
+                   <div className="w-24 h-16 bg-slate-50 border border-slate-100 rounded-3xl animate-bounce shadow-md flex items-center justify-center flex-wrap gap-1 p-2">
                      <div className="w-4 h-4 bg-slate-50 rounded-full" />
                      <div className="w-6 h-5 bg-slate-50 rounded-full" />
                      <div className="w-5 h-5 bg-slate-50 rounded-full" />

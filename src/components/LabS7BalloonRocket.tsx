@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Rocket } from 'lucide-react';
+import { Rocket } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -29,12 +30,7 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-900 font-sans">
-      <div className="bg-slate-800 border-b border-slate-700 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-white">Unit 8: Force and Motion (Balloon Rocket)</h1>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Unit 8: Force and Motion (Balloon Rocket)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 max-w-2xl w-full text-center mb-8">
@@ -96,8 +92,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
               {/* Straw */}
               <div className="w-24 h-4 bg-yellow-400/80 rounded-sm border border-yellow-500 mb-2 relative z-10">
                  {/* Tape */}
-                 <div className="absolute top-1 left-4 w-4 h-12 bg-white/50 -rotate-12 backdrop-blur-sm z-30"></div>
-                 <div className="absolute top-1 right-4 w-4 h-12 bg-white/50 rotate-12 backdrop-blur-sm z-30"></div>
+                 <div className="absolute top-1 left-4 w-4 h-12 bg-slate-50/50 -rotate-12 backdrop-blur-sm z-30"></div>
+                 <div className="absolute top-1 right-4 w-4 h-12 bg-slate-50/50 rotate-12 backdrop-blur-sm z-30"></div>
               </div>
 
               {/* Balloon */}
@@ -113,8 +109,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
                  {/* Escaping Air Particles */}
                  {launched && air > 0 && (
                    <div className="absolute left-[-40px] top-1/2 -mt-2 w-12 h-4 overflow-hidden">
-                     <div className="w-2 h-2 bg-white/50 rounded-full animate-[slide_0.2s_linear_infinite]"></div>
-                     <div className="w-3 h-3 bg-white/50 rounded-full animate-[slide_0.3s_linear_infinite_0.1s]"></div>
+                     <div className="w-2 h-2 bg-slate-50/50 rounded-full animate-[slide_0.2s_linear_infinite]"></div>
+                     <div className="w-3 h-3 bg-slate-50/50 rounded-full animate-[slide_0.3s_linear_infinite_0.1s]"></div>
                    </div>
                  )}
                  <style>{`

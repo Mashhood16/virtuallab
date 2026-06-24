@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Sun, Moon } from 'lucide-react';
+import { RefreshCw, Sun, Moon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabS8StimulusResponseProps {
   onExit?: () => void;
@@ -78,26 +79,11 @@ export default function LabS8StimulusResponse({ onExit }: LabS8StimulusResponseP
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 2.1: Stimulus Response</h1>
-            <p className="text-sm text-slate-500">Observe termite behavior towards light vs dark</p>
-          </div>
-        </div>
-        <button onClick={resetTermites} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300 transition-colors">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 2.1: Stimulus Response" subtitle="Observe termite behavior towards light vs dark" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Interactive */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           
           <div className="flex gap-4 mb-6">
             <button 

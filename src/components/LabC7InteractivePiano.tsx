@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Music } from 'lucide-react';
+import { Music } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -51,10 +52,7 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-900 text-slate-100">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto items-center">
-        <button onClick={onExit} className="flex items-center text-slate-400 hover:text-white mb-6 transition-colors self-start">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Interactive Piano" />
 
         <h1 className="text-3xl font-bold mb-2 text-white">Interactive Piano</h1>
         <p className="text-slate-400 mb-12">Click the keys to trigger different sounds, simulating a programmed Scratch digital piano.</p>
@@ -77,7 +75,7 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
                   w-16 mx-1 border-2 border-b-8 rounded-b-lg cursor-pointer transition-all flex items-end justify-center pb-4
                   ${activeKey === key.id 
                     ? 'bg-slate-200 border-slate-400 border-b-4 translate-y-2' 
-                    : 'bg-white border-slate-300 shadow-[0_4px_10px_rgba(0,0,0,0.5)] hover:bg-slate-50'
+                    : 'bg-slate-50 border-slate-300 shadow-[0_4px_10px_rgba(0,0,0,0.5)] hover:bg-slate-50'
                   }
                 `}
               >

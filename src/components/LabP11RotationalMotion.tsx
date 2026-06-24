@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, RefreshCw, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import { RefreshCw, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void }) {
   const [armRadius, setArmRadius] = useState(1.0); // 0.2 to 1.0 m
@@ -54,20 +55,11 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold flex items-center gap-2"><RefreshCw className="text-purple-400" /> Rotational Motion</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Rotational Motion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Conservation of Angular Momentum</h2>
           <div className="prose prose-sm text-slate-600">
             <p>When no external torque acts on a system, its angular momentum <strong>L</strong> remains constant.</p>
@@ -106,7 +98,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
         </div>
 
         {/* Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Skater Visualizer</h2>
           
           <div className="relative w-64 h-64 bg-slate-100 rounded-full border-4 border-slate-200 shadow-inner flex items-center justify-center overflow-hidden">
@@ -147,7 +139,7 @@ export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Calculate Final Velocity

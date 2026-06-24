@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Search, Image as ImageIcon, Send, Paperclip, CheckCircle } from 'lucide-react';
+import { Search, Image as ImageIcon, Send, Paperclip, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -18,10 +19,7 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Seven Wonders Research" />
 
         <h1 className="text-3xl font-bold mb-2">Seven Wonders Research</h1>
         <p className="text-slate-600 mb-6">Complete the 3-step project: Research the internet, compile a document with pictures, and email it to your teacher.</p>
@@ -39,10 +37,10 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
         </div>
 
         {/* Main Interface Area */}
-        <div className="bg-white rounded-xl shadow-lg border border-slate-200 flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-lg border border-slate-200 flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden">
           
           {step === 1 && (
-            <div className="p-8 flex flex-col h-full bg-white">
+            <div className="p-8 flex flex-col h-full bg-slate-50">
               <div className="flex items-center justify-center mb-8 mt-12">
                 <span className="text-5xl font-bold text-blue-500">G</span>
                 <span className="text-5xl font-bold text-rose-500">o</span>
@@ -90,15 +88,15 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
             <div className="flex flex-col h-full bg-slate-50">
               <div className="bg-blue-600 text-white p-2 flex justify-between items-center px-4">
                 <span className="font-bold text-sm">Seven_Wonders_Research.docx - Microsoft Word</span>
-                <button onClick={() => setStep(3)} disabled={!hasImages} className="bg-white text-blue-600 px-4 py-1 text-sm font-bold rounded disabled:opacity-50">Proceed to Email &rarr;</button>
+                <button onClick={() => setStep(3)} disabled={!hasImages} className="bg-slate-50 text-blue-600 px-4 py-1 text-sm font-bold rounded disabled:opacity-50">Proceed to Email &rarr;</button>
               </div>
               <div className="bg-slate-200 border-b border-slate-300 p-2 flex gap-2">
-                <button onClick={() => setHasImages(true)} className="flex items-center text-sm bg-white border border-slate-300 px-3 py-1 rounded hover:bg-slate-50">
+                <button onClick={() => setHasImages(true)} className="flex items-center text-sm bg-slate-50 border border-slate-300 px-3 py-1 rounded hover:bg-slate-50">
                   <ImageIcon className="w-4 h-4 mr-2 text-rose-500" /> Insert 7 Wonder Pictures
                 </button>
               </div>
               <div className="flex-1 p-8 overflow-y-auto flex justify-center">
-                <div className="w-full max-w-xl bg-white shadow-lg border border-slate-200 min-h-full p-8 outline-none" contentEditable onInput={(e) => setDocContent(e.currentTarget.textContent || '')}>
+                <div className="w-full max-w-xl bg-slate-50 shadow-lg border border-slate-200 min-h-full p-8 outline-none" contentEditable onInput={(e) => setDocContent(e.currentTarget.textContent || '')}>
                   <h1 className="text-2xl font-bold mb-4">The Seven Wonders of the World</h1>
                   {hasImages ? (
                     <div className="grid grid-cols-2 gap-4 my-4">
@@ -119,7 +117,7 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
           )}
 
           {step === 3 && (
-            <div className="flex flex-col h-full bg-white">
+            <div className="flex flex-col h-full bg-slate-50">
               {isSent ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-center p-8">
                   <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
@@ -143,7 +141,7 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
                     
                     <button 
                       onClick={() => setHasAttached(true)}
-                      className={`flex items-center self-start px-4 py-2 rounded-lg text-sm font-medium border ${hasAttached ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-white border-slate-300 text-slate-700 hover:bg-slate-50'}`}
+                      className={`flex items-center self-start px-4 py-2 rounded-lg text-sm font-medium border ${hasAttached ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-slate-50 border-slate-300 text-slate-700 hover:bg-slate-50'}`}
                     >
                       <Paperclip className="w-4 h-4 mr-2" />
                       {hasAttached ? 'Seven_Wonders_Research.docx Attached' : 'Attach Document'}

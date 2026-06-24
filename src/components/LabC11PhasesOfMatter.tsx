@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Thermometer, Wind, Calculator, Database } from 'lucide-react';
+import { Thermometer, Wind, Calculator, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }) {
   const [liquidType, setLiquidType] = useState<'water'|'ethanol'>('water');
@@ -49,11 +50,9 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
+      <header className="bg-slate-50 border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
+          <LabHeader onExit={onExit} title="Phases of Matter & Vapor Pressure" />
           <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <Thermometer className="w-6 h-6 text-orange-600" />
             Phases of Matter & Vapor Pressure
@@ -64,7 +63,7 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
               <Wind className="w-5 h-5 text-orange-500" />
@@ -80,7 +79,7 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
             <label className="block text-sm font-medium text-slate-700 mb-1">Select Liquid Phase</label>
             <select 
               value={liquidType} onChange={(e) => setLiquidType(e.target.value as 'water'|'ethanol')}
-              className="w-full mb-4 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white"
+              className="w-full mb-4 px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 bg-slate-50"
             >
               <option value="water">Water (H₂O)</option>
               <option value="ethanol">Ethanol (C₂H₅OH)</option>
@@ -100,7 +99,7 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
               className="w-full mb-6 accent-red-500"
             />
 
-            <div className="p-3 bg-white border border-slate-200 rounded-lg shadow-sm text-center">
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg shadow-sm text-center">
               <span className="text-xs text-slate-500 font-bold uppercase tracking-wider block mb-1">Current Vapor Pressure</span>
               <span className="text-xl font-bold text-slate-800">{vp.toFixed(3)} atm</span>
             </div>
@@ -108,7 +107,7 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Column 2 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold text-slate-800 w-full mb-4 text-center">Boiling Simulator</h2>
           
           <svg viewBox="0 0 200 300" className="w-full h-80 bg-slate-100 rounded-lg border border-slate-200 overflow-hidden relative">
@@ -146,7 +145,7 @@ export default function LabC11PhasesOfMatter({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Column 3 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />

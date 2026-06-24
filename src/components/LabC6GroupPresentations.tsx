@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Play, Presentation, Image as ImageIcon, Type, PlusCircle, Monitor, HardDrive, Cpu, Radio, Mouse } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -83,10 +84,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="{slides[currentSlide].title || 'Untitled Slide'}" />
 
         <div className="flex justify-between items-end mb-6">
           <div>
@@ -112,7 +110,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
         <div className="flex gap-8 flex-1 h-[600px]">
           {/* Sidebar */}
           <div className="w-64 flex flex-col gap-6">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5">
               <h3 className="font-bold text-slate-700 mb-3 text-sm tracking-wider uppercase">1. Select Topic</h3>
               <div className="flex flex-col gap-2">
                 {topics.map(topic => {
@@ -135,7 +133,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex-1 flex flex-col overflow-hidden">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex-1 flex flex-col overflow-hidden">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="font-bold text-slate-700 text-sm tracking-wider uppercase">2. Slides</h3>
                 <button onClick={addSlide} className="text-blue-600 hover:text-blue-700" title="Add Slide">
@@ -150,7 +148,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
                     className={`aspect-video rounded-lg border-2 flex items-center justify-center p-4 text-center transition-colors shadow-sm relative overflow-hidden ${
                       currentSlide === idx 
                         ? 'border-blue-500 bg-blue-50/50' 
-                        : 'border-slate-200 bg-white hover:border-blue-300'
+                        : 'border-slate-200 bg-slate-50 hover:border-blue-300'
                     }`}
                   >
                     <div className="text-xs font-bold text-slate-600 line-clamp-3">
@@ -166,7 +164,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
           </div>
 
           {/* Editor Area */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col">
             <div className="border-b border-slate-200 p-4 flex gap-4 bg-slate-50 rounded-t-xl">
               <button className="flex flex-col items-center gap-1 p-2 text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors w-16">
                 <Type className="w-5 h-5" />
@@ -189,7 +187,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
                   <p className="text-xl font-medium">Please select a hardware topic first.</p>
                 </div>
               ) : (
-                <div className="w-full max-w-3xl mx-auto aspect-video bg-white shadow-lg border border-slate-200 p-12 flex flex-col justify-center">
+                <div className="w-full max-w-3xl mx-auto aspect-video bg-slate-50 shadow-lg border border-slate-200 p-12 flex flex-col justify-center">
                   <input
                     type="text"
                     value={slides[currentSlide].title}

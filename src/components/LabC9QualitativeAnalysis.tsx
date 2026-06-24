@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, FlaskConical, CheckCircle, BookOpen, RotateCcw } from 'lucide-react';
+import { FlaskConical, CheckCircle, BookOpen, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type BottleId = 'zn' | 'caco3' | 'h2o2' | 'mno2' | 'hcl' | 'cu' | 'na' | 'k';
 
@@ -135,20 +136,13 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-emerald-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-emerald-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">Grade 9 Chemistry: Qualitative Analysis</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Grade 9 Chemistry: Qualitative Analysis" />
         <FlaskConical size={28} />
       </header>
 
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-emerald-800">
             <BookOpen size={24} />
             <h2 className="text-xl font-semibold">Theory & Context</h2>
@@ -183,7 +177,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-auto">
           <div className="flex gap-4 mb-4 shrink-0">
             <button 
               className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'gas' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
@@ -207,7 +201,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                   {GAS_BOTTLES.map(b => (
                     <button 
                       key={b.id} 
-                      className={`flex flex-col items-center cursor-pointer transform transition-transform p-2 rounded-lg border-2 ${flaskContents.includes(b.id) ? 'border-emerald-500 bg-emerald-50 opacity-50 scale-95' : 'border-slate-200 bg-white hover:-translate-y-1 shadow-sm'}`}
+                      className={`flex flex-col items-center cursor-pointer transform transition-transform p-2 rounded-lg border-2 ${flaskContents.includes(b.id) ? 'border-emerald-500 bg-emerald-50 opacity-50 scale-95' : 'border-slate-200 bg-slate-50 hover:-translate-y-1 shadow-sm'}`}
                       onClick={() => addToFlask(b.id)}
                       disabled={flaskContents.includes(b.id) || flaskContents.length >= 3}
                     >
@@ -289,10 +283,10 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
                   {FLAME_BOTTLES.map(b => (
                     <button 
                       key={b.id} 
-                      className={`flex flex-col items-center cursor-pointer p-2 rounded-lg border-2 transition-colors ${wireLoop === b.id ? 'border-orange-500 bg-orange-50' : 'border-slate-200 bg-white hover:border-slate-300'}`} 
+                      className={`flex flex-col items-center cursor-pointer p-2 rounded-lg border-2 transition-colors ${wireLoop === b.id ? 'border-orange-500 bg-orange-50' : 'border-slate-200 bg-slate-50 hover:border-slate-300'}`} 
                       onClick={() => dipWire(b.id)}
                     >
-                      <div className="w-12 h-12 rounded-full border-2 border-slate-300 bg-white flex items-center justify-center mb-2 shadow-inner">
+                      <div className="w-12 h-12 rounded-full border-2 border-slate-300 bg-slate-50 flex items-center justify-center mb-2 shadow-inner">
                         <div className="w-8 h-8 rounded-full" style={{ backgroundColor: b.color, opacity: 0.8 }}></div>
                       </div>
                       <div className="text-xs font-bold text-slate-700 text-center w-20">{b.label}</div>
@@ -339,7 +333,7 @@ export default function LabC9QualitativeAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-emerald-800">
             <CheckCircle size={24} />
             <h2 className="text-xl font-semibold">Assessment</h2>

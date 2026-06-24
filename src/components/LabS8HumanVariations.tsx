@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Check, RefreshCw } from 'lucide-react';
+import { Check, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabS8HumanVariationsProps {
   onExit?: () => void;
@@ -51,22 +52,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 3.2: Human Variations</h1>
-            <p className="text-sm text-slate-500">Sort traits by their variation type</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300 transition-colors">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 max-w-5xl mx-auto w-full flex flex-col">
         
@@ -77,7 +63,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
             {items.map(trait => (
               <div 
                 key={trait.id}
-                className="bg-white border-2 border-slate-300 shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 flex flex-col gap-2 min-w-[200px]"
+                className="bg-slate-50 border-2 border-slate-300 shadow-sm px-4 py-2 rounded-lg font-medium text-slate-700 flex flex-col gap-2 min-w-[200px]"
               >
                 <span className="text-center">{trait.name}</span>
                 <div className="flex gap-2">
@@ -120,7 +106,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
             
             <div className="flex-1 flex flex-col gap-3">
               {continuous.map(trait => (
-                <div key={trait.id} className="bg-white px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 px-4 py-3 rounded-lg border border-blue-300 shadow-sm text-blue-900 font-medium flex items-center justify-between">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}
@@ -134,7 +120,7 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
             
             <div className="flex-1 flex flex-col gap-3">
               {discontinuous.map(trait => (
-                <div key={trait.id} className="bg-white px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between">
+                <div key={trait.id} className="bg-slate-50 px-4 py-3 rounded-lg border border-purple-300 shadow-sm text-purple-900 font-medium flex items-center justify-between">
                   {trait.name} <Check className="w-4 h-4 text-green-500" />
                 </div>
               ))}

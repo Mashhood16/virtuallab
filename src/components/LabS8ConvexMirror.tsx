@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -8,18 +9,7 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 9.6: Car Rearview Mirror</h1>
-            <p className="text-sm text-slate-500">Convex vs Plane Mirrors</p>
-          </div>
-        </div>
-        <button onClick={() => setMirrorType('convex')} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 9.6: Car Rearview Mirror" subtitle="Convex vs Plane Mirrors" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -28,20 +18,20 @@ export default function LabS8ConvexMirror({ onExit }: LabProps) {
           <h3 className="font-bold text-slate-700 mb-2">Select Mirror</h3>
           <button 
             onClick={() => setMirrorType('plane')}
-            className={`p-4 text-left rounded-xl font-bold border-2 ${mirrorType === 'plane' ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+            className={`p-4 text-left rounded-xl font-bold border-2 ${mirrorType === 'plane' ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
           >
             Inside Mirror
             <div className="text-xs font-normal opacity-70 mt-1">Flat (Plane Mirror)</div>
           </button>
           <button 
             onClick={() => setMirrorType('convex')}
-            className={`p-4 text-left rounded-xl font-bold border-2 ${mirrorType === 'convex' ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+            className={`p-4 text-left rounded-xl font-bold border-2 ${mirrorType === 'convex' ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
           >
             Side Passenger Mirror
             <div className="text-xs font-normal opacity-70 mt-1">Curved Outward (Convex)</div>
           </button>
 
-          <div className="mt-8 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+          <div className="mt-8 bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm">
              <h4 className="font-bold text-sm text-slate-800 mb-2">Observations</h4>
              <ul className="text-sm text-slate-600 space-y-2 list-disc pl-4">
                 {mirrorType === 'plane' ? (

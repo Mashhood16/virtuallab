@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ArrowLeft, Calculator, BookOpen, Ruler, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
+import { Calculator, BookOpen, Ruler, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface TrigProblem {
     distance: number;
@@ -49,20 +50,12 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-indigo-800 text-white p-4 flex items-center shadow-md shrink-0">
-                <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors">
-                    <ArrowLeft size={24} />
-                </button>
-                <div>
-                    <h1 className="text-2xl font-bold">Trigonometry Applications</h1>
-                    <p className="text-sm text-indigo-200">Measuring Inaccessible Heights (e.g. Skyscrapers)</p>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Trigonometry Applications" />
 
             {/* Main Content Grid */}
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-indigo-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-indigo-500">
                     <div className="flex items-center mb-4 text-indigo-800 shrink-0">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
@@ -92,7 +85,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-sky-500">
                     <div className="flex items-center mb-4 text-sky-800 shrink-0">
                         <Ruler className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
@@ -134,7 +127,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                             </svg>
                         </div>
 
-                        <div className="p-4 bg-white border-t border-slate-200 space-y-4 shrink-0 shadow-inner">
+                        <div className="p-4 bg-slate-50 border-t border-slate-200 space-y-4 shrink-0 shadow-inner">
                             <div>
                                 <div className="flex justify-between text-sm font-medium mb-1 text-slate-700">
                                     <span>Distance to Base (m)</span>
@@ -171,7 +164,7 @@ export default function LabM10TrigApplications({ onExit }: { onExit: () => void 
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-emerald-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-emerald-500">
                     <div className="flex items-center mb-4 text-emerald-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Math Assessment</h2>

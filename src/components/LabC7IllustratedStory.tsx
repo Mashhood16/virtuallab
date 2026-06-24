@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Image as ImageIcon, BookOpen } from 'lucide-react';
+import { Image as ImageIcon, BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -25,21 +26,18 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Illustrated Story Writing" />
 
         <h1 className="text-3xl font-bold mb-2">Illustrated Story Writing</h1>
         <p className="text-slate-600 mb-8">Write a short story and insert relevant pictures from the gallery to illustrate it.</p>
 
-        <div className="bg-white rounded-xl shadow border border-slate-300 flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden relative">
+        <div className="bg-slate-50 rounded-xl shadow border border-slate-300 flex flex-col flex-1 max-w-4xl mx-auto w-full overflow-hidden relative">
           
           {/* Toolbar */}
           <div className="bg-slate-100 border-b border-slate-200 p-3 flex gap-4 items-center">
             <button 
               onClick={() => setShowGallery(!showGallery)}
-              className="flex items-center px-4 py-2 bg-white border border-slate-300 hover:bg-slate-50 rounded text-sm font-medium transition-colors"
+              className="flex items-center px-4 py-2 bg-slate-50 border border-slate-300 hover:bg-slate-50 rounded text-sm font-medium transition-colors"
             >
               <ImageIcon className="w-4 h-4 mr-2 text-rose-500" />
               Insert Picture
@@ -52,7 +50,7 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
 
           {/* Gallery Modal Overlay */}
           {showGallery && (
-            <div className="absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg p-6 z-20 grid grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
+            <div className="absolute top-16 left-0 right-0 bg-slate-50 border-b border-slate-200 shadow-lg p-6 z-20 grid grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2">
               <div className="col-span-4 flex justify-between items-center mb-2">
                 <h3 className="font-bold text-slate-700">Select Image to Insert</h3>
                 <button onClick={() => setShowGallery(false)} className="text-slate-400 hover:text-slate-800">Close</button>
@@ -87,7 +85,7 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
                   <img src={url} alt="Story illustration" className="max-w-md rounded-xl shadow-md border-4 border-white" />
                   <button 
                     onClick={() => setImages(images.filter((_, index) => index !== i))}
-                    className="absolute -top-3 -right-3 bg-white text-rose-500 rounded-full p-1 shadow-md border border-slate-200 opacity-0 group-hover:opacity-100 transition-opacity font-bold w-8 h-8 flex items-center justify-center"
+                    className="absolute -top-3 -right-3 bg-slate-50 text-rose-500 rounded-full p-1 shadow-md border border-slate-200 opacity-0 group-hover:opacity-100 transition-opacity font-bold w-8 h-8 flex items-center justify-center"
                   >
                     ×
                   </button>

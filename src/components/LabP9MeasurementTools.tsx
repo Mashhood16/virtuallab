@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, RotateCcw, Ruler, Target } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Ruler, Target } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void }) {
   const [objectWidth, setObjectWidth] = useState<number>(0);
@@ -56,23 +57,11 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Ruler className="text-blue-600" />
-            Physics Grade 9: Vernier Caliper
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Physics Grade 9: Vernier Caliper" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Theory: Measurement</h2>
           <div className="prose prose-sm">
             <p>
@@ -98,7 +87,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col items-center">
           <h2 className="text-lg font-bold border-b pb-2 w-full mb-4">Interactive Simulator</h2>
           
           <div className="flex gap-4 mb-6">
@@ -121,7 +110,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
           </div>
 
           <div className="relative w-full max-w-lg bg-slate-100 rounded-lg p-4 border overflow-hidden flex justify-center mb-6">
-            <svg width="100%" viewBox="0 0 600 300" className="bg-white border shadow-inner rounded">
+            <svg width="100%" viewBox="0 0 600 300" className="bg-slate-50 border shadow-inner rounded">
               {/* Main Scale Beam */}
               <rect x="20" y="100" width="560" height="60" fill="#e2e8f0" stroke="#94a3b8" />
               {mainTicks.map(tick => (
@@ -184,7 +173,7 @@ export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Analysis & Record</h2>
           
           <div className="bg-slate-50 border rounded-lg p-4 space-y-4">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -25,9 +26,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-900 flex flex-col font-sans">
       <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 1.2: Networking Devices Demo" />
           <div>
             <h1 className="text-xl font-bold text-sky-400">Act 1.2: Networking Devices Demo</h1>
             <p className="text-sm text-slate-400">Identify devices and configure the server rack.</p>
@@ -59,7 +58,7 @@ export default function LabNetworkDevices({ onExit }: LabProps) {
                      className={`w-8 h-8 rounded border flex items-center justify-center transition-colors ${cables.routerToSwitch ? 'bg-blue-500 border-blue-400' : 'bg-black border-slate-700 hover:border-slate-400'}`}
                      onClick={(e) => { e.stopPropagation(); setCables(c => ({...c, routerToSwitch: !c.routerToSwitch})); }}
                    >
-                     {cables.routerToSwitch && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                     {cables.routerToSwitch && <div className="w-2 h-2 bg-slate-50 rounded-full"></div>}
                    </button>
                 </div>
                 {/* Status LED */}

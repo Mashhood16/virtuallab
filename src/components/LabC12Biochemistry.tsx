@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Activity, Play, CheckCircle, RefreshCw, Dna } from 'lucide-react';
+import { BookOpen, Activity, Play, CheckCircle, RefreshCw, Dna } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) {
     const [activeTab, setActiveTab] = useState<'kinetics' | 'electrophoresis'>('kinetics');
@@ -66,22 +67,11 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-slate-800 text-white p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h1 className="text-xl font-bold">Biochemistry: Kinetics & Electrophoresis</h1>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Dna size={20} className="text-pink-400" />
-                    <span className="font-medium text-slate-300">Grade 12 Biology/Chem</span>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Biochemistry: Kinetics & Electrophoresis" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
                 {/* Theory */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <BookOpen size={20} className="text-pink-600" />
                         Biochemical Concepts
@@ -104,16 +94,16 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
                 </div>
 
                 {/* Simulation */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <div className="flex gap-2 bg-slate-100 p-1 rounded-lg">
                         <button 
-                            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'kinetics' ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
+                            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'kinetics' ? 'bg-slate-50 shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
                             onClick={() => setActiveTab('kinetics')}
                         >
                             Enzyme Kinetics
                         </button>
                         <button 
-                            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'electrophoresis' ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
+                            className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${activeTab === 'electrophoresis' ? 'bg-slate-50 shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
                             onClick={() => setActiveTab('electrophoresis')}
                         >
                             Electrophoresis
@@ -140,7 +130,7 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
                                     {/* Current Point */}
                                     <circle cx={substrate * 3} cy={200 - currentV * 2} r="5" fill="#1e293b" />
                                 </svg>
-                                <div className="absolute top-2 left-10 text-xs font-mono bg-white px-2 py-1 border rounded shadow-sm">
+                                <div className="absolute top-2 left-10 text-xs font-mono bg-slate-50 px-2 py-1 border rounded shadow-sm">
                                     V = {currentV.toFixed(1)} µM/s
                                 </div>
                             </div>
@@ -163,7 +153,7 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
                                         <button 
                                             key={t}
                                             onClick={() => setInhType(t as any)}
-                                            className={`px-2 py-1 text-xs rounded border ${inhType === t ? 'bg-pink-100 border-pink-400 text-pink-800' : 'bg-white border-slate-300 text-slate-600'}`}
+                                            className={`px-2 py-1 text-xs rounded border ${inhType === t ? 'bg-pink-100 border-pink-400 text-pink-800' : 'bg-slate-50 border-slate-300 text-slate-600'}`}
                                         >
                                             {t}
                                         </button>
@@ -222,7 +212,7 @@ export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) 
                 </div>
 
                 {/* Assessment */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <Activity size={20} className="text-blue-600" />
                         Computational Analysis

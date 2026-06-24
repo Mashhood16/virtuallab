@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { ArrowLeft, RefreshCw, Hand } from 'lucide-react';
+import { RefreshCw, Hand } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -28,22 +29,11 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
       onPointerLeave={handlePointerUp}
       onPointerMove={handlePointerMove}
     >
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 8.2: Hydraulic Elevator</h1>
-            <p className="text-sm text-slate-500">Fluid pressure multiplies force</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 8.2: Hydraulic Elevator" subtitle="Fluid pressure multiplies force" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
           
           <p className="absolute top-6 text-slate-500 flex items-center gap-2 font-bold animate-pulse">
             <Hand className="w-5 h-5 text-blue-500" />
@@ -67,7 +57,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
               </div>
 
               {/* Syringe Body */}
-              <div className="w-12 h-40 border-4 border-slate-300 rounded-b-md border-t-0 bg-white/50 backdrop-blur-sm z-20 flex flex-col justify-end overflow-hidden mt-32">
+              <div className="w-12 h-40 border-4 border-slate-300 rounded-b-md border-t-0 bg-slate-50/50 backdrop-blur-sm z-20 flex flex-col justify-end overflow-hidden mt-32">
                 {/* Fluid */}
                 <div className="w-full bg-cyan-500/80 transition-all duration-75" style={{ height: `${100 - pushed}%` }} />
               </div>
@@ -99,7 +89,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
               </div>
 
               {/* Syringe Body */}
-              <div className="w-24 h-40 border-4 border-slate-300 rounded-b-md border-t-0 bg-white/50 backdrop-blur-sm z-20 flex flex-col justify-end overflow-hidden">
+              <div className="w-24 h-40 border-4 border-slate-300 rounded-b-md border-t-0 bg-slate-50/50 backdrop-blur-sm z-20 flex flex-col justify-end overflow-hidden">
                 {/* Fluid */}
                 <div className="w-full bg-cyan-500/80 transition-all duration-75" style={{ height: `${20 + elevatorLift}%` }} />
               </div>

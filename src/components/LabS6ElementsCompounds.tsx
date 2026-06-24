@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, HelpCircle } from 'lucide-react';
+import { CheckCircle, HelpCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -28,15 +29,10 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 6: Elements vs. Compounds</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 6: Elements vs. Compounds" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-3xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-3xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
           
           <div className="bg-blue-50 border border-blue-200 text-blue-800 p-6 rounded-xl mb-8">
             <h2 className="font-bold text-lg mb-2 flex items-center gap-2"><HelpCircle className="w-6 h-6" /> Identification Activity</h2>
@@ -54,14 +50,14 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
                   <button 
                     onClick={() => handleSelect(q.id, 'Element')}
                     disabled={showResults}
-                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Element' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white border-slate-300 text-slate-600 hover:border-blue-300'}`}
+                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Element' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-50 border-slate-300 text-slate-600 hover:border-blue-300'}`}
                   >
                     Element
                   </button>
                   <button 
                     onClick={() => handleSelect(q.id, 'Compound')}
                     disabled={showResults}
-                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-purple-500 border-purple-500 text-white' : 'bg-white border-slate-300 text-slate-600 hover:border-purple-300'}`}
+                    className={`px-4 py-2 rounded font-bold border-2 transition-colors ${answers[q.id] === 'Compound' ? 'bg-purple-500 border-purple-500 text-white' : 'bg-slate-50 border-slate-300 text-slate-600 hover:border-purple-300'}`}
                   >
                     Compound
                   </button>
@@ -93,7 +89,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
               {calculateScore() === questions.length ? (
                 <p className="text-emerald-600 font-bold flex items-center justify-center gap-2"><CheckCircle className="w-5 h-5" /> Perfect! You understand the difference.</p>
               ) : (
-                <button onClick={() => { setShowResults(false); setAnswers({}); }} className="px-6 py-2 bg-white border-2 border-slate-300 rounded font-bold text-slate-600 hover:bg-slate-50">Try Again</button>
+                <button onClick={() => { setShowResults(false); setAnswers({}); }} className="px-6 py-2 bg-slate-50 border-2 border-slate-300 rounded font-bold text-slate-600 hover:bg-slate-50">Try Again</button>
               )}
             </div>
           )}

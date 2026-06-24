@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Beaker, Thermometer, CheckCircle2, Droplets, ArrowRight } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface ComponentProps {
   onExit?: () => void;
@@ -115,23 +116,13 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-emerald-700 text-white p-4 shadow-md flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold">Grade 9 Chemistry: Environmental Chemistry</h1>
-          <p className="text-sm opacity-90">Acids, Water Purity, and Catalytic Converters</p>
-        </div>
-        {onExit && (
-          <button onClick={onExit} className="px-4 py-2 bg-emerald-800 hover:bg-emerald-900 rounded-lg transition-colors">
-            Exit Lab
-          </button>
-        )}
-      </header>
+      <LabHeader onExit={onExit} title="Grade 9 Chemistry: Environmental Chemistry" />
 
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Beaker className="w-5 h-5 text-emerald-600" /> Theory & Context
           </h2>
@@ -141,7 +132,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
               <h3 className="font-bold text-emerald-800 mb-1">1. Acid Reactions</h3>
               <p>Acids react with metals to produce a salt and <b>Hydrogen gas (H₂)</b>.</p>
               <p>Acids react with metal carbonates to produce a salt, water, and <b>Carbon Dioxide gas (CO₂)</b>.</p>
-              <p className="font-mono text-xs mt-2 bg-white p-1 rounded">Acid + Metal → Salt + Hydrogen</p>
+              <p className="font-mono text-xs mt-2 bg-slate-50 p-1 rounded">Acid + Metal → Salt + Hydrogen</p>
             </div>
 
             <div className="bg-blue-50 p-3 rounded-lg">
@@ -157,7 +148,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
         </div>
 
         {/* Column 2: Interactive Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex gap-2 mb-4 border-b pb-2">
             <button 
               onClick={() => setActiveMode('reactions')}
@@ -193,11 +184,11 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
                         className={`flex flex-col items-center gap-1 transition-transform ${isSelected ? 'scale-90 opacity-50' : 'hover:-translate-y-1'}`}
                       >
                         <div className={`w-12 h-16 rounded-t-xl rounded-b-md border-2 border-slate-300 relative overflow-hidden flex items-end ${reagent.color}`}>
-                          <div className="absolute top-0 w-full h-3 bg-white/40 border-b border-slate-300"></div>
+                          <div className="absolute top-0 w-full h-3 bg-slate-50/40 border-b border-slate-300"></div>
                           {reagent.type === 'metal' || reagent.type === 'carbonate' ? (
                             <div className="w-full h-1/2 bg-slate-600/20" />
                           ) : (
-                            <div className="w-full h-3/4 bg-white/20" />
+                            <div className="w-full h-3/4 bg-slate-50/20" />
                           )}
                         </div>
                         <span className="text-xs font-bold font-mono">{reagent.formula}</span>
@@ -323,7 +314,7 @@ export default function LabC9EnvironmentalChem({ onExit }: ComponentProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle2 className="w-5 h-5 text-emerald-600" /> Assessment
           </h2>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Calendar, Scissors, Info, Sprout, Flower2, Save, Activity } from 'lucide-react';
+import { Calendar, Scissors, Info, Sprout, Flower2, Save, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'Germination' | 'Dissection'>('Germination');
@@ -48,22 +49,11 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-700 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center space-x-4">
-          <button onClick={onExit} className="p-2 hover:bg-emerald-600 rounded-full transition-colors">
-            <ArrowLeft className="w-6 h-6" />
-          </button>
-          <h1 className="text-2xl font-bold">Virtual Lab: Plant Reproduction</h1>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Activity className="w-6 h-6" />
-          <span className="font-semibold">Biology B9</span>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Virtual Lab: Plant Reproduction" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col space-y-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
             <h2 className="text-xl font-bold text-gray-800 flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
@@ -119,7 +109,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
           <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
             {activeTab === 'Germination' ? <Sprout className="w-5 h-5 mr-2 text-emerald-600" /> : <Flower2 className="w-5 h-5 mr-2 text-emerald-600" />}
             Interactive Visualizer
@@ -243,7 +233,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
         </div>
 
         {/* Right Column: Observation & Assessment */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col">
           <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Observations Log
@@ -268,7 +258,7 @@ export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void
               <p className="text-sm text-gray-400 text-center mt-4">No observations recorded.</p>
             ) : (
               observations.map(obs => (
-                <div key={obs.id} className="text-sm bg-white p-2 rounded border shadow-sm flex items-start">
+                <div key={obs.id} className="text-sm bg-slate-50 p-2 rounded border shadow-sm flex items-start">
                   <span className="text-emerald-600 mr-2 font-bold">•</span>
                   <span className="text-gray-700">{obs.text}</span>
                 </div>

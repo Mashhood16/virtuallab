@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Info } from 'lucide-react';
+import { CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -26,15 +27,10 @@ export default function LabS6AlimentaryCanal({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-rose-50 font-sans">
-      <div className="bg-white border-b border-rose-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-rose-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 4: Alimentary Canal Pathway</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 4: Alimentary Canal Pathway" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+        <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
           
           <div className="bg-rose-50 border border-rose-200 text-rose-800 p-6 rounded-xl mb-8 flex gap-4">
             <Info className="w-8 h-8 shrink-0 mt-1" />
@@ -58,7 +54,7 @@ export default function LabS6AlimentaryCanal({ onExit }: LabProps) {
                        key={organ}
                        onClick={() => handleSelect(organ)}
                        disabled={isUsed}
-                       className={`p-3 text-left font-bold border-2 rounded-lg transition-colors ${isUsed ? 'bg-slate-200 border-slate-300 text-slate-400 cursor-not-allowed' : 'bg-white border-rose-200 text-rose-700 hover:border-rose-400 hover:bg-rose-50 shadow-sm'}`}
+                       className={`p-3 text-left font-bold border-2 rounded-lg transition-colors ${isUsed ? 'bg-slate-200 border-slate-300 text-slate-400 cursor-not-allowed' : 'bg-slate-50 border-rose-200 text-rose-700 hover:border-rose-400 hover:bg-rose-50 shadow-sm'}`}
                      >
                        {organ}
                      </button>

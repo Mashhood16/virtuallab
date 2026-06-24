@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, CheckCircle2, XCircle, Save, Zap, Magnet } from 'lucide-react';
+import { Play, Pause, CheckCircle2, XCircle, Save, Zap, Magnet } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }) {
   const [mode, setMode] = useState<'faraday' | 'mri'>('faraday');
@@ -122,29 +123,24 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold">Grade 11 Physics: Electrostatics & Magnetism</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Grade 11 Physics: Electrostatics & Magnetism" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* Theory & Controls */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <Zap className="text-yellow-500" /> Theory & Setup
           </h2>
           
           <div className="flex gap-2 p-1 bg-slate-100 rounded-lg">
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'faraday' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'faraday' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setMode('faraday'); setIsPlaying(false); }}
             >
               Faraday Cage
             </button>
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'mri' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'mri' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setMode('mri'); setIsPlaying(false); }}
             >
               MRI Ferrofluid
@@ -182,7 +178,7 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulation */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <Magnet className="text-blue-500" /> Visualizer
@@ -202,7 +198,7 @@ export default function LabP11Electrostatics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Assessment & Data */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800">Analysis & Assessment</h2>
           
           <div className="space-y-4">

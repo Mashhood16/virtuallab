@@ -1,4 +1,5 @@
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -7,15 +8,10 @@ interface LabProps {
 export default function LabS7Unit9Projects({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 9: Waves and Energy Projects</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 9: Waves and Energy Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 max-w-4xl w-full">
+        <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 max-w-4xl w-full">
           <div className="flex items-center mb-8">
             <div className="bg-purple-100 p-3 rounded-xl mr-4"><BookOpen className="w-8 h-8 text-purple-600" /></div>
             <div>

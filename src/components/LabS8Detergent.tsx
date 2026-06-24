@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { RefreshCw, CheckCircle2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -28,18 +29,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.4: DIY Detergent</h1>
-            <p className="text-sm text-slate-500">Combine raw powders to make washing powder</p>
-          </div>
-        </div>
-        <button onClick={() => {setIngredients([]); setIsDone(false);}} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.4: DIY Detergent" subtitle="Combine raw powders to make washing powder" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -51,7 +41,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
               key={ing}
               onClick={() => addIngredient(ing)}
               disabled={ingredients.includes(ing) || isDone}
-              className={`p-4 text-left rounded-xl border-2 transition-all flex justify-between items-center ${ingredients.includes(ing) ? 'bg-emerald-50 border-emerald-500 text-emerald-800 opacity-50' : 'bg-white border-slate-200 hover:border-slate-300'}`}
+              className={`p-4 text-left rounded-xl border-2 transition-all flex justify-between items-center ${ingredients.includes(ing) ? 'bg-emerald-50 border-emerald-500 text-emerald-800 opacity-50' : 'bg-slate-50 border-slate-200 hover:border-slate-300'}`}
             >
               <span className="font-bold">{ing}</span>
               {ingredients.includes(ing) && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
@@ -60,7 +50,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
         </div>
 
         {/* The Container */}
-        <div className="flex-1 bg-white rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
           
           <div className={`w-48 h-64 border-8 border-slate-300 rounded-xl relative overflow-hidden flex flex-col justify-end bg-slate-50 transition-transform duration-75 ${isShaking ? 'animate-[shake_0.1s_infinite]' : ''}`}>
              
@@ -85,7 +75,7 @@ export default function LabS8Detergent({ onExit }: LabProps) {
 
              {isDone && (
                <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="bg-white/80 px-4 py-2 rounded font-bold text-slate-800 rotate-[-15deg] border-2 border-slate-300">
+                 <div className="bg-slate-50/80 px-4 py-2 rounded font-bold text-slate-800 rotate-[-15deg] border-2 border-slate-300">
                    DETERGENT
                  </div>
                </div>

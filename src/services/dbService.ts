@@ -3,6 +3,7 @@ import type { DBSchema, IDBPDatabase } from 'idb';
 
 export interface ProgressRecord {
   id?: number;
+  userId: string;
   experimentId: string;
   startTime: number;
   completionTime: number | null;
@@ -18,26 +19,38 @@ interface VirtualLabDB extends DBSchema {
     indexes: {
       'by-experiment': string;
       'by-sync-status': number;
+      'by-user': string;
     };
   };
 }
 
 const DB_NAME = 'VirtualLabDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
 let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 
 export const initDB = () => {
   if (!dbPromise) {
     dbPromise = openDB<VirtualLabDB>(DB_NAME, DB_VERSION, {
-      upgrade(db) {
-        if (!db.objectStoreNames.contains('progress')) {
-          const store = db.createObjectStore('progress', {
-            keyPath: 'id',
-            autoIncrement: true,
-          });
-          store.createIndex('by-experiment', 'experimentId');
-          store.createIndex('by-sync-status', 'synced');
+      upgrade(db, oldVersion) {
+        if (oldVersion < 1) {
+          if (!db.objectStoreNames.contains('progress')) {
+            const store = db.createObjectStore('progress', {
+              keyPath: 'id',
+              autoIncrement: true,
+            });
+            store.createIndex('by-experiment', 'experimentId');
+            store.createIndex('by-sync-status', 'synced');
+          }
+        }
+        if (oldVersion < 2) {
+          // Add userId index for per-user queries
+          const tx = db.transaction('progress', 'readwrite');
+          const store = tx.objectStore('progress');
+          if (!store.indexNames.contains('by-user')) {
+            store.createIndex('by-user', 'userId');
+          }
+          tx.done;
         }
       },
     });
@@ -56,19 +69,32 @@ export const progressDB = {
     return db.put('progress', record);
   },
   
-  async getRecordByExperiment(experimentId: string) {
+  async getRecordByExperiment(experimentId: string, userId?: string) {
     const db = await initDB();
+    if (userId) {
+      // Get all records for this experiment + user
+      const allRecords = await db.getAll('progress');
+      const filtered = allRecords.filter(r => r.experimentId === experimentId && r.userId === userId);
+      return filtered.length ? filtered[filtered.length - 1] : null;
+    }
     const records = await db.getAllFromIndex('progress', 'by-experiment', experimentId);
     return records.length ? records[records.length - 1] : null;
   },
   
-  async getAllRecords() {
+  async getAllRecords(userId?: string) {
     const db = await initDB();
+    if (userId) {
+      return db.getAllFromIndex('progress', 'by-user', userId);
+    }
     return db.getAll('progress');
   },
   
-  async getUnsyncedRecords() {
+  async getUnsyncedRecords(userId?: string) {
     const db = await initDB();
+    if (userId) {
+      const all = await db.getAllFromIndex('progress', 'by-user', userId);
+      return all.filter(r => r.synced === 0);
+    }
     return db.getAllFromIndex('progress', 'by-sync-status', 0);
   },
   

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, BarChart2, Play, RotateCcw, CheckCircle, XCircle, FileCode, Pause } from 'lucide-react';
+import { BarChart2, Play, RotateCcw, CheckCircle, XCircle, FileCode, Pause } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
   const initialArray = [45, 12, 38, 8, 25];
@@ -83,20 +84,10 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 bg-slate-700 rounded-full hover:bg-slate-600 transition-colors">
-            <ArrowLeft size={20} />
-          </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <FileCode className="text-blue-400" />
-            CS11: Algorithm Visualization
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="CS11: Algorithm Visualization" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <BarChart2 className="text-indigo-500" />
             Bubble Sort Theory
@@ -122,7 +113,7 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Play className="text-amber-500" />
             Sorting Array Simulator
@@ -184,7 +175,7 @@ export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <CheckCircle className="text-green-500" />
             Memory Swap Analysis

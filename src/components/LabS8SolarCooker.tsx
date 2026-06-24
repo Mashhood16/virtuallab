@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Sun } from 'lucide-react';
+import { RefreshCw, Sun } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -21,18 +22,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.5: Solar Cooker</h1>
-            <p className="text-sm text-slate-500">Parabolic mirror concentrating solar energy</p>
-          </div>
-        </div>
-        <button onClick={() => {setSunlight(false); setTemperature(25);}} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.5: Solar Cooker" subtitle="Parabolic mirror concentrating solar energy" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
@@ -71,9 +61,9 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
                   <div className={`w-full bg-amber-700 transition-all duration-[3000ms] ${sunlight ? 'h-full' : 'h-1/2'}`}>
                      {sunlight && (
                        <div className="w-full h-full flex flex-wrap gap-1 p-1 opacity-50">
-                         <div className="w-3 h-3 bg-white rounded-full animate-bounce" />
-                         <div className="w-2 h-2 bg-white rounded-full animate-ping" />
-                         <div className="w-4 h-4 bg-white rounded-full animate-bounce delay-75" />
+                         <div className="w-3 h-3 bg-slate-50 rounded-full animate-bounce" />
+                         <div className="w-2 h-2 bg-slate-50 rounded-full animate-ping" />
+                         <div className="w-4 h-4 bg-slate-50 rounded-full animate-bounce delay-75" />
                        </div>
                      )}
                   </div>
@@ -85,7 +75,7 @@ export default function LabS8SolarCooker({ onExit }: LabProps) {
             <div className="w-48 h-4 bg-slate-800 rounded-full z-0" />
 
             {/* Temperature Gauge */}
-            <div className="absolute bottom-10 right-10 bg-white px-6 py-4 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center gap-2">
+            <div className="absolute bottom-10 right-10 bg-slate-50 px-6 py-4 rounded-xl shadow-lg border border-slate-200 flex flex-col items-center gap-2">
                <span className="text-sm font-bold text-slate-500 uppercase">Pot Temp</span>
                <span className={`text-4xl font-black font-mono transition-colors duration-1000 ${temperature > 50 ? 'text-red-500' : 'text-blue-500'}`}>
                  {temperature}°C

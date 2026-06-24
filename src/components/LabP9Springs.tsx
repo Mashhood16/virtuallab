@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { Info, Plus, Minus, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
+import { Info, Plus, Minus, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
     const [numSprings, setNumSprings] = useState<number>(1);
@@ -100,23 +101,13 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between border-b border-slate-200">
-                <div className="flex items-center gap-4">
-                    {onExit && (
-                        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-slate-600" />
-                        </button>
-                    )}
-                    <div>
-                        <h1 className="text-xl font-bold text-slate-800">Springs in Series Lab</h1>
-                        <p className="text-sm text-slate-500">Observe forces and extensions when springs are connected sequentially.</p>
-                    </div>
-                </div>
+            <div className="bg-slate-50 shadow-sm px-6 py-4 flex items-center justify-between border-b border-slate-200">
+                <LabHeader onExit={onExit} title="Springs in Series Lab" subtitle="Observe forces and extensions when springs are connected sequentially." />
             </div>
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 {/* Column 1: Setup */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
                     <div className="flex items-center gap-2 mb-4">
                         <Info className="w-5 h-5 text-emerald-600" />
                         <h2 className="text-lg font-semibold text-slate-800">1. Setup & Theory</h2>
@@ -156,7 +147,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2: Simulation */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 flex flex-col items-center">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 flex flex-col items-center">
                     <h2 className="text-lg font-semibold text-slate-800 mb-4 w-full">2. Interactive Simulation</h2>
                     <svg 
                         ref={svgRef} 
@@ -195,7 +186,7 @@ export default function LabP9Springs({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
                     <h2 className="text-lg font-semibold text-slate-800 mb-4">3. Data Logging & Assessment</h2>
                     
                     <div className="mb-6">

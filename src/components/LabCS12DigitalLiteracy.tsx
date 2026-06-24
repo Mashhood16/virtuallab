@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef } from 'react';
-import { Search, Database, ArrowLeft, Table, EyeOff, CheckCircle, Save } from 'lucide-react';
+import { Search, Database,  Table, EyeOff, CheckCircle, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 const INITIAL_DATA = [
   { id: 1, name: 'Alice Smith', email: 'alice@example.com', age: 28, country: 'UK', condition: 'Asthma', ip: '192.168.1.1' },
@@ -80,15 +81,7 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
       <div className="flex items-center justify-between bg-slate-800 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <Database className="text-blue-400" size={24} />
-          <h1 className="text-xl font-bold">Grade 12 Digital Literacy: Data Querying & GDPR</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Grade 12 Digital Literacy: Data Querying & GDPR" />
         <div className="text-sm font-mono bg-slate-900 px-3 py-1 rounded-md text-slate-300">
           RECORDS: {processedData.length}
         </div>
@@ -96,7 +89,7 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
         
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <Table size={18} className="text-blue-500" />
@@ -125,13 +118,13 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="p-4 border-b border-slate-200 bg-slate-50 flex items-center gap-3">
             <Search className="text-slate-400" size={20} />
             <input 
               type="text" 
               placeholder="Query e.g., country:UK NOT:condition:Asthma"
-              className="flex-1 bg-white border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none font-mono"
+              className="flex-1 bg-slate-50 border border-slate-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none font-mono"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -156,7 +149,7 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
             </label>
           </div>
 
-          <div className="flex-1 overflow-auto bg-white p-4">
+          <div className="flex-1 overflow-auto bg-slate-50 p-4">
             <table className="w-full text-left border-collapse text-sm">
               <thead>
                 <tr className="border-b-2 border-slate-200 text-slate-600">
@@ -194,7 +187,7 @@ export default function LabCS12DigitalLiteracy({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <CheckCircle size={18} className="text-emerald-500" />

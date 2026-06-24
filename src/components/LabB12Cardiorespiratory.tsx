@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowLeft, Activity, Heart, CheckCircle2, RefreshCcw, Stethoscope, LineChart, Table2, Play } from 'lucide-react';
+import { Activity, Heart, CheckCircle2, RefreshCcw, Stethoscope, LineChart, Table2, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'ecg' | 'cpr'>('ecg');
@@ -125,19 +126,11 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-700" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold text-slate-900">Lab B12.2: Cardiorespiratory Systems</h1>
-          <p className="text-sm text-slate-500">Medical Diagnostics & Resuscitation Training</p>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Lab B12.2: Cardiorespiratory Systems" subtitle="Medical Diagnostics & Resuscitation Training" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <Stethoscope className="w-5 h-5 text-red-600"/> Theory & Context
           </h2>
@@ -157,7 +150,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800">
             <Activity className="w-5 h-5 text-red-600"/> Interactive Simulator
           </h2>
@@ -178,7 +171,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
               </div>
 
               {/* ECG Visualization */}
-              <div className="relative w-full h-48 bg-white border-2 border-red-200 rounded overflow-hidden">
+              <div className="relative w-full h-48 bg-slate-50 border-2 border-red-200 rounded overflow-hidden">
                 <svg viewBox="0 0 300 100" className="w-full h-full">
                   {drawGrid()}
                   {isSimulating && <path d={pathData} fill="none" stroke="#0f172a" strokeWidth="1.5" strokeLinejoin="round" />}
@@ -240,7 +233,7 @@ export default function LabB12Cardiorespiratory({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <LineChart className="w-5 h-5 text-red-600"/> Data & Analysis
           </h2>

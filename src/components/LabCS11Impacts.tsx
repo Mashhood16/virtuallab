@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Globe, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
+import { Globe, Eye, EyeOff, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'bias' | 'a11y'>('bias');
@@ -55,33 +56,22 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Globe className="text-blue-400" /> Lab: Global Impacts & Ethics
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Global Impacts & Ethics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden min-h-0">
         {/* Left Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 shrink-0">Concepts & Theory</h2>
           
           <div className="flex gap-2 bg-slate-100 p-1 rounded-lg shrink-0">
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'bias' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'bias' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setActiveTab('bias'); setFeedback(null); setAns(''); }}
             >
               Data Bias Evaluator
             </button>
             <button 
-              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'a11y' ? 'bg-white shadow text-purple-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'a11y' ? 'bg-slate-50 shadow text-purple-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => { setActiveTab('a11y'); setFeedback(null); setAns(''); setSrMode(false); }}
             >
               Web Accessibility
@@ -118,7 +108,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">
             {activeTab === 'bias' ? 'Selection Bias Simulator' : 'Screen Reader Experience'}
           </h2>
@@ -136,7 +126,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
                 </label>
               </div>
 
-              <div className="flex-1 border rounded-lg bg-white relative overflow-hidden flex items-center justify-center">
+              <div className="flex-1 border rounded-lg bg-slate-50 relative overflow-hidden flex items-center justify-center">
                 <svg viewBox="0 0 400 400" className="w-full h-full max-h-80 object-contain bg-slate-50">
                   {/* Background Regions */}
                   <rect x="0" y="0" width="200" height="400" fill="#eff6ff" />
@@ -171,7 +161,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'a11y' && (
             <div className="flex-1 flex flex-col relative border rounded-lg bg-slate-100 overflow-hidden min-h-[400px]">
-              <div className="p-4 border-b bg-white flex justify-between items-center z-10 relative shadow-sm">
+              <div className="p-4 border-b bg-slate-50 flex justify-between items-center z-10 relative shadow-sm">
                 <span className="font-semibold text-slate-700 flex items-center gap-2">
                   <Globe size={18} /> Web Page Preview
                 </span>
@@ -184,7 +174,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
                 </button>
               </div>
               
-              <div className={`flex-1 p-8 bg-white transition-all duration-500 ${srMode ? 'blur-[4px] grayscale opacity-40' : ''}`}>
+              <div className={`flex-1 p-8 bg-slate-50 transition-all duration-500 ${srMode ? 'blur-[4px] grayscale opacity-40' : ''}`}>
                 <h1 className="text-3xl font-bold mb-4 text-slate-800">Travel Blog</h1>
                 <p className="text-slate-600 mb-6">Check out my recent trip to Paris!</p>
                 <div className="w-full h-40 bg-slate-200 border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-500 mb-6 font-mono text-sm">
@@ -211,7 +201,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Col */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">Assessment & Validation</h2>
           
           <div className="space-y-6 flex-1 pr-2">
@@ -221,7 +211,7 @@ export default function LabCS11Impacts({ onExit }: { onExit?: () => void }) {
                 <p className="text-sm text-blue-900 mb-4 leading-relaxed">
                   Move the survey box completely to the left (Urban Area) using the X slider. 
                   Calculate the resulting Selection Bias using the formula:<br/><br/>
-                  <code className="bg-white px-2 py-1 rounded border">Bias = Sample Mean - Population Mean</code>
+                  <code className="bg-slate-50 px-2 py-1 rounded border">Bias = Sample Mean - Population Mean</code>
                 </p>
                 <div className="flex gap-2">
                   <input

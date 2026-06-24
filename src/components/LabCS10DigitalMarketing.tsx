@@ -65,7 +65,7 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
           <h2 className="text-lg font-bold text-slate-800">1. Campaign Setup</h2>
           <p className="text-sm text-slate-600 mb-4">Design your social media ad campaign. Broad targeting gets more views, but niche targeting may convert better.</p>
           
@@ -104,22 +104,22 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
         </div>
 
         {/* MIDDLE COLUMN: Simulation */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 relative">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 relative">
           <div className="w-full max-w-sm bg-slate-100 rounded-xl border border-slate-300 overflow-hidden shadow-sm">
-            <div className="p-3 border-b bg-white flex items-center gap-2">
+            <div className="p-3 border-b bg-slate-50 flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center text-white"><ThumbsUp size={16}/></div>
               <div>
                 <p className="font-bold text-sm">TechGadget Store</p>
                 <p className="text-xs text-slate-500">Sponsored</p>
               </div>
             </div>
-            <div className="p-3 bg-white text-sm">
+            <div className="p-3 bg-slate-50 text-sm">
               Upgrade your setup with our latest smart accessories! Click to learn more. 🚀
             </div>
             <div className="h-40 bg-slate-200 flex items-center justify-center border-y">
                <Presentation size={48} className="text-slate-400" />
             </div>
-            <div className="p-3 bg-white flex justify-between text-slate-500 text-sm">
+            <div className="p-3 bg-slate-50 flex justify-between text-slate-500 text-sm">
                <span className="font-medium text-blue-600">{finalMetrics.likes} Likes</span>
                <span>{finalMetrics.clicks} Clicks</span>
             </div>
@@ -133,12 +133,12 @@ export default function LabCS10DigitalMarketing({ onExit }: Props) {
         </div>
 
         {/* RIGHT COLUMN: Analytics */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800">3. Analytics & ROI</h2>
           
           <div className="bg-slate-50 p-4 rounded-lg border">
              <h3 className="font-bold flex items-center gap-2 mb-2"><BarChart3 size={18}/> Performance Graph</h3>
-             <svg viewBox="0 0 100 100" className="w-full h-32 bg-white rounded border overflow-visible">
+             <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 rounded border overflow-visible">
                {/* Likes line */}
                <polyline points={pointsLikes} fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinejoin="round" />
                {/* Sales line */}

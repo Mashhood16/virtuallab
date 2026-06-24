@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, ThermometerSun, Info } from 'lucide-react';
+import { RefreshCw, ThermometerSun, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -8,25 +9,10 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 4.1: Making of Yogurt</h1>
-            <p className="text-sm text-slate-500">Observe bacterial fermentation of milk</p>
-          </div>
-        </div>
-        <button onClick={() => setStep(0)} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 4.1: Making of Yogurt" subtitle="Observe bacterial fermentation of milk" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center">
           
           <div className="relative w-64 h-64 flex justify-center items-end border-b-4 border-slate-300 pb-2">
             
@@ -42,7 +28,7 @@ export default function LabS8MakingYogurt({ onExit }: LabProps) {
               
               {/* Liquid Level */}
               <div 
-                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-white h-[80%]'}`}
+                className={`w-full transition-all duration-1000 ${step >= 4 ? 'bg-amber-50 h-[80%]' : 'bg-slate-50 h-[80%]'}`}
               >
                 {step === 1 && (
                   <div className="w-full h-full flex items-center justify-center animate-pulse opacity-50">

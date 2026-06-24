@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Droplet, Flame, RotateCcw, Info } from 'lucide-react';
+import { CheckCircle, Droplet, Flame, RotateCcw, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface TubeState {
   id: string;
@@ -54,19 +55,11 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-rose-700 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="mr-4 hover:bg-rose-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold">Biochemistry Lab</h1>
-          <p className="text-rose-100 text-sm">Test for macromolecules using chemical reagents</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Biochemistry Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Info className="mr-2 text-rose-600" /> Macromolecule Tests
           </h2>
@@ -95,7 +88,7 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Simulation */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-slate-800">Lab Bench</h2>
             <button onClick={washTubes} className="flex items-center text-sm bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded">
@@ -150,7 +143,7 @@ export default function LabB9Biochemistry({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <CheckCircle className="mr-2 text-rose-600" /> Identification
           </h2>

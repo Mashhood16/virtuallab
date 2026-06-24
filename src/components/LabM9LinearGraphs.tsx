@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, TrendingUp, Calculator, MapPin, HelpCircle, Trash2 } from 'lucide-react';
+import { CheckCircle, TrendingUp, Calculator, MapPin, HelpCircle, Trash2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -48,9 +49,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <div className="bg-indigo-700 text-white p-4 shadow-md flex items-center justify-between z-10 shrink-0">
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-indigo-600 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
+          <LabHeader onExit={onExit} title="Lab M9.1: Linear Graphs in Real Contexts" />
           <div>
             <h1 className="text-xl font-bold">Lab M9.1: Linear Graphs in Real Contexts</h1>
             <p className="text-indigo-200 text-sm">Modeling Taxi Fares using y = mx + c</p>
@@ -61,7 +60,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <HelpCircle className="text-indigo-600" size={20} />
             Linear Equations Theory
@@ -90,7 +89,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <TrendingUp className="text-indigo-600" size={20} />
             Interactive Graph Plotter
@@ -164,7 +163,7 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <Calculator className="text-indigo-600" size={20} />
             Data Log & Assessment

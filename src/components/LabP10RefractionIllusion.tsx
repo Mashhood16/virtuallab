@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
+import { RefreshCw, Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -74,34 +75,13 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button
-              onClick={onExit}
-              className="p-2 hover:bg-slate-100 text-slate-600 rounded-full transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold">Refraction & Snell's Law</h1>
-            <p className="text-sm text-slate-500">Investigate the bending of light across different media</p>
-          </div>
-        </div>
-        <button
-          onClick={resetLab}
-          className="flex items-center gap-2 bg-slate-100 text-slate-700 px-4 py-2 rounded-lg hover:bg-slate-200 transition-colors font-medium border border-slate-200"
-        >
-          <RefreshCw className="w-4 h-4" /> Reset Lab
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Refraction & Snell's Law" subtitle="Investigate the bending of light across different media" />
 
       {/* Main Grid */}
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory and Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-slate-100 border-b border-slate-200 p-4">
             <h2 className="font-semibold text-slate-800">Theory & Setup</h2>
           </div>
@@ -145,7 +125,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
                 <select
                   value={material}
                   onChange={(e) => setMaterial(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full p-2 rounded-lg border border-slate-300 bg-slate-50 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
                   {Object.entries(materials).map(([key, mat]) => (
                     <option key={key} value={key}>
@@ -165,7 +145,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden lg:col-span-1">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden lg:col-span-1">
           <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
             <h2 className="font-semibold text-slate-800">Simulation View</h2>
           </div>
@@ -301,7 +281,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-slate-100 border-b border-slate-200 p-4 flex justify-between items-center">
             <h2 className="font-semibold text-slate-800">Data & Analysis</h2>
             <div className="flex gap-2">
@@ -357,7 +337,7 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
             {/* Graph */}
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
               <h3 className="text-sm font-bold text-slate-700 mb-2 text-center">Graph of sin(θ₁) vs sin(θ₂)</h3>
-              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-white border-l-2 border-b-2 border-slate-600">
+              <div className="relative w-full aspect-square max-w-[250px] mx-auto bg-slate-50 border-l-2 border-b-2 border-slate-600">
                 {/* Grid lines */}
                 {[0.2, 0.4, 0.6, 0.8, 1.0].map((val) => (
                   <div key={`grid-${val}`}>

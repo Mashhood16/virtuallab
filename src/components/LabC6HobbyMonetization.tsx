@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Briefcase, Camera, Music, Code, Paintbrush, DollarSign, Calculator, LineChart } from 'lucide-react';
+import { Briefcase, Camera, Music, Code, Paintbrush, DollarSign, Calculator, LineChart } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -28,10 +29,7 @@ export default function LabC6HobbyMonetization({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Hobby Monetization Business Plan" />
 
         <h1 className="text-3xl font-bold mb-2">Hobby Monetization Business Plan</h1>
         <p className="text-slate-600 mb-8">Choose a hobby, plan your startup idea, and calculate your potential profit.</p>
@@ -39,7 +37,7 @@ export default function LabC6HobbyMonetization({ onExit }: LabProps) {
         <div className="flex gap-8 flex-1">
           {/* Section 1: Business Idea */}
           <div className="w-1/2 flex flex-col gap-6">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <Briefcase className="w-6 h-6 text-indigo-600" /> 1. Select Your Startup Idea
               </h2>
@@ -79,7 +77,7 @@ export default function LabC6HobbyMonetization({ onExit }: LabProps) {
           </div>
 
           {/* Section 2: Financials */}
-          <div className="w-1/2 bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="w-1/2 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
               <Calculator className="w-6 h-6 text-emerald-600" /> 2. Calculate Profit
             </h2>

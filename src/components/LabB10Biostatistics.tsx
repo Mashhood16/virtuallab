@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, BarChart3, CheckCircle, RotateCcw, ListOrdered, BookOpen, Activity } from 'lucide-react';
+import { BarChart3, CheckCircle, RotateCcw, ListOrdered, BookOpen, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) {
   const initialData = [15, 30, 10, 25, 20];
@@ -70,18 +71,11 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white p-4 shadow-sm flex items-center gap-4">
-        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-600" />
-        </button>
-        <h1 className="text-2xl font-bold text-slate-800 flex items-center gap-2">
-          <BarChart3 className="w-8 h-8 text-indigo-600" /> Virtual Lab: Biostatistics
-        </h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Biostatistics" />
 
       <main className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory Context */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-3 bg-indigo-100 rounded-xl text-indigo-600">
               <BookOpen className="w-6 h-6" />
@@ -124,7 +118,7 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
         </div>
 
         {/* Middle Column: Interactive Visualizer */}
-        <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="lg:col-span-1 bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-bold text-slate-800">Interactive Data Tasks</h2>
             <button
@@ -212,7 +206,7 @@ export default function LabB10Biostatistics({ onExit }: { onExit: () => void }) 
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <CheckCircle className="w-6 h-6 text-green-500" /> Analysis & Assessment
           </h2>

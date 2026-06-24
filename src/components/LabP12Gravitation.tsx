@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Rocket, Globe, Activity, CheckCircle, XCircle } from 'lucide-react';
+import { Rocket, Globe, Activity, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
   const [velocity, setVelocity] = useState<number>(7.67); // km/s
@@ -75,22 +76,11 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Rocket className="text-blue-400" />
-            Orbital Mechanics & Gravitation
-          </h1>
-        </div>
-        <div className="text-sm font-medium text-slate-400">Grade 12 Physics</div>
-      </div>
+      <LabHeader onExit={onExit} title="Orbital Mechanics & Gravitation" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2">Newton's Cannonball</h2>
           <div className="text-slate-600 space-y-4">
             <p>
@@ -118,7 +108,7 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 w-full">
             <Globe className="text-indigo-500" />
             Interactive Orbit Visualizer
@@ -208,7 +198,7 @@ export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Engineering Tasks

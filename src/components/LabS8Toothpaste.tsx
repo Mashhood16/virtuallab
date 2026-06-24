@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Droplets, Beaker } from 'lucide-react';
+import { RefreshCw, Droplets, Beaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -26,18 +27,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.1: DIY Toothpaste</h1>
-            <p className="text-sm text-slate-500">Mix household ingredients to formulate toothpaste</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -45,7 +35,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
         <div className="w-full md:w-80 flex flex-col gap-4">
           <h3 className="font-bold text-slate-700">Add Ingredients</h3>
           
-          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Glycerin (tsp)</span>
               <span className="text-blue-600">{ingredients.glycerin} / 2</span>
@@ -58,7 +48,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Baking Soda (tsp)</span>
               <span className="text-zinc-600">{ingredients.bakingSoda} / 3</span>
@@ -71,7 +61,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Salt (pinches)</span>
               <span className="text-slate-600">{ingredients.salt} / 1</span>
@@ -84,7 +74,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             </button>
           </div>
 
-          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
+          <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col gap-2">
             <div className="flex justify-between font-bold text-sm">
               <span>Peppermint Oil (drops)</span>
               <span className="text-emerald-600">{ingredients.peppermint} / 5</span>
@@ -99,7 +89,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
         </div>
 
         {/* Mixing Bowl Area */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden h-[500px] justify-center">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden h-[500px] justify-center">
           
           {/* Progress Bar */}
           <div className="absolute top-6 left-1/2 -translate-x-1/2 w-3/4 max-w-md h-4 bg-slate-100 rounded-full border border-slate-200 overflow-hidden">
@@ -112,7 +102,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
             <div className="absolute top-2 left-2 right-2 bottom-6 bg-slate-300 rounded-[50%] shadow-[inset_0_20px_30px_rgba(0,0,0,0.1)] overflow-hidden flex items-end justify-center pb-4">
                {/* Paste visualization */}
                <div 
-                  className="w-32 bg-white rounded-full transition-all duration-700 shadow-inner"
+                  className="w-32 bg-slate-50 rounded-full transition-all duration-700 shadow-inner"
                   style={{ 
                     height: `${Math.max(10, progress * 0.8)}%`,
                     backgroundColor: isMixed ? '#f8fafc' : '#e2e8f0'

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Code, Layout, BookOpen, CheckSquare } from 'lucide-react';
+import { Code, Layout, BookOpen, CheckSquare } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Project {
   id: string;
@@ -102,19 +103,12 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
       <div className="flex items-center justify-between bg-emerald-600 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-emerald-700 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">Web Development Projects IDE</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Web Development Projects IDE" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory & Projects */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4">
           <h2 className="text-xl font-bold flex items-center gap-2 text-emerald-700">
             <BookOpen size={24} /> Select a Project
           </h2>
@@ -174,15 +168,15 @@ export default function LabCS9WebProjects({ onExit }: LabCS9WebProjectsProps) {
         </div>
 
         {/* Right Column: Live Preview */}
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-700">
             <Layout size={24} /> Live Preview
           </h2>
-          <div className="flex-1 border border-slate-300 rounded-lg overflow-hidden bg-white">
+          <div className="flex-1 border border-slate-300 rounded-lg overflow-hidden bg-slate-50">
             <iframe
               title="preview"
               srcDoc={debouncedCode}
-              className="w-full h-full bg-white"
+              className="w-full h-full bg-slate-50"
               sandbox="allow-scripts"
             />
           </div>

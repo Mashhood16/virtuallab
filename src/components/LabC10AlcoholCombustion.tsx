@@ -93,7 +93,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-1">
-        <div className="bg-white rounded-lg shadow-sm border p-4 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory & Setup</h2>
           <div className="text-slate-600 space-y-2 text-sm">
             <p><strong>Combustion</strong> of alcohols releases heat energy (exothermic).</p>
@@ -127,7 +127,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border p-4 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col items-center relative">
           <h2 className="text-xl font-bold text-slate-800 w-full border-b pb-2 mb-4">Simulation</h2>
           
           <div className="flex-1 w-full flex flex-col items-center justify-center relative">
@@ -176,7 +176,7 @@ export default function LabC10AlcoholCombustion({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm border p-4 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-lg shadow-sm border p-4 flex flex-col gap-4">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Data & Analysis</h2>
           
           <div className="bg-slate-100 p-3 rounded flex justify-between items-center">

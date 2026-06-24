@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
+import { RefreshCw, Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -85,26 +86,11 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 10: Convection Currents</h1>
-            <p className="text-sm text-slate-500">Determine the relationship between heater power and convection velocity.</p>
-          </div>
-        </div>
-        <button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RefreshCw className="w-4 h-4" /> Reset Lab
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 10: Convection Currents" subtitle="Determine the relationship between heater power and convection velocity." rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <BookOpen className="w-5 h-5 text-purple-600" />
             <h2 className="text-lg font-bold text-slate-800">Theory & Setup</h2>
@@ -131,7 +117,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="w-5 h-5 text-blue-600" />
             <h2 className="text-lg font-bold text-slate-800">Simulation</h2>
@@ -198,7 +184,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div className="flex items-center gap-2 border-b pb-2">
             <LineChart className="w-5 h-5 text-emerald-600" />
             <h2 className="text-lg font-bold text-slate-800">Data & Analysis</h2>
@@ -242,7 +228,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
           {/* Graph */}
           <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 flex flex-col items-center">
             <span className="text-xs font-bold text-slate-600 mb-2">Velocity vs Heater Power</span>
-            <svg width="250" height="150" className="bg-white border border-slate-300 rounded shadow-sm">
+            <svg width="250" height="150" className="bg-slate-50 border border-slate-300 rounded shadow-sm">
               {/* Grid & Axes */}
               <line x1="20" y1="130" x2="240" y2="130" stroke="#cbd5e1" strokeWidth="2" />
               <line x1="20" y1="10" x2="20" y2="130" stroke="#cbd5e1" strokeWidth="2" />

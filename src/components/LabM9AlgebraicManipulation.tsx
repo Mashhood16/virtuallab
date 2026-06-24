@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
+import { CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -77,29 +78,24 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-indigo-600 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex-1">Virtual Lab: Algebraic Manipulation</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Algebraic Manipulation" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <BookOpen className="mr-2" /> Theory & Context
           </h2>
           
           <div className="flex bg-slate-100 p-1 rounded-lg mb-6 shrink-0">
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-white shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'poly' ? 'bg-slate-50 shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('poly')}
             >
               Polynomials
             </button>
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-white shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'optics' ? 'bg-slate-50 shadow text-indigo-700' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('optics')}
             >
               Optics & LCM
@@ -138,7 +134,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <Activity className="mr-2" /> Interactive Simulator
           </h2>
@@ -182,7 +178,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
                   <path d={`M ${objX} 60 L 150 60 L ${imgX} ${imgY}`} stroke="#ef4444" fill="none" strokeWidth="1.5" opacity="0.7" />
                   <path d={`M ${objX} 60 L 150 100 L ${imgX} ${imgY}`} stroke="#3b82f6" fill="none" strokeWidth="1.5" opacity="0.7" />
                 </svg>
-                <div className="absolute top-2 right-2 bg-white/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
+                <div className="absolute top-2 right-2 bg-slate-50/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
                   f = {f.toFixed(2)} cm
                 </div>
               </div>
@@ -232,7 +228,7 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-indigo-700">
             <TableIcon className="mr-2" /> Analysis & Data
           </h2>

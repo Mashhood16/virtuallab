@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, BookOpen, Code, Activity, RefreshCw, CheckCircle2, XCircle, Terminal } from 'lucide-react';
+import { BookOpen, Code, Activity, RefreshCw, CheckCircle2, XCircle, Terminal } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -93,22 +94,13 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-600" />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800">Hello World! Virtual Web Dev</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Hello World! Virtual Web Dev" />
 
       <div className="flex-1 p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
           
           {/* Column 1: Theory */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full overflow-y-auto">
             <div className="flex items-center gap-2 mb-4 text-orange-600">
               <BookOpen className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Web Basics Theory</h2>
@@ -130,7 +122,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
           </div>
 
           {/* Column 2: Simulation/Builder */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2 text-indigo-600">
                 <Code className="w-5 h-5" />
@@ -180,7 +172,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
                 <iframe 
                   ref={iframeRef} 
                   title="preview" 
-                  className="w-full flex-1 bg-white"
+                  className="w-full flex-1 bg-slate-50"
                   sandbox="allow-scripts allow-same-origin"
                 />
               </div>
@@ -188,7 +180,7 @@ export default function LabCS10HelloWorld({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Analysis/Assessment */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col h-full">
             <div className="flex items-center gap-2 mb-4 text-purple-600">
               <Activity className="w-5 h-5" />
               <h2 className="text-lg font-semibold">Assessment & Logs</h2>

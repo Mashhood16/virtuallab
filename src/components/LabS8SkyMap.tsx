@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Map, Compass } from 'lucide-react';
+import { Map, Compass } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -33,14 +34,8 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-900 font-sans select-none text-white overflow-hidden">
-      <div className="bg-slate-800/80 backdrop-blur-md border-b border-slate-700 p-4 flex items-center justify-between z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full text-slate-300"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-white">Act 12.1: Sky Map Mobile App</h1>
-            <p className="text-sm text-slate-400">Locate constellations and Alpha Centauri</p>
-          </div>
-        </div>
+      <LabHeader onExit={onExit} variant="dark" title="Act 12.1: Sky Map Mobile App" />
+      <div className="bg-slate-800/80 backdrop-blur-md border-b border-slate-700 p-2 flex justify-end z-10">
         <div className="flex gap-2">
           <button 
             onMouseDown={() => setIsScanning(true)}
@@ -64,7 +59,7 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
            {Array.from({length: 100}).map((_, i) => (
              <div 
                key={i} 
-               className="absolute w-1 h-1 bg-white rounded-full"
+               className="absolute w-1 h-1 bg-slate-50 rounded-full"
                style={{ 
                  left: `${Math.random() * 100}%`, 
                  top: `${Math.random() * 100}%`,
@@ -85,8 +80,8 @@ export default function LabS8SkyMap({ onExit }: LabProps) {
           }}
         >
            {/* Crosshair */}
-           <div className="absolute w-4 h-px bg-white/50" />
-           <div className="absolute h-4 w-px bg-white/50" />
+           <div className="absolute w-4 h-px bg-slate-50/50" />
+           <div className="absolute h-4 w-px bg-slate-50/50" />
 
            {/* AR Overlay UI */}
            {isScanning && (

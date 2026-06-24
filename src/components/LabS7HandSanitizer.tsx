@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Beaker, Plus, CheckCircle } from 'lucide-react';
+import { Beaker, Plus, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -27,15 +28,10 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-emerald-50 font-sans">
-      <div className="bg-white border-b border-emerald-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-emerald-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 11: Make a Hand Sanitizer</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Make a Hand Sanitizer" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-emerald-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-emerald-800 mb-4">Homemade Hygiene Product</h2>
           <p className="text-slate-600 mb-6">Create an effective hand sanitizer by combining the correct ratio of ingredients. You need exactly 60ml (2/3 part) Rubbing Alcohol, 30ml (1/3 part) Aloe Vera Gel, and 10 drops of Essential Oil.</p>
           
@@ -61,21 +57,21 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
            
            {/* Ingredients Controls */}
            <div className="flex-1 space-y-4">
-             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-blue-600">Rubbing Alcohol (99%)</h4>
                  <div className="text-sm text-slate-500">Current: {alcohol} ml</div>
                </div>
                <button onClick={addAlcohol} disabled={mixed} className="p-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
              </div>
-             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-green-600">Aloe Vera Gel</h4>
                  <div className="text-sm text-slate-500">Current: {aloe} ml</div>
                </div>
                <button onClick={addAloe} disabled={mixed} className="p-2 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 disabled:opacity-50"><Plus className="w-5 h-5" /></button>
              </div>
-             <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
+             <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 flex items-center justify-between">
                <div>
                  <h4 className="font-bold text-yellow-600">Essential Oil</h4>
                  <div className="text-sm text-slate-500">Current: {essentialOil} drops</div>
@@ -95,7 +91,7 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
                 <div className="w-full border-t border-slate-600 text-xs">90</div>
              </div>
 
-             <div className="w-64 h-48 border-8 border-slate-300 rounded-[20px_20px_80px_80px] bg-white/50 backdrop-blur-md shadow-inner flex flex-col justify-end overflow-hidden relative z-10">
+             <div className="w-64 h-48 border-8 border-slate-300 rounded-[20px_20px_80px_80px] bg-slate-50/50 backdrop-blur-md shadow-inner flex flex-col justify-end overflow-hidden relative z-10">
                 
                 {mixed ? (
                   <div className="w-full h-[90px] bg-emerald-300/80 border-t-4 border-emerald-400/50 flex items-center justify-center">
@@ -130,7 +126,7 @@ export default function LabS7HandSanitizer({ onExit }: LabProps) {
         </div>
 
         {mixed && (
-          <div className="mt-8 p-6 bg-white shadow-lg text-slate-800 rounded-xl border-l-4 border-emerald-500 max-w-2xl flex items-start">
+          <div className="mt-8 p-6 bg-slate-50 shadow-lg text-slate-800 rounded-xl border-l-4 border-emerald-500 max-w-2xl flex items-start">
              <CheckCircle className="w-8 h-8 text-emerald-500 mr-4 shrink-0" />
              <div>
                <h4 className="font-bold text-lg mb-2">Sanitizer Ready!</h4>

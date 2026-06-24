@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Keyboard, Type } from 'lucide-react';
+import { Keyboard, Type } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -31,20 +32,17 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Urdu Typing Practice" />
 
         <h1 className="text-3xl font-bold mb-2">Urdu Typing Practice</h1>
         <p className="text-slate-600 mb-8">Toggle the Pak Urdu Installer layout and type a sentence in Urdu.</p>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col flex-1 overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col flex-1 overflow-hidden">
           {/* Editor Toolbar */}
           <div className="border-b border-slate-200 bg-slate-100 p-2 flex gap-2 items-center">
             <button 
               onClick={() => setUrduMode(!urduMode)}
-              className={`px-4 py-2 rounded font-medium flex items-center transition-colors ${urduMode ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-50'}`}
+              className={`px-4 py-2 rounded font-medium flex items-center transition-colors ${urduMode ? 'bg-emerald-600 text-white' : 'bg-slate-50 border border-slate-300 text-slate-700 hover:bg-slate-50'}`}
             >
               <Keyboard className="w-4 h-4 mr-2" />
               {urduMode ? 'Urdu Keyboard Active' : 'Enable Urdu Keyboard'}
@@ -68,7 +66,7 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
         </div>
       </div>
 
-      <div className="w-80 bg-white p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
+      <div className="w-80 bg-slate-50 p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
         <h2 className="font-bold text-lg mb-4 flex items-center"><Type className="w-5 h-5 mr-2 text-blue-500"/> Phonetic Map</h2>
         <p className="text-sm text-slate-600 mb-4">A simplified reference for the Pak Urdu Installer Phonetic layout:</p>
         

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Flame } from 'lucide-react';
+import { RefreshCw, Flame } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -26,21 +27,10 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 6.4: Exothermic Reaction</h1>
-            <p className="text-sm text-slate-500">Water + Calcium Chloride (Releases Heat)</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium text-slate-700">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
+        <div className="bg-slate-50 p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
           
           <div className="flex gap-12 items-end mt-12 mb-16 relative">
             
@@ -56,7 +46,7 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
                 {stage === 'reaction' && (
                   <div className="absolute inset-0">
                     {/* Dissolving effect */}
-                    <div className="absolute inset-0 bg-white/20 animate-pulse" />
+                    <div className="absolute inset-0 bg-slate-50/20 animate-pulse" />
                     {/* Heat Radiating Effect */}
                     {temp > 30 && (
                       <div className="absolute inset-0 bg-orange-500/10 transition-colors duration-1000" />

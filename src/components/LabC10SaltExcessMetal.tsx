@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Flame, Filter, RotateCcw, Check, Beaker } from 'lucide-react';
+import { Flame, Filter, RotateCcw, Check, Beaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void }) {
   const [acidAdded, setAcidAdded] = useState(false);
@@ -47,15 +48,9 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-teal-600 text-white p-4 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-teal-700 rounded-full transition-colors"><ArrowLeft size={24} /></button>
-          <h1 className="text-2xl font-bold">Salt from Excess Metal</h1>
-        </div>
-        <div className="flex items-center gap-2"><Beaker size={24} /><span className="font-medium">C10 Chemistry</span></div>
-      </header>
+      <LabHeader onExit={onExit} title="Salt from Excess Metal" />
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory & Setup</h2>
             <p className="text-slate-600">A soluble salt can be prepared by reacting an acid with an insoluble metal. Adding excess metal ensures all acid reacts.</p>
             <div className="bg-teal-50 p-4 rounded-lg border border-teal-100">
@@ -70,7 +65,7 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
                 <li>Click <strong>Evaporate</strong> to obtain ZnSO₄ crystals.</li>
             </ol>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
             <h2 className="text-xl font-bold text-slate-800 mb-6 w-full text-left">Interactive Simulation</h2>
             <div className="w-full bg-slate-900 text-green-400 font-mono p-4 rounded-lg shadow-inner mb-6 min-h-[80px] flex items-center justify-center text-center text-lg">{equation}</div>
             
@@ -121,12 +116,12 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
                 <button onClick={reset} className="flex items-center gap-2 px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"><RotateCcw size={18} /> Reset</button>
             </div>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
             <div className="bg-teal-50 p-5 rounded-xl border border-teal-200 mt-auto">
                 <h3 className="font-bold text-teal-900 mb-2 flex items-center gap-2"><Check size={20} /> Analysis Check</h3>
                 <p className="text-sm text-teal-800 mb-4">What gas is produced during the reaction between Zinc and Sulfuric Acid (which creates a 'pop' sound with a lit splint)?</p>
                 <div className="flex gap-2">
-                    <input type="text" value={assessmentAns} onChange={(e) => setAssessmentAns(e.target.value)} placeholder="Name of gas..." className="flex-1 px-3 py-2 border border-teal-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white" />
+                    <input type="text" value={assessmentAns} onChange={(e) => setAssessmentAns(e.target.value)} placeholder="Name of gas..." className="flex-1 px-3 py-2 border border-teal-300 rounded focus:outline-none focus:ring-2 focus:ring-teal-500 bg-slate-50" />
                     <button onClick={checkAns} className="px-4 py-2 bg-teal-600 hover:bg-teal-700 text-white rounded transition-colors font-medium">Check</button>
                 </div>
                 {assessmentStatus === true && <p className="mt-2 text-sm text-green-700 font-semibold">Correct! Hydrogen gas is produced.</p>}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Zap, CheckCircle2, XCircle } from 'lucide-react';
+import { Activity, Zap, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -60,19 +61,11 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-700 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <Zap className="text-yellow-400" />
-          Complex Numbers: AC Circuit Applications
-        </h1>
-      </div>
+      <LabHeader onExit={onExit} title="Complex Numbers: AC Circuit Applications" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
             <Activity /> Theory & Context
           </h2>
@@ -101,7 +94,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-indigo-800 mb-4">Oscilloscope & Phasor Simulation</h2>
           
           <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200">
@@ -145,7 +138,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-indigo-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-6">
@@ -153,7 +146,7 @@ export default function LabM10ComplexApplications({ onExit }: Props) {
             <p className="text-slate-700 mb-4">
               Using the simulator values, calculate the resulting Voltage <code>E = I × Z</code> in standard complex form <code>a + bj</code>.
             </p>
-            <div className="bg-white p-3 rounded border border-slate-200 mb-4 font-mono text-sm">
+            <div className="bg-slate-50 p-3 rounded border border-slate-200 mb-4 font-mono text-sm">
               <p>Z = {resistance} {reactance >= 0 ? '+' : '-'} {Math.abs(reactance)}j Ω</p>
               <p>I = {currentReal} {currentImag >= 0 ? '+' : '-'} {Math.abs(currentImag)}j A</p>
             </div>

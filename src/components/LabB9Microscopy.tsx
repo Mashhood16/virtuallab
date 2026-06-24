@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, ZoomIn, Eye, Move, CheckCircle, Info } from 'lucide-react';
+import { ZoomIn, Eye, Move, CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
   const [selectedSlide, setSelectedSlide] = useState('onion');
@@ -71,19 +72,11 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-700 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold">Microscopy & Cell Biology Lab</h1>
-          <p className="text-indigo-100 text-sm">Operate a virtual microscope to examine cell structures</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Microscopy & Cell Biology Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Info className="mr-2 text-indigo-600" /> Microscope Basics
           </h2>
@@ -111,7 +104,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Simulation */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-slate-800 mb-4 w-full text-left">Microscope Viewport</h2>
           
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-[12px] border-slate-800 bg-black overflow-hidden shadow-2xl flex items-center justify-center mb-6">
@@ -121,7 +114,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
                 filter: `blur(${blurAmount}px)`, 
                 transition: 'transform 0.2s, filter 0.2s' 
               }}
-              className="w-full h-full flex items-center justify-center bg-white"
+              className="w-full h-full flex items-center justify-center bg-slate-50"
             >
               {renderSlideSVG()}
             </div>
@@ -192,7 +185,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <CheckCircle className="mr-2 text-indigo-600" /> Observations & Analysis
           </h2>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Activity, Bone, Waves } from 'lucide-react';
+import { Activity, Bone, Waves } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }) {
   const [tissueDepth, setTissueDepth] = useState(5); 
@@ -72,20 +73,10 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={20} />
-          </button>
-          <h1 className="text-xl font-bold">Lab 12.3: Medical Imaging Physics</h1>
-        </div>
-        <div className="flex items-center gap-4 text-sm">
-          <Activity size={16} className="text-pink-400" /> Diagnostic Mode
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab 12.3: Medical Imaging Physics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Theory</h2>
           
           <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
@@ -111,7 +102,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
           <div className="bg-slate-100 p-4 rounded-xl border border-slate-200">
             <div className="flex justify-between items-center mb-2">
               <h3 className="font-bold text-slate-800">Ultrasound Sonography</h3>
@@ -168,7 +159,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
             </div>
             
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-white border border-slate-300 flex items-center justify-center font-bold">
+              <div className="w-16 h-16 bg-slate-50 border border-slate-300 flex items-center justify-center font-bold">
                 I₀
                 <br/>100%
               </div>
@@ -187,7 +178,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Assessments</h2>
           
           <div className="space-y-6">

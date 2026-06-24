@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
     onExit?: () => void;
@@ -82,13 +83,10 @@ export default function LabC10AdditionPolymerisation({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-blue-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold">Addition Polymerisation: Polyethylene</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-blue-700 hover:bg-blue-800 rounded">Exit</button>}
-            </div>
+            <LabHeader onExit={onExit} title="Addition Polymerisation: Polyethylene" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-blue-600"/> Setup & Theory</h2>
                     <p className="text-sm text-slate-700">
                         Addition polymerisation involves linking ethene monomers by breaking their C=C double bonds to form a continuous chain. High pressure, temperature, and Ziegler-Natta catalysts improve the reaction rate.
@@ -123,7 +121,7 @@ export default function LabC10AdditionPolymerisation({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Reaction Chamber</h2>
                     <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center overflow-x-auto">
                         <svg width={Math.max(500, monomers * 30 + 100)} height="200" viewBox={`0 0 ${Math.max(500, monomers * 30 + 100)} 200`}>
@@ -169,7 +167,7 @@ export default function LabC10AdditionPolymerisation({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-blue-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={progress < 100} className="w-full bg-blue-100 text-blue-700 py-2 rounded font-medium hover:bg-blue-200 disabled:opacity-50">

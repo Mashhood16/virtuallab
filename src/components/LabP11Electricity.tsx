@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Save, Lightbulb, Activity } from 'lucide-react';
+import { CheckCircle2, XCircle, Save, Lightbulb, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
   const [mode, setMode] = useState<'sensor' | 'concrete'>('sensor');
@@ -113,29 +114,24 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold">Grade 11 Physics: Practical Electricity</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Grade 11 Physics: Practical Electricity" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* Theory & Controls */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <Lightbulb className="text-yellow-500" /> Circuit Builder
           </h2>
           
           <div className="flex gap-2 p-1 bg-slate-100 rounded-lg">
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'sensor' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'sensor' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('sensor')}
             >
               LDR Alarm Circuit
             </button>
             <button 
-              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'concrete' ? 'bg-white shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md font-medium transition-colors ${mode === 'concrete' ? 'bg-slate-50 shadow text-blue-600' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('concrete')}
             >
               Smart Concrete
@@ -169,7 +165,7 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-4 border border-slate-200 lg:col-span-1">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800">Interactive Board</h2>
           </div>
@@ -179,7 +175,7 @@ export default function LabP11Electricity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment & Data */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
             <Activity className="text-blue-500" /> Analysis & Assessment
           </h2>

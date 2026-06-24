@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, Map, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
+import { CheckCircle, Map, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Point { x: number; y: number; }
 interface LabProps { onExit?: () => void; }
@@ -65,22 +66,11 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-700 text-white p-4 shadow-md flex items-center justify-between z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-emerald-600 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Lab M9.2: Geometry & Polygons</h1>
-            <p className="text-emerald-200 text-sm">Landscaping Cost Estimator (Area & Perimeter)</p>
-          </div>
-        </div>
-        <Map size={28} className="text-emerald-300" />
-      </div>
+      <LabHeader onExit={onExit} title="Lab M9.2: Geometry & Polygons" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <HelpCircle className="text-emerald-600" size={20} />
             Area, Perimeter & Centroid
@@ -101,7 +91,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <Ruler className="text-emerald-600" size={20} />
             Interactive Yard Map
@@ -149,7 +139,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
               )}
             </svg>
             
-            <div className="absolute bottom-2 right-2 text-xs text-slate-400 font-mono bg-white/80 px-1 rounded">
+            <div className="absolute bottom-2 right-2 text-xs text-slate-400 font-mono bg-slate-50/80 px-1 rounded">
               Grid: 20x20 meters
             </div>
           </div>
@@ -163,7 +153,7 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <Calculator className="text-emerald-600" size={20} />
             Data Log & Cost Estimator
@@ -173,15 +163,15 @@ export default function LabM9GeometryPolygons({ onExit }: LabProps) {
             <div>
               <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Geometric Data</h3>
               <div className="grid grid-cols-2 gap-2 mt-2 font-mono text-sm">
-                <div className="bg-white p-2 rounded border border-slate-200">
+                <div className="bg-slate-50 p-2 rounded border border-slate-200">
                   <span className="text-slate-400 block text-xs">Perimeter</span>
                   {points.length === 3 ? `${perimeter.toFixed(2)} m` : '-'}
                 </div>
-                <div className="bg-white p-2 rounded border border-slate-200">
+                <div className="bg-slate-50 p-2 rounded border border-slate-200">
                   <span className="text-slate-400 block text-xs">Area</span>
                   {points.length === 3 ? `${area.toFixed(2)} m²` : '-'}
                 </div>
-                <div className="bg-white p-2 rounded border border-slate-200 col-span-2">
+                <div className="bg-slate-50 p-2 rounded border border-slate-200 col-span-2">
                   <span className="text-slate-400 block text-xs">Centroid (Sprinkler)</span>
                   {points.length === 3 ? `(${cx.toFixed(2)}, ${cy.toFixed(2)})` : '-'}
                 </div>

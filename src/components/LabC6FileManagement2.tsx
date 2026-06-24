@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Folder, File, Trash2, Monitor, RotateCcw, Save } from 'lucide-react';
+import { ArrowLeft, Folder, File, Trash2, Monitor, RotateCcw, Save, Plus, FilePlus } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -94,7 +95,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
     const file = items.find(i => i.id === editingFileId);
     return (
       <div className="flex h-screen font-sans bg-slate-50 p-8">
-        <div className="flex-1 bg-white rounded-xl shadow-lg border border-slate-200 p-8 flex flex-col">
+        <div className="flex-1 bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-8 flex flex-col">
           <div className="flex items-center justify-between mb-6 border-b pb-4">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <File className="w-6 h-6 text-blue-500" /> 
@@ -122,14 +123,9 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 text-slate-800">
+      <LabHeader onExit={onExit} title="File and Folder Management 2" subtitle="Create, edit, delete & recover files and folders" />
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
-
-        <h1 className="text-3xl font-bold mb-2">File and Folder Management 2</h1>
         <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6">
           <h3 className="font-bold mb-2">Tasks to Complete:</h3>
           <ul className="list-disc pl-5 space-y-1 text-sm">
@@ -139,7 +135,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
           </ul>
         </div>
 
-        <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-300 flex flex-col overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-300 flex flex-col overflow-hidden">
           {/* Simulated File Explorer Header */}
           <div className="bg-slate-100 border-b border-slate-300 p-3 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -153,7 +149,7 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <div className="bg-white border border-slate-300 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600">
+              <div className="bg-slate-50 border border-slate-300 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600">
                 {currentFolderId === 'desktop' ? <Monitor className="w-4 h-4" /> : currentFolderId === 'recycle_bin' ? <Trash2 className="w-4 h-4" /> : <Folder className="w-4 h-4" />}
                 {currentFolder?.name}
               </div>
@@ -170,46 +166,30 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
           </div>
 
           {/* Toolbar */}
-          <div className="bg-slate-50 border-b border-slate-200 p-2 flex items-center gap-2">
-            <button 
-              onClick={() => { setIsCreatingFolder(true); setInputName(''); }}
-              disabled={currentFolderId === 'recycle_bin'}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded font-medium disabled:opacity-50"
-            >
-              <Folder className="w-4 h-4 text-amber-500" /> New Folder
+          <div className="bg-slate-100 border-b border-slate-300 px-4 py-2 flex items-center gap-2">
+            <button onClick={() => setIsCreatingFolder(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-sm font-bold transition-colors">
+              <Plus className="w-4 h-4" /> New Folder
             </button>
-            <button 
-              onClick={() => { setIsCreatingFile(true); setInputName(''); }}
-              disabled={currentFolderId === 'recycle_bin'}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded font-medium disabled:opacity-50"
-            >
-              <File className="w-4 h-4 text-blue-500" /> New File
+            <button onClick={() => setIsCreatingFile(true)} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-bold transition-colors">
+              <FilePlus className="w-4 h-4" /> New File
             </button>
-            <div className="w-px h-6 bg-slate-300 mx-1"></div>
-            {currentFolderId === 'recycle_bin' ? (
-               <button 
-                 onClick={handleRecover}
-                 disabled={!selectedItemId}
-                 className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 text-green-600 font-medium"
-               >
-                 <RotateCcw className="w-4 h-4" /> Recover
-               </button>
-            ) : (
-               <button 
-                 onClick={handleDelete}
-                 disabled={!selectedItemId}
-                 className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 text-red-600 font-medium"
-               >
-                 <Trash2 className="w-4 h-4" /> Delete
-               </button>
+            {selectedItemId && currentFolderId !== 'recycle_bin' && (
+              <button onClick={handleDelete} className="flex items-center gap-1.5 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded text-sm font-bold transition-colors">
+                <Trash2 className="w-4 h-4" /> Delete
+              </button>
+            )}
+            {selectedItemId && currentFolderId === 'recycle_bin' && (
+              <button onClick={handleRecover} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded text-sm font-bold transition-colors">
+                <RotateCcw className="w-4 h-4" /> Recover
+              </button>
             )}
           </div>
 
           {/* File Grid */}
-          <div className="flex-1 p-6 bg-white overflow-y-auto">
+          <div className="flex-1 p-6 bg-slate-50 overflow-y-auto">
             {isCreatingFolder && (
-              <div className="mb-6 p-4 border border-amber-300 bg-amber-50 rounded-lg max-w-sm">
-                <label className="block text-sm font-bold text-slate-700 mb-2">New Folder Name</label>
+              <div className="mb-6 p-4 border border-amber-300 dark:border-amber-600 bg-amber-50 dark:bg-amber-950 rounded-lg max-w-sm">
+                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">New Folder Name</label>
                 <div className="flex gap-2">
                   <input 
                     autoFocus
@@ -217,17 +197,17 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                     value={inputName} 
                     onChange={e => setInputName(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleCreateFolder()}
-                    className="flex-1 px-3 py-1.5 border border-slate-300 rounded"
+                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
                   />
                   <button onClick={handleCreateFolder} className="px-3 py-1.5 bg-amber-600 text-white rounded font-bold">OK</button>
-                  <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 rounded font-bold">Cancel</button>
+                  <button onClick={() => setIsCreatingFolder(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
                 </div>
               </div>
             )}
 
             {isCreatingFile && (
-              <div className="mb-6 p-4 border border-blue-300 bg-blue-50 rounded-lg max-w-sm">
-                <label className="block text-sm font-bold text-slate-700 mb-2">New File Name (.txt)</label>
+              <div className="mb-6 p-4 border border-blue-300 dark:border-blue-600 bg-blue-50 dark:bg-blue-950 rounded-lg max-w-sm">
+                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">New File Name (.txt)</label>
                 <div className="flex gap-2">
                   <input 
                     autoFocus
@@ -235,10 +215,10 @@ export default function LabC6FileManagement2({ onExit }: LabProps) {
                     value={inputName} 
                     onChange={e => setInputName(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleCreateFile()}
-                    className="flex-1 px-3 py-1.5 border border-slate-300 rounded"
+                    className="flex-1 px-3 py-1.5 border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded"
                   />
                   <button onClick={handleCreateFile} className="px-3 py-1.5 bg-blue-600 text-white rounded font-bold">OK</button>
-                  <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 rounded font-bold">Cancel</button>
+                  <button onClick={() => setIsCreatingFile(false)} className="px-3 py-1.5 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-bold">Cancel</button>
                 </div>
               </div>
             )}

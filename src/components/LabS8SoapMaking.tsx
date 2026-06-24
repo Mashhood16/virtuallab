@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
+import { RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -35,23 +36,12 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.2: Soap Making</h1>
-            <p className="text-sm text-slate-500">The chemical process of saponification</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.2: Soap Making" subtitle="The chemical process of saponification" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
         {/* Progress Bar */}
-        <div className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-slate-200">
+        <div className="flex justify-between items-center bg-slate-50 p-4 rounded-2xl shadow-sm border border-slate-200">
            {steps.map((s, i) => (
              <div key={i} className="flex flex-col items-center relative z-10 flex-1">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold mb-2 ${i < step ? 'bg-emerald-500 text-white' : i === step ? 'bg-blue-500 text-white ring-4 ring-blue-100' : 'bg-slate-200 text-slate-500'}`}>
@@ -68,7 +58,7 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="flex-1 bg-white rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-3xl shadow-lg border border-slate-200 p-8 flex flex-col items-center justify-center relative min-h-[400px]">
           
           {/* Step 0: Safety */}
           {step === 0 && (

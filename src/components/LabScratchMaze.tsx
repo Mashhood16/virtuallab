@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -91,15 +92,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
   return (
     <div className="w-full h-screen bg-slate-100 flex flex-col font-sans">
       <header className="bg-orange-500 text-white p-4 shadow-md flex justify-between items-center z-20">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-orange-600 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Act 4.1: Scratch Maze Navigation</h1>
-            <p className="text-sm text-orange-100">Arrange code blocks to navigate the cat over the pond.</p>
-          </div>
-        </div>
+        <LabHeader onExit={onExit} title="Act 4.1: Scratch Maze Navigation" />
       </header>
 
       <div className="flex-1 flex overflow-hidden">
@@ -114,7 +107,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                 disabled={isExecuting}
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
               >
-                <div className="w-4 h-4 bg-white/30 rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50/30 rounded-full"></div>
                 Move Forward 1 Step
               </button>
               <button 
@@ -122,7 +115,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                 disabled={isExecuting}
                 className="bg-purple-500 hover:bg-purple-600 text-white font-bold p-3 rounded-lg text-left shadow-sm flex items-center gap-2 active:scale-95 disabled:opacity-50"
               >
-                <div className="w-4 h-4 bg-white/30 rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50/30 rounded-full"></div>
                 Jump Forward 2 Steps
               </button>
               <button 
@@ -145,7 +138,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
         </div>
 
         {/* Center Panel: Code Area */}
-        <div className="flex-1 bg-white flex flex-col relative border-r border-slate-300">
+        <div className="flex-1 bg-slate-50 flex flex-col relative border-r border-slate-300">
            
            <div className="h-12 bg-slate-100 flex items-center px-4 justify-between border-b border-slate-200">
               <span className="text-slate-600 font-bold flex items-center gap-2">
@@ -186,7 +179,7 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                 disabled={isExecuting || blocks.length === 0}
                 className="mt-8 px-8 py-3 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 text-white font-bold rounded-full shadow-lg transition-transform active:scale-95 text-lg flex items-center gap-2"
               >
-                <div className="w-4 h-4 bg-white rounded-full"></div>
+                <div className="w-4 h-4 bg-slate-50 rounded-full"></div>
                 Run Program
               </button>
            </div>
@@ -243,8 +236,8 @@ export default function LabScratchMaze({ onExit }: LabProps) {
                        <div className="absolute -top-2 left-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-orange-500"></div>
                        <div className="absolute -top-2 right-0 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-b-[10px] border-b-orange-500"></div>
                        {/* Cat eyes */}
-                       <div className="absolute top-2 left-2 w-2 h-2 bg-white rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
-                       <div className="absolute top-2 right-2 w-2 h-2 bg-white rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
+                       <div className="absolute top-2 left-2 w-2 h-2 bg-slate-50 rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
+                       <div className="absolute top-2 right-2 w-2 h-2 bg-slate-50 rounded-full"><div className="w-1 h-1 bg-black rounded-full mt-0.5 ml-0.5"></div></div>
                     </div>
                  </div>
 

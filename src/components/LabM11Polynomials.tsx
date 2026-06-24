@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Target, Rocket, RotateCcw, CheckCircle, Calculator } from 'lucide-react';
+import { Target, Rocket, RotateCcw, CheckCircle, Calculator } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
   const [v0, setV0] = useState<number>(20);
@@ -87,17 +88,10 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-red-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-red-700 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Polynomials: Remainder Theorem Ballistics</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Polynomials: Remainder Theorem Ballistics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-red-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">
             <p>
@@ -126,7 +120,7 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-red-700 mb-4">Ballistics Simulator</h2>
           
           <div className="w-full flex justify-center items-center bg-sky-50 rounded-lg p-4 mb-6 relative h-64 overflow-hidden border border-sky-100">
@@ -146,7 +140,7 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
               )}
             </svg>
             
-            <div className="absolute top-2 right-2 bg-white/90 px-3 py-1 rounded shadow text-sm font-mono flex flex-col">
+            <div className="absolute top-2 right-2 bg-slate-50/90 px-3 py-1 rounded shadow text-sm font-mono flex flex-col">
               <span>Time: {currentTime.toFixed(2)}s</span>
               <span>Height: {currentH.toFixed(2)}m</span>
             </div>
@@ -208,7 +202,7 @@ export default function LabM11Polynomials({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-red-700 mb-4">Calculations</h2>
           
           <div className="mb-6">

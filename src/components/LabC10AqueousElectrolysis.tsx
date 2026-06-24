@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, Info, Activity, Save, RefreshCw, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => void }) {
   const [isRunning, setIsRunning] = useState(false);
@@ -85,20 +86,11 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-sky-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-2">
-          <Activity className="w-6 h-6" />
-          <h1 className="text-xl font-bold">Electrolysis of Aqueous Solutions</h1>
-        </div>
-        <button onClick={onExit} className="flex items-center gap-2 px-4 py-2 bg-sky-700 hover:bg-sky-800 rounded-lg transition-colors">
-          <ArrowRight className="w-4 h-4" />
-          <span>Exit Lab</span>
-        </button>
-      </header>
+      <LabHeader onExit={onExit} title="Electrolysis of Aqueous Solutions" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-sky-600" />
@@ -133,13 +125,13 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
                 <div className="flex gap-2">
                   <button 
                     onClick={() => handleSolutionChange('conc')}
-                    className={`flex-1 py-2 rounded border ${solutionType === 'conc' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-white border-slate-300 text-slate-600 hover:bg-slate-50'}`}
+                    className={`flex-1 py-2 rounded border ${solutionType === 'conc' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-slate-50 border-slate-300 text-slate-600 hover:bg-slate-50'}`}
                   >
                     Conc NaCl (Brine)
                   </button>
                   <button 
                     onClick={() => handleSolutionChange('dilute')}
-                    className={`flex-1 py-2 rounded border ${solutionType === 'dilute' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-white border-slate-300 text-slate-600 hover:bg-slate-50'}`}
+                    className={`flex-1 py-2 rounded border ${solutionType === 'dilute' ? 'bg-sky-100 border-sky-400 text-sky-800 font-semibold' : 'bg-slate-50 border-slate-300 text-slate-600 hover:bg-slate-50'}`}
                   >
                     Dilute NaCl
                   </button>
@@ -182,7 +174,7 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
           <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800">Hoffman Voltameter</h2>
           
           <div className="absolute top-6 right-6 text-right">
@@ -240,7 +232,7 @@ export default function LabC10AqueousElectrolysis({ onExit }: { onExit: () => vo
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
           <div>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold text-slate-800">Collected Data</h2>

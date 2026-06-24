@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, Layers, CheckCircle, XCircle, Play, Save } from 'lucide-react';
+import { Layers, CheckCircle, XCircle, Play, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 export default function LabCS12DataStructures({ onExit }: { onExit?: () => void }) {
   const { addRecord } = useHistory();
@@ -59,17 +60,11 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="flex items-center p-4 bg-teal-700 text-white shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-teal-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <Layers className="mr-3" size={28} />
-        <h1 className="text-2xl font-bold">Interactive Memory Management</h1>
-      </header>
+      <LabHeader onExit={onExit} variant="dark" title="Interactive Memory Management" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Theory & Context</h2>
           <div className="space-y-4 text-slate-700 overflow-y-auto pr-2 flex-1 text-sm">
             <p>
@@ -94,7 +89,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Visualizer</h2>
           
           <div className="flex gap-2 mb-4">
@@ -144,7 +139,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                   <button onClick={pushStack} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700">Push</button>
                   <button onClick={popStack} disabled={stack.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50">Pop</button>
                 </div>
-                <div className="w-32 border-x-4 border-b-4 border-slate-700 min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-white">
+                <div className="w-32 border-x-4 border-b-4 border-slate-700 min-h-[150px] flex flex-col-reverse items-center justify-start p-1 bg-slate-50">
                   {stack.map((val, idx) => (
                     <div key={idx} className="w-full bg-teal-500 text-white text-center font-bold py-2 mb-1 rounded border border-teal-700 animate-fade-in">
                       {val}
@@ -161,7 +156,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
                   <button onClick={enqueue} className="px-4 py-2 bg-teal-600 text-white rounded font-bold hover:bg-teal-700">Enqueue</button>
                   <button onClick={dequeue} disabled={queue.length === 0} className="px-4 py-2 bg-rose-500 text-white rounded font-bold hover:bg-rose-600 disabled:opacity-50">Dequeue</button>
                 </div>
-                <div className="w-full max-w-sm h-20 border-y-4 border-slate-700 flex items-center p-1 bg-white overflow-x-auto gap-1">
+                <div className="w-full max-w-sm h-20 border-y-4 border-slate-700 flex items-center p-1 bg-slate-50 overflow-x-auto gap-1">
                   {queue.length === 0 && <span className="text-slate-400 text-sm mx-auto">Empty Queue</span>}
                   {queue.map((val, idx) => (
                     <div key={idx} className="min-w-[3rem] h-full bg-teal-500 text-white flex items-center justify-center font-bold rounded border border-teal-700">
@@ -179,7 +174,7 @@ export default function LabCS12DataStructures({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-teal-800 border-b pb-2">Analysis & Assessment</h2>
           
           <div className="space-y-4 overflow-y-auto pr-2">

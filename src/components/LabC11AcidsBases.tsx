@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Droplets, Info, Activity, Database, CheckCircle, RefreshCw, ArrowLeft, FlaskConical, XCircle } from 'lucide-react';
+import { Droplets, Info, Activity, Database, CheckCircle, RefreshCw,  FlaskConical, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface TitrationLog {
   v: number;
@@ -133,7 +134,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
     }).join(' ');
 
     return (
-      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-white border rounded mt-4">
+      <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40 bg-slate-50 border rounded mt-4">
          {/* Grid lines */}
          <line x1="0" y1={height/2} x2={width} y2={height/2} stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4"/>
          
@@ -151,20 +152,11 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
-        {onExit && (
-          <button onClick={onExit} className="p-2 mr-3 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={20} />
-          </button>
-        )}
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <Droplets className="text-pink-400" /> Acids & Bases Titration
-        </h1>
-      </div>
+      <LabHeader onExit={onExit} title="Acids & Bases Titration" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
         {/* Column 1 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-pink-500" /> Theory & Setup
           </h2>
@@ -205,7 +197,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-pink-500" /> Burette Simulator
           </h2>
@@ -237,7 +229,7 @@ export default function LabC11AcidsBases({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-pink-500" /> Data & Analysis
           </h2>

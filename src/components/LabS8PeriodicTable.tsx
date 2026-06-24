@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -18,20 +19,10 @@ export default function LabS8PeriodicTable({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        {onExit && (
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        )}
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Act 5.1: Elements in Periodic Table</h1>
-          <p className="text-sm text-slate-500">Count the number of elements in each period</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.1: Elements in Periodic Table" subtitle="Count the number of elements in each period" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           
           <div className="flex gap-2 overflow-x-auto pb-4 mb-6">
             {PERIODS.map(p => (

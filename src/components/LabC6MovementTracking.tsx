@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowLeft, Rocket } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -39,17 +40,14 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Tracking Movement with Variables" />
 
         <h1 className="text-3xl font-bold mb-2">Tracking Movement with Variables</h1>
         <p className="text-slate-600 mb-8">Use the Left and Right Arrow keys. Watch how the 'counter' variable tracks the movement.</p>
 
         <div className="flex gap-8 flex-1">
           {/* Blocks Editor (Mock) */}
-          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
             <div className="bg-orange-500 text-white font-bold p-3 text-sm">Variables & Events</div>
             <div className="flex-1 p-6 flex flex-col gap-8 bg-slate-50/50">
               
@@ -86,15 +84,15 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
 
           {/* Stage Area */}
           <div className="flex-1 flex flex-col">
-            <div className="bg-white rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
+            <div className="bg-slate-50 rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
               <span className="font-bold text-sm text-slate-600">Scratch Stage</span>
-              <div className="bg-white px-3 py-1 rounded border border-slate-300 font-bold text-slate-700 flex items-center gap-2">
+              <div className="bg-slate-50 px-3 py-1 rounded border border-slate-300 font-bold text-slate-700 flex items-center gap-2">
                 <span className="text-orange-500">counter</span>
                 <span className="bg-orange-100 px-2 rounded text-orange-800">{counter}</span>
               </div>
             </div>
             
-            <div className="bg-white flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
+            <div className="bg-slate-50 flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
               
               <div className="absolute inset-0 bg-slate-900">
                 {/* Ground */}

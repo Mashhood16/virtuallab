@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, FlaskConical, Plus, RotateCcw, Check, Activity } from 'lucide-react';
+import { FlaskConical, Plus, RotateCcw, Check, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }) {
   const [stockConcentration] = useState(2.0);
@@ -40,14 +41,11 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-blue-600 text-white p-4 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-blue-700 rounded-full transition-colors"><ArrowLeft size={24} /></button>
-          <h1 className="text-2xl font-bold">Dilution of Solutions</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Dilution of Solutions" />
         <div className="flex items-center gap-2"><FlaskConical size={24} /><span className="font-medium">C10 Chemistry</span></div>
       </header>
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
             <h2 className="text-xl font-bold text-slate-800 border-b pb-2">Theory & Setup</h2>
             <p className="text-slate-600">Dilution is the process of decreasing the concentration of a solute in a solution by adding more solvent (water).</p>
             <div className="bg-blue-50 p-4 rounded-lg border border-blue-100">
@@ -68,7 +66,7 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
                 <li>Click <strong>Record Data</strong> to log measurements.</li>
             </ol>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
             <h2 className="text-xl font-bold text-slate-800 mb-6 w-full text-left">Interactive Simulation</h2>
             <div className="w-full bg-slate-900 text-green-400 font-mono p-4 rounded-lg shadow-inner mb-8 min-h-[80px] flex items-center justify-center text-center text-lg">{equation}</div>
             <div className="flex gap-8 mb-12">
@@ -97,7 +95,7 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
                     <line x1="45" y1="40" x2="55" y2="40" stroke="#94a3b8" strokeWidth="2" />
                     <text x="65" y="45" fontSize="8" fill="#64748b">100mL</text>
                 </svg>
-                <div className="absolute top-0 right-[-60px] bg-white border border-slate-200 p-2 rounded shadow-md flex flex-col items-center">
+                <div className="absolute top-0 right-[-60px] bg-slate-50 border border-slate-200 p-2 rounded shadow-md flex flex-col items-center">
                     <Activity size={20} className="text-slate-500 mb-1" />
                     <span className="text-xs text-slate-500">Conc.</span>
                     <span className="font-mono font-bold text-blue-600">{currentConcentration.toFixed(2)} M</span>
@@ -108,7 +106,7 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
                 <button onClick={reset} className="flex items-center gap-2 px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition-colors"><RotateCcw size={18} /> Reset</button>
             </div>
         </div>
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
             <div>
                 <h2 className="text-xl font-bold text-slate-800 mb-4">Data Log</h2>
                 <div className="overflow-x-auto rounded-lg border border-slate-200">
@@ -130,7 +128,7 @@ export default function LabC10DiluteSolution({ onExit }: { onExit?: () => void }
                 <h3 className="font-bold text-amber-900 mb-2 flex items-center gap-2"><Check size={20} /> Analysis Check</h3>
                 <p className="text-sm text-amber-800 mb-4">Suppose you need <strong>100 mL</strong> of a <strong>{randomTarget} M</strong> CuSO₄ solution. What volume of the {stockConcentration.toFixed(1)} M stock (V₁) is required?</p>
                 <div className="flex gap-2">
-                    <input type="number" value={assessmentAns} onChange={(e) => setAssessmentAns(e.target.value)} placeholder="V1 in mL" className="flex-1 px-3 py-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white" />
+                    <input type="number" value={assessmentAns} onChange={(e) => setAssessmentAns(e.target.value)} placeholder="V1 in mL" className="flex-1 px-3 py-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-500 bg-slate-50" />
                     <button onClick={checkAns} className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded transition-colors font-medium">Check</button>
                 </div>
                 {assessmentStatus === true && <p className="mt-2 text-sm text-green-700 font-semibold">Correct! V₁ = (M₂ × V₂) / M₁</p>}

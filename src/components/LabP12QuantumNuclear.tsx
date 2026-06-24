@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Activity, AlertTriangle, Zap, ThermometerSun, Shield } from 'lucide-react';
+import { Activity, AlertTriangle, Zap, ThermometerSun, Shield } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }) {
   const [controlRodDepth, setControlRodDepth] = useState(80);
@@ -67,22 +68,10 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={20} />
-          </button>
-          <h1 className="text-xl font-bold">Lab 12.1: Quantum & Nuclear Engineering</h1>
-        </div>
-        <div className="flex items-center gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <Activity size={16} className="text-blue-400" /> E=mc² Interactive
-          </div>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab 12.1: Quantum & Nuclear Engineering" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Theory & Context</h2>
           
           <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
@@ -112,7 +101,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col relative overflow-hidden">
           <h2 className="text-lg font-bold text-slate-800 mb-2">Reactor Control Panel</h2>
           
           <div className="flex gap-4 mb-4 bg-slate-100 p-3 rounded-lg">
@@ -183,7 +172,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Analysis & Computing</h2>
           
           <div className="space-y-6">

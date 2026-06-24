@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Play, Square, Info, Activity, Save, RefreshCw, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC10CopperRefining({ onExit }: { onExit: () => void }) {
   const initialAnode = 100.0;
@@ -87,20 +88,11 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-orange-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-2">
-          <Activity className="w-6 h-6" />
-          <h1 className="text-xl font-bold">Electrolytic Refining of Copper</h1>
-        </div>
-        <button onClick={onExit} className="flex items-center gap-2 px-4 py-2 bg-orange-700 hover:bg-orange-800 rounded-lg transition-colors">
-          <ArrowRight className="w-4 h-4" />
-          <span>Exit Lab</span>
-        </button>
-      </header>
+      <LabHeader onExit={onExit} title="Electrolytic Refining of Copper" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-orange-600" />
@@ -158,7 +150,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center justify-center relative">
           <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800">Cell View</h2>
           
           <div className="absolute top-6 right-6 text-right">
@@ -223,7 +215,7 @@ export default function LabC10CopperRefining({ onExit }: { onExit: () => void })
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-6 overflow-y-auto">
           <div>
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold text-slate-800">Mass Log</h2>

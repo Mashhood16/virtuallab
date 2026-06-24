@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, BarChart2, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, BarChart2, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 const COLORS = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'];
 
@@ -83,22 +84,11 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md z-10 shrink-0">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold flex items-center gap-2">
-            <BarChart2 className="text-blue-400" /> Lab: Data Science & Analytics
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Data Science & Analytics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden min-h-0">
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 shrink-0">Theory & Setup</h2>
           
           <div className="text-slate-600 space-y-4 text-sm">
@@ -120,7 +110,7 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col relative overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col relative overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">Interactive Visualizer</h2>
           
           <div className="flex gap-4 mb-4 shrink-0">
@@ -144,7 +134,7 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
           </div>
 
           <div className="flex-1 border rounded-lg bg-slate-50 flex flex-col items-center justify-center overflow-hidden min-h-[300px]">
-            <svg viewBox="0 0 400 400" className="w-full h-full max-h-80 object-contain bg-white">
+            <svg viewBox="0 0 400 400" className="w-full h-full max-h-80 object-contain bg-slate-50">
               <rect width="400" height="400" fill="#f8fafc" />
               {/* Grid */}
               <path d="M0,100 H400 M0,200 H400 M0,300 H400 M100,0 V400 M200,0 V400 M300,0 V400" stroke="#e2e8f0" strokeWidth="1" />
@@ -192,7 +182,7 @@ export default function LabCS11DataScience({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4 shrink-0">Assessment & Analysis</h2>
           
           <div className="space-y-6 flex-1 pr-2">

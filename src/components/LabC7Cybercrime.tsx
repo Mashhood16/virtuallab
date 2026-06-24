@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Play, Image as ImageIcon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -42,7 +43,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
           <div className="relative z-10 text-center w-full">
             <h1 className="text-6xl font-black mb-12 drop-shadow-lg">{current.title || 'Untitled Slide'}</h1>
             {movieData && (
-              <div className="mb-12 inline-block bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
+              <div className="mb-12 inline-block bg-slate-50/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
                 <img src={movieData.img} alt={movieData.name} className="w-96 aspect-video object-cover rounded-lg shadow-2xl mb-4" />
                 <p className="text-2xl font-bold">{movieData.name}</p>
               </div>
@@ -84,7 +85,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
 
         <div className="flex gap-8 max-w-6xl w-full h-[600px]">
           {/* Slides List */}
-          <div className="w-64 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+          <div className="w-64 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
             <div className="p-4 border-b border-slate-200 bg-slate-50 font-bold text-slate-700 flex justify-between items-center">
               Slides
               <button onClick={addSlide} className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-200 font-black text-xl">+</button>
@@ -94,7 +95,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
                 <div 
                   key={i}
                   onClick={() => setActiveSlide(i)}
-                  className={`aspect-video rounded-lg border-2 flex items-center justify-center p-2 text-center text-xs font-bold cursor-pointer transition-colors ${activeSlide === i ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 bg-white hover:border-slate-300'}`}
+                  className={`aspect-video rounded-lg border-2 flex items-center justify-center p-2 text-center text-xs font-bold cursor-pointer transition-colors ${activeSlide === i ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300'}`}
                 >
                   {s.title || `Slide ${i+1}`}
                 </div>
@@ -103,13 +104,8 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
           </div>
 
           {/* Editor */}
-          <div className="flex-1 bg-white rounded-xl shadow-lg border border-slate-200 flex flex-col overflow-hidden">
-            <div className="bg-slate-50 border-b border-slate-200 p-4 flex justify-between items-center">
-              <span className="font-bold text-slate-600">Editing Slide {activeSlide + 1}</span>
-              <button onClick={() => { setActiveSlide(0); setIsPlaying(true); }} className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded font-bold flex items-center shadow-sm transition-colors">
-                <Play className="w-4 h-4 mr-2 fill-current" /> Present
-              </button>
-            </div>
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-lg border border-slate-200 flex flex-col overflow-hidden">
+            <LabHeader onExit={onExit} title="Lab" />
 
             <div className="flex-1 p-12 overflow-y-auto flex flex-col gap-6 max-w-3xl mx-auto w-full">
               <input 
@@ -130,7 +126,7 @@ export default function LabC7Cybercrime({ onExit }: LabProps) {
                       className={`cursor-pointer rounded-lg border-2 overflow-hidden transition-all ${slides[activeSlide].movie === m.id ? 'border-blue-500 ring-2 ring-blue-200 scale-105 shadow-md' : 'border-transparent hover:border-slate-300'}`}
                     >
                       <img src={m.img} alt={m.name} className="w-full aspect-video object-cover" />
-                      <div className="p-2 text-xs font-bold text-center bg-white">{m.name}</div>
+                      <div className="p-2 text-xs font-bold text-center bg-slate-50">{m.name}</div>
                     </div>
                   ))}
                 </div>

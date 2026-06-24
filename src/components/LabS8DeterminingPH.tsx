@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -20,18 +21,7 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 7.4: Determining pH</h1>
-            <p className="text-sm text-slate-500">Test different solutions with universal pH paper</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         {/* Solution Select */}
@@ -41,14 +31,14 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
             <button 
               key={s.id}
               onClick={() => { setSelected(s); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${selected.id === s.id ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 ${selected.id === s.id ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
             >
               {s.name}
             </button>
           ))}
         </div>
 
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center relative min-h-[500px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center relative min-h-[500px]">
           
           {/* pH Color Chart */}
           <div className="w-full max-w-lg mb-8 border border-slate-200 rounded-xl overflow-hidden shadow-sm">
@@ -66,7 +56,7 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
 
           <div className="relative w-64 h-64 flex flex-col items-center justify-center mb-8">
             {/* Beaker */}
-            <div className="absolute bottom-0 w-40 h-32 border-4 border-slate-300 rounded-b-3xl border-t-0 bg-white/50 shadow-inner z-10 flex flex-col justify-end overflow-hidden">
+            <div className="absolute bottom-0 w-40 h-32 border-4 border-slate-300 rounded-b-3xl border-t-0 bg-slate-50/50 shadow-inner z-10 flex flex-col justify-end overflow-hidden">
               <div className="w-full h-3/4 bg-slate-100/80 relative backdrop-blur-sm" />
             </div>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Beaker, Play, Pause, Activity, ClipboardList, CheckCircle } from 'lucide-react';
+import { Beaker, Play, Pause, Activity, ClipboardList, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
   const [beadCount, setBeadCount] = useState(0);
@@ -62,19 +63,12 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-purple-900 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-purple-800 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Grade 11: Enzyme Immobilization & Diagnostics</h1>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Grade 11: Enzyme Immobilization & Diagnostics" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2">Theory & Principles</h2>
           
           <div className="space-y-4 text-sm text-slate-700">
@@ -112,7 +106,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
             
             {/* Milk Pouring Animation */}
             {isPouringMilk && (
-              <div className="absolute top-0 w-8 h-32 bg-white/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300"></div>
+              <div className="absolute top-0 w-8 h-32 bg-slate-50/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300"></div>
             )}
 
             {/* The Column / Beaker */}
@@ -120,7 +114,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
               
               {/* Milk Liquid inside beaker */}
               <div 
-                className="absolute bottom-0 w-full bg-white/20 transition-all duration-500 ease-linear"
+                className="absolute bottom-0 w-full bg-slate-50/20 transition-all duration-500 ease-linear"
                 style={{ height: `${glucoseLevel}%` }}
               ></div>
 
@@ -159,7 +153,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
               <button 
                 onClick={toggleMilkPour}
                 disabled={beadCount === 0 || glucoseLevel >= 100}
-                className={`flex-1 py-2 font-bold rounded flex items-center justify-center gap-2 transition-colors ${isPouringMilk ? 'bg-red-500 hover:bg-red-400 text-white' : 'bg-white hover:bg-slate-200 text-slate-800 disabled:opacity-50'}`}
+                className={`flex-1 py-2 font-bold rounded flex items-center justify-center gap-2 transition-colors ${isPouringMilk ? 'bg-red-500 hover:bg-red-400 text-white' : 'bg-slate-50 hover:bg-slate-200 text-slate-800 disabled:opacity-50'}`}
               >
                 {isPouringMilk ? <Pause size={18} /> : <Play size={18} />}
                 {isPouringMilk ? 'Stop Milk Flow' : 'Pour Milk (Lactose)'}
@@ -175,7 +169,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
         </section>
 
         {/* Column 3: Assessment */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <ClipboardList className="text-purple-600" /> Clinical Assessment
           </h2>

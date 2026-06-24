@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -68,10 +69,7 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Bouncing Ball Project" />
 
         <h1 className="text-3xl font-bold mb-2">Bouncing Ball Project</h1>
         <p className="text-slate-600 mb-8">Assemble the correct Scratch blocks to make the ball continuously bounce off the stage edges.</p>
@@ -85,7 +83,7 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
 
         <div className="flex gap-8 max-w-5xl mx-auto w-full">
           {/* Block Palette */}
-          <div className="w-72 bg-white p-6 rounded-xl shadow border border-slate-200">
+          <div className="w-72 bg-slate-50 p-6 rounded-xl shadow border border-slate-200">
             <h2 className="font-bold text-slate-700 mb-4 uppercase tracking-wider text-sm">Palette</h2>
             <div className="flex flex-col gap-3">
               {availableBlocks.map(block => (
@@ -123,7 +121,7 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
                  </div>
                </div>
              ) : (
-               <div className="bg-white border-2 border-dashed border-slate-300 p-6 rounded min-h-[150px] text-slate-400 text-sm text-center flex items-center justify-center">
+               <div className="bg-slate-50 border-2 border-dashed border-slate-300 p-6 rounded min-h-[150px] text-slate-400 text-sm text-center flex items-center justify-center">
                  Click blocks from palette to add them to your script.
                  {blocks.length > 0 && <br/>}
                  {blocks.filter(b => b !== 'forever').map(b => (
@@ -136,7 +134,7 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
           </div>
 
           {/* Stage */}
-          <div className="flex-1 bg-white p-4 rounded-xl shadow-xl border-4 border-slate-300 relative flex items-center justify-center">
+          <div className="flex-1 bg-slate-50 p-4 rounded-xl shadow-xl border-4 border-slate-300 relative flex items-center justify-center">
             <div className="w-full h-full border-2 border-slate-100 relative bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] overflow-hidden">
                <div 
                  className="absolute w-12 h-12 rounded-full bg-rose-500 shadow-lg border-2 border-white"

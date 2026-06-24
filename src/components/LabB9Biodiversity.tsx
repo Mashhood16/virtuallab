@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, CheckCircle, Info } from 'lucide-react';
+import { CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Organism {
   id: string;
@@ -48,19 +49,11 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-700 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="mr-4 hover:bg-emerald-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold">Biodiversity & Taxonomy Lab</h1>
-          <p className="text-emerald-100 text-sm">Classify organisms and understand taxonomic groups</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} variant="emerald" title="Biodiversity & Taxonomy Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 grow">
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Info className="mr-2 text-emerald-600" /> Taxonomic Classification
           </h2>
@@ -87,7 +80,7 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4">Taxonomic Sorting Area</h2>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
@@ -134,7 +127,7 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
                   <button
                     key={org.id}
                     onClick={() => setSelectedOrg(org.id)}
-                    className={`text-4xl transition-transform hover:scale-110 ${selectedOrg === org.id ? 'scale-125 ring-4 ring-emerald-400 rounded-full bg-white' : ''}`}
+                    className={`text-4xl transition-transform hover:scale-110 ${selectedOrg === org.id ? 'scale-125 ring-4 ring-emerald-400 rounded-full bg-slate-50' : ''}`}
                     title={org.name}
                   >
                     {org.emoji}
@@ -151,7 +144,7 @@ export default function LabB9Biodiversity({ onExit }: { onExit: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <CheckCircle className="mr-2 text-emerald-600" /> Lab Assessment
           </h2>

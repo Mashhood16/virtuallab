@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Calculator, DollarSign, TrendingUp, Users, Target, CheckCircle2, BarChart2, Briefcase } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -64,14 +65,11 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-emerald-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold flex items-center gap-2"><Briefcase className="w-6 h-6"/> Tech Entrepreneurship</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 rounded-lg font-semibold transition-colors">Exit Lab</button>}
-            </div>
+            <LabHeader onExit={onExit} title="Tech Entrepreneurship" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
                 {/* Column 1: Theory */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
                         <TrendingUp className="w-6 h-6 text-emerald-600" />
                         Business Economics
@@ -96,7 +94,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col border border-slate-100 overflow-y-auto">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col border border-slate-100 overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <Calculator className="w-6 h-6 text-emerald-600" />
                         Business Planner
@@ -142,7 +140,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                         <h3 className="font-bold text-sm text-slate-700 mb-3 border-b pb-2 flex items-center gap-2"><Users className="w-4 h-4"/> Social Media Strategy</h3>
                         <div className="space-y-2">
                             {platforms.map(p => (
-                                <label key={p.id} className={`flex items-center gap-3 p-2 rounded border cursor-pointer transition-colors ${selectedPlatforms.includes(p.id) ? 'bg-emerald-50 border-emerald-300' : 'bg-white border-slate-200 hover:bg-slate-50'}`}>
+                                <label key={p.id} className={`flex items-center gap-3 p-2 rounded border cursor-pointer transition-colors ${selectedPlatforms.includes(p.id) ? 'bg-emerald-50 border-emerald-300' : 'bg-slate-50 border-slate-200 hover:bg-slate-50'}`}>
                                     <input 
                                         type="checkbox" 
                                         checked={selectedPlatforms.includes(p.id)}
@@ -161,7 +159,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <BarChart2 className="w-6 h-6 text-emerald-600" />
                         Financial Overview
@@ -171,11 +169,11 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                         <div>
                             <h3 className="font-semibold text-xs text-slate-500 uppercase tracking-wider mb-2">Cost Breakdown</h3>
                             <div className="grid grid-cols-2 gap-2 text-sm">
-                                <div className="p-2 bg-white rounded border flex flex-col items-center">
+                                <div className="p-2 bg-slate-50 rounded border flex flex-col items-center">
                                     <span className="text-slate-500 text-xs">Total Var. Cost</span>
                                     <span className="font-bold text-slate-800">${totalVariableCost.toLocaleString()}</span>
                                 </div>
-                                <div className="p-2 bg-white rounded border flex flex-col items-center">
+                                <div className="p-2 bg-slate-50 rounded border flex flex-col items-center">
                                     <span className="text-slate-500 text-xs">Fixed Costs</span>
                                     <span className="font-bold text-slate-800">${fixedOverhead.toLocaleString()}</span>
                                 </div>
@@ -183,7 +181,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                                     <span className="font-semibold text-emerald-900">Total Production Cost</span>
                                     <span className="font-bold text-lg text-emerald-700">${totalCost.toLocaleString()}</span>
                                 </div>
-                                <div className="p-2 bg-white rounded border col-span-2 flex justify-between items-center px-4 text-xs">
+                                <div className="p-2 bg-slate-50 rounded border col-span-2 flex justify-between items-center px-4 text-xs">
                                     <span className="text-slate-600">Cost Per Unit Produced</span>
                                     <span className="font-bold text-slate-800">${costPerUnit.toFixed(2)}/unit</span>
                                 </div>
@@ -192,11 +190,11 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
 
                         <div className="pt-2 border-t border-slate-200">
                             <h3 className="font-semibold text-xs text-slate-500 uppercase tracking-wider mb-2">Marketing Totals</h3>
-                            <div className="flex justify-between items-center text-sm p-2 bg-white rounded border mb-2">
+                            <div className="flex justify-between items-center text-sm p-2 bg-slate-50 rounded border mb-2">
                                 <span className="text-slate-600">Budget Spent</span>
                                 <span className="font-bold text-red-600">${totalMarketingCost.toLocaleString()}</span>
                             </div>
-                            <div className="flex justify-between items-center text-sm p-2 bg-white rounded border">
+                            <div className="flex justify-between items-center text-sm p-2 bg-slate-50 rounded border">
                                 <span className="text-slate-600">Expected Reach</span>
                                 <span className="font-bold text-blue-600">{totalReach.toLocaleString()} people</span>
                             </div>
@@ -207,7 +205,7 @@ export default function LabCS9Entrepreneurship({ onExit }: LabProps) {
                         <h3 className="font-bold text-emerald-900 mb-2 text-sm flex items-center gap-2">Assessment: Find the BEP</h3>
                         <p className="text-xs text-emerald-800 mb-3">Calculate the Break-Even Point (in units) given these market conditions:</p>
                         
-                        <div className="bg-white p-3 rounded border border-emerald-100 text-sm mb-4 space-y-1 shadow-sm">
+                        <div className="bg-slate-50 p-3 rounded border border-emerald-100 text-sm mb-4 space-y-1 shadow-sm">
                             <div className="flex justify-between"><span className="text-slate-600">Fixed Costs:</span> <span className="font-bold">${assessmentFixedCost}</span></div>
                             <div className="flex justify-between"><span className="text-slate-600">Variable Cost/Unit:</span> <span className="font-bold">${assessmentVariableCost}</span></div>
                             <div className="flex justify-between"><span className="text-slate-600">Selling Price/Unit:</span> <span className="font-bold">${assessmentSellingPrice}</span></div>

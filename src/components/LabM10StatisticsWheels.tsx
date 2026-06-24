@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { BarChart3, Calculator, CheckCircle, XCircle, ChevronLeft, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -136,18 +137,11 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-teal-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-teal-700 p-2 rounded-full transition-colors">
-            <ChevronLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Experimental Probability & Statistics</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Experimental Probability & Statistics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup & Data */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-teal-800">
             <BarChart3 className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Data Logging</h2>
@@ -211,7 +205,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center justify-center min-h-[400px]">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center justify-center min-h-[400px]">
           <h2 className="text-lg font-semibold text-slate-800 mb-4">Physics Wheel Simulator</h2>
           
           <div className="relative" style={{ width: 400, height: 400 }}>
@@ -238,7 +232,7 @@ export default function LabM10StatisticsWheels({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex items-center gap-2 mb-4 text-rose-700">
             <Calculator className="w-6 h-6" />
             <h2 className="text-lg font-semibold">Data Analysis</h2>

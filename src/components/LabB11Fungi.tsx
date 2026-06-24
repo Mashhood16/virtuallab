@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import { BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LogEntry {
   id: number;
@@ -77,22 +78,11 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-amber-700 text-white p-4 flex items-center shadow-md justify-between shrink-0">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-amber-600 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Fungi: Yeast Fermentation</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Beaker size={24} />
-          <span className="font-semibold">Virtual Lab B11</span>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} variant="amber" title="Fungi: Yeast Fermentation" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div>
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-3">
               <BookOpen className="text-amber-600" /> Theory & Variables
@@ -156,7 +146,7 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center relative">
           <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <Activity className="text-amber-600" /> Respirometer
@@ -199,17 +189,17 @@ export default function LabB11Fungi({ onExit }: { onExit?: () => void }) {
               ))}
             </svg>
             
-            <div className="absolute top-4 left-4 bg-white/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 border border-slate-200 backdrop-blur">
+            <div className="absolute top-4 left-4 bg-slate-50/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-slate-700 border border-slate-200 backdrop-blur">
               Vol: {volume.toFixed(1)} mL
             </div>
-            <div className="absolute top-4 right-4 bg-white/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-amber-700 border border-slate-200 backdrop-blur">
+            <div className="absolute top-4 right-4 bg-slate-50/90 px-3 py-1.5 rounded shadow-sm text-sm font-mono font-bold text-amber-700 border border-slate-200 backdrop-blur">
               {time} min
             </div>
           </div>
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <LineChart className="text-amber-600" /> Data Logging

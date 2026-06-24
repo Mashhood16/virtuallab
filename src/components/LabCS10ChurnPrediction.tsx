@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, UserX, AlertTriangle, CheckCircle, Target, TrendingDown } from 'lucide-react';
+import { UserX, AlertTriangle, CheckCircle, Target, TrendingDown } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Customer {
     id: number;
@@ -84,21 +85,11 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <header className="flex items-center p-4 bg-orange-600 text-white shadow-md">
-                {onExit && (
-                    <button onClick={onExit} className="mr-4 hover:bg-orange-700 p-2 rounded-full transition">
-                        <ArrowLeft size={24} />
-                    </button>
-                )}
-                <div>
-                    <h1 className="text-2xl font-bold">Churn Prediction Lab</h1>
-                    <p className="text-sm opacity-80">Machine Learning Logic Simulator</p>
-                </div>
-            </header>
+            <LabHeader onExit={onExit} title="Churn Prediction Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <Target className="mr-2 text-orange-500" /> Model Setup
                     </h2>
@@ -159,7 +150,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <TrendingDown className="mr-2 text-orange-500" /> Customer Data
                     </h2>
@@ -223,7 +214,7 @@ export default function LabCS10ChurnPrediction({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <Target className="mr-2 text-orange-500" /> Log & Assessment
                     </h2>

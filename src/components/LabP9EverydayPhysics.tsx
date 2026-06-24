@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Info, CheckCircle, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LogEntry {
   id: number;
@@ -188,14 +189,11 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-900 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold">Lab: Everyday Physics Classroom</h1>
-        {onExit && <button onClick={onExit} className="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 rounded-lg font-medium transition-colors">Exit</button>}
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Everyday Physics Classroom" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-800">
             <Info className="mr-2" /> Concepts at Work
           </h2>
@@ -231,7 +229,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-emerald-800 text-center">Interactive Classroom</h2>
           
           <div className="flex-1 relative flex items-center justify-center bg-sky-50 rounded-xl overflow-hidden border-2 border-slate-300 shadow-inner">
@@ -325,7 +323,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-emerald-800">Experiment Data</h2>
           
           <div className="flex-1 overflow-y-auto mb-4 border border-slate-200 rounded-lg max-h-48">
@@ -360,7 +358,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
               <h3 className="font-bold text-red-800 mb-2 flex items-center text-sm">
                 <CheckCircle className="w-4 h-4 mr-2" /> Calc Gravity
               </h3>
-              <p className="text-xs text-slate-700 mb-2">Drop the ball. Calculate <strong>g</strong> (m/s²) using <code className="bg-white px-1">g = 2h / t²</code></p>
+              <p className="text-xs text-slate-700 mb-2">Drop the ball. Calculate <strong>g</strong> (m/s²) using <code className="bg-slate-50 px-1">g = 2h / t²</code></p>
               <div className="flex gap-2">
                 <input type="number" value={ansGravity} onChange={e => setAnsGravity(e.target.value)} className="w-20 px-2 py-1 text-sm border rounded" />
                 <button onClick={checkGravity} className="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700">Check</button>
@@ -372,7 +370,7 @@ export default function LabP9EverydayPhysics({ onExit }: { onExit?: () => void }
               <h3 className="font-bold text-emerald-800 mb-2 flex items-center text-sm">
                 <CheckCircle className="w-4 h-4 mr-2" /> Calc Friction
               </h3>
-              <p className="text-xs text-slate-700 mb-2">Push the box. Calculate <strong>μ</strong> using <code className="bg-white px-1">μ = v₀² / (2gd)</code> (use g=9.8)</p>
+              <p className="text-xs text-slate-700 mb-2">Push the box. Calculate <strong>μ</strong> using <code className="bg-slate-50 px-1">μ = v₀² / (2gd)</code> (use g=9.8)</p>
               <div className="flex gap-2">
                 <input type="number" value={ansFriction} onChange={e => setAnsFriction(e.target.value)} step="0.1" className="w-20 px-2 py-1 text-sm border rounded" />
                 <button onClick={checkFriction} className="px-3 py-1 bg-emerald-600 text-white rounded text-sm hover:bg-emerald-700">Check</button>

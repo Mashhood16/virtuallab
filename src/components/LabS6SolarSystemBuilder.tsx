@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -42,12 +43,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-900 font-sans text-white">
-      <div className="bg-slate-800 border-b border-slate-700 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-400 hover:text-white font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-white">Unit 12: 3-D Solar System Model</h1>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Unit 12: 3-D Solar System Model" />
 
       <div className="flex-1 flex overflow-hidden">
         

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -35,22 +36,11 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 9.5: Shaving Mirror</h1>
-            <p className="text-sm text-slate-500">Concave Mirror Reflection</p>
-          </div>
-        </div>
-        <button onClick={() => setDistance(30)} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 9.5: Shaving Mirror" subtitle="Concave Mirror Reflection" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 w-full mb-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 w-full mb-6">
           <div className="flex justify-between text-sm font-bold text-slate-500 mb-2">
             <span>Very Close</span>
             <span>Focal Point (Blurry)</span>
@@ -66,7 +56,7 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
         <div className="flex-1 bg-slate-100 rounded-2xl shadow-inner border border-slate-300 p-8 flex w-full relative overflow-hidden items-center justify-center">
           
           {/* Real world representation (Top-down view) */}
-          <div className="absolute top-4 left-4 right-4 h-24 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center px-4 gap-4">
+          <div className="absolute top-4 left-4 right-4 h-24 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex items-center px-4 gap-4">
              <div className="w-24 font-bold text-sm text-slate-500">Top-Down View:</div>
              <div className="flex-1 h-full relative">
                {/* Mirror */}
@@ -94,12 +84,12 @@ export default function LabS8ConcaveMirror({ onExit }: LabProps) {
                 👱
              </div>
 
-             <div className="absolute inset-0 bg-white/10 rounded-full shadow-[inset_0_20px_50px_rgba(255,255,255,0.5)] pointer-events-none" />
+             <div className="absolute inset-0 bg-slate-50/10 rounded-full shadow-[inset_0_20px_50px_rgba(255,255,255,0.5)] pointer-events-none" />
              <div className="absolute inset-0 rounded-full shadow-[inset_0_-20px_50px_rgba(0,0,0,0.1)] pointer-events-none" />
           </div>
 
           {/* Properties Panel */}
-          <div className="absolute bottom-6 bg-white/90 backdrop-blur px-6 py-4 rounded-xl border border-slate-200 shadow-lg text-center min-w-[250px]">
+          <div className="absolute bottom-6 bg-slate-50/90 backdrop-blur px-6 py-4 rounded-xl border border-slate-200 shadow-lg text-center min-w-[250px]">
             <h3 className="font-bold text-slate-800 mb-2 border-b pb-2">Image Properties</h3>
             <div className="flex flex-col gap-1 text-sm font-medium">
               <div className="flex justify-between">

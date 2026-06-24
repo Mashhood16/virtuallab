@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, Pause, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }) {
   const [amplitude, setAmplitude] = useState<number>(5);
@@ -87,20 +88,11 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-blue-600 text-white p-4 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-blue-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">Complex Numbers & Phasors Lab</h1>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Complex Numbers & Phasors Lab" />
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
-        <div className="bg-white p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
+        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
           <h2 className="text-xl font-bold text-gray-800">Theory: Euler's Formula</h2>
           <p className="text-gray-600 text-sm">
             A complex number can be written in polar form using Euler's formula:
@@ -149,7 +141,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-white p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow-hidden relative">
+        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow-hidden relative">
           <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Phasor Simulation</h2>
           <div className="text-sm text-gray-500 absolute top-10 left-6">t = {time.toFixed(2)} s</div>
           
@@ -198,7 +190,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-white p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
+        <div className="bg-slate-50 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
           <h2 className="text-xl font-bold text-gray-800">Analysis & Assessment</h2>
           <p className="text-sm text-gray-600 mb-2">Use the simulation parameters to solve the following problems.</p>
 

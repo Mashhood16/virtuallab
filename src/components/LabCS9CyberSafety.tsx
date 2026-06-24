@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Smartphone, Shield, ShieldAlert, CheckCircle, Activity, AlertTriangle, MessageSquare, AlertOctagon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -94,14 +95,11 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-teal-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold flex items-center gap-2"><Shield className="w-6 h-6"/> Cyber Safety & Digital Footprint</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-teal-500 hover:bg-teal-400 rounded-lg font-semibold transition-colors">Exit Lab</button>}
-            </div>
+            <LabHeader onExit={onExit} title="Cyber Safety & Digital Footprint" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
                 {/* Column 1: Theory */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
                         <AlertOctagon className="w-6 h-6 text-teal-600" />
                         Digital Threats
@@ -127,7 +125,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
                         <Smartphone className="w-6 h-6 text-teal-600" />
                         Device Simulator
@@ -149,7 +147,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
                                 {currentScenario !== -1 ? (
                                     <div className="animate-in slide-in-from-bottom-4 fade-in">
                                         <p className="text-xs text-slate-500 mb-1 font-semibold">{scenarios[currentScenario].sender}</p>
-                                        <div className="bg-white p-3 rounded-2xl rounded-tl-none shadow-sm text-sm border border-slate-200 mb-4">
+                                        <div className="bg-slate-50 p-3 rounded-2xl rounded-tl-none shadow-sm text-sm border border-slate-200 mb-4">
                                             {scenarios[currentScenario].text}
                                         </div>
                                         
@@ -178,7 +176,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <Activity className="w-6 h-6 text-teal-600" />
                         Safety Log & Analysis
@@ -225,7 +223,7 @@ export default function LabCS9CyberSafety({ onExit }: LabProps) {
                         </button>
                         
                         {assessmentScore !== null && (
-                            <div className="mt-4 p-3 bg-white rounded border border-teal-100 shadow-sm">
+                            <div className="mt-4 p-3 bg-slate-50 rounded border border-teal-100 shadow-sm">
                                 <p className="text-sm font-bold text-slate-800">Score: {assessmentScore}/100</p>
                                 <p className="text-xs text-slate-600 mt-1">{finalFeedback}</p>
                             </div>

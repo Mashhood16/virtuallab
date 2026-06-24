@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Beaker, Sun, ThermometerSun, AlertCircle, CheckSquare, Zap, Moon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface ComponentProps {
   onExit?: () => void;
@@ -132,22 +133,12 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-purple-800 text-white p-4 shadow-md flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-bold">Grade 9 Chemistry: Organic Reactions</h1>
-          <p className="text-sm opacity-90">Hydrogenation & Halogenation Simulator</p>
-        </div>
-        {onExit && (
-          <button onClick={onExit} className="px-4 py-2 bg-purple-900 hover:bg-purple-950 rounded-lg transition-colors">
-            Exit Lab
-          </button>
-        )}
-      </header>
+      <LabHeader onExit={onExit} title="Grade 9 Chemistry: Organic Reactions" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Beaker className="w-5 h-5 text-purple-600" /> Reaction Theory
           </h2>
@@ -156,7 +147,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
             <div className="bg-purple-50 p-4 rounded-lg">
               <h3 className="font-bold text-purple-800 mb-2">1. Hydrogenation of Alkenes</h3>
               <p className="mb-2">Alkenes (like Ethene, C₂H₄) are unsaturated. They can undergo <b>Addition Reactions</b> with Hydrogen gas to form saturated alkanes (Ethane, C₂H₆).</p>
-              <ul className="list-disc pl-5 font-mono text-xs text-purple-900 bg-white p-2 rounded">
+              <ul className="list-disc pl-5 font-mono text-xs text-purple-900 bg-slate-50 p-2 rounded">
                 <li>Condition 1: Nickel (Ni) Catalyst</li>
                 <li>Condition 2: Heat (around 150°C - 200°C)</li>
               </ul>
@@ -165,7 +156,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
             <div className="bg-orange-50 p-4 rounded-lg">
               <h3 className="font-bold text-orange-800 mb-2">2. Halogenation of Alkanes</h3>
               <p className="mb-2">Alkanes (like Methane, CH₄) are saturated. They undergo <b>Substitution Reactions</b> with halogens (like Chlorine, Cl₂).</p>
-              <ul className="list-disc pl-5 font-mono text-xs text-orange-900 bg-white p-2 rounded">
+              <ul className="list-disc pl-5 font-mono text-xs text-orange-900 bg-slate-50 p-2 rounded">
                 <li>Requires UV light (Sunlight) to break Cl-Cl bonds.</li>
                 <li><b>Direct Sunlight:</b> Explosive reaction, forms Carbon and HCl.</li>
                 <li><b>Diffused Sunlight:</b> Controlled substitution, forms Chloromethane (CH₃Cl).</li>
@@ -175,7 +166,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
         </div>
 
         {/* Column 2: Interactive Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Chemical Reactor</h2>
           
           <div className="flex-1 flex flex-col gap-6">
@@ -195,8 +186,8 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
                     className={`flex flex-col items-center gap-2 transition-all ${isSelected ? 'opacity-50 scale-95' : 'hover:-translate-y-1'}`}
                   >
                     <div className={`w-14 h-20 rounded-t-xl rounded-b-md border-2 border-slate-300 relative overflow-hidden flex items-end ${colors[r]}`}>
-                      <div className="absolute top-0 w-full h-4 bg-white/40 border-b border-slate-300"></div>
-                      <div className="w-full h-2/3 bg-white/20"></div>
+                      <div className="absolute top-0 w-full h-4 bg-slate-50/40 border-b border-slate-300"></div>
+                      <div className="w-full h-2/3 bg-slate-50/20"></div>
                     </div>
                     <span className="text-xs font-bold">{r}</span>
                   </button>
@@ -286,7 +277,7 @@ export default function LabC9OrganicChem({ onExit }: ComponentProps) {
         </div>
 
         {/* Column 3: Data Logging & Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           
           <div className="p-4 border-b bg-slate-50">
             <h2 className="text-sm font-bold text-slate-800 uppercase flex items-center gap-2">

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Activity, Battery, DollarSign, Target, UserCheck, AlertCircle, Play, Layers, CheckCircle2 } from 'lucide-react';
+import { Activity, Battery, DollarSign, Target, UserCheck, AlertCircle, Play, Layers, CheckCircle2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
   const [foamDensity, setFoamDensity] = useState<number>(40);
@@ -40,15 +41,10 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-600 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-emerald-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold">Lab: Neuro-Mat Startup Simulator</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Neuro-Mat Startup Simulator" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4">1. Minimum Viable Product</h2>
           <p className="text-slate-600 mb-4 text-sm leading-relaxed">
             In software and hardware product development, an MVP (Minimum Viable Product) is the version of a new product that allows a team to collect the maximum amount of validated learning about customers with the least effort.
@@ -66,7 +62,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center">
             <Layers className="mr-2 text-emerald-500" /> MVP Blueprint
           </h2>
@@ -133,7 +129,7 @@ export default function LabCS11ProductDev({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4">3. Prototyping Controls</h2>
           
           <div className="space-y-6 flex-1">

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { ArrowLeft, Car, Waves, Activity, CheckCircle, XCircle, Volume2 } from 'lucide-react';
+import { Car, Waves, Activity, CheckCircle, XCircle, Volume2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
   const [scenario, setScenario] = useState<'damping' | 'waves'>('damping');
@@ -100,33 +101,12 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Activity className="text-purple-400" />
-            Oscillations & Waves
-          </h1>
-        </div>
-        <div className="flex gap-4 items-center">
-          <select 
-            className="bg-slate-800 border border-slate-700 text-white px-3 py-1 rounded-md outline-none focus:border-purple-500"
-            value={scenario}
-            onChange={(e) => setScenario(e.target.value as any)}
-          >
-            <option value="damping">Critical Damping (Shock Absorbers)</option>
-            <option value="waves">Acoustic Resonance (Rubens Tube)</option>
-          </select>
-          <div className="text-sm font-medium text-slate-400">Grade 12 Physics</div>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Oscillations & Waves" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           {scenario === 'damping' ? (
             <>
               <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
@@ -175,7 +155,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 w-full">
             {scenario === 'damping' ? <Car className="text-purple-500"/> : <Volume2 className="text-purple-500"/>}
             Interactive Visualizer
@@ -306,7 +286,7 @@ export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Engineering Tasks

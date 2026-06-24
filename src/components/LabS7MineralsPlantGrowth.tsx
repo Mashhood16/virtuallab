@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -28,15 +29,10 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-orange-50 font-sans">
-      <div className="bg-white border-b border-orange-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-orange-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 1: Minerals and Plant Growth</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 1: Minerals and Plant Growth" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-orange-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-orange-800 mb-4">Testing Soil Nutrients</h2>
           <p className="text-slate-600 mb-6">Observe two identical seedlings planted in DIY sub-irrigated planters (soda bottles with wicks). One is in pure sand, and the other in a compost-soil mix. Both get equal water and light.</p>
           
@@ -77,7 +73,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
               </div>
 
               {/* Top Half (Inverted) */}
-              <div className="absolute bottom-16 w-32 h-24 border-t border-l border-r border-slate-300/50 bg-white/20 backdrop-blur-sm z-10 flex justify-center">
+              <div className="absolute bottom-16 w-32 h-24 border-t border-l border-r border-slate-300/50 bg-slate-50/20 backdrop-blur-sm z-10 flex justify-center">
                  {/* Sand */}
                  <div className="absolute bottom-0 w-24 h-20 bg-amber-200 border-t-8 border-amber-300/50 rounded-b-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}></div>
                  {/* Wick */}
@@ -110,7 +106,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
               </div>
 
               {/* Top Half (Inverted) */}
-              <div className="absolute bottom-16 w-32 h-24 border-t border-l border-r border-slate-300/50 bg-white/20 backdrop-blur-sm z-10 flex justify-center">
+              <div className="absolute bottom-16 w-32 h-24 border-t border-l border-r border-slate-300/50 bg-slate-50/20 backdrop-blur-sm z-10 flex justify-center">
                  {/* Compost */}
                  <div className="absolute bottom-0 w-24 h-20 bg-stone-800 border-t-8 border-stone-900 rounded-b-xl" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}></div>
                  {/* Wick */}
@@ -128,7 +124,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
         </div>
 
         {weeks === 4 && (
-          <div className="mt-12 p-6 bg-white shadow-lg text-slate-800 rounded-xl border-t-4 border-orange-500 max-w-xl">
+          <div className="mt-12 p-6 bg-slate-50 shadow-lg text-slate-800 rounded-xl border-t-4 border-orange-500 max-w-xl">
             <h4 className="font-bold text-lg mb-2">Conclusion</h4>
             <p>The plant in the <strong>compost-soil mix</strong> grew significantly larger and greener. While both plants had water and sunlight, pure sand lacks essential mineral nutrients (like Nitrogen, Phosphorus, and Potassium). The compost provided these vital minerals, proving they are necessary for healthy plant growth!</p>
           </div>

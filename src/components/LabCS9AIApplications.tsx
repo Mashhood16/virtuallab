@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Network, Brain, CheckCircle2, Activity, ShieldAlert, ArrowRight } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -67,14 +68,11 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold flex items-center gap-2"><Network className="w-6 h-6"/> AI Applications & Ethics</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-indigo-500 hover:bg-indigo-400 rounded-lg font-semibold transition-colors">Exit Lab</button>}
-            </div>
+            <LabHeader onExit={onExit} title="AI Applications & Ethics" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
                 {/* Column 1: Theory */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
                         <Brain className="w-6 h-6 text-indigo-600" />
                         Theory & Context
@@ -95,7 +93,7 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col items-center border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 mb-2 flex items-center gap-2">
                         <Network className="w-6 h-6 text-indigo-600" />
                         AI Tech Tree Simulator
@@ -155,7 +153,7 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-white p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm flex flex-col h-full border border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <Activity className="w-6 h-6 text-indigo-600" />
                         Analysis & Assessment
@@ -168,7 +166,7 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                         ) : (
                             <ul className="space-y-2">
                                 {logs.map((log, i) => (
-                                    <li key={i} className="text-xs p-2 bg-white rounded border border-green-200 flex justify-between items-center shadow-sm animate-in slide-in-from-left-2">
+                                    <li key={i} className="text-xs p-2 bg-slate-50 rounded border border-green-200 flex justify-between items-center shadow-sm animate-in slide-in-from-left-2">
                                         <div className="flex flex-col">
                                             <span className="font-bold text-slate-700">{log.node}</span>
                                             <span className="text-slate-500">{log.issue}</span>

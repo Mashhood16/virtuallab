@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, RotateCcw, CheckCircle, XCircle, Factory, ShieldAlert, FlaskConical } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, XCircle, Factory, ShieldAlert, FlaskConical } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type IndProcess = 'CementKiln' | 'CatalyticCracking' | 'Cosmetics';
 
@@ -201,36 +202,13 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-slate-800 text-white p-4 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Factory className="text-orange-400" />
-            Interactive Industry Materials Lab
-          </h1>
-        </div>
-        <div className="flex gap-2">
-          {(['CementKiln', 'CatalyticCracking', 'Cosmetics'] as IndProcess[]).map(p => (
-            <button
-              key={p}
-              onClick={() => handleProcessChange(p)}
-              className={`px-4 py-1 rounded-full text-sm font-medium transition-colors ${process === p ? 'bg-orange-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
-            >
-              {p === 'CementKiln' ? 'Cement Kiln' : p === 'CatalyticCracking' ? 'Petrochemicals' : 'Cosmetics'}
-            </button>
-          ))}
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Interactive Industry Materials Lab" />
 
       {/* Main Content */}
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2 flex items-center gap-2">
               <ShieldAlert className="text-slate-500" size={20} />
@@ -278,7 +256,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Middle Column: Interactive Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
           <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 flex items-center gap-2">
             <FlaskConical className="text-slate-500" size={20} />
             Plant Simulator
@@ -307,7 +285,7 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2">
             Production Engineering Analysis
           </h2>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Pizza, Flame } from 'lucide-react';
+import { Activity, Pizza, Flame } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -36,10 +37,7 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Eating and Exercise Research" />
 
         <h1 className="text-3xl font-bold mb-2">Eating and Exercise Research</h1>
         <p className="text-slate-600 mb-8">Investigate the relationship between calories consumed and calories burned.</p>
@@ -48,7 +46,7 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
           
           <div className="w-1/3 flex flex-col gap-6">
             {/* Calories In */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-rose-600">
                 <Pizza className="w-5 h-5" /> Consumed (Food)
               </h2>
@@ -69,7 +67,7 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
             </div>
 
             {/* Calories Out */}
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-indigo-600">
                 <Flame className="w-5 h-5" /> Burned (Exercise)
               </h2>
@@ -91,7 +89,7 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
           </div>
 
           {/* Results Analysis */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
             <h2 className="text-2xl font-bold mb-8">Science Analysis</h2>
 
             <div className="flex-1 flex flex-col items-center justify-center">

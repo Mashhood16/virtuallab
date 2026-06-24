@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -33,9 +34,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
     <div className="w-full h-screen bg-[#1d6f42] flex flex-col font-sans">
       <header className="bg-[#103b23] text-white p-4 shadow-md flex justify-between items-center z-20">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-[#1d6f42] rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 2.1: Cricket Score Calculations" />
           <div>
             <h1 className="text-xl font-bold">Act 2.1: Cricket Score Calculations</h1>
             <p className="text-sm text-green-200">Use Excel functions to calculate scores for the Pak vs NZ series.</p>
@@ -46,7 +45,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
       <div className="flex-1 flex overflow-hidden">
         
         {/* Lab Area - The Spreadsheet */}
-        <div className="flex-1 bg-white p-6 flex flex-col relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 p-6 flex flex-col relative overflow-hidden">
           
           {/* Mock Excel Ribbon */}
           <div className="w-full h-16 bg-slate-100 border-b border-slate-300 flex items-center px-4 gap-4 mb-4">
@@ -55,11 +54,11 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
               Excel Virtual
             </div>
             <div className="w-px h-8 bg-slate-300"></div>
-            <span className="font-mono bg-white px-2 py-1 border border-slate-300 rounded text-sm text-slate-500">fx</span>
+            <span className="font-mono bg-slate-50 px-2 py-1 border border-slate-300 rounded text-sm text-slate-500">fx</span>
           </div>
 
           <div className="flex-1 overflow-auto border border-slate-300 shadow-sm rounded relative">
-             <table className="w-full text-sm font-mono border-collapse bg-white">
+             <table className="w-full text-sm font-mono border-collapse bg-slate-50">
                 <thead>
                   <tr className="bg-slate-200 text-slate-600 border-b border-slate-300">
                     <th className="w-10 border-r border-slate-300"></th>
@@ -106,7 +105,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
 
              {/* Bar Chart Overlay */}
              {showChart && (
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-white border border-slate-300 shadow-2xl p-6 flex flex-col rounded z-10 animate-fade-in">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-slate-50 border border-slate-300 shadow-2xl p-6 flex flex-col rounded z-10 animate-fade-in">
                    <h3 className="text-center font-bold text-slate-700 mb-4">Average Scores</h3>
                    <div className="flex-1 border-l-2 border-b-2 border-slate-400 flex items-end justify-around pb-0 pt-4 px-2">
                       <div className="w-12 bg-blue-500 rounded-t flex items-end justify-center text-xs text-white pb-1" style={{height: '70%'}}>70</div>
@@ -131,7 +130,7 @@ export default function LabCricketSpreadsheet({ onExit }: LabProps) {
         </div>
 
         {/* Control Panel */}
-        <div className="w-96 bg-white p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 overflow-y-auto">
+        <div className="w-96 bg-slate-50 p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 overflow-y-auto">
           <h2 className="text-2xl font-bold text-green-800 mb-6 border-b-2 border-green-100 pb-2">Formula Tasks</h2>
           
           <div className="space-y-4 mb-8">

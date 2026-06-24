@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
+import { CheckCircle2, XCircle, Table as TableIcon, BookOpen, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -107,29 +108,24 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-emerald-600 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="mr-4 hover:bg-emerald-700 p-2 rounded-full transition">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex-1">Virtual Lab: Coordinate Geometry</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Coordinate Geometry" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <BookOpen className="mr-2" /> Theory & Context
           </h2>
           
           <div className="flex bg-slate-100 p-1 rounded-lg mb-6 shrink-0">
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'midpoint' ? 'bg-white shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'midpoint' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('midpoint')}
             >
               Lamp Post Midpoint
             </button>
             <button
-              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'distance' ? 'bg-white shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
+              className={`flex-1 py-2 rounded-md text-sm font-medium transition ${mode === 'distance' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-600 hover:bg-slate-200'}`}
               onClick={() => setMode('distance')}
             >
               Running Distance
@@ -160,13 +156,13 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <Activity className="mr-2" /> Interactive Cartesian Map
           </h2>
 
           <div className="bg-slate-50 border border-slate-200 rounded-lg flex-1 flex flex-col mb-4 items-center justify-center relative overflow-hidden">
-            <svg width="300" height="300" viewBox="0 0 300 300" onClick={handleSVGClick} className="bg-white border border-slate-200 cursor-crosshair">
+            <svg width="300" height="300" viewBox="0 0 300 300" onClick={handleSVGClick} className="bg-slate-50 border border-slate-200 cursor-crosshair">
               {/* Grid lines */}
               {Array.from({length: 21}).map((_, i) => (
                 <line key={`v-${i}`} x1={i*15} y1="0" x2={i*15} y2="300" stroke="#f1f5f9" />
@@ -205,7 +201,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
                 </>
               )}
             </svg>
-            <div className="absolute top-2 right-2 bg-white/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
+            <div className="absolute top-2 right-2 bg-slate-50/80 p-2 rounded shadow-sm text-xs font-mono border border-slate-200">
               1 unit = 1 km
             </div>
           </div>
@@ -236,7 +232,7 @@ export default function LabM9CoordinateGeometry({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col border border-slate-200">
           <h2 className="text-xl font-bold mb-4 flex items-center text-emerald-700">
             <TableIcon className="mr-2" /> Analysis & Data
           </h2>

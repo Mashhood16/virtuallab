@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, RotateCcw, Triangle, AlignCenterVertical, CheckCircle2, XCircle } from 'lucide-react';
+import { Play, RotateCcw, Triangle, AlignCenterVertical, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11BinomialInduction({ onExit }: { onExit?: () => void }) {
     const [mode, setMode] = useState<'induction' | 'pascal'>('induction');
@@ -92,28 +93,11 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-indigo-900 text-white p-4 flex items-center justify-between shadow-md">
-                <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-indigo-800 rounded-full transition-colors">
-                        <ArrowLeft size={24} />
-                    </button>
-                    <h1 className="text-xl font-bold">Grade 11: Induction & Binomial Theorem</h1>
-                </div>
-                <div className="flex bg-indigo-800 rounded-lg p-1">
-                    <button onClick={() => { setMode('induction'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} 
-                            className={`px-4 py-2 rounded-md flex items-center gap-2 ${mode === 'induction' ? 'bg-amber-500 text-indigo-950 font-bold' : 'text-indigo-200'}`}>
-                        <AlignCenterVertical size={18}/> Induction
-                    </button>
-                    <button onClick={() => { setMode('pascal'); setFeedback({}); setQ1Ans(''); setQ2Ans(''); }} 
-                            className={`px-4 py-2 rounded-md flex items-center gap-2 ${mode === 'pascal' ? 'bg-amber-500 text-indigo-950 font-bold' : 'text-indigo-200'}`}>
-                        <Triangle size={18}/> Pascal's Triangle
-                    </button>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Grade 11: Induction & Binomial Theorem" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
                 {/* Left Column: Theory */}
-                <div className="p-6 bg-white border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
+                <div className="p-6 bg-slate-50 border-r border-slate-200 overflow-y-auto flex flex-col gap-6">
                     {mode === 'induction' ? (
                         <>
                             <div>
@@ -178,7 +162,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 ))}
                             </div>
 
-                            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 w-full max-w-md flex flex-col gap-4">
+                            <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 w-full max-w-md flex flex-col gap-4">
                                 <p className="text-sm font-semibold text-slate-700">Experiment Controls</p>
                                 <div className="flex items-center justify-between">
                                     <label className="text-sm text-slate-600">Remove a domino (create a gap):</label>
@@ -224,7 +208,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                                 key={k}
                                                 onClick={() => setSelectedCell({n, k})}
                                                 className={`w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold transition-all shadow-sm border
-                                                    ${selectedCell?.n === n && selectedCell?.k === k ? 'bg-amber-500 text-white border-amber-600 scale-110 z-10' : 'bg-white text-indigo-900 border-slate-200 hover:bg-indigo-50'}`}
+                                                    ${selectedCell?.n === n && selectedCell?.k === k ? 'bg-amber-500 text-white border-amber-600 scale-110 z-10' : 'bg-slate-50 text-indigo-900 border-slate-200 hover:bg-indigo-50'}`}
                                             >
                                                 {val}
                                             </button>
@@ -233,7 +217,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                                 ))}
                             </div>
 
-                            <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-sm border border-slate-200 mt-4 flex flex-col gap-4">
+                            <div className="w-full max-w-md bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 mt-4 flex flex-col gap-4">
                                 <div className="flex items-center justify-between">
                                     <label className="text-sm font-semibold text-slate-700">Number of Rows:</label>
                                     <input type="range" min="3" max="10" value={pascalRows} onChange={e => {setPascalRows(parseInt(e.target.value)); setSelectedCell(null);}} className="w-1/2" />
@@ -264,7 +248,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                 </div>
 
                 {/* Right Column: Assessment */}
-                <div className="p-6 bg-white border-l border-slate-200 overflow-y-auto">
+                <div className="p-6 bg-slate-50 border-l border-slate-200 overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
                          Let's Solve
                     </h2>

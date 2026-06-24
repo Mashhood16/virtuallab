@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Zap } from 'lucide-react';
+import { RefreshCw, Zap } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -38,18 +39,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 9.1: Tracing Mirror Reflections</h1>
-            <p className="text-sm text-slate-500">Navigate the laser through the maze</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 9.1: Tracing Mirror Reflections" subtitle="Navigate the laser through the maze" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
@@ -123,7 +113,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => rotateMirror(m.id)}
-              className="absolute w-12 h-12 -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full hover:bg-white/10 active:bg-white/20 transition-colors"
+              className="absolute w-12 h-12 -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center rounded-full hover:bg-slate-50/10 active:bg-slate-50/20 transition-colors"
               style={{ left: m.x, top: m.y }}
             >
               <div 

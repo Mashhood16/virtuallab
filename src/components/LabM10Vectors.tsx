@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { PointerEvent } from 'react';
 import { ArrowRight, BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -107,22 +108,11 @@ export default function LabM10Vectors({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <BookOpen className="w-6 h-6 text-blue-400" />
-          <h1 className="text-xl font-bold">Lab M10: Vectors & Scalars</h1>
-        </div>
-        {onExit && (
-          <button onClick={onExit} className="flex items-center gap-2 hover:text-blue-300 transition-colors">
-            <ArrowRight className="w-5 h-5" />
-            <span>Exit Lab</span>
-          </button>
-        )}
-      </div>
+      <LabHeader onExit={onExit} title="Lab M10: Vectors & Scalars" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-blue-600" />
             Theory & Concepts
@@ -148,7 +138,7 @@ export default function LabM10Vectors({ onExit }: LabProps) {
 
         {/* Middle Column: Interactive Lab */}
         <div className="flex flex-col gap-4">
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden relative h-[400px]">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden relative h-[400px]">
             <svg 
               ref={svgRef} 
               className="w-full h-full touch-none" 
@@ -183,14 +173,14 @@ export default function LabM10Vectors({ onExit }: LabProps) {
               <circle cx={uSvg.x} cy={uSvg.y} r={8} fill="#3b82f6" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('U')} />
               <circle cx={vSvg.x} cy={vSvg.y} r={8} fill="#ef4444" className="cursor-pointer hover:opacity-80" onPointerDown={() => handlePointerDown('V')} />
             </svg>
-            <div className="absolute top-2 left-2 bg-white/90 p-2 rounded text-xs border border-slate-200 pointer-events-none">
+            <div className="absolute top-2 left-2 bg-slate-50/90 p-2 rounded text-xs border border-slate-200 pointer-events-none">
               <div className="text-blue-600 font-bold">Vector U (Blue): {uMag} units</div>
               <div className="text-red-600 font-bold">Vector V (Red): {vMag} units</div>
               <div className="text-green-600 font-bold">Resultant U+V: {sumMag} units</div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-4">
+          <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-4">
             <h3 className="font-semibold text-slate-800 mb-2">Classify Quantities</h3>
             <div className="flex gap-2 flex-wrap mb-4 min-h-[30px]">
               {items.filter(i => i.status === 'pool').map(item => (
@@ -232,7 +222,7 @@ export default function LabM10Vectors({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Database, CheckCircle } from 'lucide-react';
+import { Activity, Database, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12StructuralStats({ onExit }: { onExit?: () => void }) {
   const [humidity, setHumidity] = useState(92);
@@ -52,9 +53,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-purple-800 text-white p-4 shadow-md flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-purple-700 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <LabHeader onExit={onExit} title="Lab 12.2: Structural Biophysics & Stats" />
           <h1 className="text-xl font-bold">Lab 12.2: Structural Biophysics & Stats</h1>
         </div>
         <div className="flex items-center gap-2">
@@ -65,7 +64,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Theory & Context</h2>
           <div className="space-y-4 text-sm text-slate-600">
             <p>
@@ -94,7 +93,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Interactive */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Diffraction Simulator</h2>
           
           <div className="flex-1 flex flex-col items-center">
@@ -145,7 +144,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Data Analysis</h2>
           
           <div className="space-y-6">
@@ -154,7 +153,7 @@ export default function LabB12StructuralStats({ onExit }: { onExit?: () => void 
               {measurements.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {measurements.map((m, i) => (
-                    <span key={i} className="bg-white border border-slate-300 px-3 py-1 rounded font-mono text-sm shadow-sm text-purple-700 font-bold">
+                    <span key={i} className="bg-slate-50 border border-slate-300 px-3 py-1 rounded font-mono text-sm shadow-sm text-purple-700 font-bold">
                       {m.toFixed(2)}
                     </span>
                   ))}

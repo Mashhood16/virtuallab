@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, RotateCcw, Activity } from 'lucide-react';
+import { Play, RotateCcw, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -110,7 +111,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
     const maxT = 60;
     const maxY = 100;
     return (
-      <svg viewBox="-30 -10 250 160" className="w-full h-64 bg-white rounded-lg shadow-sm border border-slate-200">
+      <svg viewBox="-30 -10 250 160" className="w-full h-64 bg-slate-50 rounded-lg shadow-sm border border-slate-200">
          {/* Axes */}
          <line x1="0" y1="120" x2="200" y2="120" stroke="#94a3b8" strokeWidth="2" />
          <line x1="0" y1="0" x2="0" y2="120" stroke="#94a3b8" strokeWidth="2" />
@@ -146,19 +147,12 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-teal-700 text-white p-4 flex items-center shadow-md shrink-0">
-        {onExit && (
-          <button onClick={onExit} className="mr-4 hover:bg-teal-800 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-        )}
-        <h1 className="text-2xl font-bold">Metal Reactivity Series: Rate of Reaction</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Metal Reactivity Series: Rate of Reaction" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <Activity className="text-teal-600" /> Theory & Setup
@@ -220,7 +214,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Virtual Workbench</h2>
           </div>
@@ -288,7 +282,7 @@ export default function LabC10MetalReactivity({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Results & Analysis</h2>
           </div>

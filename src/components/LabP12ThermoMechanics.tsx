@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Train, Star, Activity, CheckCircle, XCircle, Thermometer, Layers } from 'lucide-react';
+import { Train, Star, Activity, CheckCircle, XCircle, Thermometer, Layers } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void }) {
   const [scenario, setScenario] = useState<'maglev' | 'whitedwarf'>('maglev');
@@ -31,33 +32,22 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Layers className="text-orange-400" />
-            Extreme States of Matter
-          </h1>
-        </div>
-        <div className="flex gap-4 items-center">
-          <select 
-            className="bg-slate-800 border border-slate-700 text-white px-3 py-1 rounded-md outline-none focus:border-orange-500"
-            value={scenario}
-            onChange={(e) => setScenario(e.target.value as any)}
-          >
-            <option value="maglev">Superconducting Maglev</option>
-            <option value="whitedwarf">White Dwarf Degeneracy</option>
-          </select>
-          <div className="text-sm font-medium text-slate-400">Grade 12 Physics</div>
-        </div>
+      <LabHeader onExit={onExit} title="Extreme States of Matter" />
+      <div className="bg-slate-900 text-white p-2 flex justify-end">
+        <select 
+          className="bg-slate-800 border border-slate-700 text-white px-3 py-1 rounded-md outline-none focus:border-orange-500"
+          value={scenario}
+          onChange={(e) => setScenario(e.target.value as any)}
+        >
+          <option value="maglev">Superconducting Maglev</option>
+          <option value="whitedwarf">White Dwarf Degeneracy</option>
+        </select>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-6 p-6">
         
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4 overflow-y-auto">
           {scenario === 'maglev' ? (
             <>
               <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
@@ -104,7 +94,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2 w-full">
             {scenario === 'maglev' ? <Thermometer className="text-blue-500"/> : <Star className="text-orange-500"/>}
             Interactive Visualizer
@@ -245,7 +235,7 @@ export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Activity className="text-emerald-500" />
             Analysis & Computation

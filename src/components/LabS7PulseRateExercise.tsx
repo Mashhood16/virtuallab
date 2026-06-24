@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Activity, Play } from 'lucide-react';
+import { Activity, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -45,15 +46,10 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-red-50 font-sans">
-      <div className="bg-white border-b border-red-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-red-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 2: Pulse Rate and Exercise</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 2: Pulse Rate and Exercise" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-red-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-red-800 mb-4">Circulation and Physical Demand</h2>
           <p className="text-slate-600 mb-6">Observe how your pulse rate (heartbeats per minute) changes from a resting state, to active exercise, and finally during the recovery period.</p>
           
@@ -72,7 +68,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
         <div className="flex gap-12 w-full max-w-4xl">
           
           {/* Animated Heart */}
-          <div className="flex-1 flex flex-col items-center justify-center bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+          <div className="flex-1 flex flex-col items-center justify-center bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
             <h3 className="font-bold text-slate-500 mb-8 uppercase tracking-wider text-sm">Heart Simulation</h3>
             <div className="relative flex justify-center items-center h-48 w-48">
               {/* The heart pulses faster based on BPM. CSS animation duration = 60 / pulse */}

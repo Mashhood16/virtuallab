@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Plus, Trash2, PieChart, LayoutList, CheckCircle2, BarChart3, Edit3 } from 'lucide-react';
+import { Plus, Trash2, PieChart, LayoutList, CheckCircle2, BarChart3, Edit3 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Question {
   id: string;
@@ -57,15 +58,10 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-600 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold">Lab: Research & Data Visualization</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Lab: Research & Data Visualization" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4">1. UI & Survey Design</h2>
           <p className="text-slate-600 mb-4 text-sm leading-relaxed">
             In software engineering, understanding user needs through rigorous research is crucial. A survey is a primary tool for quantitative and qualitative data collection.
@@ -83,19 +79,19 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-bold text-slate-800">2. Research Workspace</h2>
             <div className="flex bg-slate-100 p-1 rounded-lg">
               <button 
                 onClick={() => setView('form')}
-                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${view === 'form' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${view === 'form' ? 'bg-slate-50 shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 <LayoutList size={16} className="mr-2" /> Form Builder
               </button>
               <button 
                 onClick={() => setView('dashboard')}
-                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${view === 'dashboard' ? 'bg-white shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${view === 'dashboard' ? 'bg-slate-50 shadow-sm text-indigo-600' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 <PieChart size={16} className="mr-2" /> Dashboard
               </button>
@@ -112,7 +108,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
                       <Trash2 size={16} />
                     </button>
                   </div>
-                  <div className="flex items-center bg-white border border-slate-300 rounded-md px-3 py-2">
+                  <div className="flex items-center bg-slate-50 border border-slate-300 rounded-md px-3 py-2">
                     <Edit3 size={16} className="text-slate-400 mr-2" />
                     <input 
                       type="text" 
@@ -180,7 +176,7 @@ export default function LabCS11Research({ onExit }: { onExit?: () => void }) {
           )}
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4">3. Analysis & Logic</h2>
           
           <div className="space-y-6 flex-1">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Play, CheckCircle, Search, Scissors, Link } from 'lucide-react';
+import { Activity, Play, CheckCircle, Search, Scissors, Link } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12Biotechnology({ onExit }: { onExit?: () => void }) {
   const [plasmidState, setPlasmidState] = useState<'intact' | 'cut' | 'inserted' | 'ligated'>('intact');
@@ -39,9 +40,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-blue-800 text-white p-4 shadow-md flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-blue-700 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <LabHeader onExit={onExit} title="Lab 12.1: Genetic Engineering & PCR" />
           <h1 className="text-xl font-bold">Lab 12.1: Genetic Engineering & PCR</h1>
         </div>
         <div className="flex items-center gap-2">
@@ -52,7 +51,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Theory & Context</h2>
           <div className="space-y-4 text-sm text-slate-600">
             <p>
@@ -76,7 +75,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Interactive */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Simulation Workspace</h2>
           
           <div className="flex-1 flex flex-col items-center justify-center space-y-8">
@@ -154,7 +153,7 @@ export default function LabB12Biotechnology({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Data Log & Assessment</h2>
           
           <div className="space-y-6">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, RotateCcw, Droplets } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Droplets } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) {
   const [objectData, setObjectData] = useState({ mass: 0, volume: 0, density: 0, name: '' });
@@ -59,23 +60,11 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Droplets className="text-blue-600" />
-            Physics Grade 9: Volume & Density
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Physics Grade 9: Volume & Density" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Theory: Density</h2>
           <div className="prose prose-sm">
             <p>
@@ -101,25 +90,25 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col items-center relative">
           <h2 className="text-lg font-bold border-b pb-2 w-full mb-4">Laboratory Bench</h2>
 
           <div className="flex gap-2 w-full justify-center mb-6">
             <button 
               onClick={() => setStep('start')}
-              className={`px-3 py-1 rounded border text-sm ${step === 'start' ? 'bg-blue-100 border-blue-300' : 'bg-white hover:bg-slate-50'}`}
+              className={`px-3 py-1 rounded border text-sm ${step === 'start' ? 'bg-blue-100 border-blue-300' : 'bg-slate-50 hover:bg-slate-50'}`}
             >
               Table
             </button>
             <button 
               onClick={() => setStep('on_balance')}
-              className={`px-3 py-1 rounded border text-sm ${step === 'on_balance' ? 'bg-blue-100 border-blue-300' : 'bg-white hover:bg-slate-50'}`}
+              className={`px-3 py-1 rounded border text-sm ${step === 'on_balance' ? 'bg-blue-100 border-blue-300' : 'bg-slate-50 hover:bg-slate-50'}`}
             >
               Put on Balance
             </button>
             <button 
               onClick={() => setStep('in_water')}
-              className={`px-3 py-1 rounded border text-sm ${step === 'in_water' ? 'bg-blue-100 border-blue-300' : 'bg-white hover:bg-slate-50'}`}
+              className={`px-3 py-1 rounded border text-sm ${step === 'in_water' ? 'bg-blue-100 border-blue-300' : 'bg-slate-50 hover:bg-slate-50'}`}
             >
               Drop in Cylinder
             </button>
@@ -142,7 +131,7 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
             </div>
 
             {/* Cylinder */}
-            <div className="absolute right-20 bottom-4 w-16 h-48 border-x-2 border-b-2 border-slate-400 bg-white/50 rounded-b-lg relative overflow-hidden">
+            <div className="absolute right-20 bottom-4 w-16 h-48 border-x-2 border-b-2 border-slate-400 bg-slate-50/50 rounded-b-lg relative overflow-hidden">
               {/* Ticks */}
               {[20, 40, 60, 80, 100].map(val => (
                 <div key={val} className="absolute w-4 border-b border-slate-400" style={{ bottom: `${val}%` }}>
@@ -171,7 +160,7 @@ export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Record Data</h2>
           
           <div className="grid grid-cols-2 gap-4">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Flame, Snowflake } from 'lucide-react';
+import { Flame, Snowflake } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -40,15 +41,10 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-violet-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 7: Exothermic & Endothermic Solutions</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 7: Exothermic & Endothermic Solutions" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
+        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
           
           {/* Controls */}
           <div className="w-1/2 flex flex-col justify-between">
@@ -101,7 +97,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
           <div className="w-1/2 bg-slate-100 rounded-xl border border-slate-200 p-8 flex items-center justify-center relative">
              
              {/* Thermometer */}
-             <div className="absolute right-12 top-12 h-64 w-12 bg-white border border-slate-300 rounded-full flex flex-col items-center py-2 shadow-sm z-20">
+             <div className="absolute right-12 top-12 h-64 w-12 bg-slate-50 border border-slate-300 rounded-full flex flex-col items-center py-2 shadow-sm z-20">
                <span className="text-xs font-bold text-slate-500 mb-2">°C</span>
                <div className="flex-1 w-2 bg-slate-200 rounded-full relative flex flex-col-reverse justify-start">
                  {/* Thermometer Liquid */}
@@ -114,7 +110,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
              </div>
              
              {/* Temperature Display */}
-             <div className="absolute right-12 bottom-12 bg-white px-4 py-2 rounded-lg font-black text-2xl text-slate-800 shadow border border-slate-200 min-w-[80px] text-center">
+             <div className="absolute right-12 bottom-12 bg-slate-50 px-4 py-2 rounded-lg font-black text-2xl text-slate-800 shadow border border-slate-200 min-w-[80px] text-center">
                {temperature.toFixed(1)}°
              </div>
 
@@ -125,7 +121,7 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
                  <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-4 bg-slate-300/80 animate-pulse" style={{ height: '96px' }}></div>
                )}
 
-               <div className="w-48 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-3xl relative flex items-end justify-center bg-white shadow-sm overflow-hidden z-10">
+               <div className="w-48 h-48 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-3xl relative flex items-end justify-center bg-slate-50 shadow-sm overflow-hidden z-10">
                  {/* Water */}
                  <div className={`w-full absolute bottom-0 transition-all duration-300 ${substance === 'NaOH' && progress > 0 ? 'bg-red-500/20' : substance === 'NH4NO3' && progress > 0 ? 'bg-blue-500/20' : 'bg-blue-300/30'}`} style={{ height: '70%' }}>
                    

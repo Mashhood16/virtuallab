@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, ShieldAlert, Lock, Server, ArrowLeft, Activity, FileWarning, Key, Save } from 'lucide-react';
+import { Shield, ShieldAlert, Lock, Server,  Activity, FileWarning, Key, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }) {
   const { addRecord } = useHistory();
@@ -68,24 +69,11 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
-      <div className="flex items-center justify-between bg-slate-800 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <ShieldAlert className="text-red-400" size={24} />
-          <h1 className="text-xl font-bold">Grade 12 InfoSec: Cyber Defense & Cryptography</h1>
-        </div>
-        <div className="text-sm font-mono bg-slate-900 px-3 py-1 rounded-md text-emerald-400">
-          SYS_STATUS: {serverHealth}%
-        </div>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Grade 12 InfoSec: Cyber Defense & Cryptography" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
         
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <Activity size={18} className="text-blue-500" />
@@ -120,7 +108,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="flex border-b border-slate-200">
             <button 
               className={`flex-1 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === 'network' ? 'border-blue-500 text-blue-600' : 'border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50'}`}
@@ -237,7 +225,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <Key size={18} className="text-amber-500" />

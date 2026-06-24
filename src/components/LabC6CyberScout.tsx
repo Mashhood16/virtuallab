@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Search, Shield, Globe, ShieldCheck, UserCheck, CheckCircle } from 'lucide-react';
+import { Search, Shield, Globe, ShieldCheck, UserCheck, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -13,15 +14,12 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Cyber Scout Exploration" />
 
         <h1 className="text-3xl font-bold mb-2">Cyber Scout Exploration</h1>
         <p className="text-slate-600 mb-8">Search the internet simulator to find out how to become a Cyber Scout and join the program.</p>
 
-        <div className="flex-1 bg-white rounded-xl shadow-xl border border-slate-200 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-slate-50 rounded-xl shadow-xl border border-slate-200 overflow-hidden flex flex-col">
           {/* Browser Chrome */}
           <div className="bg-slate-200 border-b border-slate-300 p-3 flex items-center gap-4">
             <div className="flex gap-2">
@@ -29,14 +27,14 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
               <div className="w-3 h-3 rounded-full bg-amber-400"></div>
               <div className="w-3 h-3 rounded-full bg-green-400"></div>
             </div>
-            <div className="flex-1 bg-white rounded-md flex items-center px-3 py-1.5 shadow-inner">
+            <div className="flex-1 bg-slate-50 rounded-md flex items-center px-3 py-1.5 shadow-inner">
               <Globe className="w-4 h-4 text-slate-400 mr-2" />
               <span className="text-sm text-slate-500">https://www.search-simulator.edu</span>
             </div>
           </div>
 
           {!hasSearched ? (
-            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-white">
+            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-slate-50">
               <Shield className="w-24 h-24 text-blue-500 mb-8" />
               <div className="w-full max-w-2xl flex relative shadow-lg rounded-full">
                 <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6" />
@@ -73,7 +71,7 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
 
                 <div className="text-sm text-slate-500 mb-6">About 1 results (0.02 seconds)</div>
 
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200 max-w-3xl">
+                <div className="bg-slate-50 p-8 rounded-xl shadow-sm border border-slate-200 max-w-3xl">
                   <div className="text-sm text-slate-500 mb-1 flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-green-600" />
                     https://www.national-cyber-scouts.gov.pk

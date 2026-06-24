@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Droplets, Droplet } from 'lucide-react';
+import { Droplets, Droplet } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -25,15 +26,10 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-green-50 font-sans">
-      <div className="bg-white border-b border-green-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-green-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 11: Drip Irrigation Model</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Drip Irrigation Model" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-green-800 mb-4">Water Conservation</h2>
           <p className="text-slate-600 mb-6">Drip irrigation delivers water directly to the roots of plants drop by drop. This minimizes evaporation waste and ensures highly efficient water usage compared to flood or sprinkler irrigation.</p>
           
@@ -56,10 +52,10 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
         </div>
 
         {/* Simulation Area */}
-        <div className="relative w-full max-w-4xl h-[400px] bg-white rounded-3xl border border-slate-200 shadow-sm flex items-end justify-center p-8 mt-4 overflow-hidden">
+        <div className="relative w-full max-w-4xl h-[400px] bg-slate-50 rounded-3xl border border-slate-200 shadow-sm flex items-end justify-center p-8 mt-4 overflow-hidden">
            
            {/* Water Tank */}
-           <div className="absolute left-8 bottom-16 w-32 h-48 border-4 border-slate-300 bg-white rounded-xl shadow-inner flex flex-col justify-end z-20 overflow-hidden">
+           <div className="absolute left-8 bottom-16 w-32 h-48 border-4 border-slate-300 bg-slate-50 rounded-xl shadow-inner flex flex-col justify-end z-20 overflow-hidden">
               {/* Water Level */}
               <div 
                 className="w-full bg-blue-500/80 transition-all duration-200 border-t-2 border-blue-400"

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, ZoomIn, Droplets } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -31,16 +32,11 @@ export default function LabS6Microscope({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-100 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 1: Microscope Slide Preparation</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 1: Microscope Slide Preparation" />
 
       <div className="flex-1 flex flex-col p-6 items-center">
         {viewMode === 'bench' && (
-          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
+          <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-6">Preparation Bench</h2>
             
             <div className="flex gap-4 mb-8">
@@ -58,7 +54,7 @@ export default function LabS6Microscope({ onExit }: LabProps) {
                 <div className="w-64 h-24 bg-blue-50 border border-blue-200 shadow-sm relative flex items-center justify-center">
                   <span className="text-xs text-blue-400 absolute top-1 left-2">Glass Slide</span>
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${stainAdded ? 'bg-blue-200/50' : 'bg-amber-100/30'}`}>
-                    {coverSlipAdded && <div className="absolute w-14 h-14 border border-slate-400/50 bg-white/20"></div>}
+                    {coverSlipAdded && <div className="absolute w-14 h-14 border border-slate-400/50 bg-slate-50/20"></div>}
                   </div>
                 </div>
               )}

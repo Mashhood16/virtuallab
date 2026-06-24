@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw } from 'lucide-react';
+import { Play, Pause, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -177,29 +178,14 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between shadow-sm z-10 shrink-0">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 11: Specific Latent Heat</h1>
-            <p className="text-sm text-slate-500">Determine specific latent heat using continuous electrical heating.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RotateCcw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." rightContent={<>{rightJsx}</>} />
 
       {/* Main Grid */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
           
           {/* Column 1: Theory & Setup */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
             <div>
               <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Theory</h2>
               <p className="text-sm text-slate-600 mb-2">
@@ -221,7 +207,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Substance</label>
                   <select 
-                    className="w-full border border-slate-300 rounded-md p-2 bg-white"
+                    className="w-full border border-slate-300 rounded-md p-2 bg-slate-50"
                     value={material}
                     onChange={handleMaterialChange}
                     disabled={isRunning && time > 0}
@@ -290,7 +276,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
             <div className="flex-1 w-full flex items-center justify-center relative p-8">
               
               {/* Beaker System */}
-              <div className="relative w-48 h-64 bg-white/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 overflow-hidden backdrop-blur-sm">
+              <div className="relative w-48 h-64 bg-slate-50/5 border-x-4 border-b-4 border-white/20 rounded-b-xl flex items-end justify-center z-10 overflow-hidden backdrop-blur-sm">
                 
                 {/* Liquid Phase */}
                 {fractionLiquid > 0 && (
@@ -302,7 +288,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                     {phase === 'Boiling' && (
                        <div className="absolute inset-0 overflow-hidden">
                          {[...Array(20)].map((_, i) => (
-                           <div key={i} className="absolute w-2 h-2 bg-white/60 rounded-full animate-bounce"
+                           <div key={i} className="absolute w-2 h-2 bg-slate-50/60 rounded-full animate-bounce"
                                 style={{
                                   left: `${Math.random() * 90}%`,
                                   bottom: `${Math.random() * 20}%`,
@@ -319,7 +305,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 {fractionLiquid < 1 && (
                   <div className="absolute bottom-2 w-32 h-32 flex flex-wrap gap-1 justify-center items-end opacity-90 transition-opacity" style={{ opacity: 1 - fractionLiquid }}>
                     {[...Array(8)].map((_, i) => (
-                      <div key={i} className="w-12 h-12 bg-white/80 border border-slate-300 rounded-sm transform" style={{ rotate: `${(i * 15) % 45}deg` }} />
+                      <div key={i} className="w-12 h-12 bg-slate-50/80 border border-slate-300 rounded-sm transform" style={{ rotate: `${(i * 15) % 45}deg` }} />
                     ))}
                   </div>
                 )}
@@ -330,7 +316,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
                 </div>
 
                 {/* Thermometer */}
-                <div className="absolute right-4 bottom-4 w-3 h-48 bg-white/20 border border-white/40 rounded-full flex items-end p-0.5">
+                <div className="absolute right-4 bottom-4 w-3 h-48 bg-slate-50/20 border border-white/40 rounded-full flex items-end p-0.5">
                    <div className="w-full bg-red-500 rounded-full transition-all duration-300" 
                         style={{ height: `${Math.max(5, ((temperature - minTemp) / (maxTemp - minTemp)) * 100)}%` }} />
                 </div>
@@ -340,7 +326,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
               {fractionGas > 0 && (
                 <div className="absolute top-10 w-64 h-40 flex items-end justify-center pointer-events-none">
                   {[...Array(10)].map((_, i) => (
-                    <div key={i} className="absolute w-16 h-16 bg-white/30 rounded-full blur-xl animate-ping"
+                    <div key={i} className="absolute w-16 h-16 bg-slate-50/30 rounded-full blur-xl animate-ping"
                          style={{
                            left: `${20 + Math.random() * 60}%`,
                            bottom: `${Math.random() * 100}%`,
@@ -355,7 +341,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Data & Analysis */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-hidden">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-hidden">
             <h2 className="text-lg font-bold text-slate-800 border-b pb-2 shrink-0">Live Data Graph</h2>
 
             {/* Graph area: Temp vs Time */}

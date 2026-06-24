@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Droplets, FlaskConical, Activity, CheckCircle, XCircle } from 'lucide-react';
+import { Droplets, FlaskConical, Activity, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'water' | 'xylem'>('water');
@@ -111,25 +112,12 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-emerald-700 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={onExit}
-            className="p-2 hover:bg-emerald-600 rounded-full transition-colors"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Plant Physiology Virtual Lab</h1>
-            <p className="text-sm text-emerald-100">Water Potential & Transpiration</p>
-          </div>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} variant="amber" title="Plant Physiology Virtual Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 border-r overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-r overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
@@ -172,7 +160,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
         {/* Column 2: Simulator */}
         <div className="bg-slate-100 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-white rounded-lg p-1 shadow-sm mb-6 shrink-0">
+          <div className="flex bg-slate-50 rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'water' ? 'bg-emerald-100 text-emerald-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => setActiveTab('water')}
@@ -189,7 +177,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
           {activeTab === 'water' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-gray-800">Potato Core Plasmolysis</h3>
                   <div className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">
@@ -260,7 +248,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
           {activeTab === 'xylem' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="font-bold text-gray-800">Celery Transpiration</h3>
                   <div className="text-sm bg-amber-50 text-amber-700 px-3 py-1 rounded-full font-medium">
@@ -325,7 +313,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
         </div>
 
         {/* Column 3: Assessment & Data */}
-        <div className="bg-white p-6 border-l flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-l flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Data Analysis</h2>
           
           {activeTab === 'water' && (
@@ -345,7 +333,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                       </thead>
                       <tbody>
                         {dataPoints.map((dp, i) => (
-                          <tr key={i} className="border-b last:border-0 border-gray-200 bg-white">
+                          <tr key={i} className="border-b last:border-0 border-gray-200 bg-slate-50">
                             <td className="px-3 py-2 font-medium">{dp.m.toFixed(1)}</td>
                             <td className={`px-3 py-2 font-bold ${dp.change > 0 ? 'text-blue-600' : dp.change < 0 ? 'text-red-600' : 'text-gray-600'}`}>
                               {dp.change > 0 ? '+' : ''}{dp.change}%

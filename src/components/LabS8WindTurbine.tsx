@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Wind } from 'lucide-react';
+import { RefreshCw, Wind } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -11,23 +12,12 @@ export default function LabS8WindTurbine({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.7: DIY Wind Turbine</h1>
-            <p className="text-sm text-slate-500">Convert kinetic energy into electrical energy</p>
-          </div>
-        </div>
-        <button onClick={() => setWindSpeed(0)} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.7: DIY Wind Turbine" subtitle="Convert kinetic energy into electrical energy" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
         {/* Controls */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 w-full mb-2 flex items-center gap-4">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 w-full mb-2 flex items-center gap-4">
           <Wind className={`w-8 h-8 transition-colors ${windSpeed > 0 ? 'text-sky-500 animate-pulse' : 'text-slate-300'}`} />
           <div className="flex-1">
             <div className="flex justify-between text-sm font-bold text-slate-500 mb-2">

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { ArrowLeft, RefreshCw, CheckCircle2, XCircle, Calculator, Info, Settings2, Compass, Play } from 'lucide-react';
+import { RefreshCw, CheckCircle2, XCircle, Calculator, Info, Settings2, Compass, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -107,18 +108,13 @@ export default function LabM10CircleBasics({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between z-10">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
-          <h1 className="text-xl font-bold text-slate-800">Lab: Circle Basics & Construction</h1>
-        </div>
+      <div className="bg-slate-50 shadow-sm px-6 py-4 flex items-center justify-between z-10">
+        <LabHeader onExit={onExit} title="Lab: Circle Basics & Construction" />
       </div>
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-500" /> Concepts
@@ -137,13 +133,13 @@ export default function LabM10CircleBasics({ onExit }: Props) {
             <div className="flex flex-col gap-2 p-1 bg-slate-100 rounded-lg mb-4">
               <button 
                 onClick={() => { setMode('construction'); setStep(0); }} 
-                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'construction' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'construction' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
               >
                 Find Center & Circle
               </button>
               <button 
                 onClick={() => setMode('chord')} 
-                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'chord' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`py-2 text-sm font-medium rounded-md transition-all ${mode === 'chord' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
               >
                 Chord Distance Properties
               </button>
@@ -187,7 +183,7 @@ export default function LabM10CircleBasics({ onExit }: Props) {
         </div>
 
         {/* Middle Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 flex items-center gap-2 z-10">
             <Compass className="w-5 h-5 text-indigo-500" /> Interactive Canvas
           </h2>
@@ -279,7 +275,7 @@ export default function LabM10CircleBasics({ onExit }: Props) {
         </div>
 
         {/* Right Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-green-500" /> Assessment
           </h2>

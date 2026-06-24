@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, CheckCircle2, XCircle, Car, Train, Clock, Hammer } from 'lucide-react';
+import { Play, Pause, RotateCcw, CheckCircle2, XCircle, Car, Train, Clock, Hammer } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM10FractionApplications({ onExit }: { onExit: () => void }) {
   const [mode, setMode] = useState<'travel' | 'work'>('travel');
@@ -81,17 +82,11 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white transition-colors">
-          <ArrowLeft className="mr-2" size={20} />
-          Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold ml-6">Rational & Fraction Applications Lab</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Rational & Fraction Applications Lab" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Formulas</h2>
           <div className="flex-1 overflow-y-auto pr-2 space-y-4 text-slate-700">
             {mode === 'travel' ? (
@@ -123,7 +118,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
         </div>
 
         {/* Interactive Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <div className="flex space-x-2 mb-6">
             <button 
               onClick={() => handleModeChange('travel')}
@@ -171,7 +166,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
               </div>
             )}
             
-            <div className="absolute top-2 right-4 font-mono font-bold text-slate-700 flex items-center bg-white/80 px-2 py-1 rounded">
+            <div className="absolute top-2 right-4 font-mono font-bold text-slate-700 flex items-center bg-slate-50/80 px-2 py-1 rounded">
               <Clock size={16} className="mr-2" />
               {time.toFixed(1)} h
             </div>
@@ -243,7 +238,7 @@ export default function LabM10FractionApplications({ onExit }: { onExit: () => v
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Data Analysis</h2>
           <div className="flex-1 space-y-6">
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">

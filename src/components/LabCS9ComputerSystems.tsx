@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Server, Box, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface ComponentItem { id: string; type: string; name: string; }
 interface SlotItem { id: string; name: string; expected: string; filledBy: ComponentItem | null; }
@@ -118,27 +119,11 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md shrink-0">
-        <div>
-          <h1 className="text-xl font-bold">Computer Systems Lab</h1>
-          <p className="text-sm opacity-80">Hardware Assembly & Networking Basics</p>
-        </div>
-        <div className="flex gap-4">
-          <div className="flex bg-indigo-800 rounded-lg p-1">
-            <button onClick={() => setActiveTab('hardware')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'hardware' ? 'bg-indigo-500 font-bold' : 'hover:bg-indigo-700'}`}>Hardware</button>
-            <button onClick={() => setActiveTab('osi')} className={`px-4 py-2 rounded-md transition-colors ${activeTab === 'osi' ? 'bg-indigo-500 font-bold' : 'hover:bg-indigo-700'}`}>OSI Model</button>
-          </div>
-          {onExit && (
-            <button onClick={onExit} className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 rounded-md font-semibold transition-colors">
-              Exit Lab
-            </button>
-          )}
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Computer Systems Lab" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2">Theory & Context</h2>
           {activeTab === 'hardware' ? (
             <div className="text-slate-600 space-y-4 text-sm leading-relaxed">
@@ -180,7 +165,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
                   <button 
                     key={c.id} 
                     onClick={() => setSelectedHw(c)}
-                    className={`p-2 rounded-md border-2 text-sm flex items-center gap-2 transition-transform hover:scale-105 ${selectedHw?.id === c.id ? 'border-indigo-500 bg-indigo-100 font-bold' : 'border-slate-300 bg-white'}`}
+                    className={`p-2 rounded-md border-2 text-sm flex items-center gap-2 transition-transform hover:scale-105 ${selectedHw?.id === c.id ? 'border-indigo-500 bg-indigo-100 font-bold' : 'border-slate-300 bg-slate-50'}`}
                   >
                     <Server className="w-4 h-4" /> {c.name}
                   </button>
@@ -220,7 +205,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
                   <button
                     key={r.id}
                     onClick={() => setSelectedRole(r)}
-                    className={`p-3 rounded-lg border-2 text-sm text-left transition-all hover:translate-x-1 ${selectedRole?.id === r.id ? 'border-indigo-500 bg-indigo-50 font-bold shadow-md' : 'border-slate-300 bg-white shadow-sm'}`}
+                    className={`p-3 rounded-lg border-2 text-sm text-left transition-all hover:translate-x-1 ${selectedRole?.id === r.id ? 'border-indigo-500 bg-indigo-50 font-bold shadow-md' : 'border-slate-300 bg-slate-50 shadow-sm'}`}
                   >
                     {r.desc}
                   </button>
@@ -251,7 +236,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Assessment & Logs</h2>
           
           <div className="mb-6 flex flex-col gap-2">

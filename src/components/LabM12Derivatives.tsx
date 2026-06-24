@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Activity, CheckCircle, Calculator, Box, TrendingUp, Target } from 'lucide-react';
+import { BookOpen, Activity, CheckCircle, Calculator, Box, TrendingUp, Target } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
     const [tab, setTab] = useState<'box' | 'kinematics' | 'business'>('box');
@@ -80,25 +81,11 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-                <div className="flex items-center">
-                    {onExit && (
-                        <button onClick={onExit} className="mr-4 p-2 hover:bg-slate-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-slate-600" />
-                        </button>
-                    )}
-                    <h1 className="text-2xl font-bold text-slate-800">M12 Derivatives Lab</h1>
-                </div>
-                <div className="flex space-x-2 bg-slate-100 p-1 rounded-lg">
-                    <button onClick={() => setTab('box')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'box' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><Box className="w-4 h-4 inline mr-2"/>Optimization</button>
-                    <button onClick={() => setTab('kinematics')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'kinematics' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><Target className="w-4 h-4 inline mr-2"/>Kinematics</button>
-                    <button onClick={() => setTab('business')} className={`px-4 py-2 rounded-md font-medium text-sm transition-all ${tab === 'business' ? 'bg-white shadow-sm text-blue-700' : 'text-slate-600 hover:text-slate-800'}`}><TrendingUp className="w-4 h-4 inline mr-2"/>Economics</button>
-                </div>
-            </header>
+            <LabHeader onExit={onExit} title="M12 Derivatives Lab" />
 
             <div className="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 flex-grow">
                 {/* Theory Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><BookOpen className="w-5 h-5 mr-2 text-blue-600" />Theory & Context</h2>
                     <div className="prose prose-slate prose-sm text-slate-600">
                         {tab === 'box' && (
@@ -138,7 +125,7 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Interactive Simulator Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><Activity className="w-5 h-5 mr-2 text-blue-600" />Interactive Simulator</h2>
                     
                     {tab === 'box' && (
@@ -206,7 +193,7 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center"><Calculator className="w-5 h-5 mr-2 text-blue-600" />Assessment</h2>
                     <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-blue-900">
                         {tab === 'box' && <p>Given the Volume $V = {volume}$ cm³, calculate the exact base side length $x$ that minimizes the surface area. (Round to 2 decimal places).</p>}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Home, Lightbulb, Cloud, Brain, Check, X, Activity, FileText, Cpu, Server } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -74,14 +75,11 @@ export default function LabCS10FutureTech({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-indigo-700 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold flex items-center gap-2"><Cpu /> Future Tech Virtual Lab</h1>
-        {onExit && <button onClick={onExit} className="bg-indigo-900 px-4 py-2 rounded hover:bg-indigo-800 transition">Exit Lab</button>}
-      </div>
+      <LabHeader onExit={onExit} title="<Cpu /> Future Tech Virtual Lab" />
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* LEFT COLUMN: Theory & Setup */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
           <h2 className="text-lg font-bold text-slate-800">1. Select Module</h2>
           <div className="flex gap-2">
             <button onClick={() => setTab('iot')} className={`flex-1 py-2 rounded font-medium ${tab === 'iot' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}>IoT Smart Home</button>
@@ -111,7 +109,7 @@ export default function LabCS10FutureTech({ onExit }: Props) {
         </div>
 
         {/* MIDDLE COLUMN: Simulation */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
           {tab === 'iot' && (
              <div className="w-full max-w-md bg-slate-100 rounded-xl p-6 relative shadow-inner">
                <h3 className="text-center font-bold mb-6 text-slate-700">Smart Home Floor Plan</h3>
@@ -174,14 +172,14 @@ export default function LabCS10FutureTech({ onExit }: Props) {
         </div>
 
         {/* RIGHT COLUMN: Data & Analysis */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800">3. Data Logging & Analysis</h2>
           
           {tab === 'iot' && (
             <>
               <div className="bg-slate-50 p-4 rounded-lg border">
                 <h3 className="font-bold flex items-center gap-2 mb-2"><Activity size={18}/> Energy Graph (W)</h3>
-                <svg viewBox="0 0 100 100" className="w-full h-32 bg-white rounded border overflow-visible">
+                <svg viewBox="0 0 100 100" className="w-full h-32 bg-slate-50 rounded border overflow-visible">
                   <polyline points={points} fill="none" stroke="#4f46e5" strokeWidth="2" strokeLinejoin="round" />
                 </svg>
                 <div className="flex justify-between text-xs text-slate-400 mt-1">

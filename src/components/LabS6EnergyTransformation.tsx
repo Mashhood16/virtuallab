@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Zap, Play, Sun, Fan } from 'lucide-react';
+import { Zap, Play, Sun, Fan } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -35,12 +36,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-amber-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 8: Energy Transformations</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 8: Energy Transformations" />
 
       <div className="flex-1 flex flex-col p-6 items-center">
         
@@ -62,7 +58,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
         {tab === 'bouncing' && (
           <div className="flex gap-8 w-full max-w-4xl">
             {/* Physics Engine View */}
-            <div className="w-96 h-[500px] bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-end relative">
+            <div className="w-96 h-[500px] bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-end relative">
               <button 
                 onClick={dropBall}
                 disabled={ballState === 'falling' || ballState === 'impact' || ballState === 'rising'}
@@ -83,7 +79,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
             </div>
 
             {/* Energy Map */}
-            <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-center">
+            <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col justify-center">
               <h2 className="text-2xl font-bold mb-8 text-slate-800">Energy State Analysis</h2>
               
               <div className="space-y-4">
@@ -114,7 +110,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
         )}
 
         {tab === 'solar' && (
-          <div className="flex flex-col items-center bg-white rounded-2xl shadow-sm border border-slate-200 p-12 max-w-4xl w-full">
+          <div className="flex flex-col items-center bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-12 max-w-4xl w-full">
             <div className="flex justify-center gap-24 items-center mb-16">
               {/* Sun Toggle */}
               <div className="flex flex-col items-center">
@@ -133,7 +129,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
                   onClick={() => setSwitchOn(!switchOn)}
                   className="w-20 h-10 bg-slate-300 rounded-full relative shadow-inner"
                 >
-                  <div className={`w-8 h-8 rounded-full bg-white shadow absolute top-1 transition-all ${switchOn ? 'left-11' : 'left-1'}`}></div>
+                  <div className={`w-8 h-8 rounded-full bg-slate-50 shadow absolute top-1 transition-all ${switchOn ? 'left-11' : 'left-1'}`}></div>
                 </button>
                 <span className="mt-4 font-bold text-slate-600">Circuit {switchOn ? 'Closed' : 'Open'}</span>
               </div>

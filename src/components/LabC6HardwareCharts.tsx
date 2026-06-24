@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Monitor, Keyboard, Mouse, HardDrive, Cpu, Printer } from 'lucide-react';
+import { CheckCircle, Monitor, Keyboard, Mouse, HardDrive, Cpu, Printer } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -39,17 +40,14 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Hardware Identification Charts" />
 
         <h1 className="text-3xl font-bold mb-2">Hardware Identification Charts</h1>
         <p className="text-slate-600 mb-8">Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.</p>
 
         <div className="flex gap-8 flex-1">
           {/* Main Chart Area */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-6 text-center">Hardware Components</h2>
             
             <div className="grid grid-cols-3 gap-8 flex-1">
@@ -68,7 +66,7 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
                         matchedLabelId 
                           ? 'border-blue-500 bg-blue-50 text-blue-700 hover:bg-blue-100' 
                           : selectedLabel 
-                            ? 'border-blue-300 bg-white hover:border-blue-500 hover:bg-blue-50 text-slate-400' 
+                            ? 'border-blue-300 bg-slate-50 hover:border-blue-500 hover:bg-blue-50 text-slate-400' 
                             : 'border-slate-300 bg-slate-100 text-slate-400'
                       }`}
                     >
@@ -95,7 +93,7 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
 
           {/* Word Bank Sidebar */}
           <div className="w-64 flex flex-col gap-4">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="font-bold text-slate-700 mb-4 uppercase text-sm tracking-wider">Word Bank</h3>
               <div className="flex flex-col gap-3">
                 {hardwareItems.map(item => {

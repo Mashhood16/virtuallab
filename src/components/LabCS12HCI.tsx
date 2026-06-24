@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
-import { ArrowLeft, Monitor, Shield, Activity, Eye, CheckCircle, XCircle, Save } from 'lucide-react';
+import { Monitor, Shield, Activity, Eye, CheckCircle, XCircle, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
   const { addRecord } = useHistory();
@@ -55,17 +56,11 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="flex items-center p-4 bg-indigo-700 text-white shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-indigo-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <Monitor className="mr-3" size={28} />
-        <h1 className="text-2xl font-bold">Interactive Software Engineering (HCI)</h1>
-      </header>
+      <LabHeader onExit={onExit} variant="dark" title="Interactive Software Engineering (HCI)" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2">Theory & Context</h2>
           <div className="space-y-4 text-slate-700 overflow-y-auto pr-2 flex-1">
             <p>
@@ -87,7 +82,7 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2">UI Configurator Simulator</h2>
 
           <div className="flex-1 flex flex-col gap-4">
@@ -157,7 +152,7 @@ export default function LabCS12HCI({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-indigo-800 border-b pb-2">Analysis & Assessment</h2>
 
           <div className="space-y-6 flex-1">

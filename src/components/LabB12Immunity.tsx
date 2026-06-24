@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Shield, FlaskConical, Stethoscope, CheckCircle, XCircle } from 'lucide-react';
+import { Shield, FlaskConical, Stethoscope, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
   const [elisaStep, setElisaStep] = useState<number>(0);
@@ -49,20 +50,12 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <div>
-          <h1 className="text-2xl font-bold">Interactive Immunology</h1>
-          <p className="text-slate-300 text-sm">Monoclonal Antibodies, ELISA & Immunosuppressants</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Interactive Immunology" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Shield className="mr-2 text-blue-500" /> Theory & Mechanisms
           </h2>
@@ -86,7 +79,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center relative overflow-hidden">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center relative overflow-hidden">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex w-full">
             <FlaskConical className="mr-2 text-purple-500" /> ELISA Simulator
           </h2>
@@ -98,7 +91,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
             </div>
 
             {/* SVG ELISA Well */}
-            <div className="relative w-48 h-48 bg-white border-4 border-slate-300 rounded-b-3xl shadow-inner overflow-hidden flex flex-col justify-end">
+            <div className="relative w-48 h-48 bg-slate-50 border-4 border-slate-300 rounded-b-3xl shadow-inner overflow-hidden flex flex-col justify-end">
               
               {/* Colored liquid */}
               <div 
@@ -167,7 +160,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Stethoscope className="mr-2 text-rose-500" /> Clinical Assessment
           </h2>
@@ -178,7 +171,7 @@ export default function LabB12Immunity({ onExit }: { onExit?: () => void }) {
               <p className="mb-2">
                 A standard curve was generated using known concentrations of the transplant rejection biomarker. The linear regression equation is:
               </p>
-              <div className="bg-white p-2 rounded border border-slate-300 font-mono text-center my-2 text-indigo-700">
+              <div className="bg-slate-50 p-2 rounded border border-slate-300 font-mono text-center my-2 text-indigo-700">
                 Absorbance (A) = 0.15 × C + 0.05
               </div>
               <p>Where <strong>C</strong> is the concentration of the biomarker in ng/mL.</p>

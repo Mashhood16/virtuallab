@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Scissors, ArrowRightLeft, Check } from 'lucide-react';
+import { RefreshCw, Scissors, ArrowRightLeft, Check } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabS8CrossingOverProps {
   onExit?: () => void;
@@ -14,26 +15,11 @@ export default function LabS8CrossingOver({ onExit }: LabS8CrossingOverProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 3.3: Crossing Over</h1>
-            <p className="text-sm text-slate-500">Model genetic recombination during meiosis</p>
-          </div>
-        </div>
-        <button onClick={() => setStep(0)} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300 transition-colors">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 3.3: Crossing Over" subtitle="Model genetic recombination during meiosis" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Interactive Diagram */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center min-h-[500px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center min-h-[500px]">
           
           <div className="relative w-80 h-96 flex justify-center items-center">
             

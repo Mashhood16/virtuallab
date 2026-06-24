@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Flame, Factory, Wrench, Info, ArrowLeft, ArrowDown, Settings, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -49,22 +50,13 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-rose-700 text-white p-4 flex justify-between items-center shadow-md shrink-0">
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <Factory className="w-6 h-6" /> Petrochemical & Synthesis Lab
-        </h1>
-        {onExit && (
-          <button onClick={onExit} className="px-4 py-2 bg-rose-800 hover:bg-rose-900 rounded font-medium transition-colors">
-            Exit Lab
-          </button>
-        )}
-      </header>
+      <LabHeader onExit={onExit} title="Petrochemical & Synthesis Lab" />
 
       {/* Main Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Info className="w-5 h-5 text-rose-600" /> Theory & Context
           </h2>
@@ -78,7 +70,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
             <div className="p-3 bg-amber-50 rounded-lg border border-amber-100">
               <h3 className="font-semibold text-amber-800 mb-2">Catalytic Cracking</h3>
               <p>Longer, less valuable alkanes are broken into shorter alkanes and alkenes using heat and a zeolite catalyst.</p>
-              <p className="font-mono bg-white p-1 mt-2 rounded text-xs border border-amber-200 text-center">
+              <p className="font-mono bg-slate-50 p-1 mt-2 rounded text-xs border border-amber-200 text-center">
                 Long Alkane → Shorter Alkane + Alkene
               </p>
             </div>
@@ -91,7 +83,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
             <Settings className="w-5 h-5 text-rose-600" /> Tower Simulator
           </h2>
@@ -140,14 +132,14 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           
           <div className="mb-6 shrink-0">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Wrench className="w-5 h-5 text-rose-600" /> Retrosynthesis Puzzle
             </h2>
             <div className="bg-indigo-50 border border-indigo-200 p-4 rounded-lg flex flex-col items-center">
-              <div className="font-bold text-indigo-900 mb-2 border-2 border-indigo-300 p-2 rounded bg-white">
+              <div className="font-bold text-indigo-900 mb-2 border-2 border-indigo-300 p-2 rounded bg-slate-50">
                 {targetMolecule}
               </div>
               <ArrowDown className="w-6 h-6 text-indigo-400 my-1" />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Power, CheckCircle, XCircle, Settings2, Database, Calculator } from 'lucide-react';
+import { Power, CheckCircle, XCircle, Settings2, Database, Calculator } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => void }) {
   const [frequency, setFrequency] = useState<number>(50);
@@ -82,17 +83,12 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
-      <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white transition-colors">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Go Back
-        </button>
-        <h1 className="ml-6 text-xl font-semibold">Lab P12.3: Circuit Engineering (AC to DC)</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Lab P12.3: Circuit Engineering (AC to DC)" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-y-auto">
         
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center mb-4 text-orange-600">
             <Power className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-bold">Theory & Context</h2>
@@ -131,7 +127,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center text-orange-600">
               <Settings2 className="w-6 h-6 mr-2" />
@@ -145,11 +141,11 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
 
           <div className="flex-1 space-y-4">
             <div className="space-y-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
-              <div className="flex items-center justify-between bg-white p-2 rounded border border-slate-200 shadow-sm">
+              <div className="flex items-center justify-between bg-slate-50 p-2 rounded border border-slate-200 shadow-sm">
                 <span className="text-sm font-bold text-slate-700">Filter Capacitor</span>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="sr-only peer" checked={filterEnabled} onChange={(e) => setFilterEnabled(e.target.checked)} />
-                  <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
+                  <div className="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-50 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-orange-500"></div>
                 </label>
               </div>
 
@@ -186,7 +182,7 @@ export default function LabP12AlternatingCurrent({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Right Column: Assessment & Data */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center justify-between mb-4 text-orange-600">
             <div className="flex items-center">
               <Database className="w-6 h-6 mr-2" />

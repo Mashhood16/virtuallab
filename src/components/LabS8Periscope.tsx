@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Eye } from 'lucide-react';
+import { RefreshCw, Eye } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -9,22 +10,11 @@ export default function LabS8Periscope({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 9.3: Making a Periscope</h1>
-            <p className="text-sm text-slate-500">See over obstacles using two 45° mirrors</p>
-          </div>
-        </div>
-        <button onClick={() => {setShowRays(false); setObjectPos(50);}} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 9.3: Making a Periscope" subtitle="See over obstacles using two 45° mirrors" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden">
           
           <div className="flex gap-4 items-center mb-8 bg-slate-100 p-4 rounded-xl shadow-inner w-full max-w-md">
             <span className="font-bold text-slate-600">Object Position:</span>
@@ -51,9 +41,9 @@ export default function LabS8Periscope({ onExit }: LabProps) {
             {/* The Periscope Tube */}
             <div className="absolute left-[45%] top-[10%] w-32 h-[80%] border-4 border-slate-400 bg-slate-200 rounded-sm z-10 flex flex-col justify-between">
               {/* Top Window */}
-              <div className="w-12 h-16 bg-white border-y-4 border-l-4 border-slate-400 absolute top-4 -left-12 rounded-l-md" />
+              <div className="w-12 h-16 bg-slate-50 border-y-4 border-l-4 border-slate-400 absolute top-4 -left-12 rounded-l-md" />
               {/* Bottom Window */}
-              <div className="w-12 h-16 bg-white border-y-4 border-r-4 border-slate-400 absolute bottom-4 -right-12 rounded-r-md" />
+              <div className="w-12 h-16 bg-slate-50 border-y-4 border-r-4 border-slate-400 absolute bottom-4 -right-12 rounded-r-md" />
               
               {/* Top Mirror */}
               <div className="absolute top-6 left-4 w-24 h-2 bg-blue-300 shadow-[0_0_4px_blue] rotate-45 transform origin-center border border-blue-400 rounded-full" />
@@ -82,7 +72,7 @@ export default function LabS8Periscope({ onExit }: LabProps) {
                      style={{ left: '55%', bottom: '20%', width: '30%', opacity: 0.8 }} />
                      
                 {/* Little moving photons */}
-                <div className="absolute w-2 h-2 bg-white rounded-full shadow-[0_0_5px_white] animate-[photon1_2s_linear_infinite]" />
+                <div className="absolute w-2 h-2 bg-slate-50 rounded-full shadow-[0_0_5px_white] animate-[photon1_2s_linear_infinite]" />
               </div>
             )}
             

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, HeartPulse } from 'lucide-react';
+import { Activity, HeartPulse } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,15 +11,10 @@ export default function LabS7MakeStethoscope({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 11: Make a Stethoscope</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Make a Stethoscope" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-blue-800 mb-4">Amplifying Sound</h2>
           <p className="text-slate-600 mb-6">A homemade stethoscope is built using two funnels and a plastic tube. A balloon is stretched over the large funnel to act as a diaphragm, picking up vibrations from the heartbeat and channeling them up the tube to the ear.</p>
           

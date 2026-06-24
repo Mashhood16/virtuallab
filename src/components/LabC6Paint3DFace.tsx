@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Circle, Smile, Minus, Brush, Undo, Trash2 } from 'lucide-react';
+import { Circle, Smile, Minus, Brush, Undo, Trash2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -106,17 +107,14 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Paint 3D Face Design" />
 
         <h1 className="text-3xl font-bold mb-2">Paint 3D Face Design</h1>
         <p className="text-slate-600 mb-8">Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.</p>
 
         <div className="flex gap-6 flex-1 h-[600px]">
           {/* Toolbar */}
-          <div className="w-64 bg-white rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col gap-6">
+          <div className="w-64 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-4 flex flex-col gap-6">
             <div>
               <h3 className="font-bold text-slate-400 uppercase text-xs tracking-wider mb-3">3D Tools</h3>
               <div className="flex flex-col gap-2">
@@ -163,7 +161,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
           {/* Canvas */}
           <div 
             onClick={handleCanvasClick}
-            className={`flex-1 bg-white rounded-xl shadow-inner border-2 border-slate-200 relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-400' : 'cursor-default'}`}
+            className={`flex-1 bg-slate-50 rounded-xl shadow-inner border-2 border-slate-200 relative overflow-hidden ${selectedTool ? 'cursor-crosshair border-blue-400' : 'cursor-default'}`}
             style={{ 
               backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)',
               backgroundSize: '20px 20px'
@@ -171,7 +169,7 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
           >
             {shapes.length === 0 && !selectedTool && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="text-slate-400 flex flex-col items-center gap-4 bg-white/80 p-8 rounded-2xl">
+                <div className="text-slate-400 flex flex-col items-center gap-4 bg-slate-50/80 p-8 rounded-2xl">
                   <Brush className="w-12 h-12" />
                   <p className="font-bold">Select a tool to start drawing</p>
                 </div>

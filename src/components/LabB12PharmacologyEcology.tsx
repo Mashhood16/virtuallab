@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Shield, Waves, CheckCircle } from 'lucide-react';
+import { Shield, Waves, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'pharma' | 'ecology'>('pharma');
@@ -34,20 +35,18 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-teal-800 text-white p-4 shadow-md flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-teal-700 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          <LabHeader onExit={onExit} title="Lab 12.3: Pharmacology & Ecosystems" />
           <h1 className="text-xl font-bold">Lab 12.3: Pharmacology & Ecosystems</h1>
         </div>
         <div className="flex gap-2">
           <button 
             onClick={() => setActiveTab('pharma')}
-            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-white text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'pharma' ? 'bg-slate-50 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
             <Shield className="w-4 h-4" /> Pharma
           </button>
           <button 
             onClick={() => setActiveTab('ecology')}
-            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-white text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
+            className={`px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1 ${activeTab === 'ecology' ? 'bg-slate-50 text-teal-800' : 'bg-teal-700 text-white hover:bg-teal-600'}`}>
             <Waves className="w-4 h-4" /> Ecology
           </button>
         </div>
@@ -55,7 +54,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Pharmacology Theory' : 'Ecology Theory'}
           </h2>
@@ -85,7 +84,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Interactive */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">
             {activeTab === 'pharma' ? 'Bacterial Lysis Simulator' : 'Coral Reef Simulator'}
           </h2>
@@ -176,7 +175,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
                   )}
                 </svg>
                 {isBleached && (
-                  <div className="absolute top-4 bg-white/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
+                  <div className="absolute top-4 bg-slate-50/90 px-2 py-1 rounded text-xs font-bold text-red-600 shadow">
                     Bleaching Event
                   </div>
                 )}
@@ -186,7 +185,7 @@ export default function LabB12PharmacologyEcology({ onExit }: { onExit?: () => v
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Comprehensive Assessment</h2>
           
           <div className="space-y-4 text-sm">

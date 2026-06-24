@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import { CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
   const [mode, setMode] = useState<'noise' | 'diffraction'>('diffraction');
@@ -148,17 +149,12 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
-      <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white transition-colors">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Go Back
-        </button>
-        <h1 className="ml-6 text-xl font-semibold">Lab P12.1: Optical Interference & Diffraction</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Lab P12.1: Optical Interference & Diffraction" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-y-auto">
         
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center mb-4 text-blue-700">
             <Activity className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-bold">Theory & Context</h2>
@@ -199,7 +195,7 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center text-blue-700">
               <Settings2 className="w-6 h-6 mr-2" />
@@ -208,13 +204,13 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
             <div className="flex bg-slate-100 rounded-lg p-1">
               <button 
                 onClick={() => setMode('diffraction')}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${mode === 'diffraction' ? 'bg-white shadow text-blue-700' : 'text-slate-500'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${mode === 'diffraction' ? 'bg-slate-50 shadow text-blue-700' : 'text-slate-500'}`}
               >
                 Grating
               </button>
               <button 
                 onClick={() => setMode('noise')}
-                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${mode === 'noise' ? 'bg-white shadow text-blue-700' : 'text-slate-500'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${mode === 'noise' ? 'bg-slate-50 shadow text-blue-700' : 'text-slate-500'}`}
               >
                 Acoustic
               </button>
@@ -265,7 +261,7 @@ export default function LabP12Diffraction({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment & Data */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center justify-between mb-4 text-blue-700">
             <div className="flex items-center">
               <Database className="w-6 h-6 mr-2" />

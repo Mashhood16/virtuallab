@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
-import { Rocket, Target, Users, ArrowLeft, BarChart3, Lightbulb, Play, Save } from 'lucide-react';
+import { Rocket, Target, Users,  BarChart3, Lightbulb, Play, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => void }) {
   const { addRecord } = useHistory();
@@ -94,15 +95,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
       <div className="flex items-center justify-between bg-slate-800 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <Rocket className="text-orange-400" size={24} />
-          <h1 className="text-xl font-bold">Grade 12 Entrepreneurship: Lean Startup MVP</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Grade 12 Entrepreneurship: Lean Startup MVP" />
         <div className="flex gap-4">
           <div className="text-sm font-mono bg-slate-900 px-3 py-1 rounded-md text-emerald-400">
             FUNDS: ${phase === 'build' ? funds - getCost() : funds - spentCost}
@@ -112,7 +105,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
         
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <Lightbulb size={18} className="text-amber-500" />
@@ -145,7 +138,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="flex border-b border-slate-200">
             <div className={`flex-1 py-3 text-center text-sm font-medium border-b-2 transition-colors ${phase === 'build' ? 'border-blue-500 text-blue-600 bg-blue-50/30' : 'border-transparent text-slate-500'}`}>
               1. Build Phase
@@ -171,7 +164,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                     <div 
                       key={f.key} 
                       onClick={() => toggleFeature(f.key as keyof typeof features)}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-white hover:border-blue-300'}`}
+                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 bg-slate-50 hover:border-blue-300'}`}
                     >
                       <div>
                         <div className="font-bold text-slate-800">{f.name}</div>
@@ -194,13 +187,13 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
             ) : (
               <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                  <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 text-center">
                     <div className="text-xs font-bold text-slate-400 mb-1 uppercase">Active Users</div>
                     <div className="text-3xl font-bold text-blue-600 flex items-center justify-center gap-2">
                       <Users size={24} /> {users}
                     </div>
                   </div>
-                  <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                  <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 text-center">
                     <div className="text-xs font-bold text-slate-400 mb-1 uppercase">User Satisfaction</div>
                     <div className={`text-3xl font-bold flex items-center justify-center gap-2 ${satisfaction >= 70 ? 'text-emerald-500' : satisfaction >= 40 ? 'text-amber-500' : 'text-red-500'}`}>
                       <BarChart3 size={24} /> {satisfaction}%
@@ -208,7 +201,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
                   </div>
                 </div>
 
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                   <div className="bg-slate-100 p-3 border-b border-slate-200 text-sm font-bold text-slate-700 flex items-center gap-2">
                     <Target size={16} /> Beta Tester Feedback
                   </div>
@@ -234,7 +227,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-y-auto">
           <div className="p-4 border-b border-slate-100 bg-slate-50/50">
             <h2 className="text-lg font-semibold flex items-center gap-2 text-slate-800">
               <BarChart3 size={18} className="text-blue-500" />

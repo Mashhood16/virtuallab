@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Bone, Activity, PenTool, CheckCircle, XCircle } from 'lucide-react';
+import { Bone, Activity, PenTool, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
   const [fractureStage, setFractureStage] = useState<number>(1);
@@ -29,9 +30,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
       <div className="bg-slate-800 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
+        <LabHeader onExit={onExit} title="Interactive Orthopedics" />
         <div>
           <h1 className="text-2xl font-bold">Interactive Orthopedics</h1>
           <p className="text-slate-300 text-sm">Arthroplasty & Bone Fracture Repair</p>
@@ -41,7 +40,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <Bone className="mr-2 text-blue-500" /> Theory & Context
           </h2>
@@ -67,7 +66,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col relative overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col relative overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex">
             <Activity className="mr-2 text-indigo-500" /> Clinical Simulators
           </h2>
@@ -173,7 +172,7 @@ export default function LabB12Skeletal({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
             <PenTool className="mr-2 text-green-500" /> Computing Task
           </h2>

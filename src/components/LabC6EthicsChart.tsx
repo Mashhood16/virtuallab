@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, AlertTriangle, Info, Type, Move } from 'lucide-react';
+import { CheckCircle, AlertTriangle, Info, Type, Move } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -29,17 +30,14 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Cyber Ethics Chart Builder" />
 
         <h1 className="text-3xl font-bold mb-2">Cyber Ethics Chart Builder</h1>
         <p className="text-slate-600 mb-8">Drag rules from the bank onto the classroom chart canvas to create a custom ethics poster.</p>
 
         <div className="flex gap-8 flex-1 h-[600px]">
           {/* Rule Bank */}
-          <div className="w-80 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden p-6">
+          <div className="w-80 bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden p-6">
             <h3 className="font-bold text-slate-700 uppercase tracking-wider text-sm mb-4">Rule Bank</h3>
             <div className="flex flex-col gap-3 overflow-y-auto pr-2 pb-2">
               {rules.map((rule, idx) => (
@@ -75,7 +73,7 @@ export default function LabC6EthicsChart({ onExit }: LabProps) {
               backgroundAttachment: 'local'
             }}
           >
-            <div className="bg-white px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
+            <div className="bg-slate-50 px-8 py-4 rounded-full border-4 border-amber-400 font-bold text-2xl text-amber-700 mt-8 mb-4 shadow-sm z-10">
               Classroom Cyber Ethics
             </div>
 

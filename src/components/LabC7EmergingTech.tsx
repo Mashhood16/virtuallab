@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, CheckCircle, Video } from 'lucide-react';
+import { Play, CheckCircle, Video } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -21,10 +22,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-100 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Emerging Technologies" />
 
         <h1 className="text-3xl font-bold mb-2">Emerging Technologies</h1>
         <p className="text-slate-600 mb-8">Watch the presentation on emerging tech, then select one to build your mini-project.</p>
@@ -49,7 +47,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
                 <button 
                   key={tech.id}
                   onClick={() => setSelectedTech(tech.id)}
-                  className={`p-6 rounded-xl border-2 text-left transition-all ${selectedTech === tech.id ? 'border-blue-500 bg-white shadow-md' : 'border-slate-200 bg-white/50 hover:bg-white hover:border-blue-300'}`}
+                  className={`p-6 rounded-xl border-2 text-left transition-all ${selectedTech === tech.id ? 'border-blue-500 bg-slate-50 shadow-md' : 'border-slate-200 bg-slate-50/50 hover:bg-slate-50 hover:border-blue-300'}`}
                 >
                   <h3 className="font-bold text-lg mb-2">{tech.name}</h3>
                   <p className="text-sm text-slate-500">{tech.desc}</p>
@@ -58,7 +56,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
             </div>
 
             {selectedTech && !submitted && (
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+              <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
                 <h3 className="font-bold text-lg mb-4">Project Proposal</h3>
                 <textarea 
                   className="w-full h-32 p-4 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none mb-4 resize-none"
@@ -77,7 +75,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
             )}
 
             {submitted && (
-              <div className="bg-white p-8 rounded-xl shadow-xl text-center border border-slate-200 border-t-8 border-t-blue-500">
+              <div className="bg-slate-50 p-8 rounded-xl shadow-xl text-center border border-slate-200 border-t-8 border-t-blue-500">
                 <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8" />
                 </div>
@@ -89,7 +87,7 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
         )}
       </div>
       
-      <div className="w-80 bg-white p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
+      <div className="w-80 bg-slate-50 p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
         <h2 className="font-bold text-lg mb-4 flex items-center"><Video className="w-5 h-5 mr-2 text-blue-500"/> Task List</h2>
         <ul className="space-y-4">
           <li className="flex items-center text-slate-600">

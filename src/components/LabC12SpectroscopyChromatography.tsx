@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Layers, Activity, CheckCircle, Play, RefreshCw, Microscope } from 'lucide-react';
+import { BookOpen, Layers, Activity, CheckCircle, Play, RefreshCw, Microscope } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: () => void }) {
     const [sample, setSample] = useState<'Ethanol' | 'Acetone'>('Ethanol');
@@ -80,22 +81,11 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-slate-800 text-white p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h1 className="text-xl font-bold">Analytical Chemistry: Spectrometry & Chromatography</h1>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Microscope size={20} className="text-yellow-400" />
-                    <span className="font-medium text-slate-300">Grade 12 Chemistry</span>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Analytical Chemistry: Spectrometry & Chromatography" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
                 {/* Theory */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <BookOpen size={20} className="text-yellow-600" />
                         Analytical Theory
@@ -117,7 +107,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                 </div>
 
                 {/* Simulation */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <div className="flex items-center justify-between mb-2">
                         <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                             <Activity size={20} className="text-indigo-600" />
@@ -137,7 +127,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                         {['IR', 'NMR', 'MS', 'TLC'].map(t => (
                             <button 
                                 key={t}
-                                className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-1.5 text-sm font-medium rounded-md transition-colors ${tab === t ? 'bg-slate-50 shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
                                 onClick={() => setTab(t as any)}
                             >
                                 {t}
@@ -197,7 +187,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                                     </div>
                                 </div>
 
-                                <div className="w-32 h-48 bg-white border-2 border-slate-300 rounded shadow-inner relative flex justify-around items-end pb-5">
+                                <div className="w-32 h-48 bg-slate-50 border-2 border-slate-300 rounded shadow-inner relative flex justify-around items-end pb-5">
                                     {/* Solvent Front */}
                                     <div className="absolute w-full border-t-2 border-indigo-200" style={{bottom: `${20 + 160*(tlcRunTime/100)}px`}}></div>
                                     <div className="absolute bottom-5 w-full border-t border-slate-300 border-dashed"></div>
@@ -215,7 +205,7 @@ export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: 
                 </div>
 
                 {/* Assessment */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <Layers size={20} className="text-emerald-600" />
                         Structure Elucidation

@@ -74,7 +74,7 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2">Concepts & Tasks</h2>
           
           <div className="text-sm text-slate-600 space-y-3 leading-relaxed">
@@ -131,7 +131,7 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
           <div className="flex justify-between items-center border-b pb-2 mb-4 shrink-0">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <Layout className="w-5 h-5 text-indigo-500" /> Live Browser Preview
@@ -139,10 +139,10 @@ export default function LabCS9WebBasics({ onExit }: { onExit?: () => void }) {
             <RefreshCw className="w-4 h-4 text-slate-400" />
           </div>
           
-          <div className="flex-1 border-2 border-dashed border-slate-300 rounded-lg overflow-hidden bg-white shadow-inner relative">
+          <div className="flex-1 border-2 border-dashed border-slate-300 rounded-lg overflow-hidden bg-slate-50 shadow-inner relative">
             <iframe 
               srcDoc={srcDoc} 
-              className="absolute inset-0 w-full h-full border-none bg-white"
+              className="absolute inset-0 w-full h-full border-none bg-slate-50"
               title="Live Preview"
               sandbox="allow-scripts"
             />

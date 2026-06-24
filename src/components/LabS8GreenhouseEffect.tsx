@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Thermometer, Sun, Wind, ArrowLeft, Play, Square, RefreshCw } from 'lucide-react';
+import { Thermometer, Sun, Wind,  Play, Square, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabS8GreenhouseEffectProps {
   onExit?: () => void;
@@ -39,38 +40,11 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 1.1: Greenhouse Effect</h1>
-            <p className="text-sm text-slate-500">Observe how a closed environment traps thermal energy</p>
-          </div>
-        </div>
-        <div className="flex gap-2">
-          {!isRunning && timePassed < 20 && (
-            <button onClick={() => setIsRunning(true)} className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-green-700 transition-colors">
-              <Play className="w-4 h-4" /> Start Simulation
-            </button>
-          )}
-          {isRunning && (
-            <button onClick={() => setIsRunning(false)} className="flex items-center gap-2 bg-amber-500 text-white px-4 py-2 rounded-md font-medium hover:bg-amber-600 transition-colors">
-              <Square className="w-4 h-4" /> Pause
-            </button>
-          )}
-          <button onClick={() => { setIsRunning(false); setTimePassed(0); }} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300 transition-colors">
-            <RefreshCw className="w-4 h-4" /> Reset
-          </button>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 1.1: Greenhouse Effect" subtitle="Observe how a closed environment traps thermal energy" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Left Column: Visual */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden">
           
           <div className="absolute top-8 left-8">
             <Sun className="w-24 h-24 text-yellow-400 animate-spin-slow opacity-80" />
@@ -132,7 +106,7 @@ export default function LabS8GreenhouseEffect({ onExit }: LabS8GreenhouseEffectP
 
         {/* Right Column: Information */}
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
             <h3 className="font-bold text-slate-800 mb-2">Observation</h3>
             <p className="text-sm text-slate-600">
               As time passes, solar energy enters both environments. The open air thermometer cools naturally through convection (wind/air flow).

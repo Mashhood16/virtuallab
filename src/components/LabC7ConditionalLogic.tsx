@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -58,10 +59,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Conditional Logic Translation" />
 
         <h1 className="text-3xl font-bold mb-2">Conditional Logic Translation</h1>
         <p className="text-slate-600 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
@@ -73,7 +71,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-8 max-w-4xl mx-auto w-full">
+        <div className="bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-8 max-w-4xl mx-auto w-full">
           <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
             <h2 className="text-xl font-bold text-slate-700">Scenario {selectedScenario + 1} of 3</h2>
             <div className="flex gap-2">

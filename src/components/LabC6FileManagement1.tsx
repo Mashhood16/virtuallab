@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Folder, File, Copy, Edit2, CheckCircle, Trash2, Monitor } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -108,7 +109,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-300 flex flex-col overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-300 flex flex-col overflow-hidden">
           {/* Simulated File Explorer Header */}
           <div className="bg-slate-100 border-b border-slate-300 p-3 flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -122,7 +123,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
               >
                 <ArrowLeft className="w-5 h-5" />
               </button>
-              <div className="bg-white border border-slate-300 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600">
+              <div className="bg-slate-50 border border-slate-300 px-3 py-1 rounded shadow-inner text-sm min-w-[300px] flex items-center gap-2 text-slate-600">
                 {currentFolderId === 'desktop' ? <Monitor className="w-4 h-4" /> : <Folder className="w-4 h-4" />}
                 {currentFolder?.name}
               </div>
@@ -139,47 +140,10 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
           </div>
 
           {/* Toolbar */}
-          <div className="bg-slate-50 border-b border-slate-200 p-2 flex items-center gap-2">
-            <button 
-              onClick={() => { setIsCreating(true); setIsRenaming(false); setInputName(''); }}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded font-medium"
-            >
-              <Folder className="w-4 h-4 text-amber-500" /> New Folder
-            </button>
-            <div className="w-px h-6 bg-slate-300 mx-1"></div>
-            <button 
-              onClick={handleCopy}
-              disabled={!selectedItemId}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 font-medium"
-            >
-              <Copy className="w-4 h-4" /> Copy
-            </button>
-            <button 
-              onClick={handlePaste}
-              disabled={!clipboard}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 font-medium"
-            >
-              <File className="w-4 h-4" /> Paste
-            </button>
-            <div className="w-px h-6 bg-slate-300 mx-1"></div>
-            <button 
-              onClick={() => { setIsRenaming(true); setIsCreating(false); setInputName(selectedItem?.name || ''); }}
-              disabled={!selectedItemId}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 font-medium"
-            >
-              <Edit2 className="w-4 h-4" /> Rename
-            </button>
-            <button 
-              onClick={handleDelete}
-              disabled={!selectedItemId}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm hover:bg-slate-200 rounded disabled:opacity-50 text-red-600 font-medium"
-            >
-              <Trash2 className="w-4 h-4" /> Delete
-            </button>
-          </div>
+          <LabHeader onExit={onExit} title="Lab" />
 
           {/* File Grid */}
-          <div className="flex-1 p-6 bg-white overflow-y-auto">
+          <div className="flex-1 p-6 bg-slate-50 overflow-y-auto">
             {isCreating && (
               <div className="mb-6 p-4 border border-blue-300 bg-blue-50 rounded-lg max-w-sm">
                 <label className="block text-sm font-bold text-slate-700 mb-2">New Folder Name</label>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, RotateCcw, Info, CheckCircle, Database } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
     onExit?: () => void;
@@ -83,13 +84,10 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-indigo-600 text-white p-4 flex justify-between items-center shadow-md">
-                <h1 className="text-2xl font-bold">Condensation Polymerisation: PET Synthesis</h1>
-                {onExit && <button onClick={onExit} className="px-4 py-2 bg-indigo-700 hover:bg-indigo-800 rounded">Exit</button>}
-            </div>
+            <LabHeader onExit={onExit} title="Condensation Polymerisation: PET Synthesis" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-indigo-600"/> Setup & Theory</h2>
                     <p className="text-sm text-slate-700">
                         Condensation polymerisation joins monomers by eliminating small molecules like water. 
@@ -122,7 +120,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Molecular View</h2>
                     <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center overflow-hidden">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
@@ -161,7 +159,7 @@ export default function LabC10CondensationPolymerisation({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-indigo-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={progress < 100} className="w-full bg-indigo-100 text-indigo-700 py-2 rounded font-medium hover:bg-indigo-200 disabled:opacity-50">

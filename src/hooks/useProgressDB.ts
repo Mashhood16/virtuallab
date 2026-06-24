@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import { progressDB } from '../services/dbService';
 import type { ProgressRecord } from '../services/dbService';
+import { useAuth } from '../store';
 
 export function useProgressDB(experimentId?: string) {
+  const { user } = useAuth();
   const [currentRecord, setCurrentRecord] = useState<ProgressRecord | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -16,7 +18,7 @@ export function useProgressDB(experimentId?: string) {
     const loadRecord = async () => {
       try {
         setIsLoading(true);
-        const record = await progressDB.getRecordByExperiment(experimentId);
+        const record = await progressDB.getRecordByExperiment(experimentId, user?.id);
         setCurrentRecord(record);
       } catch (err) {
         setError(err instanceof Error ? err : new Error('Failed to load record'));
@@ -26,11 +28,16 @@ export function useProgressDB(experimentId?: string) {
     };
 
     loadRecord();
-  }, [experimentId]);
+  }, [experimentId, user?.id]);
 
   const startExperiment = useCallback(async (id: string) => {
+    if (!user) {
+      throw new Error('Must be logged in to track experiments');
+    }
+
     try {
       const newRecord: Omit<ProgressRecord, 'id'> = {
+        userId: user.id,
         experimentId: id,
         startTime: Date.now(),
         completionTime: null,
@@ -46,7 +53,7 @@ export function useProgressDB(experimentId?: string) {
       setError(err instanceof Error ? err : new Error('Failed to start experiment'));
       throw err;
     }
-  }, []);
+  }, [user]);
 
   const completeExperiment = useCallback(async (score: number, dataPoints: any[] = []) => {
     if (!currentRecord) throw new Error('No active experiment');

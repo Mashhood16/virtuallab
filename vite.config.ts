@@ -30,16 +30,19 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
-        maximumFileSizeToCacheInBytes: 4194304,
+        maximumFileSizeToCacheInBytes: 6291456,
+        navigateFallback: 'index.html',
+        cleanupOutdatedCaches: true,
+        ignoreURLParametersMatching: [/^utm_/, /^fbclid$/],
         runtimeCaching: [
           {
-            // Cache 3D models strictly for offline use with size limits
-            urlPattern: /\.(?:gltf|glb|obj|mtl)$/i,
+            // Cache lazy-loaded JS/CSS lab chunks with CacheFirst for instant offline loads
+            urlPattern: /\/assets\/.*\.(?:js|css)$/i,
             handler: 'CacheFirst',
             options: {
-              cacheName: '3d-models-cache',
+              cacheName: 'lab-chunks-cache',
               expiration: {
-                maxEntries: 10, // Strict limit for Chromebook storage
+                maxEntries: 300,
                 maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
               },
               cacheableResponse: {
@@ -48,7 +51,60 @@ export default defineConfig({
             }
           },
           {
-            // Background Sync for failed offline POST requests (Step 4 preview)
+            // Cache external images (DiceBear lab card covers, etc.)
+            urlPattern: /^https:\/\/api\.dicebear\.com/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'dicebear-images-cache',
+              expiration: {
+                maxEntries: 200,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            // Cache Google Fonts stylesheets
+            urlPattern: /^https:\/\/fonts\.googleapis\.com/i,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'google-fonts-stylesheets'
+            }
+          },
+          {
+            // Cache Google Fonts webfont files
+            urlPattern: /^https:\/\/fonts\.gstatic\.com/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-webfonts',
+              expiration: {
+                maxEntries: 30,
+                maxAgeSeconds: 60 * 24 * 60 * 60 // 60 Days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            // Cache 3D models strictly for offline use with size limits
+            urlPattern: /\.(?:gltf|glb|obj|mtl)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: '3d-models-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 30 * 24 * 60 * 60 // 30 Days
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            // Background Sync for failed offline POST requests
             urlPattern: /\/api\/sync/i,
             handler: 'NetworkOnly',
             method: 'POST',

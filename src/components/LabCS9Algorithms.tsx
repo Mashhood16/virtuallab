@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Play, ArrowDown } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface AlgoBlock { id: string; type: 'Terminal' | 'InputOutput' | 'Process' | 'Decision'; text: string; }
 interface AlgoTask { id: number; title: string; description: string; blocks: AlgoBlock[]; expectedSequence: string[]; }
@@ -127,32 +128,11 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-teal-700 text-white p-4 flex justify-between items-center shadow-md shrink-0">
-        <div>
-          <h1 className="text-xl font-bold">Algorithms Lab</h1>
-          <p className="text-sm opacity-80">Flowchart Sequence Builder</p>
-        </div>
-        <div className="flex gap-4 items-center">
-          <select 
-            className="bg-teal-800 border border-teal-600 rounded px-3 py-2 text-sm font-semibold outline-none"
-            value={activeTaskIdx}
-            onChange={(e) => setActiveTaskIdx(Number(e.target.value))}
-          >
-            {tasks.map((t, idx) => (
-              <option key={t.id} value={idx}>Task {idx + 1}: {t.title}</option>
-            ))}
-          </select>
-          {onExit && (
-            <button onClick={onExit} className="px-4 py-2 bg-teal-800 hover:bg-teal-900 rounded-md font-semibold transition-colors">
-              Exit Lab
-            </button>
-          )}
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Algorithms Lab" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-0">
         
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2">Task Details</h2>
           <div className="bg-teal-50 p-4 rounded-lg border border-teal-100 mb-2">
             <h3 className="font-bold text-teal-900 mb-1">{task.title}</h3>
@@ -183,7 +163,7 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
         <div className="bg-slate-200 p-4 rounded-xl shadow-inner border border-slate-300 overflow-y-auto flex flex-col items-center">
           <h2 className="text-lg font-bold text-slate-800 mb-2 w-full text-center">Algorithm Canvas</h2>
           
-          <div className="w-full bg-white p-3 rounded-lg border shadow-sm mb-4">
+          <div className="w-full bg-slate-50 p-3 rounded-lg border shadow-sm mb-4">
             <h3 className="text-xs font-bold text-slate-400 uppercase mb-3 text-center">Available Blocks (Click to add)</h3>
             <div className="flex flex-wrap gap-4 justify-center">
               {availableBlocks.map(b => (
@@ -221,7 +201,7 @@ export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
+        <div className="bg-slate-50 p-4 rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-4">Analysis & Validation</h2>
           
           <button 

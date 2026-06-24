@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Calculator, Activity, BookOpen } from 'lucide-react';
+import { RefreshCw, Calculator, Activity, BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -75,27 +76,12 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 17: Lorentz Force & DC Motor Principle</h1>
-            <p className="text-sm text-slate-500">Measure the magnetic force on a current-carrying wire in a uniform magnetic field.</p>
-          </div>
-        </div>
-        <button onClick={resetLab} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors text-slate-700">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 17: Lorentz Force & DC Motor Principle" subtitle="Measure the magnetic force on a current-carrying wire in a uniform magnetic field." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-amber-500 p-4 text-slate-900 flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="font-bold text-lg">Theory & Setup</h2>
@@ -214,7 +200,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
               {/* Horizontal current-carrying bar */}
               <div className="absolute bottom-0 left-[-45px] h-4 bg-amber-500 border border-amber-700 rounded-full flex items-center justify-center overflow-hidden" style={{ width: '90px' }}>
                 {I !== 0 && (
-                  <div className={`w-2 h-2 bg-white rounded-full shadow-[0_0_8px_white] ${I > 0 ? 'animate-[flowRight_0.5s_linear_infinite]' : 'animate-[flowLeft_0.5s_linear_infinite]'}`} />
+                  <div className={`w-2 h-2 bg-slate-50 rounded-full shadow-[0_0_8px_white] ${I > 0 ? 'animate-[flowRight_0.5s_linear_infinite]' : 'animate-[flowLeft_0.5s_linear_infinite]'}`} />
                 )}
               </div>
             </div>
@@ -248,7 +234,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-blue-600 p-4 text-white flex items-center gap-2">
             <Calculator className="w-5 h-5" />
             <h2 className="font-bold text-lg">Data & Analysis</h2>
@@ -287,7 +273,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
             <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex flex-col items-center shrink-0">
               <h4 className="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">I vs tan(θ)</h4>
               <div className="relative w-full aspect-[3/2] max-w-[300px]">
-                <svg viewBox="0 0 320 180" className="w-full h-full bg-white border border-slate-300 rounded shadow-inner">
+                <svg viewBox="0 0 320 180" className="w-full h-full bg-slate-50 border border-slate-300 rounded shadow-inner">
                   {/* Axes */}
                   <line x1="40" y1="90" x2="300" y2="90" stroke="#94a3b8" strokeWidth="1" /> {/* X Axis center */}
                   <line x1="160" y1="20" x2="160" y2="160" stroke="#94a3b8" strokeWidth="1" /> {/* Y Axis center */}

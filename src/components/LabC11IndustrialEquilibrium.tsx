@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Settings, Info, Activity, Database, CheckCircle, ArrowLeft, Factory, Gauge, XCircle, Save } from 'lucide-react';
+import { Settings, Info, Activity, Database, CheckCircle,  Factory, Gauge, XCircle, Save } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LogEntry {
   t: number;
@@ -45,9 +46,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
       <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
         {onExit && (
-          <button onClick={onExit} className="p-2 mr-3 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={20} />
-          </button>
+          <LabHeader onExit={onExit} title="Industrial Equilibrium" />
         )}
         <h1 className="text-xl font-bold flex items-center gap-2">
           <Factory className="text-blue-400" /> Industrial Equilibrium
@@ -56,7 +55,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 overflow-y-auto">
         {/* Column 1 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Info size={20} className="text-blue-500" /> Theory & Setup
           </h2>
@@ -113,7 +112,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
         </div>
 
         {/* Column 2 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Activity size={20} className="text-blue-500" /> Industrial Reactor
           </h2>
@@ -155,7 +154,7 @@ export default function LabC11IndustrialEquilibrium({ onExit }: { onExit?: () =>
         </div>
 
         {/* Column 3 */}
-        <div className="bg-white rounded-xl shadow-sm border p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold flex items-center gap-2 border-b pb-2">
             <Database size={20} className="text-blue-500" /> Data & Analysis
           </h2>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Activity, Target, Save, Info, CheckCircle, XCircle } from 'lucide-react';
+import { Activity, Target, Save, Info, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
   const [material, setMaterial] = useState('Steel');
@@ -40,16 +41,11 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center shadow-sm sticky top-0 z-10">
-        <button onClick={onExit} className="mr-4 p-2 rounded-full hover:bg-slate-100 transition-colors">
-          <ArrowLeft size={24} className="text-slate-700" />
-        </button>
-        <h1 className="text-2xl font-bold text-slate-800">Solids: Young's Modulus Material Tester</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Solids: Young's Modulus Material Tester" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Info className="text-blue-500" />
             <h2 className="text-lg font-semibold">Theory & Setup</h2>
@@ -80,7 +76,7 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <div className="flex items-center gap-2 border-b pb-2">
             <Activity className="text-green-500" />
             <h2 className="text-lg font-semibold">Interactive Simulator</h2>
@@ -106,7 +102,7 @@ export default function LabP11Solids({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Data & Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 border-b pb-2">
             <Target className="text-purple-500" />
             <h2 className="text-lg font-semibold">Data & Assessment</h2>

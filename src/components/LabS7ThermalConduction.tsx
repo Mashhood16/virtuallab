@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Flame, ThermometerSun } from 'lucide-react';
+import { Flame, ThermometerSun } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -27,15 +28,10 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-amber-50 font-sans">
-      <div className="bg-white border-b border-amber-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-amber-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 4: Thermal Conduction</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 4: Thermal Conduction" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-amber-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-amber-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-amber-800 mb-4">Heat Transfer via Conduction</h2>
           <p className="text-slate-600 mb-6">A metal spoon, a plastic spoon, and a wooden spoon each have a solid cube of butter placed on their handles. Their bowls are immersed in boiling water. Watch to see which material conducts heat the fastest to melt the butter.</p>
           
@@ -66,10 +62,10 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
             <div className={`w-full transition-all duration-1000 rounded-b-2xl overflow-hidden relative ${time > 0 ? 'h-32 bg-red-500/20' : 'h-32 bg-blue-300/30'}`}>
               {running && (
                 <div className="absolute inset-0 flex flex-wrap gap-4 p-2 justify-center content-end overflow-hidden opacity-50">
-                   <div className="w-2 h-2 rounded-full bg-white animate-[bounce_0.5s_ease-in_infinite]"></div>
-                   <div className="w-3 h-3 rounded-full bg-white animate-[bounce_0.6s_ease-in_infinite_0.1s]"></div>
-                   <div className="w-1 h-1 rounded-full bg-white animate-[bounce_0.4s_ease-in_infinite_0.3s]"></div>
-                   <div className="w-2 h-2 rounded-full bg-white animate-[bounce_0.7s_ease-in_infinite_0.2s]"></div>
+                   <div className="w-2 h-2 rounded-full bg-slate-50 animate-[bounce_0.5s_ease-in_infinite]"></div>
+                   <div className="w-3 h-3 rounded-full bg-slate-50 animate-[bounce_0.6s_ease-in_infinite_0.1s]"></div>
+                   <div className="w-1 h-1 rounded-full bg-slate-50 animate-[bounce_0.4s_ease-in_infinite_0.3s]"></div>
+                   <div className="w-2 h-2 rounded-full bg-slate-50 animate-[bounce_0.7s_ease-in_infinite_0.2s]"></div>
                 </div>
               )}
             </div>
@@ -79,7 +75,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
              
              {/* Metal Spoon */}
              <div className="flex flex-col items-center relative transform -rotate-12 translate-y-8">
-               <div className="font-bold text-slate-700 absolute -top-8 bg-white/80 px-2 rounded z-20">Metal</div>
+               <div className="font-bold text-slate-700 absolute -top-8 bg-slate-50/80 px-2 rounded z-20">Metal</div>
                <div className="relative">
                  {/* Butter */}
                  <div 
@@ -92,7 +88,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
              {/* Plastic Spoon */}
              <div className="flex flex-col items-center relative translate-y-12 z-30">
-               <div className="font-bold text-slate-700 absolute -top-8 bg-white/80 px-2 rounded z-20">Plastic</div>
+               <div className="font-bold text-slate-700 absolute -top-8 bg-slate-50/80 px-2 rounded z-20">Plastic</div>
                <div className="relative">
                  {/* Butter */}
                  <div 
@@ -105,7 +101,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
 
              {/* Wooden Spoon */}
              <div className="flex flex-col items-center relative transform rotate-12 translate-y-8 z-10">
-               <div className="font-bold text-slate-700 absolute -top-8 bg-white/80 px-2 rounded z-20">Wood</div>
+               <div className="font-bold text-slate-700 absolute -top-8 bg-slate-50/80 px-2 rounded z-20">Wood</div>
                <div className="relative">
                  {/* Butter */}
                  <div 
@@ -122,7 +118,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
         </div>
 
         {time === 100 && (
-          <div className="mt-4 p-6 bg-white shadow-lg text-slate-800 rounded-xl border-t-4 border-red-500 max-w-2xl text-center">
+          <div className="mt-4 p-6 bg-slate-50 shadow-lg text-slate-800 rounded-xl border-t-4 border-red-500 max-w-2xl text-center">
             <h4 className="font-bold text-lg mb-2 flex justify-center items-center"><ThermometerSun className="w-5 h-5 mr-2 text-red-500" /> Conclusion</h4>
             <p>The butter on the <strong>Metal Spoon</strong> melted very quickly! Metal is an excellent thermal conductor, allowing heat to rapidly travel up the handle. Plastic is a poor conductor (an insulator), so its butter melted slowly. Wood is a very strong insulator, so its butter didn't melt at all during the timeframe.</p>
           </div>

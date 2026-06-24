@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -21,18 +22,7 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 7.1: Effects of Acids on Litmus</h1>
-            <p className="text-sm text-slate-500">Test different materials with litmus paper</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 7.1: Effects of Acids on Litmus" subtitle="Test different materials with litmus paper" rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md font-medium hover:bg-slate-300"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         {/* Solution Select */}
@@ -42,14 +32,14 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
             <button 
               key={s.id}
               onClick={() => { setSelected(s); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${selected.id === s.id ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 ${selected.id === s.id ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
             >
               {s.name}
             </button>
           ))}
         </div>
 
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[400px]">
           
           <div className="relative w-64 h-64 flex flex-col items-center justify-center mb-8">
             {/* The Material Bowl/Object */}

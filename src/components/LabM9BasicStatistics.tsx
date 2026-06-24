@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, CheckCircle, BarChart3, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
+import { CheckCircle, BarChart3, Calculator, RefreshCcw, Factory, HelpCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -58,9 +59,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <div className="bg-amber-600 text-white p-4 shadow-md flex items-center justify-between z-10 shrink-0">
         <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-amber-500 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
+          <LabHeader onExit={onExit} title="Lab M9.3: Basic Statistics" />
           <div>
             <h1 className="text-xl font-bold">Lab M9.3: Basic Statistics</h1>
             <p className="text-amber-100 text-sm">Quality Control & Probability Simulator</p>
@@ -71,7 +70,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <HelpCircle className="text-amber-600" size={20} />
             Empirical Probability
@@ -94,7 +93,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <Factory className="text-amber-600" size={20} />
             Factory Inspector
@@ -141,7 +140,7 @@ export default function LabM9BasicStatistics({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <Calculator className="text-amber-600" size={20} />
             Data Analysis

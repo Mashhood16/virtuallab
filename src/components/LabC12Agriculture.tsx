@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, RotateCcw, CheckCircle, XCircle, Sprout, ShieldAlert, Bug } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, XCircle, Sprout, ShieldAlert, Bug } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type AgScenario = 'Pesticide' | 'AcidRain' | 'GMCrops';
 
@@ -159,36 +160,13 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-slate-800 text-white p-4 shadow-md flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold flex items-center gap-2">
-            <Sprout className="text-green-400" />
-            Interactive Agrochemicals Lab
-          </h1>
-        </div>
-        <div className="flex gap-2">
-          {(['Pesticide', 'AcidRain', 'GMCrops'] as AgScenario[]).map(s => (
-            <button
-              key={s}
-              onClick={() => handleScenarioChange(s)}
-              className={`px-4 py-1 rounded-full text-sm font-medium transition-colors ${scenario === s ? 'bg-green-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}
-            >
-              {s === 'GMCrops' ? 'GM Crops' : s === 'AcidRain' ? 'Acid Rain' : 'Pesticide'}
-            </button>
-          ))}
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Interactive Agrochemicals Lab" />
 
       {/* Main Content */}
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2 flex items-center gap-2">
               <ShieldAlert className="text-slate-500" size={20} />
@@ -236,7 +214,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Interactive Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative">
           <h2 className="absolute top-6 left-6 text-xl font-bold text-slate-800 flex items-center gap-2">
             <Bug className="text-slate-500" size={20} />
             Agro-Visualizer
@@ -265,7 +243,7 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-xl font-bold text-slate-800 mb-2 border-b pb-2">
             Data Analysis
           </h2>

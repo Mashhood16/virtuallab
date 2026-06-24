@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, RefreshCcw } from 'lucide-react';
+import { CheckCircle, RefreshCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -20,10 +21,7 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Problem Solving Process" />
 
         <h1 className="text-3xl font-bold mb-2">Problem Solving Process</h1>
         <p className="text-slate-600 mb-8">Apply the 6-step problem-solving model to the everyday scenario of safely crossing a road.</p>
@@ -43,8 +41,8 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
                     isActive 
                       ? 'border-blue-500 bg-blue-50 shadow-md transform scale-[1.02]' 
                       : isCompleted
-                        ? 'border-green-200 bg-white hover:border-green-300'
-                        : 'border-slate-200 bg-white opacity-60 hover:opacity-100'
+                        ? 'border-green-200 bg-slate-50 hover:border-green-300'
+                        : 'border-slate-200 bg-slate-50 opacity-60 hover:opacity-100'
                   }`}
                 >
                   <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center font-bold text-white shadow-sm ${
@@ -63,7 +61,7 @@ export default function LabC6RoadSafetyProcess({ onExit }: LabProps) {
           </div>
 
           {/* Details Panel */}
-          <div className="flex-1 bg-white rounded-xl shadow-lg border border-slate-200 p-12 flex flex-col justify-center items-center text-center relative overflow-hidden">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-12 flex flex-col justify-center items-center text-center relative overflow-hidden">
             {currentStep < steps.length ? (
               <div className="animate-in fade-in slide-in-from-right-8 duration-300">
                 <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8 text-4xl font-bold text-blue-600 shadow-inner">

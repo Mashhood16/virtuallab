@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import { Zap, Camera, CheckCircle, XCircle, Activity, Settings2, Database, Calculator } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12ElectricPotential({ onExit }: { onExit?: () => void }) {
   const [mode, setMode] = useState<'eel' | 'rc'>('eel');
@@ -151,17 +152,12 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans select-none overflow-hidden">
-      <div className="bg-slate-900 text-white p-4 flex items-center shadow-md shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white transition-colors">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Go Back
-        </button>
-        <h1 className="ml-6 text-xl font-semibold">Lab P12.2: Capacitors & Bioelectricity</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Lab P12.2: Capacitors & Bioelectricity" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-y-auto">
         
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center mb-4 text-emerald-700">
             <Activity className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-bold">Theory & Context</h2>
@@ -197,7 +193,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center text-emerald-700">
               <Settings2 className="w-6 h-6 mr-2" />
@@ -206,13 +202,13 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
             <div className="flex bg-slate-100 rounded-lg p-1">
               <button 
                 onClick={() => setMode('eel')}
-                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-white shadow text-emerald-700' : 'text-slate-500'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'eel' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-500'}`}
               >
                 <Zap className="w-4 h-4 mr-1" /> Eel
               </button>
               <button 
                 onClick={() => setMode('rc')}
-                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'rc' ? 'bg-white shadow text-emerald-700' : 'text-slate-500'}`}
+                className={`px-3 py-1 rounded-md text-sm font-medium flex items-center transition-colors ${mode === 'rc' ? 'bg-slate-50 shadow text-emerald-700' : 'text-slate-500'}`}
               >
                 <Camera className="w-4 h-4 mr-1" /> RC Flash
               </button>
@@ -283,7 +279,7 @@ export default function LabP12ElectricPotential({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Right Column: Assessment & Data */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col">
           <div className="flex items-center justify-between mb-4 text-emerald-700">
             <div className="flex items-center">
               <Database className="w-6 h-6 mr-2" />

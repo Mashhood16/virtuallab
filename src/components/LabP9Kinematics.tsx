@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, CheckCircle, XCircle, Play, RotateCcw, Activity } from 'lucide-react';
+import { CheckCircle, XCircle, Play, RotateCcw, Activity } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
   const pitchLength = 20.12; // meters
@@ -99,23 +100,11 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Activity className="text-blue-600" />
-            Physics Grade 9: Kinematics & Precision
-          </h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Physics Grade 9: Kinematics & Precision" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-4">
           <h2 className="text-lg font-bold border-b pb-2">Theory</h2>
           <div className="prose prose-sm space-y-4">
             <div>
@@ -142,14 +131,14 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col items-center">
           <h2 className="text-lg font-bold border-b pb-2 w-full mb-4">Cricket Pitch Simulator</h2>
           
           <div className="w-full relative h-32 bg-green-600 border-4 border-green-800 rounded-lg overflow-hidden flex items-center mb-8">
             {/* Pitch */}
             <div className="absolute left-[10%] right-[10%] h-16 bg-[#e8dbb0] border-2 border-[#c2b280] shadow-inner flex items-center justify-between px-2">
-              <div className="w-1 h-12 bg-white"></div> {/* Crease line left */}
-              <div className="w-1 h-12 bg-white"></div> {/* Crease line right */}
+              <div className="w-1 h-12 bg-slate-50"></div> {/* Crease line left */}
+              <div className="w-1 h-12 bg-slate-50"></div> {/* Crease line right */}
             </div>
             
             {/* Ball */}
@@ -192,7 +181,7 @@ export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold border-b pb-2 mb-4">1. Speed Calculation</h2>
             <div className="space-y-3">

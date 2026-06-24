@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TestTube, Info, FlaskConical, Beaker, CheckCircle, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -97,22 +98,13 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-purple-700 text-white p-4 flex justify-between items-center shadow-md shrink-0">
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <TestTube className="w-6 h-6" /> Organic Qualitative Analysis
-        </h1>
-        {onExit && (
-          <button onClick={onExit} className="px-4 py-2 bg-purple-800 hover:bg-purple-900 rounded font-medium transition-colors">
-            Exit Lab
-          </button>
-        )}
-      </header>
+      <LabHeader onExit={onExit} title="Organic Qualitative Analysis" />
 
       {/* Main Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Info className="w-5 h-5 text-purple-600" /> Test Reagents
           </h2>
@@ -137,20 +129,20 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-2 w-full text-center">Interactive Test Rack</h2>
           <p className="text-sm text-slate-500 mb-6 text-center">Select a reagent to add to Unknown {currentCompound.id}</p>
 
           {/* Test Tube Graphic */}
           <div className="relative w-32 h-64 mb-8 shrink-0">
-            <div className="absolute inset-0 border-4 border-t-0 border-slate-300 rounded-b-full bg-white overflow-hidden flex items-end">
+            <div className="absolute inset-0 border-4 border-t-0 border-slate-300 rounded-b-full bg-slate-50 overflow-hidden flex items-end">
               <div className={`w-full h-2/3 ${getTubeColor()} transition-colors duration-1000 relative`}>
                 {/* Bubble animations if reacting */}
                 {activeReagent !== 'None' && getTubeColor() !== 'bg-sky-100' && (
                   <div className="absolute inset-0 flex justify-center items-end opacity-50">
-                    <div className="w-2 h-2 bg-white rounded-full animate-ping mb-2 mx-1"></div>
-                    <div className="w-1.5 h-1.5 bg-white rounded-full animate-bounce mb-4 mx-1 delay-75"></div>
-                    <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse mb-1 mx-1 delay-150"></div>
+                    <div className="w-2 h-2 bg-slate-50 rounded-full animate-ping mb-2 mx-1"></div>
+                    <div className="w-1.5 h-1.5 bg-slate-50 rounded-full animate-bounce mb-4 mx-1 delay-75"></div>
+                    <div className="w-2.5 h-2.5 bg-slate-50 rounded-full animate-pulse mb-1 mx-1 delay-150"></div>
                   </div>
                 )}
               </div>
@@ -178,7 +170,7 @@ export default function LabC11OrganicAnalysis({ onExit }: Props) {
         </div>
 
         {/* Column 3: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Beaker className="w-5 h-5 text-purple-600" /> Data Logging
           </h2>

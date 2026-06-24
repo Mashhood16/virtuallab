@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
-import { ArrowLeft, Code, Database, CheckCircle, XCircle, Bug, StepForward, RotateCcw, Save } from 'lucide-react';
+import { Code, Database, CheckCircle, XCircle, Bug, StepForward, RotateCcw, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 export default function LabCS12Programming({ onExit }: { onExit?: () => void }) {
   const { addRecord } = useHistory();
@@ -40,16 +41,14 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="flex items-center p-4 bg-purple-700 text-white shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-purple-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
+        <LabHeader onExit={onExit} title="Interactive Core Dev" />
         <Code className="mr-3" size={28} />
         <h1 className="text-2xl font-bold">Interactive Core Dev</h1>
       </header>
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2">Theory & Context</h2>
           <div className="space-y-4 text-slate-700 overflow-y-auto pr-2 flex-1 text-sm">
             <p>
@@ -70,7 +69,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Simulation Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2">Simulator</h2>
           
           <div className="flex gap-2 mb-4">
@@ -116,7 +115,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
 
                 <div className="flex-1 overflow-y-auto space-y-4 pb-4">
                   {nfLevel === 1 && (
-                    <div className="bg-white text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
+                    <div className="bg-slate-50 text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
                       <div className="bg-slate-200 font-bold p-1 border-b border-slate-300 text-center">Unnormalized / 1NF (Single Table)</div>
                       <table className="w-full text-left">
                         <thead className="bg-slate-100"><tr><th className="p-1 border-r">OrdID</th><th className="p-1 border-r">CustName</th><th className="p-1 border-r">ProdID</th><th className="p-1">ProdName</th></tr></thead>
@@ -132,14 +131,14 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
 
                   {nfLevel >= 2 && (
                     <div className="grid grid-cols-2 gap-2">
-                      <div className="bg-white text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
+                      <div className="bg-slate-50 text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
                         <div className="bg-slate-200 font-bold p-1 border-b border-slate-300 text-center">Orders Table</div>
                         <table className="w-full text-left">
                           <thead className="bg-slate-100"><tr><th className="p-1 border-r text-purple-700">OrdID (PK)</th><th className="p-1">CustName</th></tr></thead>
                           <tbody><tr className="border-t"><td className="p-1 border-r">101</td><td className="p-1">Alice</td></tr></tbody>
                         </table>
                       </div>
-                      <div className="bg-white text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
+                      <div className="bg-slate-50 text-slate-800 text-xs rounded border border-slate-300 overflow-hidden">
                         <div className="bg-slate-200 font-bold p-1 border-b border-slate-300 text-center">OrderDetails</div>
                         <table className="w-full text-left">
                           <thead className="bg-slate-100"><tr><th className="p-1 border-r text-purple-700">OrdID (FK)</th><th className="p-1 border-r text-purple-700">ProdID (FK)</th>{nfLevel === 2 && <th className="p-1">ProdName</th>}</tr></thead>
@@ -150,7 +149,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
                   )}
 
                   {nfLevel === 3 && (
-                    <div className="bg-white text-slate-800 text-xs rounded border border-slate-300 overflow-hidden w-1/2 mx-auto">
+                    <div className="bg-slate-50 text-slate-800 text-xs rounded border border-slate-300 overflow-hidden w-1/2 mx-auto">
                       <div className="bg-slate-200 font-bold p-1 border-b border-slate-300 text-center">Products Table</div>
                       <table className="w-full text-left">
                         <thead className="bg-slate-100"><tr><th className="p-1 border-r text-purple-700">ProdID (PK)</th><th className="p-1">ProdName</th></tr></thead>
@@ -166,7 +165,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-purple-800 border-b pb-2">Analysis & Assessment</h2>
           
           <div className="space-y-4 overflow-y-auto pr-2">
@@ -183,7 +182,7 @@ export default function LabCS12Programming({ onExit }: { onExit?: () => void }) 
             <div className="bg-slate-50 p-3 rounded-lg border border-slate-200">
               <label className="block text-sm font-bold text-slate-800 mb-2">Q2: In 3NF database normalization, which table correctly holds the `ProdName` column?</label>
               <div className="flex gap-2">
-                <select value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1 bg-white">
+                <select value={q2} onChange={e => setQ2(e.target.value)} className="flex-1 border rounded px-2 py-1 bg-slate-50">
                   <option value="">Select Table...</option>
                   <option value="Orders">Orders Table</option>
                   <option value="OrderDetails">OrderDetails Table</option>

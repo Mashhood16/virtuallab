@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, Activity, Zap, CheckCircle2, XCircle } from 'lucide-react';
+import { Play, Pause, RotateCcw, Activity, Zap, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 const SvgGrid = () => (
     <g opacity="0.1">
@@ -149,22 +150,13 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-                <div className="flex items-center gap-4">
-                    {onExit && (
-                        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-6 h-6 text-slate-600" />
-                        </button>
-                    )}
-                    <h1 className="text-2xl font-bold text-slate-800">Virtual Lab: Modern Physics</h1>
-                </div>
-            </header>
+            <LabHeader onExit={onExit} title="Virtual Lab: Modern Physics" />
 
             {/* Main Content */}
             <main className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 {/* Left Column: Theory */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-y-auto">
+                <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <Activity className="text-indigo-600" />
                         Theory & Context
@@ -221,11 +213,11 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
                 </div>
 
                 {/* Middle Column: Visualizer */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full">
+                <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full">
                     <div className="flex gap-2 mb-6 p-1 bg-slate-100 rounded-lg">
-                        <button onClick={() => handleTabChange('mass-energy')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'mass-energy' ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>Fission</button>
-                        <button onClick={() => handleTabChange('pet-scan')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'pet-scan' ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>PET Scan</button>
-                        <button onClick={() => handleTabChange('synchrotron')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'synchrotron' ? 'bg-white shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>Synchrotron</button>
+                        <button onClick={() => handleTabChange('mass-energy')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'mass-energy' ? 'bg-slate-50 shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>Fission</button>
+                        <button onClick={() => handleTabChange('pet-scan')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'pet-scan' ? 'bg-slate-50 shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>PET Scan</button>
+                        <button onClick={() => handleTabChange('synchrotron')} className={`flex-1 py-2 rounded-md text-sm font-medium transition-colors ${activeTab === 'synchrotron' ? 'bg-slate-50 shadow-sm text-indigo-700' : 'text-slate-500 hover:text-slate-700'}`}>Synchrotron</button>
                     </div>
                     
                     <div className="flex-1 flex flex-col justify-center items-center">
@@ -391,7 +383,7 @@ export default function LabP11ModernPhysics({ onExit }: { onExit?: () => void })
                 </div>
 
                 {/* Right Column: Assessment */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-y-auto">
+                <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-y-auto">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <Activity className="text-indigo-600" />
                         Data Logging & Analysis

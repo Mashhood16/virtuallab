@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, BarChart3, PieChart, Plus, Trash2, Database, FileBarChart } from 'lucide-react';
+import { BarChart3, PieChart, Plus, Trash2, Database, FileBarChart } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface DataRow {
   id: string;
@@ -60,19 +61,12 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
       <div className="flex items-center justify-between bg-cyan-700 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-cyan-800 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">Data Visualization Dashboard</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Data Visualization Dashboard" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4">
           <h2 className="text-xl font-bold flex items-center gap-2 text-cyan-700">
             <FileBarChart size={24} /> Enterprise Survey Analysis
           </h2>
@@ -101,7 +95,7 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Data Table */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-cyan-700">
             <Database size={24} /> Data Entry
           </h2>
@@ -157,17 +151,17 @@ export default function LabCS9DataAnalysis({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Visualization & Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <div className="flex gap-2 mb-6 bg-slate-100 p-1 rounded-lg">
             <button
               onClick={() => setActiveTab('bar')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'bar' ? 'bg-white shadow-sm text-cyan-700' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'bar' ? 'bg-slate-50 shadow-sm text-cyan-700' : 'text-slate-500 hover:text-slate-700'}`}
             >
               <BarChart3 size={20} /> Bar Chart
             </button>
             <button
               onClick={() => setActiveTab('pie')}
-              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'pie' ? 'bg-white shadow-sm text-cyan-700' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold transition-colors ${activeTab === 'pie' ? 'bg-slate-50 shadow-sm text-cyan-700' : 'text-slate-500 hover:text-slate-700'}`}
             >
               <PieChart size={20} /> Pie Chart
             </button>

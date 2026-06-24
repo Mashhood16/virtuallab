@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, TestTube, Thermometer, Droplets, Play, CheckCircle2, RotateCcw, Activity, LineChart, Table2 } from 'lucide-react';
+import { TestTube, Thermometer, Droplets, Play, CheckCircle2, RotateCcw, Activity, LineChart, Table2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'starch' | 'protein'>('starch');
@@ -101,19 +102,11 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-700" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold text-slate-900">Lab B12.1: Biochemical Tests</h1>
-          <p className="text-sm text-slate-500">Enzyme Kinetics & Macromolecule Detection</p>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Lab B12.1: Biochemical Tests" subtitle="Enzyme Kinetics & Macromolecule Detection" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <Activity className="w-5 h-5 text-blue-600"/> Theory & Context
           </h2>
@@ -133,7 +126,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800">
             <TestTube className="w-5 h-5 text-blue-600"/> Interactive Simulator
           </h2>
@@ -163,9 +156,9 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
                 {isDigesting && (
                   <div className="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div className="flex gap-1">
-                       <div className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce"></div>
-                       <div className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                       <div className="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce"></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                       <div className="w-1.5 h-1.5 bg-slate-50/50 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                     </div>
                   </div>
                 )}
@@ -218,7 +211,7 @@ export default function LabB12Digestive({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <LineChart className="w-5 h-5 text-blue-600"/> Data & Analysis
           </h2>

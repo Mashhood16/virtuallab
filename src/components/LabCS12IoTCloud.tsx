@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Database, ShieldAlert, Cpu, Link as LinkIcon, CheckCircle, BookOpen, Save } from 'lucide-react';
+import { Database, ShieldAlert, Cpu, Link as LinkIcon, CheckCircle, BookOpen, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 interface Block {
     index: number;
@@ -83,19 +84,11 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-slate-800 text-white p-4 flex items-center shadow-md shrink-0">
-                <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded transition-colors">
-                    <ArrowLeft size={24} />
-                </button>
-                <div>
-                    <h1 className="text-xl font-bold">Lab 12.3: Distributed IoT & Blockchain</h1>
-                    <p className="text-sm text-slate-300">Sensor Arrays, Immutable Ledgers, and Data Integrity</p>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} variant="dark" title="Lab 12.3: Distributed IoT & Blockchain" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 h-full min-h-0">
                 {/* Column 1 */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <BookOpen className="text-indigo-500" /> Theory & Context
                     </h2>
@@ -117,7 +110,7 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2 */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
                         <Database className="text-indigo-500" /> IoT Network & Ledger
                     </h2>
@@ -144,9 +137,9 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                         {blocks.map((b, i) => {
                             const isPrevValid = i === 0 || b.prevHash === blocks[i-1].hash;
                             return (
-                                <div key={b.index} className={`relative p-4 rounded border-2 shadow-sm transition-colors ${!isPrevValid ? 'border-red-500 bg-red-50' : b.tampered ? 'border-orange-500 bg-orange-50' : 'border-emerald-500 bg-white'}`}>
+                                <div key={b.index} className={`relative p-4 rounded border-2 shadow-sm transition-colors ${!isPrevValid ? 'border-red-500 bg-red-50' : b.tampered ? 'border-orange-500 bg-orange-50' : 'border-emerald-500 bg-slate-50'}`}>
                                     {i > 0 && (
-                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 bg-white rounded-full">
+                                        <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10 bg-slate-50 rounded-full">
                                             <LinkIcon className={isPrevValid ? 'text-emerald-500' : 'text-red-500'} size={20} />
                                         </div>
                                     )}
@@ -183,7 +176,7 @@ export default function LabCS12IoTCloud({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3 */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 flex flex-col">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
                         <CheckCircle className="text-indigo-500" /> Assessment & Analysis
                     </h2>

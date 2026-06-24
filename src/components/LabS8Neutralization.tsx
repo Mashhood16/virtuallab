@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, AlertTriangle } from 'lucide-react';
+import { RefreshCw, AlertTriangle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -31,22 +32,11 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 7.3: Neutralization Reaction</h1>
-            <p className="text-sm text-slate-500">Titration of NaOH with HCl</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 7.3: Neutralization Reaction" subtitle="Titration of NaOH with HCl" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px]">
           
           <div className="absolute top-4 left-4 bg-amber-100 border border-amber-300 text-amber-800 px-4 py-2 rounded-lg flex gap-2 items-center text-sm font-bold shadow-sm">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
@@ -56,7 +46,7 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
           <div className="relative w-64 h-96 flex flex-col items-center mt-12">
             
             {/* Burette (HCl) */}
-            <div className="absolute top-0 w-8 h-48 border-x-2 border-t-2 border-slate-300 rounded-t-sm flex flex-col items-center bg-white/50 backdrop-blur-sm z-20">
+            <div className="absolute top-0 w-8 h-48 border-x-2 border-t-2 border-slate-300 rounded-t-sm flex flex-col items-center bg-slate-50/50 backdrop-blur-sm z-20">
                {/* Markings */}
                {[1,2,3,4,5,6,7].map(m => <div key={m} className="w-full border-b border-slate-300/50 flex-1" />)}
                {/* Fluid */}
@@ -71,12 +61,12 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
             </div>
 
             {/* Flask (NaOH + Indicator) */}
-            <div className="absolute bottom-0 w-32 h-32 border-4 border-slate-300 rounded-b-[40px] rounded-t-sm bg-white/50 shadow-inner z-10 flex flex-col justify-end overflow-hidden">
+            <div className="absolute bottom-0 w-32 h-32 border-4 border-slate-300 rounded-b-[40px] rounded-t-sm bg-slate-50/50 shadow-inner z-10 flex flex-col justify-end overflow-hidden">
                <div className={`w-full h-1/2 transition-colors duration-1000 ${solutionColor}`} />
                <div className="absolute -right-32 bottom-8 text-xs font-bold text-slate-500 text-center">NaOH (Base) +<br/>Phenolphthalein</div>
             </div>
             {/* Flask Neck */}
-            <div className="absolute bottom-32 w-10 h-10 border-x-4 border-slate-300 z-10 bg-white/50" />
+            <div className="absolute bottom-32 w-10 h-10 border-x-4 border-slate-300 z-10 bg-slate-50/50" />
 
           </div>
 

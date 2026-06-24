@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Flag } from 'lucide-react';
+import { RefreshCw, Flag } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -16,24 +17,13 @@ export default function LabS8Windsock({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 11.9: Design a Windsock</h1>
-            <p className="text-sm text-slate-500">Visualizing wind direction and speed</p>
-          </div>
-        </div>
-        <button onClick={() => {setWindDir(90); setWindSpeed(50);}} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 11.9: Design a Windsock" subtitle="Visualizing wind direction and speed" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
         {/* Weather Controls */}
         <div className="w-full md:w-64 flex flex-col gap-6">
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
              <h3 className="font-bold text-slate-700 mb-4">Wind Direction</h3>
              
              {/* Compass Dial */}
@@ -58,7 +48,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
              />
           </div>
 
-          <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+          <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200">
              <h3 className="font-bold text-slate-700 mb-4">Wind Speed</h3>
              <input 
                type="range" min="0" max="100" value={windSpeed} 
@@ -97,8 +87,8 @@ export default function LabS8Windsock({ onExit }: LabProps) {
              >
                 {/* Wind Sock Fabric */}
                 <div className={`w-48 h-12 bg-gradient-to-r from-orange-500 via-white to-orange-500 rounded-r-3xl rounded-l-full shadow-lg border border-orange-600/50 relative overflow-hidden ${windSpeed > 30 ? 'animate-[flutter_0.1s_infinite]' : ''}`}>
-                   <div className="absolute inset-y-0 left-1/4 w-1/4 bg-white" />
-                   <div className="absolute inset-y-0 right-1/4 w-1/4 bg-white" />
+                   <div className="absolute inset-y-0 left-1/4 w-1/4 bg-slate-50" />
+                   <div className="absolute inset-y-0 right-1/4 w-1/4 bg-slate-50" />
                 </div>
              </div>
           </div>
@@ -114,7 +104,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
           )}
 
           {/* Hint */}
-          <div className="absolute bottom-6 bg-white/80 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-slate-200 text-center z-30">
+          <div className="absolute bottom-6 bg-slate-50/80 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-slate-200 text-center z-30">
             <h4 className="font-bold text-slate-800 mb-1 flex items-center justify-center gap-2">
               <Flag className="w-5 h-5 text-orange-500" /> Observation
             </h4>

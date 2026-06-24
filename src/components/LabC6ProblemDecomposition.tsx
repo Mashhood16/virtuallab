@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, PlusCircle, Trash2, ArrowDown, ShoppingBag } from 'lucide-react';
+import { CheckCircle, PlusCircle, Trash2, ArrowDown, ShoppingBag } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -26,15 +27,12 @@ export default function LabC6ProblemDecomposition({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Problem Decomposition" />
 
         <h1 className="text-3xl font-bold mb-2">Problem Decomposition</h1>
         <p className="text-slate-600 mb-8">Break down the main problem ("How to do grocery shopping?") into smaller, manageable sub-problems.</p>
 
-        <div className="flex-1 flex flex-col items-center bg-white rounded-xl shadow-sm border border-slate-200 p-12">
+        <div className="flex-1 flex flex-col items-center bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-12">
           
           <div className="bg-blue-600 text-white p-6 rounded-2xl shadow-lg border-4 border-blue-700 w-full max-w-lg text-center relative z-10 flex flex-col items-center gap-3">
             <ShoppingBag className="w-10 h-10" />

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Flame, Wind } from 'lucide-react';
+import { Flame, Wind } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -21,16 +22,11 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-sky-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-sky-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 7: Separation of Mixtures</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 7: Separation of Mixtures" />
 
       <div className="flex-1 flex p-8 items-center justify-center gap-16">
         
-        <div className="w-96 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <div className="w-96 bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200">
           <h2 className="text-2xl font-bold mb-6 text-sky-800">Experiment Steps</h2>
           
           <div className="space-y-4 relative">
@@ -39,7 +35,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
             <button 
               onClick={nextStep} disabled={step !== 0}
-              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-white ${step === 0 ? 'border-sky-500 shadow-md' : step > 0 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
+              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-slate-50 ${step === 0 ? 'border-sky-500 shadow-md' : step > 0 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 0 ? 'bg-sky-500' : step > 0 ? 'bg-emerald-500' : 'bg-slate-300'}`}>1</div>
               <div className="flex-1">
@@ -50,7 +46,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
             <button 
               onClick={nextStep} disabled={step !== 1}
-              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-white ${step === 1 ? 'border-sky-500 shadow-md' : step > 1 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
+              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-slate-50 ${step === 1 ? 'border-sky-500 shadow-md' : step > 1 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 1 ? 'bg-sky-500' : step > 1 ? 'bg-emerald-500' : 'bg-slate-300'}`}>2</div>
               <div className="flex-1">
@@ -61,7 +57,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
             <button 
               onClick={nextStep} disabled={step !== 2}
-              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-white ${step === 2 ? 'border-sky-500 shadow-md' : step > 2 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
+              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-slate-50 ${step === 2 ? 'border-sky-500 shadow-md' : step > 2 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 2 ? 'bg-sky-500' : step > 2 ? 'bg-emerald-500' : 'bg-slate-300'}`}>3</div>
               <div className="flex-1">
@@ -72,7 +68,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
 
             <button 
               onClick={nextStep} disabled={step !== 3}
-              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-white ${step === 3 ? 'border-sky-500 shadow-md' : step > 3 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
+              className={`w-full p-4 rounded-xl text-left border-2 flex items-center gap-4 transition-colors relative z-10 bg-slate-50 ${step === 3 ? 'border-sky-500 shadow-md' : step > 3 ? 'border-slate-200 text-slate-500' : 'border-slate-200 text-slate-400 opacity-50'}`}
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0 ${step === 3 ? 'bg-sky-500' : step > 3 ? 'bg-emerald-500' : 'bg-slate-300'}`}>4</div>
               <div className="flex-1">
@@ -88,7 +84,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
         </div>
 
         {/* Visualizer */}
-        <div className="w-[500px] h-[500px] bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center justify-center">
+        <div className="w-[500px] h-[500px] bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center justify-center">
           <h3 className="text-lg font-bold text-slate-500 mb-8">{getContainerContent()}</h3>
           
           <div className="relative w-64 h-64 flex items-center justify-center">
@@ -98,7 +94,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
                 {/* Mixed pile */}
                 <div className="w-full h-8 bg-amber-200/80 rounded flex flex-wrap gap-[1px] p-[2px] overflow-hidden">
                   {[...Array(100)].map((_, i) => (
-                    <div key={i} className={`w-1 h-1 ${Math.random() > 0.5 ? 'bg-amber-700' : 'bg-white'}`}></div>
+                    <div key={i} className={`w-1 h-1 ${Math.random() > 0.5 ? 'bg-amber-700' : 'bg-slate-50'}`}></div>
                   ))}
                 </div>
               </div>
@@ -119,7 +115,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
               <div className="flex flex-col items-center gap-2">
                 {/* Funnel & Filter Paper */}
                 <div className="relative w-24 h-24">
-                  <div className="absolute top-0 w-24 h-16 bg-white border-l-4 border-r-4 border-slate-300 funnel-shape z-10"></div>
+                  <div className="absolute top-0 w-24 h-16 bg-slate-50 border-l-4 border-r-4 border-slate-300 funnel-shape z-10"></div>
                   {/* Filter paper inside */}
                   <div className="absolute top-2 left-2 w-20 h-12 bg-orange-100 funnel-shape z-20"></div>
                   {/* Sand caught */}
@@ -140,7 +136,7 @@ export default function LabS6Separation({ onExit }: LabProps) {
                 {/* Boiling Beaker */}
                 <div className="w-32 h-24 border-b-4 border-l-4 border-r-4 border-slate-300 rounded-b-xl relative flex items-end p-2 bg-blue-50/20">
                   {/* Recovered salt */}
-                  <div className="w-full h-2 bg-white border border-slate-100 rounded-sm"></div>
+                  <div className="w-full h-2 bg-slate-50 border border-slate-100 rounded-sm"></div>
                   {/* Steam */}
                   <div className="absolute -top-12 left-4 text-slate-300 animate-pulse"><Wind /></div>
                   <div className="absolute -top-16 right-4 text-slate-300 animate-pulse delay-75"><Wind /></div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Utensils, Scissors as KnifeIcon } from 'lucide-react'; // Using Scissors for Knife
+import { Utensils, Scissors as KnifeIcon } from 'lucide-react'; // Using Scissors for Knife
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,15 +11,10 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-orange-50 font-sans">
-      <div className="bg-white border-b border-orange-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-orange-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 4: Physical Digestion Mechanics</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 4: Physical Digestion Mechanics" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-orange-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-orange-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-orange-800 mb-4">Relating Tools to Digestion</h2>
           <p className="text-slate-600 mb-6">Physical digestion involves breaking down food into smaller pieces without chemical changes. Apply the tools to the banana to simulate this process.</p>
           
@@ -77,7 +73,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
 
             {bananaState === 'crushed' && (
               <div className="w-48 h-48 bg-yellow-100 rounded-full blob-shape border-2 border-yellow-300 relative">
-                 <div className="absolute w-8 h-8 bg-white/50 rounded-full top-8 left-12 blur-sm"></div>
+                 <div className="absolute w-8 h-8 bg-slate-50/50 rounded-full top-8 left-12 blur-sm"></div>
                  <div className="absolute w-6 h-6 bg-yellow-300/50 rounded-full bottom-12 right-12 blur-sm"></div>
               </div>
             )}
@@ -85,7 +81,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             {bananaState === 'mashed' && (
               <div className="w-64 h-64 bg-yellow-50 rounded-full flex items-center justify-center relative">
                  {/* Milk added */}
-                 <div className="w-56 h-56 bg-white/80 rounded-full blob-shape-alt border border-yellow-100 flex items-center justify-center shadow-inner">
+                 <div className="w-56 h-56 bg-slate-50/80 rounded-full blob-shape-alt border border-yellow-100 flex items-center justify-center shadow-inner">
                     <div className="w-40 h-40 bg-yellow-100/80 blob-shape border border-yellow-200"></div>
                  </div>
               </div>

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Trash2, CheckCircle, XCircle } from 'lucide-react';
+import { Trash2, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -55,17 +56,11 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center gap-4 sticky top-0 shadow-sm z-10">
-        {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Unit 18: Logic Gates</h1>
-          <p className="text-sm text-slate-500">Test different logic gates and observe their truth tables with continuous voltages.</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 18: Logic Gates" subtitle="Test different logic gates and observe their truth tables with continuous voltages." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 overflow-hidden">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
             <p className="text-sm text-slate-600 mb-4">In real electronic circuits, logic gates process continuous voltages. TTL (Transistor-Transistor Logic) defines specific voltage thresholds.</p>
@@ -130,7 +125,7 @@ export default function LabP10LogicGates({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="p-4 border-b bg-slate-50">
             <h2 className="text-lg font-bold text-slate-800">Data & Analysis</h2>
           </div>

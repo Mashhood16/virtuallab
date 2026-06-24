@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BellRing } from 'lucide-react';
+import { BellRing } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -44,17 +45,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        {onExit && (
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        )}
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Act 5.7: Sonorous Nature</h1>
-          <p className="text-sm text-slate-500">Strike materials to hear if they produce a ringing sound</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.7: Sonorous Nature" subtitle="Strike materials to hear if they produce a ringing sound" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
@@ -64,7 +55,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => { setSelected(m); setWaves([]); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
             >
               {m.name}
             </button>
@@ -72,7 +63,7 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           <div className="relative w-64 h-64 flex items-center justify-center mb-8">
             

@@ -1,5 +1,6 @@
 import  { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, ClipboardList } from 'lucide-react';
+import { Play, Pause, RotateCcw, ClipboardList } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -130,29 +131,14 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between shadow-sm z-10 shrink-0">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 11: Charles's Law (Volume and Temperature)</h1>
-            <p className="text-sm text-slate-500">Investigate the relationship between gas volume and temperature at constant pressure.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RotateCcw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Charles's Law (Volume and Temperature)" subtitle="Investigate the relationship between gas volume and temperature at constant pressure." rightContent={<>{rightJsx}</>} />
 
       {/* Main Grid */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
           
           {/* Column 1: Theory & Setup */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
             <div>
               <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Theory</h2>
               <p className="text-sm text-slate-600 mb-2">
@@ -236,7 +222,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
               {/* Syringe Setup */}
               <div className="w-full max-w-sm relative z-20 h-24 mb-10 mt-10">
                 {/* Syringe barrel */}
-                <div className="absolute top-0 left-0 w-full h-16 bg-white/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow-hidden backdrop-blur-sm">
+                <div className="absolute top-0 left-0 w-full h-16 bg-slate-50/10 border-2 border-white/30 rounded-l-md flex items-center p-1 overflow-hidden backdrop-blur-sm">
                   {/* Gas inside */}
                   <div 
                     className="h-full bg-blue-300/30 transition-all duration-300 ease-out flex items-center justify-end border-r-2 border-slate-800/50"
@@ -245,7 +231,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
                     {/* Gas Particles (visual only) */}
                     <div className="absolute inset-0 overflow-hidden opacity-50">
                       {[...Array(Math.floor(20 * gasMoles))].map((_, i) => (
-                        <div key={i} className="absolute w-1 h-1 bg-white rounded-full animate-ping"
+                        <div key={i} className="absolute w-1 h-1 bg-slate-50 rounded-full animate-ping"
                              style={{ 
                                top: `${10 + Math.random() * 80}%`, 
                                left: `${5 + Math.random() * Math.min(90, syringeWidthPercent - 5)}%`,
@@ -290,7 +276,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
               }}>
                 {/* Heat/Cold waves */}
                 {bathTemp > 40 && <div className="absolute inset-0 bg-red-500/20 animate-pulse rounded-t-[50%]" />}
-                {bathTemp < 10 && <div className="absolute inset-0 bg-white/20 rounded-t-[50%] border-t-[4px] border-white/50" />}
+                {bathTemp < 10 && <div className="absolute inset-0 bg-slate-50/20 rounded-t-[50%] border-t-[4px] border-white/50" />}
                 
                 <div className="text-white/60 font-bold text-xl uppercase tracking-widest">
                   Water Bath ({bathTemp.toFixed(1)}°C)
@@ -301,7 +287,7 @@ export default function LabP10GasPressureBalloon({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Data & Analysis */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
             <div className="flex items-center justify-between border-b pb-2">
               <h2 className="text-lg font-bold text-slate-800">Data Recording</h2>
               <button 

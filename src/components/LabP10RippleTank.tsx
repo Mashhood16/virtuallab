@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Play, Pause, Plus, CheckCircle } from 'lucide-react';
+import { RefreshCw, Play, Pause, Plus, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -110,7 +111,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
     }));
 
     return (
-      <svg viewBox="0 0 200 200" className="w-full h-48 bg-white border rounded-md shadow-inner mt-4">
+      <svg viewBox="0 0 200 200" className="w-full h-48 bg-slate-50 border rounded-md shadow-inner mt-4">
         <line x1="30" y1="170" x2="180" y2="170" stroke="#94a3b8" strokeWidth="2" />
         <line x1="30" y1="170" x2="30" y2="20" stroke="#94a3b8" strokeWidth="2" />
         <text x="90" y="195" fontSize="10" fill="#64748b" fontWeight="bold">sin(θ_r)</text>
@@ -131,26 +132,11 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 12: Ripple Tank</h1>
-            <p className="text-sm text-slate-500">Investigate wave refraction and Snell's Law quantitatively.</p>
-          </div>
-        </div>
-        <button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 12: Ripple Tank" subtitle="Investigate wave refraction and Snell's Law quantitatively." rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory & Setup</h2>
             <p className="text-sm text-slate-600 mb-4">
@@ -247,7 +233,7 @@ export default function LabP10RippleTank({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-4">Data Logging</h2>
             

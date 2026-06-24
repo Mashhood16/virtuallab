@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { ArrowLeft, Calculator, BookOpen, LineChart, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
+import { Calculator, BookOpen, LineChart, CheckCircle2, XCircle, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Point {
     x: number;
@@ -103,20 +104,12 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-orange-600 text-white p-4 flex items-center shadow-md shrink-0">
-                <button onClick={onExit} className="mr-4 hover:bg-orange-700 p-2 rounded-full transition-colors">
-                    <ArrowLeft size={24} />
-                </button>
-                <div>
-                    <h1 className="text-2xl font-bold">Statistics & Scatter Plots</h1>
-                    <p className="text-sm text-orange-200">Analyzing Correlations: Exercise vs. BMI / Fitness</p>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Statistics & Scatter Plots" />
 
             {/* Main Content Grid */}
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-orange-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-orange-500">
                     <div className="flex items-center mb-4 text-orange-800 shrink-0">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
@@ -145,13 +138,13 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-blue-500">
                     <div className="flex items-center mb-4 text-blue-800 shrink-0">
                         <LineChart className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
                     </div>
                     
-                    <div className="flex-1 relative bg-white rounded-lg overflow-hidden border border-slate-200 flex flex-col min-h-[300px]">
+                    <div className="flex-1 relative bg-slate-50 rounded-lg overflow-hidden border border-slate-200 flex flex-col min-h-[300px]">
                         <div className="flex-1 relative w-full h-full p-2">
                             <svg viewBox="0 0 400 300" className="w-full h-full absolute inset-0">
                                 {/* Axes */}
@@ -212,7 +205,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                                     <select 
                                         value={trend} 
                                         onChange={(e) => setTrend(Number(e.target.value))}
-                                        className="w-full p-2 border border-slate-300 rounded text-sm bg-white"
+                                        className="w-full p-2 border border-slate-300 rounded text-sm bg-slate-50"
                                     >
                                         <option value={1}>Positive (More Exercise = Fitter)</option>
                                         <option value={-1}>Negative (More Exercise = Lower BMI)</option>
@@ -241,7 +234,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-amber-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-amber-500">
                     <div className="flex items-center mb-4 text-amber-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Data Analysis</h2>
@@ -259,7 +252,7 @@ export default function LabM10StatsApplications({ onExit }: { onExit: () => void
                             <select 
                                 value={userCorrelation}
                                 onChange={(e) => setUserCorrelation(e.target.value)}
-                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-white text-lg"
+                                className="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-amber-500 outline-none bg-slate-50 text-lg"
                             >
                                 <option value="positive">Positive Correlation</option>
                                 <option value="negative">Negative Correlation</option>

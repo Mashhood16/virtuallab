@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -16,18 +17,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 9.4: The Bending Pencil</h1>
-            <p className="text-sm text-slate-500">Observe refraction in different liquids</p>
-          </div>
-        </div>
-        <button onClick={() => setLiquid('water')} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 9.4: The Bending Pencil" subtitle="Observe refraction in different liquids" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -38,7 +28,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
             <button 
               key={k}
               onClick={() => setLiquid(k)}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${liquid === k ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 ${liquid === k ? 'border-sky-500 bg-sky-50 text-sky-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
             >
               {liquids[k].name}
               <div className="text-xs font-normal opacity-70">Refractive Index: {liquids[k].index}</div>
@@ -46,7 +36,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
           ))}
         </div>
 
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[500px] overflow-hidden">
           
           <div className="relative w-64 h-80 flex flex-col items-center justify-end mb-8">
             
@@ -57,7 +47,7 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
             </div>
 
             {/* The Glass Beaker */}
-            <div className="w-48 h-48 border-4 border-slate-300 rounded-b-3xl border-t-0 flex flex-col justify-end bg-white/30 backdrop-blur-[2px] shadow-inner relative z-30 overflow-hidden">
+            <div className="w-48 h-48 border-4 border-slate-300 rounded-b-3xl border-t-0 flex flex-col justify-end bg-slate-50/30 backdrop-blur-[2px] shadow-inner relative z-30 overflow-hidden">
                
                {/* The Pencil (Bottom Half in Liquid) */}
                {/* We clip the pencil so it only shows inside the glass, and shift it based on the refraction bend */}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Server, Monitor, Printer, Network, CheckCircle } from 'lucide-react';
+import { Server, Monitor, Printer, Network, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -38,10 +39,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Network Diagram Builder" />
 
         <h1 className="text-3xl font-bold mb-2">Network Diagram Builder</h1>
         <p className="text-slate-600 mb-6">Select a component from the toolbar and click on the canvas to place it. Build a basic Client-Server network topology.</p>
@@ -55,7 +53,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
 
         <div className="flex flex-1 gap-6">
           {/* Toolbar */}
-          <div className="w-48 bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-3">
+          <div className="w-48 bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col gap-3">
             <h3 className="font-bold text-slate-700 text-sm uppercase tracking-wider mb-2">Components</h3>
             {tools.map(tool => (
               <button
@@ -78,7 +76,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
 
           {/* Canvas */}
           <div 
-            className={`flex-1 bg-white border-2 border-slate-200 rounded-xl shadow-inner relative overflow-hidden ${selectedTool ? 'cursor-crosshair bg-blue-50/30' : ''}`}
+            className={`flex-1 bg-slate-50 border-2 border-slate-200 rounded-xl shadow-inner relative overflow-hidden ${selectedTool ? 'cursor-crosshair bg-blue-50/30' : ''}`}
             onClick={handleCanvasClick}
           >
             {/* Draw lines to switch if it exists */}
@@ -106,7 +104,7 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
                   <div className={`p-3 rounded-xl border-2 shadow-lg mb-2 ${toolDef?.color} group-hover:scale-110 transition-transform`}>
                     {toolDef?.icon}
                   </div>
-                  <span className="text-xs font-bold bg-white px-2 py-1 rounded border border-slate-200 shadow-sm whitespace-nowrap">
+                  <span className="text-xs font-bold bg-slate-50 px-2 py-1 rounded border border-slate-200 shadow-sm whitespace-nowrap">
                     {toolDef?.name}
                   </span>
                 </div>

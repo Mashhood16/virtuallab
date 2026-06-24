@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { PointerEvent } from 'react';
 import { ArrowRight, BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -102,22 +103,11 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <BookOpen className="w-6 h-6 text-blue-400" />
-          <h1 className="text-xl font-bold">Lab M10: Chord Bisectors</h1>
-        </div>
-        {onExit && (
-          <button onClick={onExit} className="flex items-center gap-2 hover:text-blue-300 transition-colors">
-            <ArrowRight className="w-5 h-5" />
-            <span>Exit Lab</span>
-          </button>
-        )}
-      </div>
+      <LabHeader onExit={onExit} title="Lab M10: Chord Bisectors" />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-blue-600" />
             Theory & Concepts
@@ -143,7 +133,7 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Interactive Lab */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden relative flex flex-col h-[500px]">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden relative flex flex-col h-[500px]">
           <div className="p-4 bg-slate-50 border-b border-slate-200">
             <h3 className="font-semibold text-slate-800 text-center">Interactive Canvas</h3>
             <p className="text-xs text-slate-500 text-center">Drag points A, B, and C along the circumference.</p>
@@ -185,14 +175,14 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
                 <text x={ptC.x + 12} y={ptC.y - 12} fontSize="14" fill="#22c55e" fontWeight="bold">C</text>
               </g>
             </svg>
-            <div className="absolute bottom-2 left-2 right-2 bg-white/90 p-2 rounded text-xs border border-slate-200 text-center text-slate-700 shadow-sm pointer-events-none">
+            <div className="absolute bottom-2 left-2 right-2 bg-slate-50/90 p-2 rounded text-xs border border-slate-200 text-center text-slate-700 shadow-sm pointer-events-none">
               Notice how the perpendicular bisectors of all three chords intersect precisely at the center of the circle!
             </div>
           </div>
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <CheckCircle className="w-5 h-5 text-green-600" />

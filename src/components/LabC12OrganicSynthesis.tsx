@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Beaker, BookOpen, CheckCircle, Thermometer, FlaskConical, RefreshCw, Layers } from 'lucide-react';
+import { Beaker, BookOpen, CheckCircle, Thermometer, FlaskConical, RefreshCw, Layers } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void }) {
     const [flaskContents, setFlaskContents] = useState<string[]>([]);
@@ -77,22 +78,11 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-slate-800 text-white p-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                    <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-full transition-colors">
-                        <ArrowLeft size={20} />
-                    </button>
-                    <h1 className="text-xl font-bold">Organic Synthesis & Asymmetric Catalysis</h1>
-                </div>
-                <div className="flex items-center gap-2">
-                    <FlaskConical size={20} className="text-blue-400" />
-                    <span className="font-medium text-slate-300">Grade 12 Chemistry</span>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Organic Synthesis & Asymmetric Catalysis" />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
                 {/* Theory Column */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <BookOpen size={20} className="text-blue-600" />
                         Reaction Theory
@@ -116,14 +106,14 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Simulation Column */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <Beaker size={20} className="text-purple-600" />
                         Synthesis Workspace
                     </h2>
 
                     <div className="flex-1 bg-slate-100 rounded-lg p-4 flex flex-col items-center justify-center relative border border-slate-300">
-                        <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200">
+                        <div className="absolute top-4 right-4 bg-slate-50 px-3 py-1 rounded-md text-sm font-mono shadow-sm border border-slate-200">
                             Temp: {temperature}°C
                         </div>
                         
@@ -149,7 +139,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                             <ellipse cx="50" cy="10" rx="10" ry="2" fill="none" stroke="#64748b" strokeWidth="2" />
                         </svg>
 
-                        <div className="mt-4 text-center font-semibold text-slate-700 bg-white px-4 py-2 rounded-full border border-slate-200 shadow-sm w-full max-w-xs truncate">
+                        <div className="mt-4 text-center font-semibold text-slate-700 bg-slate-50 px-4 py-2 rounded-full border border-slate-200 shadow-sm w-full max-w-xs truncate">
                             {reactionStatus}
                         </div>
                     </div>
@@ -189,7 +179,7 @@ export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Assessment Column */}
-                <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+                <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
                     <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
                         <Layers size={20} className="text-emerald-600" />
                         Data Analysis

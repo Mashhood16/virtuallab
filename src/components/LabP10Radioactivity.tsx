@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Activity, Table2, Info, BookOpen } from 'lucide-react';
+import { RefreshCw, Activity, Table2, Info, BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -82,24 +83,13 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 20: Radioactivity & Attenuation</h1>
-            <p className="text-sm text-slate-500">Quantitative analysis of ionizing radiation absorption.</p>
-          </div>
-        </div>
-        <button onClick={() => { setSourceOpen(false); setLoggedData([]); setThickness(10); }} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 20: Radioactivity & Attenuation" subtitle="Quantitative analysis of ionizing radiation absorption." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* LEFT: Theory & Setup */}
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><BookOpen className="w-5 h-5 text-purple-600"/> Theory</h2>
             <p className="text-sm text-slate-600 mb-4">
               Radiation intensity <strong>I</strong> decreases exponentially as it passes through an absorber of thickness <strong>x</strong>:
@@ -113,7 +103,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><Activity className="w-5 h-5 text-purple-600"/> Setup</h2>
             
             <div className="space-y-5">
@@ -123,7 +113,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                   {(['Alpha', 'Beta', 'Gamma'] as SourceType[]).map(s => (
                     <button 
                       key={s} onClick={() => setSource(s)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${source === s ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                     >
                       {s}
                     </button>
@@ -138,7 +128,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
                   {(['Paper', 'Aluminum', 'Lead'] as AbsorberType[]).map(a => (
                     <button 
                       key={a} onClick={() => setAbsorber(a)}
-                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'}`}
+                      className={`flex-1 py-2 rounded-md text-sm font-bold border transition-colors ${absorber === a ? 'bg-purple-100 border-purple-500 text-purple-800' : 'bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                     >
                       {a}
                     </button>
@@ -250,7 +240,7 @@ export default function LabP10Radioactivity({ onExit }: LabProps) {
 
         {/* RIGHT: Data & Assessment */}
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-[400px]">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-[400px]">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Table2 className="w-5 h-5 text-purple-600"/> Data Log</h2>
               <button 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Compass } from 'lucide-react';
+import { Compass } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,12 +11,7 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-red-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 10: Magnetism</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 10: Magnetism" />
 
       <div className="flex-1 flex flex-col p-6 items-center">
         
@@ -35,7 +31,7 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
         </div>
 
         {view === 'field' && (
-          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden">
+          <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center relative overflow-hidden">
             <h2 className="text-2xl font-bold mb-4 text-slate-800">Plotting Magnetic Fields</h2>
             <p className="text-slate-600 mb-12 max-w-xl text-center">Iron filings or plotting compasses align with the invisible magnetic field lines. Notice how lines always emerge from the North pole and curve towards the South pole.</p>
             
@@ -66,16 +62,16 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
               </div>
 
               {/* Compasses acting as indicators */}
-              <div className="absolute top-[80px] left-[300px] -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-1 shadow-md border border-slate-200">
+              <div className="absolute top-[80px] left-[300px] -translate-x-1/2 -translate-y-1/2 bg-slate-50 rounded-full p-1 shadow-md border border-slate-200">
                 <Compass className="w-8 h-8 text-slate-800 rotate-90" />
               </div>
-              <div className="absolute bottom-[80px] left-[300px] -translate-x-1/2 translate-y-1/2 bg-white rounded-full p-1 shadow-md border border-slate-200">
+              <div className="absolute bottom-[80px] left-[300px] -translate-x-1/2 translate-y-1/2 bg-slate-50 rounded-full p-1 shadow-md border border-slate-200">
                 <Compass className="w-8 h-8 text-slate-800 -rotate-90" />
               </div>
-              <div className="absolute top-[200px] left-[100px] -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-1 shadow-md border border-slate-200">
+              <div className="absolute top-[200px] left-[100px] -translate-x-1/2 -translate-y-1/2 bg-slate-50 rounded-full p-1 shadow-md border border-slate-200">
                 <Compass className="w-8 h-8 text-slate-800 rotate-180" />
               </div>
-              <div className="absolute top-[200px] right-[100px] translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-1 shadow-md border border-slate-200">
+              <div className="absolute top-[200px] right-[100px] translate-x-1/2 -translate-y-1/2 bg-slate-50 rounded-full p-1 shadow-md border border-slate-200">
                 <Compass className="w-8 h-8 text-slate-800" />
               </div>
             </div>
@@ -83,7 +79,7 @@ export default function LabS6Magnetism({ onExit }: LabProps) {
         )}
 
         {view === 'alignment' && (
-          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
+          <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 text-slate-800">Earth's Magnetic Alignment</h2>
             <p className="text-slate-600 mb-12 max-w-xl text-center">A freely suspended bar magnet will always come to rest aligning itself with the Earth's geographic North-South axis.</p>
             

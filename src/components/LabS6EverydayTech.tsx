@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Rocket, Map, Radio } from 'lucide-react';
+import { Rocket, Map, Radio } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,12 +11,7 @@ export default function LabS6EverydayTech({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-indigo-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 12: Technology in Everyday Life</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 12: Technology in Everyday Life" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
         
@@ -40,7 +36,7 @@ export default function LabS6EverydayTech({ onExit }: LabProps) {
           </button>
         </div>
 
-        <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 min-h-[400px]">
+        <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 min-h-[400px]">
           
           {activeTech === 'satellites' && (
             <div className="animate-fade-in">
@@ -84,8 +80,8 @@ export default function LabS6EverydayTech({ onExit }: LabProps) {
                   <div className="w-24 h-48 bg-slate-800 rounded-xl border-4 border-slate-700 relative overflow-hidden flex flex-col">
                     <div className="flex-1 bg-[#e5e3df] relative">
                       {/* Map lines */}
-                      <div className="absolute top-1/2 left-0 w-full h-2 bg-white -translate-y-1/2"></div>
-                      <div className="absolute top-0 left-1/2 w-2 h-full bg-white -translate-x-1/2"></div>
+                      <div className="absolute top-1/2 left-0 w-full h-2 bg-slate-50 -translate-y-1/2"></div>
+                      <div className="absolute top-0 left-1/2 w-2 h-full bg-slate-50 -translate-x-1/2"></div>
                       {/* Location dot */}
                       <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-blue-500 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2 shadow-lg"></div>
                     </div>
@@ -109,19 +105,19 @@ export default function LabS6EverydayTech({ onExit }: LabProps) {
                   <p><strong>Mobile Networks:</strong> Enable wireless communication via cell towers, letting us make calls and access the internet from anywhere.</p>
                 </div>
                 <div className="w-64 h-64 bg-blue-50 rounded-xl border border-blue-200 shadow-inner p-4 grid grid-cols-2 grid-rows-2 gap-4">
-                   <div className="bg-white rounded-lg shadow flex items-center justify-center text-blue-500 flex-col gap-2">
+                   <div className="bg-slate-50 rounded-lg shadow flex items-center justify-center text-blue-500 flex-col gap-2">
                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                      <span className="text-xs font-bold">Email</span>
                    </div>
-                   <div className="bg-white rounded-lg shadow flex items-center justify-center text-emerald-500 flex-col gap-2">
+                   <div className="bg-slate-50 rounded-lg shadow flex items-center justify-center text-emerald-500 flex-col gap-2">
                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
                      <span className="text-xs font-bold">Messaging</span>
                    </div>
-                   <div className="bg-white rounded-lg shadow flex items-center justify-center text-purple-500 flex-col gap-2">
+                   <div className="bg-slate-50 rounded-lg shadow flex items-center justify-center text-purple-500 flex-col gap-2">
                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                      <span className="text-xs font-bold">Video Call</span>
                    </div>
-                   <div className="bg-white rounded-lg shadow flex items-center justify-center text-rose-500 flex-col gap-2">
+                   <div className="bg-slate-50 rounded-lg shadow flex items-center justify-center text-rose-500 flex-col gap-2">
                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
                      <span className="text-xs font-bold">Voice</span>
                    </div>

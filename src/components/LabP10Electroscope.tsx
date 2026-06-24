@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -72,31 +73,13 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 15: Gold-Leaf Electroscope</h1>
-            <p className="text-sm text-slate-500">Detect electric charge via induction and conduction.</p>
-          </div>
-        </div>
-        <button 
-          onClick={() => { setQRod(5); setDistance(5); setQNet(0); clearData(); setAssessmentStatus('idle'); setAssessmentAnswer(''); }} 
-          className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors"
-        >
-          <RefreshCw className="w-4 h-4" /> Reset Lab
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 15: Gold-Leaf Electroscope" subtitle="Detect electric charge via induction and conduction." />
 
       {/* Main Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory</h2>
             <p className="text-slate-600 text-sm mb-3">
@@ -156,7 +139,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
         <div className="bg-slate-100 rounded-2xl shadow-inner border border-slate-300 p-6 flex flex-col items-center justify-center relative overflow-hidden">
           
           {/* Angle Display overlay */}
-          <div className="absolute top-4 right-4 bg-white p-3 rounded-lg border border-slate-300 shadow-sm flex flex-col items-center z-20">
+          <div className="absolute top-4 right-4 bg-slate-50 p-3 rounded-lg border border-slate-300 shadow-sm flex flex-col items-center z-20">
             <span className="text-xs font-bold text-slate-500 uppercase">Deflection Angle θ</span>
             <span className="text-2xl font-mono font-bold text-slate-800">{measuredAngle.toFixed(1)}°</span>
           </div>
@@ -177,7 +160,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
                    {qRod > 0 ? '+' : qRod < 0 ? '-' : '0'}
                  </span>
                ))}
-               <div className="absolute -right-16 text-slate-600 font-mono text-sm bg-white/80 px-1 rounded">Rod</div>
+               <div className="absolute -right-16 text-slate-600 font-mono text-sm bg-slate-50/80 px-1 rounded">Rod</div>
             </div>
 
             {/* Electroscope Structure */}
@@ -214,14 +197,14 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
           </div>
 
           <div className="absolute bottom-4 left-4 flex gap-2">
-            <div className="bg-white/80 px-2 py-1 rounded text-xs border border-slate-300 text-slate-600 font-mono shadow-sm">
+            <div className="bg-slate-50/80 px-2 py-1 rounded text-xs border border-slate-300 text-slate-600 font-mono shadow-sm">
               Q_net: {qNet.toFixed(1)} μC
             </div>
           </div>
         </div>
 
         {/* Column 3: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col h-full overflow-hidden">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-slate-800">Data Logging</h2>
             <button 

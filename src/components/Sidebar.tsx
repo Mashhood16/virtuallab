@@ -24,7 +24,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="bg-[#0f172a] overflow-y-auto h-screen w-72 flex-col hidden md:flex relative z-20 shadow-2xl border-r border-slate-800/50">
+    <aside data-sidebar className="bg-[#0f172a] overflow-y-auto h-screen w-72 flex-col hidden md:flex relative z-20 border-r border-slate-800/50">
       <div className="p-8 pb-4">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/40 transform hover:rotate-12 transition-transform cursor-pointer">
@@ -65,14 +65,14 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="p-6 mt-auto">
-        <div className="bg-slate-800/40 backdrop-blur-md rounded-2xl p-5 border border-slate-700/50 hover:border-slate-600 transition-colors cursor-pointer group">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/10 hover:border-white/20 transition-colors cursor-pointer group">
           <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 font-outfit">System Status</p>
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"></div>
               <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping opacity-75"></div>
             </div>
-            <span className="text-sm font-medium text-slate-300 group-hover:text-white transition-colors">384 Modules Online</span>
+            <span className="text-sm font-medium text-slate-400 group-hover:text-white transition-colors">384 Modules Online</span>
           </div>
         </div>
       </div>

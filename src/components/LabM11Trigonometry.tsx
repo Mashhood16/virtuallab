@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, CheckCircle, Activity, XCircle } from 'lucide-react';
+import { Play, Pause, RotateCcw, CheckCircle, Activity, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) {
   const [radius, setRadius] = useState<number>(20); // Amplitude A
@@ -83,17 +84,10 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
-      <div className="bg-teal-600 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-teal-700 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Trigonometry: Sinusoidal Ferris Wheel</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Trigonometry: Sinusoidal Ferris Wheel" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-teal-700 mb-4">Theory & Context</h2>
           <div className="prose prose-slate">
             <p>
@@ -120,7 +114,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-teal-700 mb-4">Ferris Wheel Simulator</h2>
           
           <div className="w-full flex justify-center items-center bg-slate-900 rounded-lg p-4 mb-6 relative h-64 overflow-hidden shadow-inner">
@@ -212,7 +206,7 @@ export default function LabM11Trigonometry({ onExit }: { onExit?: () => void }) 
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-teal-700 mb-4 flex items-center gap-2">
             <Activity size={24} /> Equation Builder
           </h2>

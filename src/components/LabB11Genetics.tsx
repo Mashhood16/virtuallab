@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Dna, TestTube, Bug, CheckCircle, XCircle } from 'lucide-react';
+import { Dna, TestTube, Bug, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
   const [activeTab, setActiveTab] = useState<'meselson' | 'hershey'>('meselson');
@@ -75,24 +76,13 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
       <header className="bg-indigo-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={onExit}
-            className="p-2 hover:bg-indigo-700 rounded-full transition-colors"
-          >
-            <ArrowLeft size={20} />
-          </button>
-          <div>
-            <h1 className="text-xl font-bold">Molecular Genetics Lab</h1>
-            <p className="text-sm text-indigo-200">DNA Replication & Genetic Material Proof</p>
-          </div>
-        </div>
+        <LabHeader onExit={onExit} title="Molecular Genetics Lab" />
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 border-r overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-r overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
@@ -128,7 +118,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
         {/* Column 2: Simulator */}
         <div className="bg-slate-100 p-6 flex flex-col overflow-y-auto">
-          <div className="flex bg-white rounded-lg p-1 shadow-sm mb-6 shrink-0">
+          <div className="flex bg-slate-50 rounded-lg p-1 shadow-sm mb-6 shrink-0">
             <button 
               className={`flex-1 py-2 text-sm font-medium rounded-md transition-colors ${activeTab === 'meselson' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:bg-gray-50'}`}
               onClick={() => setActiveTab('meselson')}
@@ -145,7 +135,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'meselson' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
                 <h3 className="font-bold text-gray-800 mb-2">Density Gradient Centrifugation</h3>
                 <p className="text-sm text-gray-500 mb-6">Current Medium: <span className="font-bold text-blue-600">14N (Light)</span></p>
                 
@@ -221,7 +211,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
           {activeTab === 'hershey' && (
             <div className="flex-1 flex flex-col">
-              <div className="bg-white rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
+              <div className="bg-slate-50 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <h3 className="font-bold text-gray-800 mb-4">Hershey-Chase Viral Infection</h3>
                 
                 <div className="flex bg-gray-100 rounded-lg p-1 mb-6">
@@ -332,7 +322,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white p-6 border-l flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 p-6 border-l flex flex-col overflow-y-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment</h2>
           
           <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex-1 flex flex-col">

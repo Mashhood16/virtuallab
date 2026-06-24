@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { ArrowLeft, RefreshCw, Hand } from 'lucide-react';
+import { RefreshCw, Hand } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -51,22 +52,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 5.4: Flexibility</h1>
-            <p className="text-sm text-slate-500">Test if materials bend or break under force</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.4: Flexibility" subtitle="Test if materials bend or break under force" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
@@ -76,7 +62,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => { setSelected(m); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
             >
               {m.name}
             </button>
@@ -84,7 +70,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
         </div>
 
         {/* Action Area */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           
           <p className="text-slate-500 mb-8 text-center flex items-center gap-2">
             <Hand className="w-5 h-5 text-indigo-500" />

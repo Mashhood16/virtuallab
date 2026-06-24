@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, BarChart2, Activity, Database, FileText } from 'lucide-react';
+import { BarChart2, Activity, Database, FileText } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
     onExit?: () => void;
@@ -80,21 +81,11 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <header className="flex items-center p-4 bg-fuchsia-600 text-white shadow-md">
-                {onExit && (
-                    <button onClick={onExit} className="mr-4 hover:bg-fuchsia-700 p-2 rounded-full transition">
-                        <ArrowLeft size={24} />
-                    </button>
-                )}
-                <div>
-                    <h1 className="text-2xl font-bold">Data Dashboard Lab</h1>
-                    <p className="text-sm opacity-80">Data Cleaning & Visualization</p>
-                </div>
-            </header>
+            <LabHeader onExit={onExit} title="Data Dashboard Lab" />
 
             <main className="flex-grow p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Theory */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <FileText className="mr-2 text-fuchsia-500" /> Theory & Setup
                     </h2>
@@ -146,7 +137,7 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                 </section>
 
                 {/* Simulation */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <BarChart2 className="mr-2 text-fuchsia-500" /> Visualization
                     </h2>
@@ -193,7 +184,7 @@ export default function LabCS10DataVisualization({ onExit }: LabProps) {
                 </section>
 
                 {/* Analysis */}
-                <section className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+                <section className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
                     <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center">
                         <Activity className="mr-2 text-fuchsia-500" /> Data Log & Assessment
                     </h2>

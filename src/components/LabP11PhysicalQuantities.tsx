@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Target, Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import { Target, Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Point { x: number; y: number }
 
@@ -33,20 +34,11 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold flex items-center gap-2"><Target className="text-blue-400" /> Physical Quantities & Errors</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Physical Quantities & Errors" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Activity className="w-5 h-5 text-indigo-500" />
             Accuracy & Precision
@@ -64,7 +56,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Target Simulator</h2>
           <svg width="300" height="300" className="bg-slate-100 rounded-full border border-slate-300 cursor-crosshair shadow-inner" onClick={handleShoot}>
             {/* Target rings */}
@@ -90,7 +82,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Data Analysis

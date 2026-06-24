@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { Shield, AlertTriangle, CheckCircle, Type, Trash2, Star, Send, Image as ImageIcon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface PosterElement {
   id: number;
@@ -70,15 +71,12 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-emerald-600 text-white p-4 flex justify-between items-center shadow-md">
-        <h1 className="text-2xl font-bold flex items-center gap-2"><Shield /> Cyber Safety Lab</h1>
-        {onExit && <button onClick={onExit} className="bg-emerald-800 px-4 py-2 rounded hover:bg-emerald-700 transition">Exit Lab</button>}
-      </div>
+      <LabHeader onExit={onExit} title="<Shield /> Cyber Safety Lab" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         
         {/* LEFT COLUMN: Setup */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200">
           <h2 className="text-lg font-bold text-slate-800">1. Poster Builder Tools</h2>
           <p className="text-sm text-slate-600 mb-2">Design an Anti-Cyberbullying poster. Click elements to add them, then drag them around the canvas.</p>
           
@@ -103,7 +101,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* MIDDLE COLUMN: Canvas */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 overflow-hidden relative">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col items-center justify-center border border-slate-200 overflow-hidden relative">
           <div 
             ref={canvasRef}
             className="w-full max-w-sm aspect-[3/4] bg-slate-100 border-2 border-dashed border-slate-300 relative shadow-inner overflow-hidden"
@@ -145,7 +143,7 @@ export default function LabCS10CyberSafety({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* RIGHT COLUMN: Gallery & Assessment */}
-        <div className="bg-white p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-5 rounded-xl shadow-sm flex flex-col gap-4 border border-slate-200 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800">3. Gallery Walk & Assessment</h2>
           
           {!galleryMode ? (

@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Play, Plus, CheckCircle, Info } from 'lucide-react';
+import { RefreshCw, Play, Plus, CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -86,23 +87,12 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Carbon Footprint of Transport</h1>
-            <p className="text-sm text-slate-500">Investigate the environmental impact of commuting and the benefits of carpooling/public transit.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Carbon Footprint of Transport" subtitle="Investigate the environmental impact of commuting and the benefits of carpooling/public transit." rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory & Setup</h2>
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
@@ -188,7 +178,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-between">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-between">
           <div className="w-full flex justify-between gap-4 mb-4">
              <div className="flex-1 text-center bg-slate-100 p-3 rounded-lg border border-slate-200">
                <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Total Emitted</p>
@@ -211,7 +201,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
               {/* Road lines */}
               <div className="absolute top-1/2 w-full flex justify-around">
                 {[...Array(10)].map((_, i) => (
-                  <div key={i} className="w-8 h-2 bg-white opacity-50 rounded-sm"></div>
+                  <div key={i} className="w-8 h-2 bg-slate-50 opacity-50 rounded-sm"></div>
                 ))}
               </div>
 
@@ -266,7 +256,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
         </div>
 
         {/* Right Column: Data & Graph */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800">Results & Comparison</h2>
           
           <div className="h-48 border border-slate-200 rounded-lg overflow-y-auto bg-slate-50">

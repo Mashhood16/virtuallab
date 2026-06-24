@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Droplet, Target, Zap, Activity, CheckCircle2, RotateCcw, LineChart, Table2, Play } from 'lucide-react';
+import { Droplet, Target, Zap, Activity, CheckCircle2, RotateCcw, LineChart, Table2, Play } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type Particle = { id: number; x: number; y: number; vx: number; vy: number; type: 'urea' | 'rbc' };
 
@@ -151,19 +152,11 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-700" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold text-slate-900">Lab B12.3: Excretory System & Surgical Tech</h1>
-          <p className="text-sm text-slate-500">Haemodialysis Membranes & Extracorporeal Shockwave Lithotripsy</p>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Lab B12.3: Excretory System & Surgical Tech" subtitle="Haemodialysis Membranes & Extracorporeal Shockwave Lithotripsy" />
 
       <main className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <Droplet className="w-5 h-5 text-teal-600"/> Theory & Context
           </h2>
@@ -183,7 +176,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold flex items-center gap-2 w-full text-left mb-4 text-slate-800">
             <Activity className="w-5 h-5 text-teal-600"/> Interactive Simulator
           </h2>
@@ -213,7 +206,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
                   ))}
                 </svg>
                 {equilibriumReached && (
-                   <div className="absolute inset-0 flex items-center justify-center bg-white/60 backdrop-blur-sm z-20">
+                   <div className="absolute inset-0 flex items-center justify-center bg-slate-50/60 backdrop-blur-sm z-20">
                      <span className="text-sm font-bold text-teal-700 bg-teal-100 px-3 py-1 rounded-full border border-teal-300">Equilibrium Reached</span>
                    </div>
                 )}
@@ -288,7 +281,7 @@ export default function LabB12Urinary({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col gap-4 overflow-y-auto">
           <h2 className="text-xl font-bold flex items-center gap-2 text-slate-800">
             <LineChart className="w-5 h-5 text-teal-600"/> Data & Analysis
           </h2>

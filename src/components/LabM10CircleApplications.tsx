@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { ArrowLeft, Calculator, BookOpen, Orbit, CheckCircle2, XCircle, Play, Square, Scissors, RotateCcw } from 'lucide-react';
+import { Calculator, BookOpen, Orbit, CheckCircle2, XCircle, Play, Square, Scissors, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface CircleProblem {
     radius: number;
@@ -135,20 +136,12 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-purple-800 text-white p-4 flex items-center shadow-md shrink-0">
-                <button onClick={onExit} className="mr-4 hover:bg-purple-700 p-2 rounded-full transition-colors">
-                    <ArrowLeft size={24} />
-                </button>
-                <div>
-                    <h1 className="text-2xl font-bold">Circle Applications</h1>
-                    <p className="text-sm text-purple-200">Arc Lengths, Sector Areas & Tangents</p>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Circle Applications" />
 
             {/* Main Content Grid */}
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
                 {/* Column 1: Theory */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-purple-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col overflow-y-auto border-t-4 border-purple-500">
                     <div className="flex items-center mb-4 text-purple-800 shrink-0">
                         <BookOpen className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Theory & Context</h2>
@@ -179,7 +172,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-fuchsia-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-fuchsia-500">
                     <div className="flex items-center mb-4 text-fuchsia-800 shrink-0">
                         <Orbit className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Interactive Visualizer</h2>
@@ -299,7 +292,7 @@ export default function LabM10CircleApplications({ onExit }: { onExit: () => voi
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-white rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-rose-500">
+                <div className="bg-slate-50 rounded-xl shadow-lg p-6 flex flex-col border-t-4 border-rose-500">
                     <div className="flex items-center mb-4 text-rose-800 shrink-0">
                         <Calculator className="mr-2" size={24} />
                         <h2 className="text-xl font-semibold">Math Assessment</h2>

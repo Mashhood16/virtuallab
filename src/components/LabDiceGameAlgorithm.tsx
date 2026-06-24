@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -60,15 +61,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
   return (
     <div className="w-full h-screen bg-slate-900 flex flex-col font-sans">
       <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
-          <div>
-            <h1 className="text-xl font-bold text-emerald-400">Act 3.2: Dice Game Algorithm</h1>
-            <p className="text-sm text-slate-400">Implement and execute a turn-based loop with conditional rules.</p>
-          </div>
-        </div>
+        <LabHeader onExit={onExit} title="Act 3.2: Dice Game Algorithm" />
       </header>
 
       <div className="flex-1 flex overflow-hidden">
@@ -138,7 +131,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
            {/* The Dice */}
            <div className="flex-1 flex flex-col items-center justify-center">
               {currentDice ? (
-                 <div className="w-32 h-32 bg-white rounded-2xl shadow-2xl flex flex-wrap p-4 gap-2 justify-between animate-bounce">
+                 <div className="w-32 h-32 bg-slate-50 rounded-2xl shadow-2xl flex flex-wrap p-4 gap-2 justify-between animate-bounce">
                     {/* Render dots based on dice value */}
                     {[...Array(currentDice)].map((_, i) => (
                       <div key={i} className="w-6 h-6 bg-slate-900 rounded-full"></div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Info } from 'lucide-react';
+import { Clock, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -21,15 +22,10 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-green-50 font-sans">
-      <div className="bg-white border-b border-green-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-green-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 1: Transpiration Observation</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 1: Transpiration Observation" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-green-100 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-green-800 mb-4">Water Loss in Plants</h2>
           <p className="text-slate-600 mb-6">Two branches are covered with clear polythene bags. One branch has leaves, and the other has been stripped bare. Wait to observe condensation forming inside the bags.</p>
           
@@ -57,7 +53,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
           {/* Branch A (With Leaves) */}
           <div className="flex flex-col items-center">
             <h3 className="font-bold text-slate-700 mb-2">Branch A (With Leaves)</h3>
-            <div className="relative w-48 h-64 flex justify-center items-end bg-white p-4 rounded-xl border border-slate-200">
+            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 p-4 rounded-xl border border-slate-200">
               {/* Plant Stem */}
               <div className="w-4 h-40 bg-green-700 relative z-10">
                 {/* Leaves */}
@@ -87,7 +83,7 @@ export default function LabS7TranspirationObservation({ onExit }: LabProps) {
           {/* Branch B (No Leaves) */}
           <div className="flex flex-col items-center">
             <h3 className="font-bold text-slate-700 mb-2">Branch B (Bare)</h3>
-            <div className="relative w-48 h-64 flex justify-center items-end bg-white p-4 rounded-xl border border-slate-200">
+            <div className="relative w-48 h-64 flex justify-center items-end bg-slate-50 p-4 rounded-xl border border-slate-200">
               {/* Plant Stem */}
               <div className="w-4 h-40 bg-green-700 relative z-10">
                  {/* Empty knots where leaves were */}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, CheckCircle, Mic, Layout, Clock, Play, Square } from 'lucide-react';
+import { CheckCircle, Mic, Layout, Clock, Play, Square } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -105,23 +106,12 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-purple-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-purple-700 rounded-full transition-colors" title="Exit Lab">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Lab: Business Pitch & Brainstorming</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Mic size={20} />
-          <span className="font-semibold">Grade 10 Computer Science</span>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Lab: Business Pitch & Brainstorming" />
 
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Layout className="text-purple-600" /> Pitch Theory
           </h2>
@@ -147,7 +137,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Clock className="text-purple-600" /> Pitch Simulator
           </h2>
@@ -216,7 +206,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-purple-600" /> Assessment & Logs
           </h2>
@@ -227,7 +217,7 @@ export default function LabCS10BusinessPitch({ onExit }: Props) {
             
             <div className="space-y-3">
               {categorizedItems.map(item => (
-                <div key={item.id} className="flex flex-col gap-1 p-2 bg-white rounded border border-slate-200 shadow-sm">
+                <div key={item.id} className="flex flex-col gap-1 p-2 bg-slate-50 rounded border border-slate-200 shadow-sm">
                   <span className="text-xs font-medium text-slate-700">{item.text}</span>
                   <div className="flex gap-2 mt-1">
                     <button 

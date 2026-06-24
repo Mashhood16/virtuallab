@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, BookOpen, Activity, Play, ShieldAlert, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import { BookOpen, Activity, Play, ShieldAlert, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface AntibioticData {
   name: string;
@@ -81,22 +82,11 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-blue-700 text-white p-4 flex items-center shadow-md justify-between shrink-0">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="hover:bg-blue-600 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-2xl font-bold">Microbiology: Antibiotic Resistance</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Beaker size={24} />
-          <span className="font-semibold">Virtual Lab B11</span>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Microbiology: Antibiotic Resistance" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div>
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-3">
               <BookOpen className="text-blue-600" /> Theory & Setup
@@ -115,7 +105,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
               <select 
                 value={bacteria} 
                 onChange={(e) => handleBacteriaChange(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-blue-500 bg-white text-sm"
+                className="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-blue-500 bg-slate-50 text-sm"
               >
                 {bacteriaTypes.map(b => (
                   <option key={b.id} value={b.id}>{b.name}</option>
@@ -136,7 +126,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center relative overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center relative overflow-hidden">
           <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
             <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
               <Activity className="text-blue-600" /> Agar Plate View
@@ -180,7 +170,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
 
             {/* Caliper overlay visually matching SVG sizing. Scale factor ~ 2.5 on a typical screen */}
             {progress === 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bg-white/95 p-3 rounded-xl shadow-lg border border-slate-200 w-4/5 z-20 backdrop-blur-sm">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 bg-slate-50/95 p-3 rounded-xl shadow-lg border border-slate-200 w-4/5 z-20 backdrop-blur-sm">
                 <div className="flex items-center justify-between w-full">
                   <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Measurement Caliper</span>
                   <span className="text-sm font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">{caliperValue} mm</span>
@@ -201,7 +191,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <div className="bg-slate-50 p-5 rounded-lg border border-slate-200 flex-1 flex flex-col">
             <h3 className="font-bold text-slate-800 flex items-center gap-2 mb-4 text-lg">
               <ShieldAlert className="text-blue-600" /> Resistance Profiling
@@ -216,7 +206,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
                 <label className="text-xs font-semibold text-slate-500 uppercase">Select Antibiotic Disc</label>
                 <select 
                   value={assessAbx} onChange={(e) => setAssessAbx(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-blue-500 bg-white"
+                  className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-blue-500 bg-slate-50"
                 >
                   {antibiotics.map(a => <option key={a.code} value={a.code}>{a.name}</option>)}
                 </select>
@@ -226,7 +216,7 @@ export default function LabB11Microbiology({ onExit }: { onExit?: () => void }) 
                 <label className="text-xs font-semibold text-slate-500 uppercase">Interpretation</label>
                 <select 
                   value={assessResult} onChange={(e) => setAssessResult(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-blue-500 bg-white"
+                  className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-blue-500 bg-slate-50"
                 >
                   <option value="">Select Profile...</option>
                   <option value="S">Susceptible (Zone ≥ 20mm)</option>

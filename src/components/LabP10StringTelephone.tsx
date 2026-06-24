@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, Save, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, Save, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -73,26 +74,11 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 13: String Telephone & Wave Speed</h1>
-            <p className="text-sm text-slate-500">Investigate the speed of a mechanical wave through a solid medium.</p>
-          </div>
-        </div>
-        <button onClick={() => { setData([]); setTimeMeasured(null); }} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RefreshCw className="w-4 h-4" /> Clear Data
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 13: String Telephone & Wave Speed" subtitle="Investigate the speed of a mechanical wave through a solid medium." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Setup</h2>
           <div className="prose prose-sm text-slate-600 mb-6">
             <p>
@@ -214,7 +200,7 @@ export default function LabP10StringTelephone({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Assessment */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-slate-800">Data Logger</h2>
             <button 

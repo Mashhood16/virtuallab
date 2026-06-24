@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, RotateCw } from 'lucide-react';
+import { Play, RotateCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -51,10 +52,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Loop Adjustments" />
 
         <h1 className="text-3xl font-bold mb-2">Loop Adjustments</h1>
         <p className="text-slate-600 mb-8">Swap out the block inside the repeat loop and observe the different experimental outputs.</p>
@@ -63,7 +61,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
           {/* Blocks Editor (Mock) */}
           <div className="w-80 flex flex-col gap-4">
             
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
               <div className="bg-amber-500 text-white font-bold p-3 text-sm flex justify-between items-center">
                 <span>Control & Motion/Looks</span>
               </div>
@@ -71,11 +69,11 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
                 
                 <div className="bg-amber-500 rounded-lg shadow-sm border border-amber-600 p-4 w-full text-white font-bold text-sm pb-10 relative z-10">
                   <div className="mb-2 flex items-center gap-2">
-                    repeat <span className="bg-white text-black px-2 py-0.5 rounded">10</span>
+                    repeat <span className="bg-slate-50 text-black px-2 py-0.5 rounded">10</span>
                   </div>
                   
                   {/* Inside Loop */}
-                  <div className="bg-white/20 p-2 rounded absolute bottom-2 left-4 right-4 h-12 flex items-center justify-center border-2 border-dashed border-white/50 cursor-pointer">
+                  <div className="bg-slate-50/20 p-2 rounded absolute bottom-2 left-4 right-4 h-12 flex items-center justify-center border-2 border-dashed border-white/50 cursor-pointer">
                     {mode === 'turn' ? (
                        <div className="bg-blue-500 border border-blue-600 px-3 py-1 rounded w-full flex items-center gap-2 shadow-sm text-xs">
                          turn <RotateCw className="w-3 h-3" /> 15 degrees
@@ -128,7 +126,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
 
           {/* Stage Area */}
           <div className="flex-1 flex flex-col">
-            <div className="bg-white rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
+            <div className="bg-slate-50 rounded-t-xl shadow-sm border border-slate-200 border-b-0 p-3 flex justify-between items-center bg-slate-100">
               <span className="font-bold text-sm text-slate-600">Scratch Stage</span>
               <div className="flex items-center gap-4 text-sm font-bold text-slate-500">
                 <span>Iteration: {iteration}/10</span>
@@ -137,7 +135,7 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
               </div>
             </div>
             
-            <div className="bg-white flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
+            <div className="bg-slate-50 flex-1 rounded-b-xl shadow-sm border border-slate-200 relative overflow-hidden flex items-center justify-center">
               
               <div className="absolute inset-0" style={{
                 backgroundImage: 'radial-gradient(#e2e8f0 2px, transparent 2px)',
@@ -157,8 +155,8 @@ export default function LabC6LoopAdjustments({ onExit }: LabProps) {
                   <div className="absolute -top-4 -left-2 w-8 h-10 bg-orange-400 rounded-t-full transform -rotate-12"></div>
                   <div className="absolute -top-4 -right-2 w-8 h-10 bg-orange-400 rounded-t-full transform rotate-12"></div>
                   {/* Eyes */}
-                  <div className="absolute top-8 left-5 w-4 h-4 bg-white rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-black rounded-full"></div></div>
-                  <div className="absolute top-8 right-5 w-4 h-4 bg-white rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-black rounded-full"></div></div>
+                  <div className="absolute top-8 left-5 w-4 h-4 bg-slate-50 rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-black rounded-full"></div></div>
+                  <div className="absolute top-8 right-5 w-4 h-4 bg-slate-50 rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-black rounded-full"></div></div>
                   {/* Nose */}
                   <div className="absolute top-14 left-1/2 -translate-x-1/2 w-3 h-2 bg-pink-400 rounded-full"></div>
                   {/* Mouth */}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Play, Pause } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -49,12 +50,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen overflow-hidden bg-slate-950 font-sans">
-      <div className="bg-slate-900 border-b border-slate-800 p-4 flex items-center justify-between shrink-0 z-50 relative">
-        <button onClick={onExit} className="flex items-center text-slate-400 hover:text-white font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-white">Unit 12: Earth's Seasons</h1>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Unit 12: Earth's Seasons" />
 
       <div className="flex-1 relative flex flex-col items-center p-8">
         <div className="bg-slate-900/80 backdrop-blur-md p-6 rounded-2xl shadow-2xl border border-slate-800 max-w-2xl w-full text-center z-50 mb-12">

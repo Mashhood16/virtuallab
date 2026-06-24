@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Wind, Droplets } from 'lucide-react';
+import { Wind, Droplets } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -31,12 +32,7 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 5: Matter as Particles</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 5: Matter as Particles" />
 
       <div className="flex-1 flex flex-col p-8 items-center">
         <div className="flex gap-4 mb-8">
@@ -55,7 +51,7 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
         </div>
 
         {simulation === 'dissolving' && (
-          <div className="w-full max-w-2xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
+          <div className="w-full max-w-2xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 text-blue-800">Dissolving Sugar in Water</h2>
             <p className="text-slate-600 text-center mb-8">
               Watch as the brown sugar coating dissolves. The sugar particles are finding spaces between the water particles.
@@ -90,7 +86,7 @@ export default function LabS6ParticleSimulation({ onExit }: LabProps) {
         )}
 
         {simulation === 'diffusion' && (
-          <div className="w-full max-w-2xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
+          <div className="w-full max-w-2xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold mb-4 text-indigo-800">Diffusion of Air Freshener</h2>
             <p className="text-slate-600 text-center mb-8">
               Gas particles move quickly and randomly. Watch how the concentrated spray spreads to evenly fill the entire room.

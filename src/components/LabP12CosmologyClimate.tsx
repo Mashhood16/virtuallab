@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Star, Waves, Orbit } from 'lucide-react';
+import { Star, Waves, Orbit } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void }) {
   const [starTemp, setStarTemp] = useState(5800);
@@ -80,20 +81,10 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-900 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-slate-800 rounded-full transition-colors">
-            <ArrowLeft size={20} />
-          </button>
-          <h1 className="text-xl font-bold">Lab 12.2: Astrophysics & Climate Dynamics</h1>
-        </div>
-        <div className="flex items-center gap-4 text-sm">
-          <Star size={16} className="text-yellow-400" /> Observatory Mode
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab 12.2: Astrophysics & Climate Dynamics" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Theory</h2>
           
           <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
@@ -134,7 +125,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
           <div className="bg-slate-100 p-4 rounded-xl border border-slate-200">
             <h3 className="font-bold text-slate-800 mb-2">Stellar Thermometer</h3>
             <label className="text-xs font-semibold text-slate-600 uppercase block mb-1">
@@ -190,7 +181,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-3 border-b pb-2">Assessments</h2>
           
           <div className="space-y-6">

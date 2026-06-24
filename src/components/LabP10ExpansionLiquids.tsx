@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Play, Pause, RotateCcw, ClipboardList } from 'lucide-react';
+import { Play, Pause, RotateCcw, ClipboardList } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -151,29 +152,14 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between shadow-sm z-10 shrink-0">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5 text-slate-700" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 11: Real and Apparent Expansion of Liquids</h1>
-            <p className="text-sm text-slate-500">Determine the real thermal expansivity of an unknown liquid.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RotateCcw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 11: Real and Apparent Expansion of Liquids" subtitle="Determine the real thermal expansivity of an unknown liquid." rightContent={<>{rightJsx}</>} />
 
       {/* Main Grid */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
           
           {/* Column 1: Theory & Setup */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
             <div>
               <h2 className="text-lg font-bold text-slate-800 border-b pb-2 mb-3">Theory</h2>
               <p className="text-sm text-slate-600 mb-2">
@@ -198,7 +184,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Liquid Type</label>
                   <select 
-                    className="w-full border border-slate-300 rounded-md p-2 bg-white"
+                    className="w-full border border-slate-300 rounded-md p-2 bg-slate-50"
                     value={liquid}
                     onChange={handleLiquidChange}
                     disabled={isRunning && time > 0}
@@ -209,7 +195,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Flask Material</label>
                   <select 
-                    className="w-full border border-slate-300 rounded-md p-2 bg-white"
+                    className="w-full border border-slate-300 rounded-md p-2 bg-slate-50"
                     value={flask}
                     onChange={handleFlaskChange}
                     disabled={isRunning && time > 0}
@@ -265,7 +251,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
                    </div>
                  )}
                  {/* Bath Thermometer */}
-                 <div className="absolute -left-6 bottom-4 w-4 h-32 bg-white/10 border border-white/30 rounded-full flex items-end p-0.5">
+                 <div className="absolute -left-6 bottom-4 w-4 h-32 bg-slate-50/10 border border-white/30 rounded-full flex items-end p-0.5">
                     <div className="w-full bg-red-500 rounded-full transition-all duration-500" style={{ height: `${(targetTemp / 100) * 100}%` }} />
                  </div>
               </div>
@@ -280,7 +266,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
               {/* Flask System */}
               <div className="relative flex flex-col items-center z-10" style={{ transform: `scale(${1 + (tFlask - T0)*gammaF*100})` }}>
                 {/* Capillary Tube */}
-                <div className="relative w-4 h-64 bg-white/10 border-x-2 border-white/40 flex items-end justify-center mb-[-2px] z-0 overflow-hidden">
+                <div className="relative w-4 h-64 bg-slate-50/10 border-x-2 border-white/40 flex items-end justify-center mb-[-2px] z-0 overflow-hidden">
                   <div className={`w-full ${LIQUIDS[liquid].color} transition-all duration-75`} style={{ height: `${heightPercentage}%` }} />
                   {/* Scale marks */}
                   <div className="absolute inset-y-0 left-0 w-full pointer-events-none">
@@ -291,7 +277,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
                 </div>
                 
                 {/* Bulb */}
-                <div className="w-32 h-32 bg-white/20 border-4 border-white/40 rounded-full relative flex items-end justify-center p-1 z-10 overflow-hidden shadow-inner backdrop-blur-sm">
+                <div className="w-32 h-32 bg-slate-50/20 border-4 border-white/40 rounded-full relative flex items-end justify-center p-1 z-10 overflow-hidden shadow-inner backdrop-blur-sm">
                   {/* Liquid inside bulb */}
                   <div className={`w-full h-full rounded-full ${LIQUIDS[liquid].color} opacity-90 transition-all`} />
                 </div>
@@ -301,7 +287,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
           </div>
 
           {/* Column 3: Data & Analysis */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+          <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
             <div className="flex items-center justify-between border-b pb-2">
               <h2 className="text-lg font-bold text-slate-800">Data Recording</h2>
               <button 

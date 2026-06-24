@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Droplet } from 'lucide-react';
+import { Droplet } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -14,15 +15,10 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-red-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 7: Dilute and Concentrated Solutions</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 7: Dilute and Concentrated Solutions" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-red-800 mb-4">Making Sharbat (Syrup Solutions)</h2>
           <p className="text-slate-600 mb-6">Compare two solutions. You can adjust the amount of solute (Sharbat syrup spoons) added to the solvent (water). Observe the color intensity and understand concentration.</p>
         </div>
@@ -30,7 +26,7 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
         <div className="flex gap-16 justify-center mt-12 w-full max-w-4xl">
           
           {/* Glass A */}
-          <div className="flex flex-col items-center flex-1 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+          <div className="flex flex-col items-center flex-1 bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
             <h3 className="text-xl font-bold text-slate-700 mb-2">Glass 1</h3>
             <div className="text-sm font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full mb-8 uppercase tracking-wider">
                {syrupA < 3 ? 'Dilute' : syrupA > 5 ? 'Highly Concentrated' : 'Concentrated'}
@@ -54,7 +50,7 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
           </div>
 
           {/* Glass B */}
-          <div className="flex flex-col items-center flex-1 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+          <div className="flex flex-col items-center flex-1 bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
             <h3 className="text-xl font-bold text-slate-700 mb-2">Glass 2</h3>
             <div className="text-sm font-bold px-3 py-1 bg-slate-100 text-slate-500 rounded-full mb-8 uppercase tracking-wider">
                {syrupB < 3 ? 'Dilute' : syrupB > 5 ? 'Highly Concentrated' : 'Concentrated'}

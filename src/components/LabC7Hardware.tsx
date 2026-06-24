@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Cpu, Monitor, Mouse, Keyboard, HardDrive, Speaker } from 'lucide-react';
+import { Cpu, Monitor, Mouse, Keyboard, HardDrive, Speaker } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -22,16 +23,13 @@ export default function LabC7Hardware({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Hardware Demonstration" />
 
         <h1 className="text-3xl font-bold mb-2">Hardware Demonstration</h1>
         <p className="text-slate-600 mb-8">Click on the internal components and peripheral devices to learn about their functions.</p>
 
         <div className="grid grid-cols-2 gap-8 max-w-4xl">
-          <div className="bg-white p-6 rounded-xl shadow border border-slate-200">
+          <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200">
             <h2 className="text-xl font-bold mb-4 border-b pb-2">System Unit (Internal)</h2>
             <div className="grid grid-cols-2 gap-4">
               {['cpu', 'motherboard', 'ram', 'storage'].map(key => (
@@ -47,7 +45,7 @@ export default function LabC7Hardware({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow border border-slate-200">
+          <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200">
             <h2 className="text-xl font-bold mb-4 border-b pb-2">Peripherals (External)</h2>
             <div className="grid grid-cols-2 gap-4">
               {['monitor', 'keyboard', 'mouse', 'speakers'].map(key => (
@@ -65,7 +63,7 @@ export default function LabC7Hardware({ onExit }: LabProps) {
         </div>
       </div>
 
-      <div className="w-96 bg-white p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 overflow-y-auto">
+      <div className="w-96 bg-slate-50 p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 overflow-y-auto">
         <h2 className="text-xl font-bold mb-6">Component Inspector</h2>
         
         {selectedItem ? (

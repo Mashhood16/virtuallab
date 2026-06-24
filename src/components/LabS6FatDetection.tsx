@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Beaker, CheckCircle } from 'lucide-react';
+import { Beaker, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -22,16 +23,11 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-amber-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 3: Fat Detection in Food</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 3: Fat Detection in Food" />
 
       <div className="flex-1 flex p-8 items-center justify-center gap-16">
         
-        <div className="w-96 bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+        <div className="w-96 bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200">
           <h2 className="text-2xl font-bold mb-6 text-amber-700">Lab Procedure</h2>
           
           <div className="space-y-4">
@@ -74,7 +70,7 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
           )}
         </div>
 
-        <div className="w-80 h-128 bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-end relative overflow-hidden">
+        <div className="w-80 h-128 bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-end relative overflow-hidden">
           {/* Test Tube */}
           <div className={`w-16 h-80 border-4 border-t-0 border-slate-300 rounded-b-3xl relative overflow-hidden transition-transform duration-500 ${step === 3 ? 'animate-shake' : ''}`}>
             {/* Contents based on step */}
@@ -94,13 +90,13 @@ export default function LabS6FatDetection({ onExit }: LabProps) {
             )}
             {getTubeContent() === 'cloudy' && (
               <>
-                <div className="absolute bottom-32 w-full h-16 bg-white/90 backdrop-blur-xl border-t border-slate-200"></div>
+                <div className="absolute bottom-32 w-full h-16 bg-slate-50/90 backdrop-blur-xl border-t border-slate-200"></div>
                 <div className="absolute bottom-0 w-full h-32 bg-amber-600/30 rounded-b-2xl"></div>
               </>
             )}
             
             {/* Glass reflection */}
-            <div className="absolute top-0 left-2 w-2 h-full bg-white/40 rounded-full"></div>
+            <div className="absolute top-0 left-2 w-2 h-full bg-slate-50/40 rounded-full"></div>
           </div>
           <div className="mt-4 flex flex-col items-center">
             <Beaker className="w-8 h-8 text-slate-400 mb-2" />

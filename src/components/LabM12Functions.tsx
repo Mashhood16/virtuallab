@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, TrendingUp, LineChart } from 'lucide-react';
+import { CheckCircle2, XCircle, TrendingUp, LineChart } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
     const [activeTab, setActiveTab] = useState<'market' | 'growth'>('market');
@@ -73,18 +74,13 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
             {/* Header */}
-            <div className="flex items-center p-4 bg-white shadow-sm border-b border-slate-200 shrink-0">
-                <button onClick={() => onExit?.()} className="p-2 mr-4 hover:bg-slate-100 rounded-full transition-colors">
-                    <ArrowLeft className="w-6 h-6" />
-                </button>
-                <h1 className="text-2xl font-bold">Grade 12: Functions Visualizer</h1>
-            </div>
+            <LabHeader onExit={onExit} title="Grade 12: Functions Visualizer" />
 
             <div className="flex-1 p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full min-h-[600px]">
                     
                     {/* Column 1: Theory */}
-                    <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col overflow-y-auto border border-slate-100">
+                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col overflow-y-auto border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Theoretical Concepts</h2>
                         
                         <div className="mb-6">
@@ -127,17 +123,17 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                     </div>
 
                     {/* Column 2: Simulation */}
-                    <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
                         <div className="flex space-x-2 mb-6 bg-slate-100 p-1 rounded-lg shrink-0">
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'market' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'market' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
                                 onClick={() => setActiveTab('market')}
                             >
                                 <LineChart className="w-4 h-4 mr-2" />
                                 Market Equilibrium
                             </button>
                             <button
-                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'growth' ? 'bg-white shadow-sm text-emerald-600' : 'text-slate-500 hover:text-slate-700'}`}
+                                className={`flex-1 py-2 px-4 rounded-md font-medium transition-colors flex items-center justify-center ${activeTab === 'growth' ? 'bg-slate-50 shadow-sm text-emerald-600' : 'text-slate-500 hover:text-slate-700'}`}
                                 onClick={() => setActiveTab('growth')}
                             >
                                 <TrendingUp className="w-4 h-4 mr-2" />
@@ -247,7 +243,7 @@ export default function LabM12Functions({ onExit }: { onExit?: () => void }) {
                     </div>
 
                     {/* Column 3: Assessment */}
-                    <div className="bg-white rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
+                    <div className="bg-slate-50 rounded-2xl shadow-sm p-6 flex flex-col border border-slate-100">
                         <h2 className="text-xl font-bold mb-4 border-b pb-2">Analysis & Assessment</h2>
 
                         {activeTab === 'market' && (

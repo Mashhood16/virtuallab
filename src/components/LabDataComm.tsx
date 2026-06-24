@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -38,9 +39,7 @@ export default function LabDataComm({ onExit }: LabProps) {
     <div className="w-full h-screen bg-slate-50 flex flex-col font-sans">
       <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 1.1: Data Communication Model" />
           <div>
             <h1 className="text-xl font-bold">Act 1.1: Data Communication Model</h1>
             <p className="text-sm text-slate-300">Assemble the components of the communication cycle.</p>
@@ -53,7 +52,7 @@ export default function LabDataComm({ onExit }: LabProps) {
         {/* Lab Area */}
         <div className="flex-1 bg-slate-100 p-12 flex flex-col relative border-r-4 border-slate-300 shadow-inner bg-[url('https://www.transparenttextures.com/patterns/connected.png')]">
           
-          <h2 className="text-2xl font-bold text-slate-700 mb-8 text-center bg-white py-2 rounded-xl shadow-sm">Build the Network Model</h2>
+          <h2 className="text-2xl font-bold text-slate-700 mb-8 text-center bg-slate-50 py-2 rounded-xl shadow-sm">Build the Network Model</h2>
 
           <div className="flex-1 relative flex items-center justify-center">
              
@@ -78,7 +77,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                 {/* Top Row: Rules */}
                 <div className="flex justify-center -mt-8">
                    <div 
-                     className="w-40 h-24 bg-white border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 2)}
                    >
@@ -99,7 +98,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                    
                    {/* Sender */}
                    <div 
-                     className="w-40 h-24 bg-white border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 0)}
                    >
@@ -117,7 +116,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                    {/* Message */}
                    <div className="flex flex-col gap-4">
                      <div 
-                       className="w-40 h-24 bg-white border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                       className="w-40 h-24 bg-slate-50 border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                        onDragOver={e => e.preventDefault()}
                        onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 1)}
                      >
@@ -134,7 +133,7 @@ export default function LabDataComm({ onExit }: LabProps) {
                      
                      {/* Medium */}
                      <div 
-                       className="w-40 h-24 bg-white border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2 mt-8"
+                       className="w-40 h-24 bg-slate-50 border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2 mt-8"
                        onDragOver={e => e.preventDefault()}
                        onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 3)}
                      >
@@ -152,7 +151,7 @@ export default function LabDataComm({ onExit }: LabProps) {
 
                    {/* Receiver */}
                    <div 
-                     className="w-40 h-24 bg-white border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
+                     className="w-40 h-24 bg-slate-50 border-2 border-slate-400 border-dashed rounded-xl flex flex-col items-center justify-center p-2"
                      onDragOver={e => e.preventDefault()}
                      onDrop={e => handleDrop(e.dataTransfer.getData('nodeId'), 4)}
                    >
@@ -174,7 +173,7 @@ export default function LabDataComm({ onExit }: LabProps) {
         </div>
 
         {/* Control Panel */}
-        <div className="w-96 bg-white p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 overflow-y-auto">
+        <div className="w-96 bg-slate-50 p-8 flex flex-col shadow-[-10px_0_20px_rgba(0,0,0,0.1)] z-10 overflow-y-auto">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 border-b-2 pb-2">Components Rack</h2>
           
           <p className="text-sm text-slate-500 mb-6">Drag components from the rack into their correct logical positions in the communication cycle diagram.</p>

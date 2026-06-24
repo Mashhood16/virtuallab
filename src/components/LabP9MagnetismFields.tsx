@@ -102,7 +102,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1">
         {/* Theory Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <h2 className="text-xl font-bold mb-4 flex items-center text-blue-800">
             <Info className="mr-2" /> Theory & Setup
           </h2>
@@ -129,7 +129,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Simulator Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-blue-800 text-center">Interactive Simulator</h2>
           <div className="flex-1 relative flex items-center justify-center bg-slate-100 rounded-xl overflow-hidden border-2 border-slate-300 shadow-inner">
             <svg
@@ -191,7 +191,7 @@ export default function LabP9MagnetismFields({ onExit }: { onExit?: () => void }
         </div>
 
         {/* Data & Analysis Column */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 text-blue-800">Data Logging & Analysis</h2>
           
           <div className="flex-1 overflow-y-auto mb-6 border border-slate-200 rounded-lg max-h-64">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import {  } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,12 +11,7 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-800 font-sans">
-      <div className="bg-slate-900 border-b border-slate-700 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-white">Unit 4: Chemical Change</h1>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Unit 4: Chemical Change" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 max-w-2xl w-full text-center mb-8">
@@ -43,20 +39,20 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
         <div className="relative w-[500px] h-[500px] flex justify-center items-end pb-8">
           
           {/* Flask */}
-          <div className="relative w-40 h-48 border-4 border-slate-400/50 bg-white/5 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] flex justify-center items-end overflow-hidden z-20 backdrop-blur-sm">
+          <div className="relative w-40 h-48 border-4 border-slate-400/50 bg-slate-50/5 rounded-[50%_50%_50%_50%_/_70%_70%_30%_30%] flex justify-center items-end overflow-hidden z-20 backdrop-blur-sm">
              {/* Neck of flask */}
              <div className="absolute top-0 w-12 h-16 border-l-4 border-r-4 border-slate-400/50 bg-slate-800"></div>
 
              {/* Vinegar / Reaction Liquid */}
-             <div className={`w-full absolute bottom-0 transition-all duration-1000 ${mixed ? 'h-32 bg-amber-500/40' : 'h-24 bg-white/20'}`}>
+             <div className={`w-full absolute bottom-0 transition-all duration-1000 ${mixed ? 'h-32 bg-amber-500/40' : 'h-24 bg-slate-50/20'}`}>
                 {/* Bubbles / Effervescence */}
                 {mixed && (
                   <div className="absolute inset-0 flex flex-wrap gap-2 p-2 justify-center content-end overflow-hidden">
-                    <div className="w-3 h-3 rounded-full bg-white/60 animate-[bounce_1s_ease-in_infinite]"></div>
-                    <div className="w-2 h-2 rounded-full bg-white/60 animate-[bounce_0.8s_ease-in_infinite_0.2s]"></div>
-                    <div className="w-4 h-4 rounded-full bg-white/60 animate-[bounce_1.2s_ease-in_infinite_0.1s]"></div>
-                    <div className="w-3 h-3 rounded-full bg-white/60 animate-[bounce_0.9s_ease-in_infinite_0.4s]"></div>
-                    <div className="w-2 h-2 rounded-full bg-white/60 animate-[bounce_1.1s_ease-in_infinite_0.3s]"></div>
+                    <div className="w-3 h-3 rounded-full bg-slate-50/60 animate-[bounce_1s_ease-in_infinite]"></div>
+                    <div className="w-2 h-2 rounded-full bg-slate-50/60 animate-[bounce_0.8s_ease-in_infinite_0.2s]"></div>
+                    <div className="w-4 h-4 rounded-full bg-slate-50/60 animate-[bounce_1.2s_ease-in_infinite_0.1s]"></div>
+                    <div className="w-3 h-3 rounded-full bg-slate-50/60 animate-[bounce_0.9s_ease-in_infinite_0.4s]"></div>
+                    <div className="w-2 h-2 rounded-full bg-slate-50/60 animate-[bounce_1.1s_ease-in_infinite_0.3s]"></div>
                   </div>
                 )}
              </div>
@@ -73,7 +69,7 @@ export default function LabS7ChemicalChange({ onExit }: LabProps) {
              }`}>
                 {/* Baking Soda Powder (Before mixing) */}
                 {!mixed && (
-                  <div className="absolute bottom-2 left-2 w-8 h-8 bg-white/80 rounded-full blur-[2px]"></div>
+                  <div className="absolute bottom-2 left-2 w-8 h-8 bg-slate-50/80 rounded-full blur-[2px]"></div>
                 )}
                 {/* Gas indicator (After mixing) */}
                 {mixed && (

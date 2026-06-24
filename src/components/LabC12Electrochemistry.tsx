@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Beaker, Zap, Activity, CheckCircle2 } from 'lucide-react';
+import { Beaker, Zap, Activity, CheckCircle2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Metal {
   symbol: string;
@@ -60,18 +61,10 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="flex items-center p-4 bg-indigo-900 text-white shadow-md">
-        {onExit && (
-          <button onClick={onExit} className="mr-4 hover:bg-indigo-800 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-        )}
-        <Zap className="mr-3" size={28} />
-        <h1 className="text-2xl font-bold">Virtual Lab: Electrochemistry</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Electrochemistry" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
           <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center">
             <Beaker className="mr-2" /> Theory & Setup
           </h2>
@@ -98,7 +91,7 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
           <h2 className="text-xl font-bold text-indigo-900 mb-4">Galvanic Cell Simulator</h2>
           
           <div className="flex w-full justify-between mb-4 gap-4">
@@ -164,7 +157,7 @@ export default function LabC12Electrochemistry({ onExit }: { onExit?: () => void
           </button>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-indigo-900 mb-4 flex items-center">
             <Activity className="mr-2" /> Assessment
           </h2>

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { ArrowLeft, RefreshCw, CheckCircle2, XCircle, Calculator, Crosshair, Info, Settings2 } from 'lucide-react';
+import { RefreshCw, CheckCircle2, XCircle, Calculator, Crosshair, Info, Settings2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -92,18 +93,13 @@ export default function LabM10TangentProperties({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between z-10">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
-          <h1 className="text-xl font-bold text-slate-800">Lab: Tangent & Circle Properties</h1>
-        </div>
+      <div className="bg-slate-50 shadow-sm px-6 py-4 flex items-center justify-between z-10">
+        <LabHeader onExit={onExit} title="Lab: Tangent & Circle Properties" />
       </div>
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-semibold text-slate-800 mb-2 flex items-center gap-2">
               <Info className="w-5 h-5 text-blue-500" /> Theory
@@ -122,13 +118,13 @@ export default function LabM10TangentProperties({ onExit }: Props) {
             <div className="flex gap-2 p-1 bg-slate-100 rounded-lg mb-6">
               <button 
                 onClick={() => setMode('tangent')}
-                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'tangent' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
               >
                 Tangent to Radius
               </button>
               <button 
                 onClick={() => setMode('touching')}
-                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
+                className={`flex-1 py-2 text-sm font-medium rounded-md transition-all ${mode === 'touching' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-600 hover:text-slate-800'}`}
               >
                 Touching Circles
               </button>
@@ -153,7 +149,7 @@ export default function LabM10TangentProperties({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Interactive Canvas */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center justify-center relative overflow-hidden min-h-[400px]">
           <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-800 flex items-center gap-2 z-10">
             <Crosshair className="w-5 h-5 text-indigo-500" /> Interactive Simulation
           </h2>
@@ -250,7 +246,7 @@ export default function LabM10TangentProperties({ onExit }: Props) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col gap-6">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col gap-6">
           <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-green-500" /> Assessment
           </h2>

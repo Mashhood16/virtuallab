@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Type, Palette, Baseline } from 'lucide-react';
+import { CheckCircle, Type, Palette, Baseline } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -21,10 +22,7 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Formal Letter Formatting" />
 
         <h1 className="text-3xl font-bold mb-2">Formal Letter Formatting</h1>
         <p className="text-slate-600 mb-6">Write an application using specific formatting rules: Calibri font, size 11, blue color, and include your signature/details.</p>
@@ -36,11 +34,11 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
           </div>
         )}
 
-        <div className="bg-white rounded-xl shadow-xl border border-slate-300 flex flex-col flex-1 overflow-hidden max-w-4xl mx-auto w-full">
+        <div className="bg-slate-50 rounded-xl shadow-xl border border-slate-300 flex flex-col flex-1 overflow-hidden max-w-4xl mx-auto w-full">
           {/* Word Processor Toolbar */}
           <div className="bg-blue-50 border-b border-blue-200 p-3 flex gap-4 items-center">
             {/* Font Family */}
-            <div className="flex items-center bg-white border border-slate-300 rounded overflow-hidden">
+            <div className="flex items-center bg-slate-50 border border-slate-300 rounded overflow-hidden">
               <Type className="w-4 h-4 mx-2 text-slate-400" />
               <select 
                 value={font} 
@@ -55,7 +53,7 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
             </div>
 
             {/* Font Size */}
-            <div className="flex items-center bg-white border border-slate-300 rounded overflow-hidden">
+            <div className="flex items-center bg-slate-50 border border-slate-300 rounded overflow-hidden">
               <Baseline className="w-4 h-4 mx-2 text-slate-400" />
               <select 
                 value={size} 
@@ -71,7 +69,7 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
             </div>
 
             {/* Font Color */}
-            <div className="flex items-center bg-white border border-slate-300 rounded overflow-hidden">
+            <div className="flex items-center bg-slate-50 border border-slate-300 rounded overflow-hidden">
               <Palette className="w-4 h-4 mx-2 text-slate-400" />
               <select 
                 value={color} 
@@ -89,7 +87,7 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
           {/* Paper */}
           <div className="flex-1 bg-slate-100 p-8 overflow-y-auto flex justify-center">
             <textarea
-              className={`w-full max-w-2xl min-h-full bg-white shadow-md border border-slate-200 p-12 resize-none outline-none transition-all
+              className={`w-full max-w-2xl min-h-full bg-slate-50 shadow-md border border-slate-200 p-12 resize-none outline-none transition-all
                 ${font === 'Calibri' ? 'font-sans' : font === 'Times New Roman' ? 'font-serif' : font === 'Verdana' ? 'font-mono' : 'font-sans'}
                 ${size === '11' ? 'text-sm' : size === '10' ? 'text-xs' : size === '14' ? 'text-lg' : size === '16' ? 'text-xl' : 'text-base'}
                 ${color}
@@ -102,7 +100,7 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
         </div>
       </div>
 
-      <div className="w-80 bg-white p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
+      <div className="w-80 bg-slate-50 p-6 border-l border-slate-200 shadow-[-10px_0_20px_rgba(0,0,0,0.05)] z-10 flex flex-col overflow-y-auto">
         <h2 className="font-bold text-lg mb-4">Requirements Checklist</h2>
         <ul className="space-y-4">
           <li className="flex items-center text-slate-600">

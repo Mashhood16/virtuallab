@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Beaker, Flame, Filter, Droplet, CheckCircle } from 'lucide-react';
+import { Beaker, Flame, Filter, Droplet, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -69,19 +70,12 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-blue-700 text-white p-4 flex items-center shadow-md shrink-0">
-        {onExit && (
-          <button onClick={onExit} className="mr-4 hover:bg-blue-800 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-        )}
-        <h1 className="text-2xl font-bold">Preparation of Soluble Salt: Excess Base Method</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Preparation of Soluble Salt: Excess Base Method" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Left Column: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
               <Beaker className="text-blue-600" /> Theory & Setup
@@ -140,7 +134,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
         </div>
 
         {/* Middle Column: Simulation */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Virtual Workbench</h2>
           </div>
@@ -226,7 +220,7 @@ export default function LabC10SaltExcessBase({ onExit }: Props) {
         </div>
 
         {/* Right Column: Data & Analysis */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="bg-slate-100 p-4 border-b border-slate-200">
             <h2 className="text-lg font-bold text-slate-800">Data & Analysis</h2>
           </div>

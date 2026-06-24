@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Image, Table, CheckCircle, Save } from 'lucide-react';
+import { Image, Table, CheckCircle, Save } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -16,10 +17,7 @@ export default function LabC7CVCreation({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-100 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="CV / Resume Creation" />
 
         <h1 className="text-3xl font-bold mb-2">CV / Resume Creation</h1>
         <p className="text-slate-600 mb-6">Build a professional CV by inserting your picture, an academic qualifications table, and your interests.</p>
@@ -32,7 +30,7 @@ export default function LabC7CVCreation({ onExit }: LabProps) {
         )}
 
         {/* Toolbar */}
-        <div className="bg-white rounded-t-xl border border-slate-300 p-3 flex gap-2 w-full max-w-3xl mx-auto shadow-sm">
+        <div className="bg-slate-50 rounded-t-xl border border-slate-300 p-3 flex gap-2 w-full max-w-3xl mx-auto shadow-sm">
           <button 
             onClick={() => setHasPicture(true)}
             className="flex items-center px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded text-sm font-medium transition-colors border border-slate-200"
@@ -56,7 +54,7 @@ export default function LabC7CVCreation({ onExit }: LabProps) {
         </div>
 
         {/* CV Paper */}
-        <div className="bg-white w-full max-w-3xl mx-auto flex-1 border-b border-l border-r border-slate-300 shadow-xl p-12 overflow-y-auto">
+        <div className="bg-slate-50 w-full max-w-3xl mx-auto flex-1 border-b border-l border-r border-slate-300 shadow-xl p-12 overflow-y-auto">
           <div className="flex justify-between items-start mb-8 border-b-2 border-slate-800 pb-8">
             <div className="flex-1 pr-8">
               <input 

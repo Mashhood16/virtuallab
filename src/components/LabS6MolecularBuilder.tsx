@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, RefreshCcw } from 'lucide-react';
+import { CheckCircle, RefreshCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -42,17 +43,12 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-100 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-purple-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 6: Molecular Models</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 6: Molecular Models" />
 
       <div className="flex-1 flex p-6 gap-6">
         
         {/* Left Panel - Inventory */}
-        <div className="w-80 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="w-80 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-lg font-bold mb-4 border-b pb-2">Target Molecule</h2>
           <div className="flex gap-2 mb-6">
             {(['H2O', 'CO2', 'CH4'] as const).map(mol => (
@@ -75,7 +71,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               disabled={countAtoms('H') >= (requirements[molecule].H || 0)}
               className="w-full p-3 flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 disabled:opacity-50"
             >
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center font-bold text-slate-600">H</div>
+              <div className="w-8 h-8 rounded-full bg-slate-50 border-2 border-slate-300 flex items-center justify-center font-bold text-slate-600">H</div>
               <span className="font-medium text-slate-700">Hydrogen (White)</span>
             </button>
             
@@ -104,7 +100,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
         </div>
 
         {/* Right Panel - Assembly Canvas */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center justify-center relative bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPPHBhdGggZD0iTTAgMGgxdjQwSDB6TTAgMGg0MHYxSDB6IiBmaWxsPSJyZ2JhKDAsMCwwLDAuMDUpIi8+PC9zdmc+')]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center justify-center relative bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPPHBhdGggZD0iTTAgMGgxdjQwSDB6TTAgMGg0MHYxSDB6IiBmaWxsPSJyZ2JhKDAsMCwwLDAuMDUpIi8+PC9zdmc+')]">
           
           {isComplete() ? (
             <div className="absolute top-8 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 font-bold flex items-center gap-2 animate-bounce">
@@ -124,9 +120,9 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
                 {/* O */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-red-500 rounded-full shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.3)] z-10 flex items-center justify-center text-white font-bold text-2xl">O</div>
                 {/* H */}
-                <div className="absolute top-3/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
                 {/* H */}
-                <div className="absolute top-3/4 left-3/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-3/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
                 
                 {/* Bonds */}
                 <div className="absolute top-[60%] left-[30%] w-16 h-3 bg-slate-300 rounded-full origin-left -rotate-45 shadow-sm"></div>
@@ -150,19 +146,19 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-slate-800 rounded-full shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.5)] z-10 flex items-center justify-center text-white font-bold text-2xl">C</div>
                 
                 {/* Top H */}
-                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
                 <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-3 h-20 bg-slate-300 rounded-full z-0"></div>
 
                 {/* Left H */}
-                <div className="absolute top-3/4 left-[20%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-[20%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
                 <div className="absolute top-[55%] left-[25%] w-16 h-3 bg-slate-300 rounded-full origin-left rotate-[30deg] z-0"></div>
 
                 {/* Right H */}
-                <div className="absolute top-3/4 left-[80%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-[80%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 font-bold text-lg">H</div>
                 <div className="absolute top-[55%] right-[25%] w-16 h-3 bg-slate-300 rounded-full origin-right -rotate-[30deg] z-0"></div>
                 
                 {/* Front/Bottom H (3D projection simulation) */}
-                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white border border-slate-300 rounded-full shadow-[inset_-3px_-3px_15px_rgba(0,0,0,0.2)] z-20 flex items-center justify-center text-slate-500 font-bold text-xl">H</div>
+                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-slate-50 border border-slate-300 rounded-full shadow-[inset_-3px_-3px_15px_rgba(0,0,0,0.2)] z-20 flex items-center justify-center text-slate-500 font-bold text-xl">H</div>
                 <div className="absolute top-[65%] left-1/2 -translate-x-1/2 w-4 h-16 bg-slate-400 rounded-full z-10"></div>
               </div>
             )}
@@ -172,7 +168,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               <div className="relative w-full h-full animate-pulse opacity-50">
                 {atoms.map((a, i) => (
                   <div key={i} className="absolute" style={{ top: `${Math.random() * 80 + 10}%`, left: `${Math.random() * 80 + 10}%` }}>
-                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md ${a.type === 'H' ? 'bg-white border border-slate-300 text-slate-500' : a.type === 'C' ? 'bg-slate-800 text-white' : 'bg-red-500 text-white'}`}>
+                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md ${a.type === 'H' ? 'bg-slate-50 border border-slate-300 text-slate-500' : a.type === 'C' ? 'bg-slate-800 text-white' : 'bg-red-500 text-white'}`}>
                        {a.type}
                      </div>
                   </div>

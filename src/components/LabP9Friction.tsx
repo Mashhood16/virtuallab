@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Info, Play, RotateCcw, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
+import { Info, Play, RotateCcw, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
     const [mass, setMass] = useState<number>(2);
@@ -85,23 +86,11 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
 
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-            <div className="bg-white shadow-sm px-6 py-4 flex items-center justify-between border-b border-slate-200">
-                <div className="flex items-center gap-4">
-                    {onExit && (
-                        <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                            <ArrowLeft className="w-5 h-5 text-slate-600" />
-                        </button>
-                    )}
-                    <div>
-                        <h1 className="text-xl font-bold text-slate-800">Friction Lab</h1>
-                        <p className="text-sm text-slate-500">Investigate Static, Kinetic, and Rolling Friction</p>
-                    </div>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Friction Lab" subtitle="Investigate Static, Kinetic, and Rolling Friction" />
 
             <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
                 {/* Column 1: Setup */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
                     <div className="flex items-center gap-2 mb-4">
                         <Info className="w-5 h-5 text-blue-600" />
                         <h2 className="text-lg font-semibold text-slate-800">1. Setup & Theory</h2>
@@ -165,7 +154,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 2: Simulation */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 flex flex-col">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200 flex flex-col">
                     <h2 className="text-lg font-semibold text-slate-800 mb-4">2. Interactive Simulation</h2>
                     <div className="flex-1 border rounded-lg bg-slate-50 relative flex flex-col justify-between overflow-hidden">
                         <svg viewBox="0 0 400 450" className="w-full h-full">
@@ -223,7 +212,7 @@ export default function LabP9Friction({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 {/* Column 3: Analysis */}
-                <div className="bg-white rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
+                <div className="bg-slate-50 rounded-xl shadow-sm p-5 overflow-y-auto border border-slate-200">
                     <h2 className="text-lg font-semibold text-slate-800 mb-4">3. Data & Analysis</h2>
                     
                     <div className="overflow-x-auto mb-6">

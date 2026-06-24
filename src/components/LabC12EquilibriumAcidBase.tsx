@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, FlaskConical, Droplets, Activity, CheckCircle } from 'lucide-react';
+import { FlaskConical, Droplets, Activity, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => void }) {
   const [baseVol, setBaseVol] = useState<number>(0);
@@ -72,18 +73,10 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="flex items-center p-4 bg-purple-900 text-white shadow-md">
-        {onExit && (
-          <button onClick={onExit} className="mr-4 hover:bg-purple-800 p-2 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-        )}
-        <FlaskConical className="mr-3" size={28} />
-        <h1 className="text-2xl font-bold">Virtual Lab: Equilibrium & Acid-Base</h1>
-      </header>
+      <LabHeader onExit={onExit} title="Virtual Lab: Equilibrium & Acid-Base" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        <div className="bg-white rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 overflow-y-auto border border-slate-200">
           <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center">
             <Droplets className="mr-2" /> Theory
           </h2>
@@ -108,7 +101,7 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 flex flex-col items-center border border-slate-200">
           <h2 className="text-xl font-bold text-purple-900 mb-4">Titration Simulator</h2>
           
           <div className="flex flex-col items-center w-full max-w-sm mb-4">
@@ -144,12 +137,12 @@ export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => v
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 rounded-xl shadow-sm p-6 border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold text-purple-900 mb-4 flex items-center">
             <Activity className="mr-2" /> Data Plot & Analysis
           </h2>
           
-          <div className="relative w-full flex-1 min-h-[200px] mb-4 bg-white border border-slate-300 rounded-lg p-2">
+          <div className="relative w-full flex-1 min-h-[200px] mb-4 bg-slate-50 border border-slate-300 rounded-lg p-2">
             <svg viewBox="0 0 100 100" className="w-full h-full" preserveAspectRatio="none">
               {/* Gridlines */}
               <line x1="0" y1="50" x2="100" y2="50" stroke="#e2e8f0" strokeWidth="0.5" />

@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
+import {  } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
 const EXPERIMENTS = [
   { id: 'iodine', name: 'Iodine + Starch', resultType: 'Color Change', initialColor: 'bg-amber-100', finalColor: 'bg-blue-900', dropsColor: 'bg-amber-800' },
   { id: 'precipitate', name: 'CuSO4 + NaOH', resultType: 'Precipitate', initialColor: 'bg-blue-200', finalColor: 'bg-blue-200', dropsColor: 'bg-slate-100', hasPrecipitate: true },
-  { id: 'gas', name: 'Vinegar + Baking Soda', resultType: 'Gas Evolution', initialColor: 'bg-slate-100', finalColor: 'bg-slate-100', dropsColor: 'bg-white', hasBubbles: true },
+  { id: 'gas', name: 'Vinegar + Baking Soda', resultType: 'Gas Evolution', initialColor: 'bg-slate-100', finalColor: 'bg-slate-100', dropsColor: 'bg-slate-50', hasBubbles: true },
 ];
 
 export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
@@ -22,17 +23,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b p-4 flex items-center gap-4 sticky top-0 z-10 shadow-sm">
-        {onExit && (
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-        )}
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Act 6.1: Signs of Chemical Reaction</h1>
-          <p className="text-sm text-slate-500">Observe color changes, precipitates, and gas</p>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Act 6.1: Signs of Chemical Reaction" subtitle="Observe color changes, precipitates, and gas" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         <div className="w-full md:w-64 flex flex-col gap-2">
@@ -41,14 +32,14 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
             <button 
               key={e.id}
               onClick={() => { setSelectedExp(e); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold border-2 ${selectedExp.id === e.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 bg-white hover:border-slate-300'}`}
+              className={`p-3 text-left rounded-lg font-bold border-2 ${selectedExp.id === e.id ? 'border-purple-500 bg-purple-50 text-purple-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300'}`}
             >
               {e.name}
             </button>
           ))}
         </div>
 
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center justify-center relative min-h-[400px]">
           
           <div className="relative w-64 h-80 flex flex-col justify-end items-center">
             {/* Pipette / Dropper */}
@@ -64,7 +55,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
             </div>
 
             {/* */}
-            <div className="w-48 h-48 border-4 border-slate-300 rounded-b-3xl border-t-0 relative overflow-hidden bg-white/50 backdrop-blur-sm z-10 shadow-inner flex flex-col justify-end">
+            <div className="w-48 h-48 border-4 border-slate-300 rounded-b-3xl border-t-0 relative overflow-hidden bg-slate-50/50 backdrop-blur-sm z-10 shadow-inner flex flex-col justify-end">
               <div 
                 className={`w-full transition-colors duration-1000 ${stage === 'final' ? selectedExp.finalColor : selectedExp.initialColor} h-3/4 relative overflow-hidden`}
               >
@@ -79,7 +70,7 @@ export default function LabS8ChemicalReactionSigns({ onExit }: LabProps) {
                 {selectedExp.hasBubbles && stage === 'final' && (
                   <div className="absolute inset-0">
                     {Array.from({length: 15}).map((_, i) => (
-                      <div key={i} className="absolute w-2 h-2 rounded-full border border-white/80 bg-white/20 animate-[rise_1s_infinite]" style={{ left: `${Math.random() * 90}%`, animationDelay: `${Math.random() * 2}s` }} />
+                      <div key={i} className="absolute w-2 h-2 rounded-full border border-white/80 bg-slate-50/20 animate-[rise_1s_infinite]" style={{ left: `${Math.random() * 90}%`, animationDelay: `${Math.random() * 2}s` }} />
                     ))}
                   </div>
                 )}

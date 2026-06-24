@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Beaker, Calculator, Database, Flame, Filter } from 'lucide-react';
+import { Beaker, Calculator, Database, Flame, Filter } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void }) {
   const [salicylicMass, setSalicylicMass] = useState(2.0); // g
@@ -65,22 +66,12 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-            <ArrowLeft className="w-5 h-5 text-slate-600" />
-          </button>
-          <h1 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-            <Beaker className="w-6 h-6 text-sky-600" />
-            Stoichiometry: Aspirin Synthesis
-          </h1>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Stoichiometry: Aspirin Synthesis" />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         
         {/* Column 1 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
               <Beaker className="w-5 h-5 text-sky-500" />
@@ -140,7 +131,7 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Column 2 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col items-center justify-center">
           <h2 className="text-lg font-bold text-slate-800 w-full mb-4 text-center">Reaction Beaker</h2>
           
           <svg viewBox="0 0 200 300" className="w-full h-80 bg-slate-100 rounded-lg border border-slate-200">
@@ -164,7 +155,7 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
             )}
             
             {stage === 'filtered' && actualYield !== null && (
-              <text x="100" y="220" textAnchor="middle" className="text-xs font-bold fill-slate-700 bg-white">Yield: {actualYield.toFixed(2)} g</text>
+              <text x="100" y="220" textAnchor="middle" className="text-xs font-bold fill-slate-700 bg-slate-50">Yield: {actualYield.toFixed(2)} g</text>
             )}
           </svg>
 
@@ -176,7 +167,7 @@ export default function LabC11Stoichiometry({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Column 3 */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-6">
           <div className="flex-1">
             <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
               <Database className="w-5 h-5 text-emerald-500" />

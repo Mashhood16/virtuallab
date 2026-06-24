@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -44,9 +45,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
     <div className="overflow-y-auto w-full h-screen bg-slate-900 flex flex-col font-sans">
       <header className="bg-slate-800 text-white p-4 shadow-md flex justify-between items-center z-20 border-b border-slate-700">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-700 rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 5.2: Malware Protection" />
           <div>
             <h1 className="text-xl font-bold text-red-400">Act 5.2: Malware Protection</h1>
             <p className="text-sm text-slate-400">Install an antivirus and run a system scan to remove threats.</p>
@@ -86,7 +85,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
 
               <div className="w-24 h-24 flex flex-col items-center gap-2 cursor-pointer group">
                  <div className="w-12 h-12 bg-yellow-400 rounded-sm flex items-center justify-center shadow-lg group-hover:bg-yellow-300 border border-yellow-600">
-                   <div className="w-8 h-6 bg-white opacity-20 mt-2"></div>
+                   <div className="w-8 h-6 bg-slate-50 opacity-20 mt-2"></div>
                  </div>
                  <span className="text-white text-xs font-bold text-center drop-shadow-md bg-black/50 px-2 py-1 rounded">My Files</span>
               </div>
@@ -186,7 +185,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
                      <h2 className="text-xl font-bold text-slate-800 mb-2">Threats Detected!</h2>
                      <p className="text-slate-500 text-sm mb-6">The scan found 2 malicious files on your system.</p>
                      
-                     <div className="w-full bg-white border border-slate-200 rounded text-left p-4 mb-6 shadow-inner text-sm space-y-2">
+                     <div className="w-full bg-slate-50 border border-slate-200 rounded text-left p-4 mb-6 shadow-inner text-sm space-y-2">
                         <div className="flex justify-between text-red-600 font-bold">
                           <span>Trojan.Win32.Generic</span>
                           <span className="uppercase text-xs bg-red-100 px-2 py-1 rounded text-red-800">High Risk</span>

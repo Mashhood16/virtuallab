@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Flame } from 'lucide-react';
+import { RefreshCw, Flame } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -37,22 +38,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full text-slate-600">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 5.6: Thermal Conductivity</h1>
-            <p className="text-sm text-slate-500">Observe how heat travels through materials</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 text-slate-700 px-4 py-2 rounded-md font-medium hover:bg-slate-300">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 5.6: Thermal Conductivity" subtitle="Observe how heat travels through materials" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
@@ -62,7 +48,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
             <button 
               key={m.id}
               onClick={() => { setSelected(m); reset(); }}
-              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-slate-200 bg-white hover:border-slate-300 text-slate-700'}`}
+              className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-orange-500 bg-orange-50 text-orange-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
             >
               {m.name}
             </button>

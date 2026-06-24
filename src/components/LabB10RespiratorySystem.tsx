@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, BookOpen, Activity, Edit3, Wind, CheckCircle } from 'lucide-react';
+import { BookOpen, Activity, Edit3, Wind, CheckCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void }) {
   const [exhales, setExhales] = useState(0);
@@ -24,22 +25,12 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Top Header */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors text-slate-600">
-            <ArrowLeft className="w-5 h-5" />
-          </button>
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Lab B10.3: Respiratory Mechanics</h1>
-            <p className="text-sm text-slate-500">Gas Exchange & Boyle's Law Model</p>
-          </div>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Lab B10.3: Respiratory Mechanics" subtitle="Gas Exchange & Boyle's Law Model" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-sky-100 text-sky-600 rounded-lg"><BookOpen className="w-6 h-6" /></div>
             <h2 className="text-xl font-bold text-slate-800">Theory & Context</h2>
@@ -61,7 +52,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col relative overflow-hidden">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col relative overflow-hidden">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-indigo-100 text-indigo-600 rounded-lg"><Activity className="w-6 h-6" /></div>
             <h2 className="text-xl font-bold text-slate-800">Interactive Simulator</h2>
@@ -75,7 +66,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
               <p className="text-xs text-slate-500 mb-4">Exhale into the tube to bubble gas through clear limewater.</p>
               
               <div className="flex items-center justify-center gap-8">
-                <div className="relative w-24 h-32 bg-white border-b-4 border-x-4 border-slate-300 rounded-b-xl overflow-hidden flex flex-col justify-end">
+                <div className="relative w-24 h-32 bg-slate-50 border-b-4 border-x-4 border-slate-300 rounded-b-xl overflow-hidden flex flex-col justify-end">
                   {/* Tube */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-24 bg-slate-300 rounded-b-full z-10" />
                   
@@ -92,8 +83,8 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
                     {/* Bubbles */}
                     {exhales > 0 && (
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 animate-bounce">
-                          <div className="w-1.5 h-1.5 rounded-full bg-white shadow-sm" />
-                          <div className="w-2 h-2 rounded-full bg-white shadow-sm" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-slate-50 shadow-sm" />
+                          <div className="w-2 h-2 rounded-full bg-slate-50 shadow-sm" />
                       </div>
                     )}
                   </div>
@@ -177,7 +168,7 @@ export default function LabB10RespiratorySystem({ onExit }: { onExit: () => void
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
           <div className="flex items-center gap-3 mb-4">
             <div className="p-2 bg-emerald-100 text-emerald-600 rounded-lg"><Edit3 className="w-6 h-6" /></div>
             <h2 className="text-xl font-bold text-slate-800">Assessment</h2>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -45,9 +46,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
     <div className="overflow-y-auto w-full h-screen bg-slate-50 flex flex-col font-sans">
       <header className="bg-[#103b23] text-white p-4 shadow-md flex justify-between items-center z-20">
         <div className="flex items-center gap-4">
-          <button onClick={onExit} className="p-2 hover:bg-[#1d6f42] rounded-lg transition-colors">
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-          </button>
+          <LabHeader onExit={onExit} title="Act 2.2: Worksheet and Chart Creation" />
           <div>
             <h1 className="text-xl font-bold">Act 2.2: Worksheet and Chart Creation</h1>
             <p className="text-sm text-green-200">Prepare data and draw corresponding charts for 3 scenarios.</p>
@@ -63,26 +62,26 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
            
            <button 
              onClick={() => setScenario('heights')}
-             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'heights' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-white text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
+             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'heights' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
            >
              Student Heights (Bar Chart)
            </button>
            <button 
              onClick={() => setScenario('budget')}
-             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'budget' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-white text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
+             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'budget' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
            >
              Home Budget (Pie Chart)
            </button>
            <button 
              onClick={() => setScenario('bills')}
-             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'bills' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-white text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
+             className={`p-4 rounded-lg text-left font-bold transition-colors ${scenario === 'bills' ? 'bg-[#1d6f42] text-white shadow-md' : 'bg-slate-50 text-slate-600 hover:bg-slate-200 border border-slate-200'}`}
            >
              Electricity Bill (Line Chart)
            </button>
         </div>
 
         {/* Spreadsheet Input */}
-        <div className="flex-1 bg-white p-8 flex flex-col relative overflow-hidden">
+        <div className="flex-1 bg-slate-50 p-8 flex flex-col relative overflow-hidden">
            <h2 className="text-2xl font-bold text-slate-800 mb-6">Data Worksheet</h2>
            <div className="bg-slate-50 border border-slate-300 rounded-lg overflow-hidden shadow-sm">
               <table className="w-full text-left font-mono">
@@ -122,7 +121,7 @@ export default function LabDataWorksheets({ onExit }: LabProps) {
         <div className="flex-1 bg-slate-50 border-l border-slate-300 p-8 flex flex-col justify-center items-center relative shadow-inner bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
            <h2 className="absolute top-8 left-8 text-2xl font-bold text-slate-800">Generated Chart</h2>
            
-           <div className="w-full max-w-md h-80 bg-white border border-slate-300 shadow-xl rounded-xl p-8 flex items-end justify-between relative">
+           <div className="w-full max-w-md h-80 bg-slate-50 border border-slate-300 shadow-xl rounded-xl p-8 flex items-end justify-between relative">
               
               {/* Conditional Chart Rendering */}
               {scenario === 'heights' && (

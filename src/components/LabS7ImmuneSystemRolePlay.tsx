@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Bug } from 'lucide-react';
+import { Bug } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -18,15 +19,10 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-purple-50 font-sans">
-      <div className="bg-white border-b border-purple-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-purple-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 3: Immune System Role Play</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 3: Immune System Role Play" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 max-w-3xl w-full text-center mb-8">
+        <div className="bg-slate-50 p-6 rounded-2xl shadow-sm border border-purple-100 max-w-3xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-purple-800 mb-4">The Body's Defense Army</h2>
           <p className="text-slate-600 mb-6">Step through this simulation to see how the skin, T-Cells, and B-Cells act as the lines of defense against invading pathogens (germs).</p>
           
@@ -84,7 +80,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
                   <Bug className="text-green-600 w-12 h-12 animate-pulse" />
                   <Bug className="text-green-600 w-12 h-12 animate-pulse" />
                 </div>
-                {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-white px-2 py-1 rounded shadow">Pathogens invading!</div>}
+                {phase === 1 && <div className="text-xs font-bold text-red-600 mt-2 bg-slate-50 px-2 py-1 rounded shadow">Pathogens invading!</div>}
               </div>
             )}
 

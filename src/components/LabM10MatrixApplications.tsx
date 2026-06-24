@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Box, FlaskConical, CheckCircle2, XCircle } from 'lucide-react';
+import { Box, FlaskConical, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -53,19 +54,11 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-fuchsia-700 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-fuchsia-600 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <FlaskConical className="text-fuchsia-200" />
-          Matrix Applications: Chemical Mixing & Cramer's Rule
-        </h1>
-      </div>
+      <LabHeader onExit={onExit} title="Matrix Applications: Chemical Mixing & Cramer's Rule" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4 flex items-center gap-2">
             <Box /> Theory & Context
           </h2>
@@ -92,7 +85,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4">System Visualizer</h2>
           
           <div className="w-full max-w-md bg-slate-50 p-4 rounded-lg border border-slate-200 mb-4 font-mono">
@@ -113,7 +106,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
           </div>
 
           {/* Graphing Area */}
-          <div className="relative w-full max-w-sm aspect-square bg-white rounded-lg overflow-hidden border-2 border-slate-300">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 rounded-lg overflow-hidden border-2 border-slate-300">
             <svg viewBox="0 0 300 300" className="w-full h-full">
               {/* Grid */}
               {[...Array(21)].map((_, i) => (
@@ -152,7 +145,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
             </svg>
             
             {delta !== 0 && (
-              <div className="absolute top-2 left-2 bg-white/90 p-1 rounded border border-slate-300 text-xs font-mono shadow">
+              <div className="absolute top-2 left-2 bg-slate-50/90 p-1 rounded border border-slate-300 text-xs font-mono shadow">
                 Solution: ({actualX.toFixed(2)}, {actualY.toFixed(2)})
               </div>
             )}
@@ -160,7 +153,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-fuchsia-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100 mb-6">
@@ -169,7 +162,7 @@ export default function LabM10MatrixApplications({ onExit }: Props) {
               Use Cramer's rule to find the precise values of x and y for the system currently displayed in the simulator.
             </p>
             
-            <div className="bg-white p-3 rounded border border-slate-200 mb-4 flex justify-between text-sm">
+            <div className="bg-slate-50 p-3 rounded border border-slate-200 mb-4 flex justify-between text-sm">
                <div>Δ = {delta}</div>
                <div>Δx = {deltaX}</div>
                <div>Δy = {deltaY}</div>

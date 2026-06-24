@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Beaker, Play, RotateCcw, CheckCircle, BookOpen } from 'lucide-react';
+import { Beaker, Play, RotateCcw, CheckCircle, BookOpen } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -96,21 +97,11 @@ export default function LabC9SeparationTech({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-blue-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-blue-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">Grade 9 Chemistry: Separation Techniques</h1>
-        </div>
-        <Beaker size={28} />
-      </header>
+      <LabHeader onExit={onExit} title="Grade 9 Chemistry: Separation Techniques" />
 
       <main className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Column 1: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-blue-800">
             <BookOpen size={24} />
             <h2 className="text-xl font-semibold">Theory & Context</h2>
@@ -133,7 +124,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
               <p className="text-sm">
                 Used to separate mixtures of soluble substances, such as colored dyes. As a solvent moves up the paper, it carries the dyes at different speeds depending on their solubility.
               </p>
-              <div className="mt-3 bg-white p-3 rounded border border-purple-200">
+              <div className="mt-3 bg-slate-50 p-3 rounded border border-purple-200">
                 <div className="text-sm font-semibold mb-1 text-purple-800">
                   Retention Factor (Rf):
                 </div>
@@ -146,7 +137,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
         </div>
 
         {/* Column 2: Simulator */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col h-[600px] lg:h-auto">
           <div className="flex gap-4 mb-4 shrink-0">
             <button 
               className={`flex-1 py-2 rounded-lg font-semibold transition-colors ${activeTab === 'distillation' ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'}`}
@@ -286,7 +277,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
         </div>
 
         {/* Column 3: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 overflow-y-auto">
           <div className="flex items-center gap-2 mb-4 text-green-800">
             <CheckCircle size={24} />
             <h2 className="text-xl font-semibold">Assessment</h2>
@@ -296,7 +287,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg">
               <h3 className="font-semibold text-slate-800 mb-3">Live Data Collection</h3>
               {activeTab === 'distillation' ? (
-                <div className="text-sm text-slate-700 space-y-2 bg-white p-3 rounded border border-slate-200">
+                <div className="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-200">
                   <div className="flex justify-between border-b pb-1">
                     <span>Target Boiling Point:</span>
                     <span className="font-mono font-bold">100.0°C</span>
@@ -311,7 +302,7 @@ export default function LabC9SeparationTech({ onExit }: Props) {
                   </div>
                 </div>
               ) : (
-                <div className="text-sm text-slate-700 space-y-2 bg-white p-3 rounded border border-slate-200">
+                <div className="text-sm text-slate-700 space-y-2 bg-slate-50 p-3 rounded border border-slate-200">
                   <div className="flex justify-between border-b pb-1">
                     <span>Solvent Front Moved:</span>
                     <span className="font-mono font-bold">{solventHeight.toFixed(0)} mm</span>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, UserPlus, Apple, MessageCircle, Utensils } from 'lucide-react';
+import { UserPlus, Apple, MessageCircle, Utensils } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -17,12 +18,7 @@ export default function LabS6BalancedDiet({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-rose-50 font-sans">
-      <div className="bg-white border-b border-rose-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-rose-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 3: Balanced Diet Activities</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 3: Balanced Diet Activities" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
         
@@ -42,7 +38,7 @@ export default function LabS6BalancedDiet({ onExit }: LabProps) {
         </div>
 
         {tab === 'roleplay' && (
-          <div className="w-full max-w-4xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+          <div className="w-full max-w-4xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8">
             <h2 className="text-2xl font-bold text-rose-800 mb-6 flex items-center gap-2"><UserPlus /> Classroom Role Play Organizer</h2>
             
             <div className="grid grid-cols-2 gap-8">
@@ -62,7 +58,7 @@ export default function LabS6BalancedDiet({ onExit }: LabProps) {
                  <h3 className="font-bold text-rose-900 mb-4 flex items-center gap-2"><Utensils /> Chef Candidates</h3>
                  <p className="text-sm text-rose-800 mb-6">The rest of the class acts as candidates for the royal chef position. Each candidate must prepare a pitch for their ideal meal.</p>
                  
-                 <div className="bg-white p-4 rounded-lg border border-rose-100">
+                 <div className="bg-slate-50 p-4 rounded-lg border border-rose-100">
                    <h4 className="font-bold text-sm text-slate-700 mb-2">Pitch Guidelines:</h4>
                    <ul className="list-disc pl-5 text-sm text-slate-600 space-y-1">
                      <li>What is the meal?</li>
@@ -82,7 +78,7 @@ export default function LabS6BalancedDiet({ onExit }: LabProps) {
         )}
 
         {tab === 'diary' && (
-          <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
+          <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex flex-col items-center">
             <h2 className="text-2xl font-bold text-orange-800 mb-2 flex items-center gap-2"><Apple /> My Healthy Plate Diary</h2>
             <p className="text-slate-600 mb-8 text-center max-w-2xl">Fill out this food diary to plan a balanced diet for a single day. Ensure you include items from all five major food groups across your meals.</p>
 

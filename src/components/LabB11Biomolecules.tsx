@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, TestTube, Flame, CheckCircle, Info } from 'lucide-react';
+import { TestTube, Flame, CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type Sample = 'glucose' | 'starch' | 'protein' | 'lipid' | null;
 type Reagent = 'benedict' | 'iodine' | 'biuret' | 'sudan' | null;
@@ -66,18 +67,13 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       <header className="bg-emerald-800 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-emerald-700 rounded-full transition-colors">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Grade 11: Biochemical Food Tests</h1>
-        </div>
+        <LabHeader onExit={onExit} variant="emerald" title="Grade 11: Biochemical Food Tests" />
       </header>
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2">Theory & Principles</h2>
           <div className="space-y-4 text-sm text-slate-700">
             <p>Identifying biological molecules involves specific chemical reagents that produce characteristic color changes.</p>
@@ -143,7 +139,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
           </div>
 
           {/* Controls */}
-          <div className="w-full space-y-4 bg-white p-4 rounded-lg shadow-sm">
+          <div className="w-full space-y-4 bg-slate-50 p-4 rounded-lg shadow-sm">
             <div>
               <label className="text-xs font-bold text-slate-500 uppercase">1. Add Sample</label>
               <div className="grid grid-cols-2 gap-2 mt-1">
@@ -203,7 +199,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
         </section>
 
         {/* Column 3: Assessment */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col gap-4">
           <h2 className="text-2xl font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-emerald-600" /> Data Analysis
           </h2>
@@ -219,7 +215,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
               <p className="text-xs text-slate-600 mb-2 italic">Observation: Turned purple upon adding Biuret reagent. Remained blue with Benedict's after heating.</p>
               <select 
                 value={unk1} onChange={e => setUnk1(e.target.value)}
-                className="w-full p-2 border rounded text-sm bg-white"
+                className="w-full p-2 border rounded text-sm bg-slate-50"
               >
                 <option value="">Select Biomolecule...</option>
                 <option value="glucose">Reducing Sugar</option>
@@ -234,7 +230,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
               <p className="text-xs text-slate-600 mb-2 italic">Observation: Turned blue-black instantly when Iodine drops were added.</p>
               <select 
                 value={unk2} onChange={e => setUnk2(e.target.value)}
-                className="w-full p-2 border rounded text-sm bg-white"
+                className="w-full p-2 border rounded text-sm bg-slate-50"
               >
                 <option value="">Select Biomolecule...</option>
                 <option value="glucose">Reducing Sugar</option>
@@ -249,7 +245,7 @@ export default function LabB11Biomolecules({ onExit }: { onExit?: () => void }) 
               <p className="text-xs text-slate-600 mb-2 italic">Observation: Formed a red stained layer floating on top of the water after adding Sudan III.</p>
               <select 
                 value={unk3} onChange={e => setUnk3(e.target.value)}
-                className="w-full p-2 border rounded text-sm bg-white"
+                className="w-full p-2 border rounded text-sm bg-slate-50"
               >
                 <option value="">Select Biomolecule...</option>
                 <option value="glucose">Reducing Sugar</option>

@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
-import { ArrowLeft, RefreshCw, Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
+import { RefreshCw, Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -104,24 +105,13 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Insulating Materials & Cooling Curves</h1>
-            <p className="text-sm text-slate-500">Investigate how different materials and thicknesses affect the rate of heat transfer.</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Insulating Materials & Cooling Curves" subtitle="Investigate how different materials and thicknesses affect the rate of heat transfer." rightContent={<>{rightJsx}</>} />
 
       {/* 3-Column Grid */}
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6 overflow-y-auto">
           <div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Theory & Setup</h2>
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
@@ -207,7 +197,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
         </div>
 
         {/* Column 2: Simulation */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-between">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col items-center justify-between">
           <div className="w-full flex justify-between items-center mb-4">
              <div className="text-center bg-slate-100 px-4 py-2 rounded-lg border border-slate-200">
                <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Clock Time</p>
@@ -310,7 +300,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Graph */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800">Results & Graph</h2>
           
           <div className="h-48 border border-slate-200 rounded-lg overflow-y-auto bg-slate-50">

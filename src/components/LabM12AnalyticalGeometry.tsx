@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
+import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => void }) {
   const [mode, setMode] = useState<'concurrency' | 'landscaping'>('concurrency');
@@ -72,34 +73,27 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-emerald-900 text-white p-4 flex items-center justify-between shadow-md shrink-0">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-emerald-800 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold">Lab M12.2: Analytical Geometry</h1>
-        </div>
+      <LabHeader onExit={onExit} title="Lab M12.2: Analytical Geometry" />
+      <div className="bg-emerald-900 text-white p-2 flex justify-end shrink-0">
         <div className="flex bg-emerald-800 rounded-lg p-1">
           <button
             onClick={() => setMode('concurrency')}
-            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'concurrency' ? 'bg-white text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'concurrency' ? 'bg-slate-50 text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
           >
             Line Concurrency
           </button>
           <button
             onClick={() => setMode('landscaping')}
-            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'landscaping' ? 'bg-white text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
+            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${mode === 'landscaping' ? 'bg-slate-50 text-emerald-900 shadow' : 'text-emerald-100 hover:bg-emerald-700'}`}
           >
             Polygonal Landscaping
           </button>
         </div>
-      </header>
+      </div>
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-emerald-700 mb-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="text-lg font-bold">Theoretical Context</h2>
@@ -130,7 +124,7 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Visualizer Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
           <h2 className="text-lg font-bold text-slate-800 self-start absolute top-5 left-5 z-10">Live Visualization</h2>
           
           <svg viewBox="-30 -30 60 60" className="w-full max-w-md aspect-square bg-slate-50 border border-slate-200 rounded-lg shadow-inner mt-8">
@@ -188,7 +182,7 @@ export default function LabM12AnalyticalGeometry({ onExit }: { onExit?: () => vo
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-emerald-700 mb-2 shrink-0">
             <Settings2 className="w-5 h-5" />
             <h2 className="text-lg font-bold">Parameters & Assessment</h2>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Usb, Disc, Cpu, Printer, Mouse, Terminal, Shield, FolderSearch } from 'lucide-react';
+import { Usb, Disc, Cpu, Printer, Mouse, Terminal, Shield, FolderSearch } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -37,17 +38,14 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="System Software & Devices" />
 
         <h1 className="text-3xl font-bold mb-2">System Software & Devices</h1>
         <p className="text-slate-600 mb-8">Identify Plug and Play (PnP) devices and explore common utility programs.</p>
 
         <div className="flex gap-8 flex-1 min-h-[500px]">
           {/* Left Column: PnP */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-2">1. Plug and Play Devices</h2>
             <p className="text-slate-500 mb-6 text-sm">Select all the devices below that are "Plug and Play" (devices that work immediately when connected without manual configuration).</p>
 
@@ -63,7 +61,7 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
                     className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
                       isSelected 
                         ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 hover:border-slate-300 bg-white'
+                        : 'border-slate-200 hover:border-slate-300 bg-slate-50'
                     }`}
                   >
                     <div className={`p-3 rounded-lg ${isSelected ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'}`}>
@@ -85,7 +83,7 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
           </div>
 
           {/* Right Column: Utilities */}
-          <div className="flex-1 bg-white rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
+          <div className="flex-1 bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-2">2. Utility Programs</h2>
             <p className="text-slate-500 mb-6 text-sm">Review these essential system software utilities used to maintain and manage a computer.</p>
 
@@ -94,7 +92,7 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
                 const Icon = util.icon;
                 return (
                   <div key={util.id} className="p-5 rounded-xl border-2 border-slate-200 bg-slate-50 flex flex-col items-center justify-center text-center hover:border-indigo-300 transition-colors">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 border border-slate-100">
+                    <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center shadow-sm mb-4 border border-slate-100">
                       <Icon className="w-8 h-8 text-indigo-500" />
                     </div>
                     <h3 className="font-bold text-slate-800 mb-2">{util.name}</h3>

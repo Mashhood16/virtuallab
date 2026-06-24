@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,12 +11,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-900 font-sans">
-      <div className="bg-slate-800 border-b border-slate-700 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-300 hover:text-white font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-white">Unit 6: Chemical Bonds (Atoms vs. Ions)</h1>
-      </div>
+      <LabHeader onExit={onExit} variant="dark" title="Unit 6: Chemical Bonds (Atoms vs. Ions)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 max-w-3xl w-full text-center mb-8">
@@ -55,7 +51,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
              </div>
 
              {/* Charge Badge */}
-             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-slate-800 bg-white text-slate-900">
+             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-slate-800 bg-slate-50 text-slate-900">
                {isIon ? '+1' : '0'}
              </div>
           </div>

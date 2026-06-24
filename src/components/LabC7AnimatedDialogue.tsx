@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, Image as ImageIcon } from 'lucide-react';
+import { Play, Image as ImageIcon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -42,15 +43,12 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Animated Dialogue" />
 
         <h1 className="text-3xl font-bold mb-2">Animated Dialogue</h1>
         <p className="text-slate-600 mb-8">Set the stage background and run the dialogue script between two sprites.</p>
 
-        <div className="bg-white rounded-xl shadow-lg border border-slate-200 p-6 flex gap-8 max-w-5xl mx-auto w-full">
+        <div className="bg-slate-50 rounded-xl shadow-lg border border-slate-200 p-6 flex gap-8 max-w-5xl mx-auto w-full">
           
           {/* Controls */}
           <div className="w-64 flex flex-col gap-6 border-r border-slate-200 pr-8">
@@ -58,7 +56,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
               <h2 className="font-bold text-slate-700 mb-2 text-sm uppercase tracking-wider">Background</h2>
               <button 
                 onClick={() => setBgSet(true)}
-                className={`w-full py-3 px-4 rounded-lg font-bold border-2 flex items-center justify-center transition-colors ${bgSet ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-white border-slate-300 text-slate-600 hover:border-slate-400'}`}
+                className={`w-full py-3 px-4 rounded-lg font-bold border-2 flex items-center justify-center transition-colors ${bgSet ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-slate-50 border-slate-300 text-slate-600 hover:border-slate-400'}`}
               >
                 <ImageIcon className="w-4 h-4 mr-2" /> {bgSet ? 'Park Set' : 'Set Background'}
               </button>
@@ -97,7 +95,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
               {/* Sprite 1 */}
               <div className="absolute bottom-12 left-20 flex flex-col items-center">
                 {currentMsg?.sprite === 1 && (
-                  <div className="bg-white p-3 rounded-xl rounded-bl-none shadow-lg mb-2 max-w-[200px] border-2 border-blue-200 animate-in fade-in slide-in-from-bottom-2">
+                  <div className="bg-slate-50 p-3 rounded-xl rounded-bl-none shadow-lg mb-2 max-w-[200px] border-2 border-blue-200 animate-in fade-in slide-in-from-bottom-2">
                     <p className="font-bold text-slate-800">{currentMsg.text}</p>
                   </div>
                 )}
@@ -107,7 +105,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
               {/* Sprite 2 */}
               <div className="absolute bottom-12 right-20 flex flex-col items-center">
                 {currentMsg?.sprite === 2 && (
-                  <div className="bg-white p-3 rounded-xl rounded-br-none shadow-lg mb-2 max-w-[200px] border-2 border-orange-200 animate-in fade-in slide-in-from-bottom-2">
+                  <div className="bg-slate-50 p-3 rounded-xl rounded-br-none shadow-lg mb-2 max-w-[200px] border-2 border-orange-200 animate-in fade-in slide-in-from-bottom-2">
                     <p className="font-bold text-slate-800">{currentMsg.text}</p>
                   </div>
                 )}
@@ -116,7 +114,7 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
 
               {!bgSet && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-slate-400 font-bold text-xl uppercase tracking-widest bg-white/80 px-6 py-2 rounded-lg">Select Background First</p>
+                  <p className="text-slate-400 font-bold text-xl uppercase tracking-widest bg-slate-50/80 px-6 py-2 rounded-lg">Select Background First</p>
                 </div>
               )}
             </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, XCircle } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -21,15 +22,10 @@ export default function LabS7CalculatingSubatomicParticles({ onExit }: LabProps)
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shrink-0">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-blue-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 5: Subatomic Particles</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 5: Subatomic Particles" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full">
+        <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border border-slate-200 max-w-2xl w-full">
           <h2 className="text-2xl font-bold text-blue-800 mb-2">Calculate the Particles</h2>
           <p className="text-slate-600 mb-8">
             You are given an element with an <strong>Atomic Number of 9</strong> and a <strong>Mass Number of 19</strong>. 

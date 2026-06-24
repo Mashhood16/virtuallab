@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
-import { ArrowLeft, Scissors, MousePointer2, CheckCircle2 } from 'lucide-react';
+import { Scissors, MousePointer2, CheckCircle2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 const EXTERNAL_PARTS = [
   { id: 'renal_vein', name: 'Renal Vein' },
@@ -91,19 +92,11 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center shadow-sm shrink-0">
-        <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-600" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Biology Lab: Kidney Dissection</h1>
-          <p className="text-sm text-slate-500">Examine the external and internal macroscopic structures of a mammalian kidney.</p>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Biology Lab: Kidney Dissection" subtitle="Examine the external and internal macroscopic structures of a mammalian kidney." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4">Anatomy of the Kidney</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
             <p>
@@ -127,20 +120,20 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
           <div className="flex items-center justify-between w-full mb-4">
             <h2 className="text-xl font-bold text-slate-800">Dissection Tray</h2>
             <div className="flex bg-slate-100 p-1 rounded-lg">
               <button
                 onClick={() => setActiveTool('pointer')}
-                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'pointer' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'pointer' ? 'bg-slate-50 shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
               >
                 <MousePointer2 className="w-4 h-4 mr-2" /> Pointer
               </button>
               <button
                 onClick={() => setActiveTool('scalpel')}
                 disabled={!externalDone || isDissected}
-                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'scalpel' ? 'bg-white shadow-sm text-red-600' : 'text-slate-500 hover:text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed'}`}
+                className={`flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${activeTool === 'scalpel' ? 'bg-slate-50 shadow-sm text-red-600' : 'text-slate-500 hover:text-slate-700 disabled:opacity-50 disabled:cursor-not-allowed'}`}
               >
                 <Scissors className="w-4 h-4 mr-2" /> Scalpel
               </button>
@@ -263,7 +256,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
         </div>
 
         {/* Right Column: Assessment & Identification */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
           <div className="mb-6">
             <h2 className="text-xl font-bold text-slate-800 mb-4">Identification Log</h2>
             
@@ -276,7 +269,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
                       key={part.id}
                       onClick={() => identifyRegion(part.id)}
                       disabled={identifiedParts.includes(part.id)}
-                      className="px-3 py-2 bg-white border border-yellow-300 rounded text-sm font-medium text-slate-700 hover:bg-yellow-100 disabled:opacity-50"
+                      className="px-3 py-2 bg-slate-50 border border-yellow-300 rounded text-sm font-medium text-slate-700 hover:bg-yellow-100 disabled:opacity-50"
                     >
                       {part.name}
                     </button>
@@ -346,7 +339,7 @@ export default function LabB10KidneyDissection({ onExit }: { onExit?: () => void
                 <select
                   value={q2Answer}
                   onChange={(e) => setQ2Answer(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-slate-50"
                 >
                   <option value="">Select an option...</option>
                   <option value="filter">Filter toxins from the blood</option>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, CheckCircle, Palette, Image as ImageIcon, Download, Copy, Shield, AlertTriangle } from 'lucide-react';
+import { CheckCircle, Palette, Image as ImageIcon, Download, Copy, Shield, AlertTriangle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -29,10 +30,7 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
   return (
     <div className="flex h-screen font-sans bg-slate-50 text-slate-800">
       <div className="flex-1 p-8 flex flex-col overflow-y-auto">
-        <button onClick={onExit} className="flex items-center text-slate-500 hover:text-slate-800 mb-6 transition-colors w-fit">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          Back to Dashboard
-        </button>
+        <LabHeader onExit={onExit} title="Group Poster Competition" />
 
         <h1 className="text-3xl font-bold mb-2">Group Poster Competition</h1>
         <p className="text-slate-600 mb-8">Work with your virtual group to prepare a poster for the lab competition.</p>
@@ -40,7 +38,7 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
         <div className="flex gap-8 flex-1">
           {/* Editor Sidebar */}
           <div className="w-80 flex flex-col gap-6">
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="font-bold text-slate-700 mb-4 uppercase text-sm tracking-wider">1. Select Theme</h3>
               <div className="grid grid-cols-2 gap-2">
                 {topics.map(t => {
@@ -61,7 +59,7 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
               </div>
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="font-bold text-slate-700 mb-4 uppercase text-sm tracking-wider">2. Headline</h3>
               <input 
                 type="text" 
@@ -72,7 +70,7 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
               />
             </div>
 
-            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-6">
               <h3 className="font-bold text-slate-700 mb-4 uppercase text-sm tracking-wider flex items-center gap-2">
                 <Palette className="w-4 h-4" /> Color Scheme
               </h3>
@@ -122,13 +120,13 @@ export default function LabC6PosterCompetition({ onExit }: LabProps) {
               </div>
 
               {/* Decorative graphic */}
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
+              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-slate-50/10 rounded-full"></div>
               <div className="absolute -top-10 -left-10 w-32 h-32 bg-black/10 rounded-full"></div>
 
             </div>
 
             {isFinished && (
-              <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center p-12 text-center animate-in fade-in">
+              <div className="absolute inset-0 bg-slate-50/80 backdrop-blur-sm flex flex-col items-center justify-center p-12 text-center animate-in fade-in">
                 <CheckCircle className="w-24 h-24 text-green-500 mb-6" />
                 <h2 className="text-4xl font-bold text-slate-800 mb-4">Poster Submitted!</h2>
                 <p className="text-xl text-slate-600 max-w-md">Your group's poster is now entered into the competition. It looks fantastic!</p>

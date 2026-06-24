@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ArrowRight, Droplet, Sun, CheckCircle, AlertCircle, RefreshCw, Info } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -57,22 +58,13 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <header className="bg-emerald-700 text-white p-4 flex justify-between items-center shadow-md shrink-0">
-        <h1 className="text-xl font-bold flex items-center gap-2">
-          <Droplet className="w-6 h-6" /> Environmental Chemistry Lab
-        </h1>
-        {onExit && (
-          <button onClick={onExit} className="px-4 py-2 bg-emerald-800 hover:bg-emerald-900 rounded font-medium transition-colors">
-            Exit Lab
-          </button>
-        )}
-      </header>
+      <LabHeader onExit={onExit} title="Environmental Chemistry Lab" />
 
       {/* Main Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         
         {/* Column 1: Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Info className="w-5 h-5 text-emerald-600" /> Theory & Setup
           </h2>
@@ -92,7 +84,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
             <div className="p-3 bg-orange-50 rounded-lg border border-orange-100">
               <h3 className="font-semibold text-orange-800 mb-2">Photochemical Smog</h3>
               <p>Smog forms when nitrogen oxides (NOx) and volatile organic compounds (VOCs) react in the presence of sunlight.</p>
-              <p className="mt-2 text-xs font-mono bg-white p-2 rounded">
+              <p className="mt-2 text-xs font-mono bg-slate-50 p-2 rounded">
                 NO2 + hv → NO + O<br/>
                 O + O2 → O3 (Ozone)<br/>
                 NO2 + VOCs → PAN (Peroxyacetyl nitrate)
@@ -102,7 +94,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
         </div>
 
         {/* Column 2: Interactive Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <div className="flex gap-2 mb-4 border-b pb-2">
             <button 
               onClick={() => setActiveTab('water')}
@@ -145,7 +137,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
                     {treatmentSteps.map((step, idx) => (
                       <div key={idx} className="flex items-center shrink-0">
                         {idx > 0 && <ArrowRight className="w-5 h-5 text-slate-400 mx-2" />}
-                        <div className="bg-white border-2 border-emerald-500 rounded-lg p-3 text-center shadow-md animate-in fade-in zoom-in duration-300">
+                        <div className="bg-slate-50 border-2 border-emerald-500 rounded-lg p-3 text-center shadow-md animate-in fade-in zoom-in duration-300">
                           <span className="font-bold text-emerald-700 text-sm">{step}</span>
                         </div>
                       </div>
@@ -217,7 +209,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
                   />
 
                   {/* Indicator */}
-                  <div className="absolute top-4 left-4 bg-white/80 p-2 rounded shadow backdrop-blur-sm text-sm font-bold text-slate-800">
+                  <div className="absolute top-4 left-4 bg-slate-50/80 p-2 rounded shadow backdrop-blur-sm text-sm font-bold text-slate-800">
                     Ozone / PAN Level: {calculateOzone().toFixed(0)} AQI
                   </div>
                </div>
@@ -226,7 +218,7 @@ export default function LabC11EnvironmentalChem({ onExit }: Props) {
         </div>
 
         {/* Column 3: Analysis/Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <CheckCircle className="w-5 h-5 text-emerald-600" /> Analysis & Assessment
           </h2>

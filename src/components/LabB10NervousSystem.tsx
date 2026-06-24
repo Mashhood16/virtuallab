@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, Activity, Zap, CheckCircle2 } from 'lucide-react';
+import { Activity, Zap, CheckCircle2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 type SimState = 'idle' | 'striking' | 'sensory' | 'synapse' | 'motor' | 'kicking';
 
@@ -89,19 +90,11 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center shadow-sm shrink-0">
-        <button onClick={onExit} className="p-2 mr-4 rounded-full hover:bg-slate-100 transition-colors">
-          <ArrowLeft className="w-6 h-6 text-slate-600" />
-        </button>
-        <div>
-          <h1 className="text-xl font-bold text-slate-800">Biology Lab: Nervous System & Reflex Arc</h1>
-          <p className="text-sm text-slate-500">Investigate the speed and pathways of a monosynaptic patellar reflex.</p>
-        </div>
-      </header>
+      <LabHeader onExit={onExit} title="Biology Lab: Nervous System & Reflex Arc" subtitle="Investigate the speed and pathways of a monosynaptic patellar reflex." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 overflow-hidden">
         {/* Left Column: Theory */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto">
           <h2 className="text-xl font-bold text-slate-800 mb-4">The Patellar Reflex Arc</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed">
             <p>
@@ -133,7 +126,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Middle Column: Simulator */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col items-center relative">
           <div className="flex items-center justify-between w-full mb-4">
             <h2 className="text-xl font-bold text-slate-800">Interactive Simulation</h2>
             <button
@@ -215,7 +208,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 overflow-y-auto flex flex-col">
           <div className="mb-6">
             <h2 className="text-xl font-bold text-slate-800 mb-4">Laboratory Assessment</h2>
             <p className="text-slate-600 text-sm mb-4">
@@ -260,7 +253,7 @@ export default function LabB10NervousSystem({ onExit }: { onExit?: () => void })
                 <select
                   value={q2Answer}
                   onChange={(e) => setQ2Answer(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white"
+                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50"
                 >
                   <option value="">Select a neuron type...</option>
                   <option value="motor">Motor Neuron (Efferent)</option>

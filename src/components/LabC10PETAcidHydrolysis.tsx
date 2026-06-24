@@ -93,7 +93,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 flex-grow">
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Info className="mr-2 text-orange-600"/> Setup & Theory</h2>
                     <p className="text-sm text-slate-700">
                         Chemical recycling of PET involves breaking the ester bonds via acid hydrolysis at high temperatures.
@@ -125,7 +125,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col items-center justify-center border border-slate-200 relative overflow-hidden">
                     <h2 className="text-xl font-semibold absolute top-4 left-4">Reactor Vessel</h2>
                     <div className="w-full h-64 mt-12 bg-slate-100 rounded border border-slate-300 relative flex items-center justify-center overflow-hidden">
                         <svg width="100%" height="100%" viewBox="0 0 500 200">
@@ -157,7 +157,7 @@ export default function LabC10PETAcidHydrolysis({ onExit }: LabProps) {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
+                <div className="bg-slate-50 rounded-lg shadow-lg p-4 flex flex-col space-y-4 border border-slate-200">
                     <h2 className="text-xl font-semibold flex items-center"><Database className="mr-2 text-orange-600"/> Data & Analysis</h2>
                     
                     <button onClick={recordData} disabled={!isReacting && progress === 0} className="w-full bg-orange-100 text-orange-700 py-2 rounded font-medium hover:bg-orange-200 disabled:opacity-50">

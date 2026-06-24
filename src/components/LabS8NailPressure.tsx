@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, RefreshCw, Hammer } from 'lucide-react';
+import { RefreshCw, Hammer } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
@@ -15,18 +16,7 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full"><ArrowLeft className="w-5 h-5" /></button>}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Act 8.1: Force & Pressure</h1>
-            <p className="text-sm text-slate-500">Pushing a nail into wood</p>
-          </div>
-        </div>
-        <button onClick={reset} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium">
-          <RefreshCw className="w-4 h-4" /> Reset
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Act 8.1: Force & Pressure" subtitle="Pushing a nail into wood" rightContent={<>{rightJsx}</>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -35,19 +25,19 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
           <h3 className="font-bold text-slate-700 mb-2">Nail Orientation</h3>
           <button 
             onClick={() => { setOrientation('pointed'); reset(); }}
-            className={`p-3 text-left rounded-lg font-bold border-2 ${orientation === 'pointed' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+            className={`p-3 text-left rounded-lg font-bold border-2 ${orientation === 'pointed' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
           >
             Pointed End Down
           </button>
           <button 
             onClick={() => { setOrientation('flat'); reset(); }}
-            className={`p-3 text-left rounded-lg font-bold border-2 ${orientation === 'flat' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-white hover:bg-slate-50'}`}
+            className={`p-3 text-left rounded-lg font-bold border-2 ${orientation === 'flat' ? 'border-amber-500 bg-amber-50 text-amber-700' : 'border-slate-200 bg-slate-50 hover:bg-slate-50'}`}
           >
             Flat Head Down
           </button>
         </div>
 
-        <div className="flex-1 bg-white rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[400px]">
+        <div className="flex-1 bg-slate-50 rounded-2xl shadow-sm border p-6 flex flex-col items-center justify-center relative min-h-[400px]">
           
           <div className="relative w-64 h-64 flex flex-col items-center justify-end mb-12">
             

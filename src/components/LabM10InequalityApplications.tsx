@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Scale, Layers, CheckCircle2, XCircle } from 'lucide-react';
+import { Scale, Layers, CheckCircle2, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -47,19 +48,11 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-amber-600 text-white p-4 flex items-center shadow-md">
-        <button onClick={onExit} className="mr-4 hover:bg-amber-500 p-2 rounded-full transition-colors">
-          <ArrowLeft size={24} />
-        </button>
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <Scale className="text-amber-200" />
-          Inequality Applications: Feasible Budgets
-        </h1>
-      </div>
+      <LabHeader onExit={onExit} title="Inequality Applications: Feasible Budgets" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-grow">
         {/* LEFT: Theory */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-amber-800 mb-4 flex items-center gap-2">
             <Layers /> Theory & Context
           </h2>
@@ -85,7 +78,7 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
         </div>
 
         {/* MIDDLE: Simulation */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200 flex flex-col items-center">
           <h2 className="text-xl font-bold text-amber-800 mb-4">Feasible Region Explorer</h2>
           
           <div className="w-full max-w-md space-y-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm font-semibold">
@@ -103,7 +96,7 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
             </div>
           </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-white rounded-lg overflow-hidden border-2 border-slate-300 shadow-inner">
+          <div className="relative w-full max-w-sm aspect-square bg-slate-50 rounded-lg overflow-hidden border-2 border-slate-300 shadow-inner">
             <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} className="w-full h-full">
               {/* Axes Labels */}
               <text x="280" y="295" fontSize="10" fill="#64748b">x</text>
@@ -128,14 +121,14 @@ export default function LabM10InequalityApplications({ onExit }: Props) {
               <circle cx={mapCoord(10)} cy={invMapY(mapCoord(10))} r="3" fill="#64748b" />
               <text x={mapCoord(10) + 5} y={invMapY(mapCoord(10)) - 5} fontSize="10" fill="#64748b">(10,10)</text>
             </svg>
-            <div className="absolute top-2 right-2 text-xs bg-white/90 p-1 border border-slate-200 rounded text-slate-600">
+            <div className="absolute top-2 right-2 text-xs bg-slate-50/90 p-1 border border-slate-200 rounded text-slate-600">
                Graph domain/range: 0 to {MAX_CARS} cars
             </div>
           </div>
         </div>
 
         {/* RIGHT: Assessment */}
-        <div className="bg-white rounded-xl shadow-lg p-6 border border-slate-200">
+        <div className="bg-slate-50 rounded-xl shadow-lg p-6 border border-slate-200">
           <h2 className="text-xl font-bold text-amber-800 mb-4">Laboratory Assessment</h2>
           
           <div className="bg-amber-50 p-4 rounded-lg border border-amber-100 mb-6">

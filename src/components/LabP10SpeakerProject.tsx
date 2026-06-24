@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Save, RefreshCw, CheckCircle, XCircle, Music } from 'lucide-react';
+import { Save, RefreshCw, CheckCircle, XCircle, Music } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit?: () => void;
@@ -77,27 +78,12 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-white border-b p-4 flex items-center justify-between sticky top-0 shadow-sm z-10">
-        <div className="flex items-center gap-4">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-          )}
-          <div>
-            <h1 className="text-xl font-bold text-slate-800">Unit 13: Making a Speaker (Motor Effect)</h1>
-            <p className="text-sm text-slate-500">Investigate the electromagnetic forces that drive a DIY speaker.</p>
-          </div>
-        </div>
-        <button onClick={() => setData([])} className="flex items-center gap-2 bg-slate-200 px-4 py-2 rounded-md hover:bg-slate-300 font-medium transition-colors">
-          <RefreshCw className="w-4 h-4" /> Clear Data
-        </button>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 13: Making a Speaker (Motor Effect)" subtitle="Investigate the electromagnetic forces that drive a DIY speaker." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         
         {/* Column 1: Theory & Setup */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <h2 className="text-lg font-bold text-slate-800 mb-4 border-b pb-2">Theory & Setup</h2>
           <div className="prose prose-sm text-slate-600 mb-6">
             <p>
@@ -171,7 +157,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
                )}
 
                {/* The Cup */}
-               <div className={`w-40 h-32 border-4 border-white/20 bg-white/10 rounded-b-3xl relative flex flex-col justify-end items-center pb-4 backdrop-blur-sm z-10 transition-transform ${isPlaying ? 'animate-[vibrate_0.1s_infinite]' : ''}`}>
+               <div className={`w-40 h-32 border-4 border-white/20 bg-slate-50/10 rounded-b-3xl relative flex flex-col justify-end items-center pb-4 backdrop-blur-sm z-10 transition-transform ${isPlaying ? 'animate-[vibrate_0.1s_infinite]' : ''}`}>
                  {/* Magnet inside */}
                  <div className={`w-12 h-6 bg-slate-400 border-2 border-slate-500 rounded-sm mb-2 z-0 shadow-lg relative flex items-center justify-center ${selectedMagnet.id === 'mystery' ? 'bg-purple-900' : ''}`}>
                    <span className="text-[10px] text-white font-bold">{selectedMagnet.id === 'mystery' ? '?' : 'N  S'}</span>
@@ -211,7 +197,7 @@ export default function LabP10SpeakerProject({ onExit }: LabProps) {
         </div>
 
         {/* Column 3: Data & Assessment */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
+        <div className="bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-slate-800">Data Logger</h2>
             <button 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Wind, Info, Image as ImageIcon } from 'lucide-react';
+import { Wind, Info, Image as ImageIcon } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabProps {
   onExit: () => void;
@@ -10,15 +11,10 @@ export default function LabS6LungModel({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen bg-slate-50 font-sans">
-      <div className="bg-white border-b border-slate-200 p-4 flex items-center justify-between shadow-sm">
-        <button onClick={onExit} className="flex items-center text-slate-600 hover:text-red-600 font-medium">
-          <ArrowLeft className="w-5 h-5 mr-2" /> Back to Dashboard
-        </button>
-        <h1 className="text-xl font-bold text-slate-800">Unit 4: Working Model of Lungs</h1>
-      </div>
+      <LabHeader onExit={onExit} title="Unit 4: Working Model of Lungs" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-5xl bg-white rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
+        <div className="w-full max-w-5xl bg-slate-50 rounded-2xl shadow-sm border border-slate-200 p-8 flex gap-8">
           
           <div className="flex-1">
              <div className="bg-red-50 border border-red-200 text-red-800 p-6 rounded-xl mb-8 flex gap-4">
@@ -86,7 +82,7 @@ export default function LabS6LungModel({ onExit }: LabProps) {
                 </div>
              </div>
 
-             <div className="text-center bg-white p-4 rounded-lg shadow-sm border border-slate-200 w-full">
+             <div className="text-center bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-200 w-full">
                <span className="block font-bold text-slate-800 text-lg mb-1">{inhale ? 'Inhalation' : 'Exhalation'}</span>
                <span className="text-sm text-slate-600">
                  {inhale 

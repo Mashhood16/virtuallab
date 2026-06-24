@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
-import { ArrowLeft, Rocket, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import { Rocket, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => void }) {
   const [velocity, setVelocity] = useState(30);
@@ -56,20 +57,11 @@ export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => voi
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <div className="bg-slate-800 text-white p-4 flex items-center justify-between shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-slate-700 p-2 rounded-full transition-colors">
-              <ArrowLeft size={20} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold flex items-center gap-2"><Rocket className="text-red-400" /> Translatory Motion</h1>
-        </div>
-      </div>
+      <LabHeader onExit={onExit} title="Translatory Motion" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 flex-1 gap-4 p-4 min-h-0">
         {/* Theory */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Ballistics & Kinematics</h2>
           <div className="prose prose-sm text-slate-600">
             <p>Projectile motion describes an object in flight under the influence of gravity alone (ideal) or with air resistance (realistic).</p>
@@ -104,7 +96,7 @@ export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Simulator */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Trajectory Visualizer</h2>
           <svg width="340" height="300" className="bg-blue-50 rounded-lg border border-slate-300 shadow-inner">
             {/* Grid */}
@@ -132,7 +124,7 @@ export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => voi
         </div>
 
         {/* Assessment */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 overflow-y-auto">
           <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
             <Calculator className="w-5 h-5 text-emerald-500" />
             Kinematics Assessment

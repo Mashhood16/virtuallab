@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { ArrowLeft, RefreshCw, BarChart2, BookOpen, CheckCircle, Target, Save } from 'lucide-react';
+import { RefreshCw, BarChart2, BookOpen, CheckCircle, Target, Save } from 'lucide-react';
 import { useHistory } from '../store';
+import LabHeader from './LabHeader';
 
 interface Point {
     id: number;
@@ -115,20 +116,12 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
     return (
         <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
             {/* Header */}
-            <div className="bg-slate-800 text-white p-4 flex items-center shadow-md shrink-0">
-                <button onClick={onExit} className="mr-4 hover:bg-slate-700 p-2 rounded transition-colors">
-                    <ArrowLeft size={24} />
-                </button>
-                <div>
-                    <h1 className="text-xl font-bold">Lab 12.1: Machine Learning & Statistical Testing</h1>
-                    <p className="text-sm text-slate-300">Test-Train Splits, Metrics, and P-values</p>
-                </div>
-            </div>
+            <LabHeader onExit={onExit} title="Lab 12.1: Machine Learning & Statistical Testing" />
 
             {/* Main 3-column Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 h-full min-h-0">
                 {/* Column 1: Theory */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
                         <BookOpen className="text-indigo-500" /> Theory & Context
                     </h2>
@@ -151,7 +144,7 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Column 2: Simulator */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col overflow-y-auto">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
                         <BarChart2 className="text-indigo-500" /> Interactive Data Science
                     </h2>
@@ -208,7 +201,7 @@ export default function LabCS12MachineLearning({ onExit }: { onExit?: () => void
                 </div>
 
                 {/* Column 3: Assessment */}
-                <div className="bg-white p-6 rounded-xl shadow border border-slate-200 flex flex-col">
+                <div className="bg-slate-50 p-6 rounded-xl shadow border border-slate-200 flex flex-col">
                     <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2 shrink-0">
                         <CheckCircle className="text-indigo-500" /> Assessment & Analysis
                     </h2>

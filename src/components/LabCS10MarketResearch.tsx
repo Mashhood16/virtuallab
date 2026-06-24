@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, CheckCircle, Calculator, Target, BarChart2 } from 'lucide-react';
+import { CheckCircle, Calculator, Target, BarChart2 } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface Props {
   onExit?: () => void;
@@ -55,12 +56,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
       <header className="bg-blue-600 text-white p-4 shadow-md flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <button onClick={onExit} className="p-2 hover:bg-blue-700 rounded-full transition-colors" title="Exit Lab">
-            <ArrowLeft size={24} />
-          </button>
-          <h1 className="text-xl font-bold">Lab: Market Research & CAC</h1>
-        </div>
+        <LabHeader onExit={onExit} title="Lab: Market Research & CAC" />
         <div className="flex items-center gap-2">
           <Target size={20} />
           <span className="font-semibold">Grade 10 Computer Science</span>
@@ -71,7 +67,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
       <main className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         {/* Column 1: Theory */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <BarChart2 className="text-blue-600" /> Theory & Setup
           </h2>
@@ -93,7 +89,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
         </section>
 
         {/* Column 2: Simulation */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <Calculator className="text-blue-600" /> Interactive Builders
           </h2>
@@ -138,7 +134,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
             <h3 className="font-semibold text-slate-700 mb-2">USP Matrix Builder</h3>
             <p className="text-xs text-slate-500 mb-4">Click on the grid to position your product based on Price and Quality.</p>
             <div 
-              className="relative w-full aspect-square bg-white border-2 border-slate-300 cursor-crosshair rounded-md overflow-hidden"
+              className="relative w-full aspect-square bg-slate-50 border-2 border-slate-300 cursor-crosshair rounded-md overflow-hidden"
               onClick={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
                 const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -179,7 +175,7 @@ export default function LabCS10MarketResearch({ onExit }: Props) {
         </section>
 
         {/* Column 3: Analysis */}
-        <section className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
+        <section className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-6">
           <h2 className="text-lg font-bold text-slate-800 border-b pb-2 flex items-center gap-2">
             <CheckCircle className="text-blue-600" /> Data & Assessment
           </h2>

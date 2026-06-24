@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
+import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
   const [conicType, setConicType] = useState<'parabola' | 'ellipse' | 'hyperbola'>('parabola');
@@ -79,31 +80,24 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <header className="bg-blue-900 text-white p-4 flex items-center justify-between shadow-md shrink-0">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="hover:bg-blue-800 p-2 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-xl font-bold">Lab M12.1: Advanced Conic Sections</h1>
-        </div>
+      <LabHeader onExit={onExit} title="Lab M12.1: Advanced Conic Sections" />
+      <div className="bg-blue-900 text-white p-2 flex justify-end shrink-0">
         <div className="flex bg-blue-800 rounded-lg p-1">
           {(['parabola', 'ellipse', 'hyperbola'] as const).map(type => (
             <button
               key={type}
               onClick={() => setConicType(type)}
-              className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-colors ${conicType === type ? 'bg-white text-blue-900 shadow' : 'text-blue-100 hover:bg-blue-700'}`}
+              className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-colors ${conicType === type ? 'bg-slate-50 text-blue-900 shadow' : 'text-blue-100 hover:bg-blue-700'}`}
             >
               {type}
             </button>
           ))}
         </div>
-      </header>
+      </div>
 
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 min-h-0">
         {/* Theory Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-blue-700 mb-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="text-lg font-bold">Theoretical Context</h2>
@@ -156,7 +150,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Visualizer Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 items-center justify-center relative overflow-hidden">
           <h2 className="text-lg font-bold text-slate-800 self-start absolute top-5 left-5 z-10">Live Simulation</h2>
           
           <svg viewBox="-60 -60 120 120" className="w-full max-w-md aspect-square bg-slate-50 border border-slate-200 rounded-lg shadow-inner mt-8">
@@ -219,7 +213,7 @@ export default function LabM12Conics({ onExit }: { onExit?: () => void }) {
         </div>
 
         {/* Assessment Column */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
+        <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col gap-4 overflow-y-auto">
           <div className="flex items-center gap-2 text-blue-700 mb-2 shrink-0">
             <Settings2 className="w-5 h-5" />
             <h2 className="text-lg font-bold">Parameters & Assessment</h2>

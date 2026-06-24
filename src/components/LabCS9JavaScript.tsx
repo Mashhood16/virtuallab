@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, CheckCircle, XCircle, Code, BookOpen, ListChecks } from 'lucide-react';
+import { Play, CheckCircle, XCircle, Code, BookOpen, ListChecks } from 'lucide-react';
+import LabHeader from './LabHeader';
 
 interface LabCS9JavaScriptProps {
   onExit?: () => void;
@@ -67,19 +68,12 @@ if (score >= 90) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none text-slate-800">
       <div className="flex items-center justify-between bg-indigo-600 text-white p-4 shadow-md">
-        <div className="flex items-center gap-3">
-          {onExit && (
-            <button onClick={onExit} className="p-2 hover:bg-indigo-700 rounded-full transition-colors">
-              <ArrowLeft size={24} />
-            </button>
-          )}
-          <h1 className="text-2xl font-bold">JavaScript Logic Sandbox</h1>
-        </div>
+        <LabHeader onExit={onExit} title="JavaScript Logic Sandbox" />
       </div>
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Theory */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-indigo-700">
             <BookOpen size={24} /> Theory & Context
           </h2>
@@ -133,7 +127,7 @@ if (score >= 90) {
         </div>
 
         {/* Right Column: Assessment */}
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+        <div className="bg-slate-50 p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-indigo-700">
             <ListChecks size={24} /> Automated Test Suite
           </h2>
@@ -156,10 +150,10 @@ if (score >= 90) {
                       )}
                     </div>
                     <div className="text-sm text-slate-600">
-                      Expected: <span className="font-mono bg-white px-1 border rounded">{result.expected}</span>
+                      Expected: <span className="font-mono bg-slate-50 px-1 border rounded">{result.expected}</span>
                     </div>
                     <div className="text-sm text-slate-600">
-                      Actual: <span className="font-mono bg-white px-1 border rounded text-red-600">{result.actual}</span>
+                      Actual: <span className="font-mono bg-slate-50 px-1 border rounded text-red-600">{result.actual}</span>
                     </div>
                   </div>
                 ))}
