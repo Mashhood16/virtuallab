@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Flame } from 'lucide-react';
+import {Flame } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -38,7 +38,7 @@ export default function LabS8ThermalConductivity({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 5.6: Thermal Conductivity" subtitle="Observe how heat travels through materials" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 5.6: Thermal Conductivity" subtitle="Observe how heat travels through materials" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}

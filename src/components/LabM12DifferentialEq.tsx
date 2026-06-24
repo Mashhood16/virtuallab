@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, CheckCircle, Calculator, Thermometer, Wind, Play, Pause, RotateCcw } from 'lucide-react';
+import { BookOpen, Activity, CheckCircle, Calculator, Play, Pause, RotateCcw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabM12DifferentialEq({ onExit }: { onExit?: () => void }) {
-    const [tab, setTab] = useState<'cooling' | 'ballistics'>('cooling');
+    const [tab] = useState<'cooling' | 'ballistics'>('cooling');
     
     // Cooling States
     const [kCool, setKCool] = useState(0.05);

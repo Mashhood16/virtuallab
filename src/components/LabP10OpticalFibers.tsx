@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Activity, Table2, Info, BookOpen } from 'lucide-react';
+import {Activity, Table2, Info, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }

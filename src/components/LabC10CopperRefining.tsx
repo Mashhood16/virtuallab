@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Play, Square, Info, Activity, Save, RefreshCw, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
+import { Play, Square, Info, Save, RefreshCw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC10CopperRefining({ onExit }: { onExit: () => void }) {

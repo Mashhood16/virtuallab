@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Calculator, Activity, BookOpen } from 'lucide-react';
+import {Calculator, Activity, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -13,15 +13,6 @@ export default function LabP10MagneticField({ onExit }: LabProps) {
   const [data, setData] = useState<{ x: number, invX3: number, B: number }[]>([]);
   const [answer, setAnswer] = useState<string>('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-
-  const resetLab = () => {
-    setM(0.5);
-    setXCm(10);
-    setIsMystery(false);
-    setData([]);
-    setAnswer('');
-    setFeedback(null);
-  };
 
   const startMystery = () => {
     setIsMystery(true);

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, Mic, Layout, Clock, Play, Square } from 'lucide-react';
+import { CheckCircle, Layout, Clock, Play, Square } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

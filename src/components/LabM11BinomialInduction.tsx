@@ -1,9 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, Triangle, AlignCenterVertical, CheckCircle2, XCircle } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabM11BinomialInduction({ onExit }: { onExit?: () => void }) {
-    const [mode, setMode] = useState<'induction' | 'pascal'>('induction');
+    const [mode] = useState<'induction' | 'pascal'>('induction');
+
+    // Generate Pascal's Triangle rows
+    const generatePascal = (numRows: number): number[][] => {
+        const triangle: number[][] = [];
+        for (let row = 0; row < numRows; row++) {
+            const rowData: number[] = [];
+            for (let k = 0; k <= row; k++) {
+                rowData.push(nCr(row, k));
+            }
+            triangle.push(rowData);
+        }
+        return triangle;
+    };
 
     // --- Induction State ---
     const NUM_DOMINOES = 15;
@@ -63,18 +76,6 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
     const factorial = (n: number): number => n <= 1 ? 1 : n * factorial(n - 1);
     const nCr = (n: number, r: number): number => factorial(n) / (factorial(r) * factorial(n - r));
 
-    const generatePascalTriangle = (rows: number) => {
-        const triangle: number[][] = [];
-        for (let n = 0; n < rows; n++) {
-            const row: number[] = [];
-            for (let k = 0; k <= n; k++) {
-                row.push(nCr(n, k));
-            }
-            triangle.push(row);
-        }
-        return triangle;
-    };
-
     const checkAnswers = () => {
         const f = { ...feedback };
         if (mode === 'induction') {
@@ -118,7 +119,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                     ) : (
                         <>
                             <div>
-                                <h2 className="text-2xl font-bold text-slate-800 mb-2">Pascal's Triangle & Binomial Theorem</h2>
+                                <h2 className="text-2xl font-bold text-slate-800 mb-2">Pascal's& Binomial Theorem</h2>
                                 <p className="text-slate-600 mb-4">Pascal's Triangle gives the coefficients for binomial expansions, represented by combinations {"$\\binom{n}{k}$"}.</p>
                                 
                                 <div className="bg-indigo-50 p-4 rounded-xl border border-indigo-200 mb-4">
@@ -201,7 +202,7 @@ export default function LabM11BinomialInduction({ onExit }: { onExit?: () => voi
                     {mode === 'pascal' && (
                         <div className="w-full flex flex-col items-center gap-6 mt-10">
                             <div className="flex flex-col items-center gap-1">
-                                {generatePascalTriangle(pascalRows).map((row, n) => (
+                                {generatePascal(pascalRows).map((row, n) => (
                                     <div key={n} className="flex gap-1">
                                         {row.map((val, k) => (
                                             <button 

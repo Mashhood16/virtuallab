@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, RotateCcw, Droplets } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP9VolumeDensity({ onExit }: { onExit?: () => void }) {

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { BarChart2, Play, RotateCcw, CheckCircle, XCircle, FileCode, Pause } from 'lucide-react';
+import { BarChart2, Play, RotateCcw, CheckCircle, XCircle, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabCS11Algorithms({ onExit }: { onExit?: () => void }) {

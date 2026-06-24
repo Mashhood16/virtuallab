@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, RotateCcw, Ruler, Target } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, Target } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP9MeasurementTools({ onExit }: { onExit?: () => void }) {

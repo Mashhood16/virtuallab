@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
+import {Plus, Trash2, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -62,14 +62,6 @@ export default function LabP10RefractionIllusion({ onExit }: LabProps) {
     } else {
       setAssessmentResult('incorrect');
     }
-  };
-
-  const resetLab = () => {
-    setAngleI(30);
-    setMaterial('water');
-    setData([]);
-    setAssessmentAnswer('');
-    setAssessmentResult('idle');
   };
 
   return (

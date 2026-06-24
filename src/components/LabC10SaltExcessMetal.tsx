@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Flame, Filter, RotateCcw, Check, Beaker } from 'lucide-react';
+import { Flame, Filter, RotateCcw, Check} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void }) {
@@ -9,7 +9,7 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
   const [isFiltered, setIsFiltered] = useState(false);
   const [isEvaporated, setIsEvaporated] = useState(false);
   const [waterLevel, setWaterLevel] = useState(100);
-  const [equation, setEquation] = useState("Empty Beaker");
+  const [equation, setEquation] = useState("Empty");
   const [assessmentAns, setAssessmentAns] = useState("");
   const [assessmentStatus, setAssessmentStatus] = useState<boolean | null>(null);
 
@@ -31,7 +31,7 @@ export default function LabC10SaltExcessMetal({ onExit }: { onExit?: () => void 
   const hasExcessZn = znScoops > reactedZn && reactedZn === 1;
 
   useEffect(() => {
-     if (!acidAdded) setEquation("Empty Beaker");
+     if (!acidAdded) setEquation("Empty");
      else if (acidAdded && znScoops === 0) setEquation("H₂SO₄(aq)");
      else if (isReacting) setEquation("Zn(s) + H₂SO₄(aq) ➔ ZnSO₄(aq) + H₂(g)↑");
      else if (hasExcessZn && !isFiltered) setEquation("ZnSO₄(aq) + Excess Zn(s) [Reaction Complete]");

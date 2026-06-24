@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -24,6 +24,20 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
   const F_exact = (k * Math.abs(q1 * 1e-6) * Math.abs(q2 * 1e-6)) / Math.pow(distance * 1e-2, 2);
   const F_measured = F_exact === 0 ? 0 : F_exact * (1 + noise);
 
+  // Assessment
+  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
+  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
+  
+  const checkAnswer = () => {
+    const val = parseFloat(assessmentAnswer);
+    // F = k*|q1*q2|/r^2 => 90 = 8.987e9 * 4e-6 * q2e-6 / (0.02)^2 => q2 ≈ 1.0
+    if (!isNaN(val) && Math.abs(val - 1.0) < 0.2) {
+      setAssessmentStatus('correct');
+    } else {
+      setAssessmentStatus('incorrect');
+    }
+  };
+
   // Data Logging
   const [dataPoints, setDataPoints] = useState<Array<{ id: number; q1: number; q2: number; r: number; f: number }>>([]);
   const recordData = () => {
@@ -31,24 +45,6 @@ export default function LabP10ElectrostaticCharges({ onExit }: LabProps) {
       ...prev,
       { id: Date.now(), q1, q2, r: distance, f: F_measured }
     ]);
-  };
-  const clearData = () => setDataPoints([]);
-
-  // Assessment
-  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
-  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
-  // Unknown q2 when F = 90N, q1 = 4uC, r = 2cm. 
-  // F = k * q1 * q2 / r^2 => q2 = F * r^2 / (k * q1)
-  // q2 = 90 * (0.02)^2 / (8.987e9 * 4e-6) = 0.036 / 35948 = 1.001e-6 C => ~1 uC.
-  const expectedAnswer = 1.0;
-
-  const checkAnswer = () => {
-    const val = parseFloat(assessmentAnswer);
-    if (!isNaN(val) && Math.abs(val - expectedAnswer) < 0.1) {
-      setAssessmentStatus('correct');
-    } else {
-      setAssessmentStatus('incorrect');
-    }
   };
 
   return (

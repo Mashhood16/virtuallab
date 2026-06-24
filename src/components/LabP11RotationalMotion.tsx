@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { RefreshCw, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP11RotationalMotion({ onExit }: { onExit?: () => void }) {

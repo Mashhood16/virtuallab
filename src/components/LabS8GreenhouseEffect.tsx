@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Thermometer, Sun, Wind,  Play, Square, RefreshCw } from 'lucide-react';
+import { Thermometer, Sun, Wind} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabS8GreenhouseEffectProps {

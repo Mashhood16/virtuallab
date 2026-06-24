@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Rocket, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP11TranslatoryMotion({ onExit }: { onExit?: () => void }) {

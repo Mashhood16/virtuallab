@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, Rocket } from 'lucide-react';
+import {Rocket } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -100,7 +100,7 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
               </div>
 
               <div className="absolute top-4 left-4 flex gap-2">
-                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === 'ArrowLeft' ? 'bg-amber-400 text-amber-900' : 'bg-slate-800 text-slate-500'}`}>
+                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === '' ? 'bg-amber-400 text-amber-900' : 'bg-slate-800 text-slate-500'}`}>
                   &larr; Left
                 </div>
                 <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === 'ArrowRight' ? 'bg-amber-400 text-amber-900' : 'bg-slate-800 text-slate-500'}`}>

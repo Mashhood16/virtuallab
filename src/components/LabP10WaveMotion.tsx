@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RefreshCw, Play, Pause, Plus, CheckCircle } from 'lucide-react';
+import {Play, Pause, Plus, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -38,15 +38,6 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
     }
     return () => clearInterval(timer);
   }, [isPaused]);
-
-  const handleReset = () => {
-    setIsPaused(false);
-    setTime(0);
-    setData([]);
-    setMeasuredL('');
-    setFeedback('');
-    setAnswer('');
-  };
 
   const handleRecord = () => {
     const L = parseFloat(measuredL);
@@ -111,7 +102,7 @@ export default function LabP10WaveMotion({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 12: Wave Motion" subtitle="Investigate the relationship between wave speed, tension, and linear density." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 12: Wave Motion" subtitle="Investigate the relationship between wave speed, tension, and linear density." />
 
       <div className="flex-1 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Setup */}

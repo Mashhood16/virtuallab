@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -21,7 +20,7 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         {/* Solution Select */}

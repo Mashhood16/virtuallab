@@ -24,7 +24,7 @@ const EquationDisplay = ({ equation }: { equation: string[] }) => (
 );
 
 export default function LabC9AtomicStructure({ onExit }: Props) {
-  const [activeTab, setActiveTab] = useState<'alpha' | 'halogen'>('halogen');
+  const [activeTab] = useState<'alpha' | 'halogen'>('halogen');
   const [equation, setEquation] = useState<string[]>([]);
   
   // Halogen Displacement State
@@ -107,20 +107,6 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
       if (val === 234) setFeedback("Correct! 238 - 4 = 234.");
       else setFeedback("Incorrect. Remember an alpha particle has a mass number of 4.");
     }
-  };
-
-  const resetSim = () => {
-    setEquation([]);
-    setSelHalogen('');
-    setSelHalide('');
-    setBeakerColor('rgba(200,200,200,0.1)');
-    setDecaying(false);
-    setU238Count(100);
-    setTh234Count(0);
-
-    setTime(0);
-    setAnswer('');
-    setFeedback('');
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import { RefreshCw, Plus, CheckCircle, Info, Lock } from 'lucide-react';
+import {Plus, CheckCircle, Info, Lock } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -61,15 +61,6 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
     }
   }, [currentTemp, isLocked, boltSnapped]);
 
-  const reset = () => {
-    setTargetTemp(20);
-    setCurrentTemp(20);
-    setBoltSnapped(false);
-    setDataLog([]);
-    setStudentAnswer('');
-    setIsCorrect(null);
-  };
-
   // Physics calculation
   const dT = currentTemp - 20;
   const exactDL_mm = materials[material].alpha * length * dT * 0.001; // alpha is in 10^-6, so *10^-6 * 10^3 = 0.001
@@ -96,7 +87,7 @@ export default function LabP10ThermalExpansionSolid({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Thermal Expansion of Solids" subtitle="Measure how much metal rods expand when heated, and observe the massive forces generated." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Thermal Expansion of Solids" subtitle="Measure how much metal rods expand when heated, and observe the massive forces generated." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         

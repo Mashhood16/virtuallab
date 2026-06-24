@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Layers, Activity, CheckCircle, Play, RefreshCw, Microscope } from 'lucide-react';
+import { BookOpen, Layers, Activity, CheckCircle, Play, RefreshCw} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC12SpectroscopyChromatography({ onExit }: { onExit?: () => void }) {

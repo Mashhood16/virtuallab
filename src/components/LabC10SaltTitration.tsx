@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Flame, FlaskConical, RotateCcw, Check } from 'lucide-react';
+import { Flame, RotateCcw, Check } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC10SaltTitration({ onExit }: { onExit?: () => void }) {

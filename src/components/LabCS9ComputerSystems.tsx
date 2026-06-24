@@ -8,7 +8,7 @@ interface RoleItem { id: string; desc: string; layer: number; }
 interface LayerItem { num: number; name: string; expectedLayer: number; filledBy: RoleItem | null; }
 
 export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void }) {
-  const [activeTab, setActiveTab] = useState<'hardware' | 'osi'>('hardware');
+  const [activeTab] = useState<'hardware' | 'osi'>('hardware');
 
   const [hwSlots, setHwSlots] = useState<SlotItem[]>([
     { id: 'cpu', name: 'CPU Socket', expected: 'CPU', filledBy: null },

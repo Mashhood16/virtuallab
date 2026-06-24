@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import { BookOpen, Activity, Play, Pause, RotateCcw, LineChart, Target, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LogEntry {

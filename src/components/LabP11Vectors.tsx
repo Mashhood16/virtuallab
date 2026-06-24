@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Compass, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import {Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP11Vectors({ onExit }: { onExit?: () => void }) {

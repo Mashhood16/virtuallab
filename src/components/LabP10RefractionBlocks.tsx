@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Activity } from 'lucide-react';
+import {Activity } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -65,7 +65,7 @@ export default function LabP10RefractionBlocks({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 14: Refraction & Snell's Law" subtitle="Determine the refractive index by measuring incident and refracted angles." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 14: Refraction & Snell's Law" subtitle="Determine the refractive index by measuring incident and refracted angles." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         

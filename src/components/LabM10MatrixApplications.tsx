@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, FlaskConical, CheckCircle2, XCircle } from 'lucide-react';
+import { Box, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

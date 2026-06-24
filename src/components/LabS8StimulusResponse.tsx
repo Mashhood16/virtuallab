@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Sun, Moon } from 'lucide-react';
+import {Sun, Moon } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabS8StimulusResponseProps {

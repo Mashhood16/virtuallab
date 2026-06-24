@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { RefreshCw, Hand } from 'lucide-react';
+import {Hand } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -16,8 +16,6 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
     setPushed(p => Math.min(100, Math.max(0, p + e.movementY)));
   };
 
-  const reset = () => setPushed(0);
-
   // Big syringe area = 20ml, Small syringe = 10ml
   // So small moving down 1 unit moves big up 0.5 units
   const elevatorLift = pushed * 0.5;
@@ -29,7 +27,7 @@ export default function LabS8HydraulicElevator({ onExit }: LabProps) {
       onPointerLeave={handlePointerUp}
       onPointerMove={handlePointerMove}
     >
-      <LabHeader onExit={onExit} title="Act 8.2: Hydraulic Elevator" subtitle="Fluid pressure multiplies force" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 8.2: Hydraulic Elevator" subtitle="Fluid pressure multiplies force" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         

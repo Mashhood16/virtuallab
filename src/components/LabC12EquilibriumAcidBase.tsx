@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FlaskConical, Droplets, Activity, CheckCircle } from 'lucide-react';
+import {Droplets, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC12EquilibriumAcidBase({ onExit }: { onExit?: () => void }) {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Droplets, Info, Activity, Database, CheckCircle, RefreshCw,  FlaskConical, XCircle } from 'lucide-react';
+import {Info, Activity, Database, CheckCircle, RefreshCw,  FlaskConical, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface TitrationLog {

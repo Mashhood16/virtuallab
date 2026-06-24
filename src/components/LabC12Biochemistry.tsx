@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, Play, CheckCircle, RefreshCw, Dna } from 'lucide-react';
+import { BookOpen, Activity, Play, CheckCircle, RefreshCw} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC12Biochemistry({ onExit }: { onExit?: () => void }) {

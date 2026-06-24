@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Folder, File, Copy, Edit2, CheckCircle, Trash2, Monitor } from 'lucide-react';
+import { ArrowLeft, Folder, File, CheckCircle, Monitor } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -20,8 +20,6 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
   ]);
   const [currentFolderId, setCurrentFolderId] = useState<string>('drive_d');
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
-  const [clipboard, setClipboard] = useState<string | null>(null);
-  
   const [isCreating, setIsCreating] = useState(false);
   const [isRenaming, setIsRenaming] = useState(false);
   const [inputName, setInputName] = useState('');
@@ -56,33 +54,6 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
     setIsRenaming(false);
     setInputName('');
     setSelectedItemId(null);
-  };
-
-  const handleCopy = () => {
-    if (selectedItemId) {
-      setClipboard(selectedItemId);
-    }
-  };
-
-  const handlePaste = () => {
-    if (clipboard) {
-      const itemToCopy = items.find(i => i.id === clipboard);
-      if (itemToCopy) {
-        // Recursive copy simulation (shallow for this lab scope)
-        setItems([...items, {
-          ...itemToCopy,
-          id: `item_${Date.now()}`,
-          parentId: currentFolderId
-        }]);
-      }
-    }
-  };
-
-  const handleDelete = () => {
-    if (selectedItemId) {
-      setItems(items.filter(i => i.id !== selectedItemId));
-      setSelectedItemId(null);
-    }
   };
 
   return (

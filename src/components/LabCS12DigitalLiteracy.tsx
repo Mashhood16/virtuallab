@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from 'react';
-import { Search, Database,  Table, EyeOff, CheckCircle, Save } from 'lucide-react';
+import { Search, Table, EyeOff, CheckCircle, Save } from 'lucide-react';
 import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 

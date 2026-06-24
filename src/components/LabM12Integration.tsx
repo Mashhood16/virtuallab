@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, CheckCircle, Calculator, Cylinder, Droplets, BringToFront } from 'lucide-react';
+import { BookOpen, Activity, CheckCircle, Calculator} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabM12Integration({ onExit }: { onExit?: () => void }) {
-    const [tab, setTab] = useState<'solid' | 'dam' | 'spring'>('solid');
+    const [tab] = useState<'solid' | 'dam' | 'spring'>('solid');
     
     // Solid States
     const [kSolid, setKSolid] = useState(1);

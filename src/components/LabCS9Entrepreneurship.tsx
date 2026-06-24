@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calculator, DollarSign, TrendingUp, Users, Target, CheckCircle2, BarChart2, Briefcase } from 'lucide-react';
+import { Calculator, DollarSign, TrendingUp, Users, Target, CheckCircle2, BarChart2} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

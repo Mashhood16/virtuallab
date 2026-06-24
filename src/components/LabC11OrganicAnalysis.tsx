@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TestTube, Info, FlaskConical, Beaker, CheckCircle, RefreshCw } from 'lucide-react';
+import {Info, FlaskConical, Beaker, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -19,6 +19,11 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
     }, 800);
     return () => clearInterval(interval);
   }, []);
+
+  // Ground function
+  const handleGround = () => {
+    setQNet(0);
+  };
 
   // When distance goes to 0, conduction happens (charge transfers to electroscope)
   useEffect(() => {
@@ -50,11 +55,6 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
       ...prev,
       { id: Date.now(), qRod, d: distance, qNet: parseFloat(qNet.toFixed(1)), angle: measuredAngle }
     ]);
-  };
-  const clearData = () => setDataPoints([]);
-
-  const groundElectroscope = () => {
-    setQNet(0);
   };
 
   // Assessment
@@ -127,7 +127,7 @@ export default function LabP10Electroscope({ onExit }: LabProps) {
             </div>
 
             <button 
-              onClick={groundElectroscope}
+              onClick={handleGround}
               className="w-full py-2 bg-slate-800 text-white rounded font-medium hover:bg-slate-700 transition-colors"
             >
               Ground Electroscope (Reset Net Charge)

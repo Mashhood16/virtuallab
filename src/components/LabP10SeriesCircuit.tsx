@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -36,6 +36,20 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
   // Assuming a reference power of 1W is "max brightness"
   const getBrightness = (r: number) => Math.min(1, Math.max(0.05, (currentExact * currentExact * r) / 1.0));
 
+  // Assessment
+  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
+  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
+  
+  const checkAnswer = () => {
+    const val = parseFloat(assessmentAnswer);
+    // R_eq = 20+20+R3, I = 12/R_eq = 0.2 => R_eq = 60 => R3 = 20
+    if (!isNaN(val) && Math.abs(val - 20) < 2) {
+      setAssessmentStatus('correct');
+    } else {
+      setAssessmentStatus('incorrect');
+    }
+  };
+
   // Data Logging
   const [dataPoints, setDataPoints] = useState<Array<{ id: number; n: number; v: number; req: number; i: number }>>([]);
   const recordData = () => {
@@ -49,23 +63,6 @@ export default function LabP10SeriesCircuit({ onExit }: LabProps) {
         i: currentMA 
       }
     ]);
-  };
-  const clearData = () => setDataPoints([]);
-
-  // Assessment
-  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
-  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
-  // Problem: 12V battery, I = 200mA. 3 resistors in series. R1=20, R2=20. Find R3. (Assume rInt=0)
-  // Rtotal = 12 / 0.2 = 60 Ohms. R3 = 60 - 20 - 20 = 20 Ohms.
-  const expectedAnswer = 20;
-
-  const checkAnswer = () => {
-    const val = parseFloat(assessmentAnswer);
-    if (!isNaN(val) && Math.abs(val - expectedAnswer) < 1) {
-      setAssessmentStatus('correct');
-    } else {
-      setAssessmentStatus('incorrect');
-    }
   };
 
   return (

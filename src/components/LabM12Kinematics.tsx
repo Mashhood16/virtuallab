@@ -3,7 +3,7 @@ import { CheckCircle2, XCircle, Settings2, BookOpen, Calculator, RotateCcw, Play
 import LabHeader from './LabHeader';
 
 export default function LabM12Kinematics({ onExit }: { onExit?: () => void }) {
-  const [mode, setMode] = useState<'1d' | '3d'>('1d');
+  const [mode] = useState<'1d' | '3d'>('1d');
 
   // 1D state
   const [acceleration, setAcceleration] = useState(2);

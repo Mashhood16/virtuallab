@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, CheckCircle, XCircle, Sprout, ShieldAlert, Bug } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, Bug } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 type AgScenario = 'Pesticide' | 'AcidRain' | 'GMCrops';
 
 export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
-  const [scenario, setScenario] = useState<AgScenario>('Pesticide');
+  const [scenario] = useState<AgScenario>('Pesticide');
   const [parameter, setParameter] = useState<number>(5);
   const [time, setTime] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -38,14 +38,6 @@ export default function LabC12Agriculture({ onExit }: { onExit?: () => void }) {
     setTime(0);
     setFeedback(null);
     setAnswer('');
-  };
-
-  const handleScenarioChange = (s: AgScenario) => {
-    setScenario(s);
-    reset();
-    if (s === 'Pesticide') setParameter(5);
-    else if (s === 'AcidRain') setParameter(4.5);
-    else setParameter(5);
   };
 
   const checkAnswer = () => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, Play, ShieldAlert, CheckCircle, XCircle, Beaker } from 'lucide-react';
+import { BookOpen, Activity, Play, ShieldAlert, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface AntibioticData {

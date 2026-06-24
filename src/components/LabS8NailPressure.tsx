@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Hammer } from 'lucide-react';
+import {Hammer } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -16,7 +16,7 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 8.1: Force & Pressure" subtitle="Pushing a nail into wood" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 8.1: Force & Pressure" subtitle="Pushing a nail into wood" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Beaker, BookOpen, CheckCircle, Thermometer, FlaskConical, RefreshCw, Layers } from 'lucide-react';
+import { Beaker, BookOpen, CheckCircle, Thermometer, RefreshCw, Layers } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC12OrganicSynthesis({ onExit }: { onExit?: () => void }) {

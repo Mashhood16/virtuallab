@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar, Scissors, Info, Sprout, Flower2, Save, Activity } from 'lucide-react';
+import { Calendar, Scissors, Info, Sprout, Flower2, Save} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabB9PlantReproduction({ onExit }: { onExit?: () => void }) {

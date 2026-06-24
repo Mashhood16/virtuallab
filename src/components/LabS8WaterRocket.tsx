@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Rocket } from 'lucide-react';
+import {Rocket } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -32,15 +32,9 @@ export default function LabS8WaterRocket({ onExit }: LabProps) {
     }
   }, [launched, height]);
 
-  const reset = () => {
-    setPressure(0);
-    setLaunched(false);
-    setHeight(0);
-  };
-
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 8.3: Water Pressure Rocket" subtitle="Pump air to build pressure and launch" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 8.3: Water Pressure Rocket" subtitle="Pump air to build pressure and launch" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-3xl mx-auto w-full">
         

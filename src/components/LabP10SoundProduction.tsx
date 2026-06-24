@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Plus, Trash2, CheckCircle, XCircle, Play } from 'lucide-react';
+import {Plus, Trash2, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -76,17 +76,6 @@ export default function LabP10SoundProduction({ onExit }: LabProps) {
     } else {
       setAssessmentResult('incorrect');
     }
-  };
-
-  const resetLab = () => {
-    setForce(5);
-    setFrequency(256);
-    setFluid('water');
-    setData([]);
-    setAssessmentAnswer('');
-    setAssessmentResult('idle');
-    setSplashHeight(null);
-    setIsStriking(false);
   };
 
   return (

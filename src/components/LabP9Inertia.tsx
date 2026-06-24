@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, XCircle, MousePointerClick, RefreshCw, Zap } from 'lucide-react';
+import { CheckCircle, XCircle, MousePointerClick, RefreshCw} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP9Inertia({ onExit }: { onExit?: () => void }) {

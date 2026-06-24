@@ -3,7 +3,7 @@ import { Car, Waves, Activity, CheckCircle, XCircle, Volume2 } from 'lucide-reac
 import LabHeader from './LabHeader';
 
 export default function LabP12SHM({ onExit }: { onExit?: () => void }) {
-  const [scenario, setScenario] = useState<'damping' | 'waves'>('damping');
+  const [scenario] = useState<'damping' | 'waves'>('damping');
 
   // Damping State
   const [mass, setMass] = useState<number>(1000); // kg

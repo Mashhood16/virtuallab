@@ -52,7 +52,7 @@ const tasks: AlgoTask[] = [
 ];
 
 export default function LabCS9Algorithms({ onExit }: { onExit?: () => void }) {
-  const [activeTaskIdx, setActiveTaskIdx] = useState(0);
+  const [activeTaskIdx] = useState(0);
   const task = tasks[activeTaskIdx];
 
   const [availableBlocks, setAvailableBlocks] = useState<AlgoBlock[]>([]);

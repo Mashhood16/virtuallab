@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import type { PointerEvent } from 'react';
-import { ArrowRight, BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
+import {BookOpen, CheckCircle, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

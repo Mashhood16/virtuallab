@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw, ClipboardList } from 'lucide-react';
+import { Play, Pause, ClipboardList } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -152,7 +152,7 @@ export default function LabP10ExpansionLiquids({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
       {/* Header */}
-      <LabHeader onExit={onExit} title="Unit 11: Real and Apparent Expansion of Liquids" subtitle="Determine the real thermal expansivity of an unknown liquid." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 11: Real and Apparent Expansion of Liquids" subtitle="Determine the real thermal expansivity of an unknown liquid." />
 
       {/* Main Grid */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Beaker, Play, RotateCcw, CheckCircle, BookOpen } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

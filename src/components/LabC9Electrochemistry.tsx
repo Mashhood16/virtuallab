@@ -56,7 +56,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 };
 
 export default function LabC9Electrochemistry({ onExit }: Props) {
-  const [activeTab, setActiveTab] = useState<'redox' | 'rust'>('redox');
+  const [activeTab] = useState<'redox' | 'rust'>('redox');
   const [equation, setEquation] = useState<string[]>([]);
   
   // Redox State (KMnO4 + FeSO4)
@@ -132,21 +132,6 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
         setFeedback("Incorrect. What did you add to make it rust faster?");
       }
     }
-  };
-
-  const resetSim = () => {
-    setEquation([]);
-    setVolAdded(0);
-    setTemp(20.0);
-    setBeakerColor('rgba(200,200,200,0.1)');
-    setHasWater(false);
-    setHasOxygen(false);
-    setHasSalt(false);
-    setRustLevel(0);
-    setTimeDays(0);
-    setAnswer('');
-    setFeedback('');
-    setTitrationData([]);
   };
 
   return (

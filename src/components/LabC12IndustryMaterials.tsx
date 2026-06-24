@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, CheckCircle, XCircle, Factory, ShieldAlert, FlaskConical } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, FlaskConical } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 type IndProcess = 'CementKiln' | 'CatalyticCracking' | 'Cosmetics';
 
 export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => void }) {
-  const [process, setProcess] = useState<IndProcess>('CementKiln');
+  const [process] = useState<IndProcess>('CementKiln');
   const [parameter, setParameter] = useState<number>(1450);
   const [time, setTime] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -38,14 +38,6 @@ export default function LabC12IndustryMaterials({ onExit }: { onExit?: () => voi
     setTime(0);
     setFeedback(null);
     setAnswer('');
-  };
-
-  const handleProcessChange = (p: IndProcess) => {
-    setProcess(p);
-    reset();
-    if (p === 'CementKiln') setParameter(1450);
-    else if (p === 'CatalyticCracking') setParameter(500);
-    else setParameter(5);
   };
 
   const checkAnswer = () => {

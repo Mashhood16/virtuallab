@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Pause, RotateCcw } from 'lucide-react';
+import { Play, Pause} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -178,7 +178,7 @@ export default function LabP10LatentHeat({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans select-none">
       {/* Header */}
-      <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 11: Specific Latent Heat" subtitle="Determine specific latent heat using continuous electrical heating." />
 
       {/* Main Grid */}
       <div className="flex-1 overflow-y-auto p-4 md:p-6">

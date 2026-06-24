@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -8,14 +7,9 @@ export default function LabS8AlkaliLitmus({ onExit }: LabProps) {
   const [testedBlue, setTestedBlue] = useState(false);
   const [testedRed, setTestedRed] = useState(false);
 
-  const reset = () => {
-    setTestedBlue(false);
-    setTestedRed(false);
-  };
-
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 7.2: Effects of Alkalies on Litmus" subtitle="Test Sodium Hydroxide with litmus paper" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 7.2: Effects of Alkalies on Litmus" subtitle="Test Sodium Hydroxide with litmus paper" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         

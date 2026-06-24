@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flame, Factory, Wrench, Info, ArrowLeft, ArrowDown, Settings, Play } from 'lucide-react';
+import { Flame, Wrench, Info, ArrowLeft, ArrowDown, Settings, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

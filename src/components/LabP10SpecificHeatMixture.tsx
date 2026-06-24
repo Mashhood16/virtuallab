@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Play, Pause } from 'lucide-react';
+import {Play, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -87,7 +87,7 @@ export default function LabP10SpecificHeatMixture({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 10: Specific Heat (Method of Mixtures)" subtitle="Determine specific heat capacity by analyzing thermal equilibrium." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 10: Specific Heat (Method of Mixtures)" subtitle="Determine specific heat capacity by analyzing thermal equilibrium." />
 
       <div className="flex-1 p-6 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
         

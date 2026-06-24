@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { RefreshCw, Play, Pause } from 'lucide-react';
+import {Play, Pause } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -95,16 +95,6 @@ export default function LabP10SpecificHeatElectrical({ onExit }: LabProps) {
       energy: displayVals.V * displayVals.I * time, 
       temp: displayVals.T
     }]);
-  };
-
-  const resetExperiment = () => {
-    setTime(0);
-    setTemperature(20.0);
-    setIsHeating(false);
-    setRecordedData([]);
-    setDisplayVals({ V: 0, I: 0, T: 20.0 });
-    setUserAnswer('');
-    setFeedback({type: '', message: ''});
   };
 
   const checkAnswer = () => {

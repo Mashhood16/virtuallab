@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 export type LabHeaderVariant = 'light' | 'dark' | 'emerald' | 'amber' | 'blue';
 
 interface LabHeaderProps {
-  onExit: () => void;
+  onExit?: () => void;
   title: string;
   subtitle?: string;
   icon?: ReactNode;
@@ -50,12 +50,14 @@ export default function LabHeader({ onExit, title, subtitle, icon, rightContent,
   return (
     <div className={`${styles.container} px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm shrink-0`}>
       <div className="flex items-center gap-4 min-w-0">
-        <button
-          onClick={onExit}
-          className={`${styles.button} shrink-0`}
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
+        {onExit && (
+          <button
+            onClick={onExit}
+            className={`${styles.button} shrink-0`}
+          >
+            <ArrowLeft className="w-5 h-5" />
+          </button>
+        )}
         <div className="min-w-0">
           <h1 className={`text-xl font-bold ${styles.title} flex items-center gap-2 truncate`}>
             {icon}

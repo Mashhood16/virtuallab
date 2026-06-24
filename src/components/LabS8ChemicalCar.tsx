@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, FlaskConical } from 'lucide-react';
+import {FlaskConical } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -18,16 +18,9 @@ export default function LabS8ChemicalCar({ onExit }: LabProps) {
     }
   };
 
-  const reset = () => {
-    setBakingSodaAdded(false);
-    setVinegarAdded(false);
-    setSealed(false);
-    setCarPos(0);
-  };
-
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 11.8: Chemical Car" subtitle="Vinegar + Baking Soda propulsion" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 11.8: Chemical Car" subtitle="Vinegar + Baking Soda propulsion" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         

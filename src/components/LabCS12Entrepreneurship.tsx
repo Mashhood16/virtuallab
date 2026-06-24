@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Rocket, Target, Users,  BarChart3, Lightbulb, Play, Save } from 'lucide-react';
+import {Target, Users,  BarChart3, Lightbulb, Play, Save } from 'lucide-react';
 import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 

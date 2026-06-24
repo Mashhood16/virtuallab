@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { RefreshCw, Play, Plus, CheckCircle, Info } from 'lucide-react';
+import {Play, Plus, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -60,14 +60,6 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
     setDataLog(prev => [...prev, { id: Date.now(), mode, dist: distance, pax: passengers, totalCO2, perPaxCO2 }]);
   };
 
-  const reset = () => {
-    setIsDriving(false);
-    setDriveProgress(0);
-    setDataLog([]);
-    setStudentAnswer('');
-    setIsCorrect(null);
-  };
-
   const checkAnswer = () => {
     // Question: What is the per-passenger CO2 footprint (in kg) for a 15 km trip in an SUV (0.35 kg/km) carrying 3 passengers?
     const expected = (15 * 0.35) / 3; // 1.75
@@ -87,7 +79,7 @@ export default function LabP10CarbonFootprint({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Carbon Footprint of Transport" subtitle="Investigate the environmental impact of commuting and the benefits of carpooling/public transit." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Carbon Footprint of Transport" subtitle="Investigate the environmental impact of commuting and the benefits of carpooling/public transit." />
 
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
         

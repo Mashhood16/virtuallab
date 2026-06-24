@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Thermometer, Droplet, CheckCircle, Activity, Info, Beaker, Play, RotateCcw, Save } from 'lucide-react';
+import { Thermometer, Droplet, CheckCircle, Info, Beaker, Play, RotateCcw, Save } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabB9Enzymes({ onExit }: { onExit?: () => void }) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Play, BarChart2, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 const COLORS = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'];

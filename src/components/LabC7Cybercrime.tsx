@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, Play, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Image as ImageIcon } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

@@ -56,7 +56,7 @@ const SvgGraph = ({ data, xKey, yKey, width = 300, height = 200, xLabel, yLabel 
 };
 
 export default function LabC9StatesOfMatter({ onExit }: Props) {
-  const [activeTab, setActiveTab] = useState<'sugar' | 'cuso4'>('sugar');
+  const [activeTab] = useState<'sugar' | 'cuso4'>('sugar');
   const [equation, setEquation] = useState<string[]>([]);
   
   // Sugar Solution State
@@ -155,17 +155,6 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
       if (Math.abs(val - 36.1) < 0.5) setFeedback("Correct! Water is 90g out of 249.5g total, which is ~36.1%.");
       else setFeedback("Incorrect. Calculate mass of 5H2O divided by molar mass of CuSO4·5H2O.");
     }
-  };
-
-  const resetSim = () => {
-    setEquation([]);
-    setWaterTemp(20);
-    setSugarAdded(0);
-    setSugarDissolved(0);
-    setIsSupersaturated(false);
-    setCuso4Temp(20);
-    setCuso4Mass(249.5);
-    setHeaterOn(false);
   };
 
   return (

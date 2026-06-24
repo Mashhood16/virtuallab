@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Settings, Calculator, CheckCircle, XCircle, ChevronLeft } from 'lucide-react';
+import { Settings, Calculator, CheckCircle, XCircle} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

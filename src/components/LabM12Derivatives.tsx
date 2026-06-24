@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { BookOpen, Activity, CheckCircle, Calculator, Box, TrendingUp, Target } from 'lucide-react';
+import { BookOpen, Activity, CheckCircle, Calculator} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
-    const [tab, setTab] = useState<'box' | 'kinematics' | 'business'>('box');
+    const [tab] = useState<'box' | 'kinematics' | 'business'>('box');
     
-    // Box States
+    //States
     const [volume, setVolume] = useState(1000);
-    const [xBox, setXBox] = useState(10);
+    const [xBox] = useState(10);
+    const [x, setX] = useState(10);
     
     // Kinematics States
     const [timeK, setTimeK] = useState(5);
@@ -48,7 +49,7 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
 
     // --- BOX RENDER HELPERS ---
     const yBox = volume / (xBox * xBox);
-    const sBox = xBox * xBox + 4 * volume / xBox;
+    const s = x * x + 4 * volume / x;
     const boxPts = [];
     for (let i = 5; i <= 25; i += 0.5) {
         boxPts.push(`${(i / 25) * 300},${200 - ((i * i + 4 * volume / i) / 2000) * 200}`);
@@ -90,7 +91,7 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                     <div className="prose prose-slate prose-sm text-slate-600">
                         {tab === 'box' && (
                             <>
-                                <p><strong>Architectural Box Optimization:</strong></p>
+                                <p><strong>ArchitecturalOptimization:</strong></p>
                                 <p>We need to design a box with a square base (side $x$) and height ($y$) such that its volume $V = x^2 y$ is fixed, but its Surface Area $S$ is minimized to save material costs.</p>
                                 <p>{"$$ S = x^2 + 4xy $$"}</p>
                                 <p>By substituting $y = V/x^2$, we express $S$ entirely in terms of $x$:</p>
@@ -135,9 +136,9 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                                 <line x1="0" y1="200" x2="300" y2="200" stroke="#94a3b8" />
                                 <line x1="0" y1="0" x2="0" y2="200" stroke="#94a3b8" />
                                 <path d={`M ${boxPts.join(' L ')}`} fill="none" stroke="#ef4444" strokeWidth="2" />
-                                <circle cx={(xBox/25)*300} cy={200 - (sBox/2000)*200} r="4" fill="#ef4444" />
+                                <circle cx={(x/25)*300} cy={200 - (s/2000)*200} r="4" fill="#ef4444" />
                                 
-                                {/* 3D Box Bottom Half */}
+                                {/* 3DBottom Half */}
                                 <polygon points={`${v4.px},${v4.py} ${v5.px},${v5.py} ${v6.px},${v6.py} ${v7.px},${v7.py}`} fill="#93c5fd" stroke="#2563eb" strokeWidth="1" />
                                 <polygon points={`${v1.px},${v1.py} ${v2.px},${v2.py} ${v6.px},${v6.py} ${v5.px},${v5.py}`} fill="#60a5fa" stroke="#2563eb" strokeWidth="1" />
                                 <polygon points={`${v3.px},${v3.py} ${v2.px},${v2.py} ${v6.px},${v6.py} ${v7.px},${v7.py}`} fill="#3b82f6" stroke="#2563eb" strokeWidth="1" />
@@ -145,8 +146,8 @@ export default function LabM12Derivatives({ onExit }: { onExit?: () => void }) {
                             </svg>
                             <label className="text-sm font-medium text-slate-700 mb-1">Target Volume ($V$): {volume}</label>
                             <input type="range" min="500" max="2000" step="100" value={volume} onChange={(e) => setVolume(Number(e.target.value))} className="mb-4" />
-                            <label className="text-sm font-medium text-slate-700 mb-1">Base Side ($x$): {xBox.toFixed(1)} cm</label>
-                            <input type="range" min="5" max="25" step="0.1" value={xBox} onChange={(e) => setXBox(Number(e.target.value))} />
+                            <label className="text-sm font-medium text-slate-700 mb-1">Base Side ($x$): {x.toFixed(1)} cm</label>
+                            <input type="range" min="5" max="25" step="0.1" value={x} onChange={(e) => setX(Number(e.target.value))} />
                         </div>
                     )}
 

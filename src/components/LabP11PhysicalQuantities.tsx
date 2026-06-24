@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Target, Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
+import {Activity, Calculator, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Point { x: number; y: number }
@@ -59,7 +59,7 @@ export default function LabP11PhysicalQuantities({ onExit }: { onExit?: () => vo
         <div className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 p-5 flex flex-col items-center">
           <h2 className="text-lg font-bold text-slate-800 mb-4">Target Simulator</h2>
           <svg width="300" height="300" className="bg-slate-100 rounded-full border border-slate-300 cursor-crosshair shadow-inner" onClick={handleShoot}>
-            {/* Target rings */}
+            {/*rings */}
             <circle cx="150" cy="150" r="140" fill="white" stroke="#cbd5e1" strokeWidth="2" />
             <circle cx="150" cy="150" r="105" fill="#f1f5f9" stroke="#94a3b8" strokeWidth="2" />
             <circle cx="150" cy="150" r="70" fill="#bfdbfe" stroke="#60a5fa" strokeWidth="2" />

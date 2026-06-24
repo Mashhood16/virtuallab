@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Beaker, CheckCircle, RotateCcw, Dna, MousePointerClick } from 'lucide-react';
+import { Beaker, CheckCircle, RotateCcw, MousePointerClick } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 type CrossType = 'monohybrid' | 'dihybrid';

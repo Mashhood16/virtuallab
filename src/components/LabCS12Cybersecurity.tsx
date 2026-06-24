@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, ShieldAlert, Lock, Server,  Activity, FileWarning, Key, Save } from 'lucide-react';
+import { Shield, Lock, Server, Activity, FileWarning, Key, Save } from 'lucide-react';
 import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 

@@ -26,19 +26,6 @@ export default function Login() {
   const { login, register } = useAuth();
   const navigate = useNavigate();
 
-  const resetForms = () => {
-    setLoginEmail('');
-    setLoginPassword('');
-    setRegName('');
-    setRegEmail('');
-    setRegClass('');
-    setRegSection('');
-    setRegPassword('');
-    setRegConfirm('');
-    setError('');
-    setShowPassword(false);
-  };
-
   const switchTab = (t: Tab) => {
     setTab(t);
     setError('');

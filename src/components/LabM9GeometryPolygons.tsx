@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, Map, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
+import { CheckCircle, Calculator, RefreshCcw, Ruler, HelpCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Point { x: number; y: number; }

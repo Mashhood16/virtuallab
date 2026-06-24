@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Activity, Plus, LineChart, Target, Beaker, CheckCircle, XCircle } from 'lucide-react';
+import { BookOpen, Activity, Plus, LineChart, Target, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface DataPoint {

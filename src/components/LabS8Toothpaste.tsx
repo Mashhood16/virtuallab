@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Droplets, Beaker } from 'lucide-react';
+import {Droplets, Beaker } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -21,13 +21,9 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
   const isPerfect = ingredients.glycerin === 2 && ingredients.bakingSoda === 3 && ingredients.salt === 1 && ingredients.peppermint === 5;
   const isMixed = progress >= 80;
 
-  const reset = () => {
-    setIngredients({ glycerin: 0, bakingSoda: 0, salt: 0, peppermint: 0 });
-  };
-
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         

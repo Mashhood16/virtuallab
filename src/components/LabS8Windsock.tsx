@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Flag } from 'lucide-react';
+import {Flag } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }

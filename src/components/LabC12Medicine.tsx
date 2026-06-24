@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { Play, RotateCcw, CheckCircle, XCircle, Activity, ShieldAlert, Bug } from 'lucide-react';
+import { Play, RotateCcw, CheckCircle, XCircle, ShieldAlert, Bug } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 type DrugType = 'Cisplatin' | 'Aspirin' | 'Penicillin';
 
 export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
-  const [drug, setDrug] = useState<DrugType>('Cisplatin');
+  const [drug] = useState<DrugType>('Cisplatin');
   const [dosage, setDosage] = useState<number>(50);
   const [time, setTime] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -38,12 +38,6 @@ export default function LabC12Medicine({ onExit }: { onExit?: () => void }) {
     setTime(0);
     setFeedback(null);
     setAnswer('');
-  };
-
-  const handleDrugChange = (d: DrugType) => {
-    setDrug(d);
-    reset();
-    setDosage(50);
   };
 
   // Calculate effect percentage (0 to 100)

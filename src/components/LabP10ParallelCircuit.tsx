@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Plus, CheckCircle, XCircle } from 'lucide-react';
+import {Plus, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
@@ -48,6 +48,20 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
   // Assuming a reference power of 1.5W is "max brightness"
   const getBrightness = (vT: number, r: number) => Math.min(1, Math.max(0.05, (vT * vT / r) / 1.5));
 
+  // Assessment
+  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
+  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
+  
+  const checkAnswer = () => {
+    const val = parseFloat(assessmentAnswer);
+    // R_eq = 1/(1/30 + 1/30) = 15, I = 12/15 = 0.8A = 800mA
+    if (!isNaN(val) && Math.abs(val - 800) < 20) {
+      setAssessmentStatus('correct');
+    } else {
+      setAssessmentStatus('incorrect');
+    }
+  };
+
   // Data Logging
   const [dataPoints, setDataPoints] = useState<Array<{ id: number; n: number; vt: number; iTotal: number; iBranch1: number }>>([]);
   const recordData = () => {
@@ -61,23 +75,6 @@ export default function LabP10ParallelCircuit({ onExit }: LabProps) {
         iBranch1: i1 * 1000 * (1 + noise)
       }
     ]);
-  };
-  const clearData = () => setDataPoints([]);
-
-  // Assessment
-  const [assessmentAnswer, setAssessmentAnswer] = useState<string>('');
-  const [assessmentStatus, setAssessmentStatus] = useState<'idle' | 'correct' | 'incorrect'>('idle');
-  // Problem: 12V battery, internal resistance = 0. We have two identical 30 Ohm resistors in parallel. Total current?
-  // R_eq = 15 Ohms. I = 12 / 15 = 0.8 A = 800 mA.
-  const expectedAnswer = 800;
-
-  const checkAnswer = () => {
-    const val = parseFloat(assessmentAnswer);
-    if (!isNaN(val) && Math.abs(val - expectedAnswer) < 5) {
-      setAssessmentStatus('correct');
-    } else {
-      setAssessmentStatus('incorrect');
-    }
   };
 
   return (

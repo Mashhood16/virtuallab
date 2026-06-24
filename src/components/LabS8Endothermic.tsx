@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { RefreshCw, Snowflake } from 'lucide-react';
+import {Snowflake } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -15,11 +15,6 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
     }
   }, [stage, temp]);
 
-  const reset = () => {
-    setStage('initial');
-    setTemp(25);
-  };
-
   const handleAdd = () => {
     setStage('adding');
     setTimeout(() => setStage('reaction'), 1500);
@@ -27,7 +22,7 @@ export default function LabS8Endothermic({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 6.3: Endothermic Reaction" subtitle="Vinegar + Baking Soda (Absorbs Heat)" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 6.3: Endothermic Reaction" subtitle="Vinegar + Baking Soda (Absorbs Heat)" />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         <div className="bg-slate-50 p-8 rounded-3xl shadow-lg border border-slate-200 max-w-2xl w-full flex flex-col items-center min-h-[500px]">

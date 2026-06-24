@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Target, Rocket, CheckCircle2, XCircle } from 'lucide-react';
+import { Target, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

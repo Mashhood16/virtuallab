@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Beaker, Zap, Activity, CheckCircle2 } from 'lucide-react';
+import { Beaker, Activity, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Metal {

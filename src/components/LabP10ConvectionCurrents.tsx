@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { RefreshCw, Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
+import {Activity, BookOpen, LineChart, Info, Play, Square } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -28,17 +28,6 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
   const stopHeating = () => {
     setIsRunning(false);
-  };
-
-  const handleReset = () => {
-    setIsRunning(false);
-    setFinished(false);
-    setTimeElapsed(0);
-    setDyePosition(0);
-    setCurrentV(0);
-    setData([]);
-    setAssessmentAnswer('');
-    setAssessmentStatus('idle');
   };
 
   const recordData = () => {
@@ -86,7 +75,7 @@ export default function LabP10ConvectionCurrents({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 10: Convection Currents" subtitle="Determine the relationship between heater power and convection velocity." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 10: Convection Currents" subtitle="Determine the relationship between heater power and convection velocity." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}

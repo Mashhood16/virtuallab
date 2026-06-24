@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Calculator, Activity, BookOpen, Play } from 'lucide-react';
+import {Calculator, Activity, BookOpen, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -19,19 +19,6 @@ export default function LabP10FaradayLaw({ onExit }: LabProps) {
   const [data, setData] = useState<{ N: number, B: number, v: number, emf: number }[]>([]);
   const [answer, setAnswer] = useState<string>('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-
-  const resetLab = () => {
-    setN(500);
-    setB(0.5);
-    setV(2.0);
-    setA(0.05);
-    setIsMystery(false);
-    setData([]);
-    setAnswer('');
-    setFeedback(null);
-    setAnimStatus('idle');
-    setDisplayEmf(0);
-  };
 
   const startMystery = () => {
     setIsMystery(true);

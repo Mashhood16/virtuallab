@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Activity, Bone, Waves } from 'lucide-react';
+import {Bone, Waves } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }) {

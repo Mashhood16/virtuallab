@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Truck, MapPin, Package } from 'lucide-react';
+import { CheckCircle, XCircle, Truck, Package } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

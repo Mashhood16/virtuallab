@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Home, Lightbulb, Cloud, Brain, Check, X, Activity, FileText, Cpu, Server } from 'lucide-react';
+import { Home, Lightbulb, Cloud, Brain, Check, X, Activity, FileText, Server } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

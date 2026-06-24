@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, CheckCircle2 } from 'lucide-react';
+import {CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }

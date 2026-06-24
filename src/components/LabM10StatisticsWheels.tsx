@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { BarChart3, Calculator, CheckCircle, XCircle, ChevronLeft, Play } from 'lucide-react';
+import { BarChart3, Calculator, CheckCircle, XCircle, Play } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

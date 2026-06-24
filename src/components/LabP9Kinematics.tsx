@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { CheckCircle, XCircle, Play, RotateCcw, Activity } from 'lucide-react';
+import { CheckCircle, XCircle, Play, RotateCcw} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP9Kinematics({ onExit }: { onExit?: () => void }) {

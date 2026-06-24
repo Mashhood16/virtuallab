@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -27,13 +26,9 @@ export default function LabS8Malleability({ onExit }: LabProps) {
     if (hits < 3) setHits(h => h + 1);
   };
 
-  const reset = () => {
-    setHits(0);
-  };
-
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 5.3: Malleability" subtitle="Hit materials with a hammer to test malleability" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 5.3: Malleability" subtitle="Hit materials with a hammer to test malleability" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}
@@ -42,7 +37,7 @@ export default function LabS8Malleability({ onExit }: LabProps) {
           {MATERIALS.map(m => (
             <button 
               key={m.id}
-              onClick={() => { setSelected(m); reset(); }}
+              onClick={() => { setSelected(m); setHits(0); }}
               className={`p-3 text-left rounded-lg font-bold transition-all border-2 ${selected.id === m.id ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-slate-200 bg-slate-50 hover:border-slate-300 text-slate-700'}`}
             >
               {m.name}

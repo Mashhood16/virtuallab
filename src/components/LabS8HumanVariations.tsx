@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check, RefreshCw } from 'lucide-react';
+import { Check} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabS8HumanVariationsProps {
@@ -43,16 +43,9 @@ export default function LabS8HumanVariations({ onExit }: LabS8HumanVariationsPro
     }
   };
 
-  const reset = () => {
-    setItems(TRAITS);
-    setContinuous([]);
-    setDiscontinuous([]);
-    setErrorMsg('');
-  };
-
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 3.2: Human Variations" subtitle="Sort traits by their variation type" />
 
       <div className="flex-1 p-6 max-w-5xl mx-auto w-full flex flex-col">
         

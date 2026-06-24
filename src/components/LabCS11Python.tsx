@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
-import { Code, Play, CheckCircle, XCircle, PenTool } from 'lucide-react';
+import {Play, CheckCircle, XCircle, PenTool } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
-  const [code, setCode] = useState('FD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90');
+  const [code, set] = useState('FD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90\nFD 100\nRT 90');
   
   const parseCode = (source: string) => {
     let x = 200;
@@ -100,7 +100,7 @@ export default function LabCS11Python({ onExit }: { onExit?: () => void }) {
               <label className="text-xs font-bold text-slate-500 mb-1 uppercase">Command Trace</label>
               <textarea 
                 value={code}
-                onChange={e => setCode(e.target.value)}
+                onChange={e => set(e.target.value)}
                 className="flex-1 w-full bg-slate-900 text-green-400 font-mono text-sm p-4 rounded-xl border-4 border-slate-700 outline-none resize-none focus:border-indigo-500 transition-colors"
                 spellCheck={false}
               />

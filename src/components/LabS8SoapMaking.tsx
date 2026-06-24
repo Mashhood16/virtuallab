@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, AlertTriangle, ShieldCheck } from 'lucide-react';
+import {AlertTriangle, ShieldCheck } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -27,16 +27,9 @@ export default function LabS8SoapMaking({ onExit }: LabProps) {
     if (step < steps.length - 1) setStep(step + 1);
   };
 
-  const reset = () => {
-    setStep(0);
-    setHasGloves(false);
-    setHasGoggles(false);
-    setErrorMsg('');
-  };
-
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 11.2: Soap Making" subtitle="The chemical process of saponification" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 11.2: Soap Making" subtitle="The chemical process of saponification" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full">
         

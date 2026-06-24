@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Scissors, ArrowRightLeft, Check } from 'lucide-react';
+import {Scissors, ArrowRightLeft, Check } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabS8CrossingOverProps {

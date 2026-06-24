@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Scale, Layers, CheckCircle2, XCircle } from 'lucide-react';
+import {Layers, CheckCircle2, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface Props {

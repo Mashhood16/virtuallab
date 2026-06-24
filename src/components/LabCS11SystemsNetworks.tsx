@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Cpu, Zap, CheckCircle, XCircle, Power, ShieldAlert } from 'lucide-react';
+import {Zap, CheckCircle, XCircle, Power, ShieldAlert } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabCS11SystemsNetworks({ onExit }: { onExit?: () => void }) {

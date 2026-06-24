@@ -32,7 +32,7 @@ let dbPromise: Promise<IDBPDatabase<VirtualLabDB>> | null = null;
 export const initDB = () => {
   if (!dbPromise) {
     dbPromise = openDB<VirtualLabDB>(DB_NAME, DB_VERSION, {
-      upgrade(db, oldVersion) {
+      async upgrade(db, oldVersion) {
         if (oldVersion < 1) {
           if (!db.objectStoreNames.contains('progress')) {
             const store = db.createObjectStore('progress', {
@@ -48,9 +48,10 @@ export const initDB = () => {
           const tx = db.transaction('progress', 'readwrite');
           const store = tx.objectStore('progress');
           if (!store.indexNames.contains('by-user')) {
+            // @ts-expect-error - createIndex exists on native IDBObjectStore but idb's typed store doesn't expose it
             store.createIndex('by-user', 'userId');
           }
-          tx.done;
+          await tx.done;
         }
       },
     });

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Calculator, Activity, BookOpen } from 'lucide-react';
+import {Calculator, Activity, BookOpen } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -16,17 +16,6 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
   const [data, setData] = useState<{ I: number, B: number, theta: number, tanTheta: number }[]>([]);
   const [answer, setAnswer] = useState<string>('');
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
-
-  const resetLab = () => {
-    setI(5);
-    setB(0.5);
-    setL(0.1);
-    setM(0.1);
-    setIsMystery(false);
-    setData([]);
-    setAnswer('');
-    setFeedback(null);
-  };
 
   const startMystery = () => {
     setIsMystery(true);

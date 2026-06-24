@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { RefreshCw, Box, BookOpen, LineChart, Info } from 'lucide-react';
+import {Box, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -21,14 +21,6 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
     const noise = baseI * (Math.random() * 0.04 - 0.02); // ±2% noise
     setIntensity(baseI + noise);
   }, [surface, distance]);
-
-  const handleReset = () => {
-    setSurface('Matt Black');
-    setDistance(10);
-    setData([]);
-    setAssessmentAnswer('');
-    setAssessmentStatus('idle');
-  };
 
   const recordData = () => {
     setData(prev => [...prev, { surface, distance, intensity }]);
@@ -56,7 +48,7 @@ export default function LabP10LeslieCube({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 10: Leslie Cube Experiment" subtitle="Measure infrared radiation emitted from 4 different surfaces." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 10: Leslie Cube Experiment" subtitle="Measure infrared radiation emitted from 4 different surfaces." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}

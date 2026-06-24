@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { RefreshCw, Thermometer, BookOpen, LineChart, Info } from 'lucide-react';
+import {Thermometer, BookOpen, LineChart, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -34,14 +34,6 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
     setTSilver(baseTS + noiseS);
   }, [time, power]);
 
-  const handleReset = () => {
-    setTime(0);
-    setPower(300);
-    setData([]);
-    setAssessmentAnswer('');
-    setAssessmentStatus('idle');
-  };
-
   const recordData = () => {
     setData(prev => [...prev, { time, power, tBlack, tSilver }]);
   };
@@ -58,7 +50,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
 
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Unit 10: Absorbers and Reflectors" subtitle="Compare heating rates of a matt black can vs a shiny silver can." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Unit 10: Absorbers and Reflectors" subtitle="Compare heating rates of a matt black can vs a shiny silver can." />
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}

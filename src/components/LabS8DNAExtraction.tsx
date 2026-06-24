@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Droplet, CheckCircle2 } from 'lucide-react';
+import {Droplet, CheckCircle2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabS8DNAExtractionProps {

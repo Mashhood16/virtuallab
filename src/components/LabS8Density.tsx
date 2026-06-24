@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Droplets } from 'lucide-react';
+import {Droplets } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -24,14 +24,9 @@ export default function LabS8Density({ onExit }: LabProps) {
   const [selected, setSelected] = useState<ObjectToDrop | null>(null);
   const [dropped, setDropped] = useState(false);
 
-  const reset = () => {
-    setDropped(false);
-    setSelected(null);
-  };
-
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 5.5: Density" subtitle="Drop objects in water to test their density" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 5.5: Density" subtitle="Drop objects in water to test their density" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}

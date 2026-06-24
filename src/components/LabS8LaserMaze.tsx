@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, Zap } from 'lucide-react';
+import {Zap } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -21,15 +21,6 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
     }));
   };
 
-  const reset = () => {
-    setLaserOn(false);
-    setMirrors([
-      { id: 1, x: 100, y: 150, angle: 45, active: false },
-      { id: 2, x: 250, y: 50, angle: 135, active: false },
-      { id: 3, x: 250, y: 250, angle: 135, active: false }
-    ]);
-  };
-
   // Determine if maze is solved based on current angles
   // Correct path: Source(left) -> hits m1(angle 45) -> goes up -> hits m2(angle 135) -> goes right to exit.
   // OR Source(left) -> hits m1(angle 135) -> goes down -> hits m3(angle 45) -> goes right to exit.
@@ -39,7 +30,7 @@ export default function LabS8LaserMaze({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 9.1: Tracing Mirror Reflections" subtitle="Navigate the laser through the maze" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 9.1: Tracing Mirror Reflections" subtitle="Navigate the laser through the maze" />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         

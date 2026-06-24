@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Layers, CheckCircle, XCircle, Play, Save } from 'lucide-react';
+import {CheckCircle, XCircle, Play, Save } from 'lucide-react';
 import { useHistory } from '../store';
 import LabHeader from './LabHeader';
 

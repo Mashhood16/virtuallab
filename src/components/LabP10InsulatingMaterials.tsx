@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import { RefreshCw, Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
+import {Play, Pause, Plus, CheckCircle, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -105,7 +105,7 @@ export default function LabP10InsulatingMaterials({ onExit }: LabProps) {
   return (
     <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 font-sans select-none">
       {/* Header */}
-      <LabHeader onExit={onExit} title="Insulating Materials & Cooling Curves" subtitle="Investigate how different materials and thicknesses affect the rate of heat transfer." rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Insulating Materials & Cooling Curves" subtitle="Investigate how different materials and thicknesses affect the rate of heat transfer." />
 
       {/* 3-Column Grid */}
       <div className="flex-1 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">

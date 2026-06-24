@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, ThermometerSun, Info } from 'lucide-react';
+import {ThermometerSun, Info } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCw, AlertTriangle } from 'lucide-react';
+import {AlertTriangle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -19,11 +19,6 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
     }, 500);
   };
 
-  const reset = () => {
-    setDrops(0);
-    setIsAdding(false);
-  };
-
   // Determine color based on drops
   let solutionColor = 'bg-pink-400/80'; // Alkaline with phenolphthalein is pink
   if (drops >= ENDPOINT) {
@@ -32,7 +27,7 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 font-sans">
-      <LabHeader onExit={onExit} title="Act 7.3: Neutralization Reaction" subtitle="Titration of NaOH with HCl" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 7.3: Neutralization Reaction" subtitle="Titration of NaOH with HCl" />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         

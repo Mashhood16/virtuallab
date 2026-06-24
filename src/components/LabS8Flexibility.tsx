@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { RefreshCw, Hand } from 'lucide-react';
+import {Hand } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -52,7 +52,7 @@ export default function LabS8Flexibility({ onExit }: LabProps) {
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
-      <LabHeader onExit={onExit} title="Act 5.4: Flexibility" subtitle="Test if materials bend or break under force" rightContent={<>{rightJsx}</>} />
+      <LabHeader onExit={onExit} title="Act 5.4: Flexibility" subtitle="Test if materials bend or break under force" />
 
       <div className="flex-1 p-6 flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full">
         {/* Selection */}

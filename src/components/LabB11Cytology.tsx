@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Microscope, Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
+import {Target, CheckCircle, Activity, Search, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabB11Cytology({ onExit }: { onExit?: () => void }) {
-  const [activeTab, setActiveTab] = useState<'sem' | 'stem'>('sem');
+  const [activeTab] = useState<'sem' | 'stem'>('sem');
   const [magIndex, setMagIndex] = useState<number>(0);
   const [selectedOrgan, setSelectedOrgan] = useState<string | null>(null);
 

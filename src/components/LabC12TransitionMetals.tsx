@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flame, Layers, Activity, CheckCircle } from 'lucide-react';
+import { Flame, Activity, CheckCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface MetalComplex {

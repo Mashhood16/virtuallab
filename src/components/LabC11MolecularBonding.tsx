@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Database, Calculator, Box, Hexagon, Target } from 'lucide-react';
+import { Database, Calculator, Box, Target } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabC11MolecularBonding({ onExit }: { onExit?: () => void }) {

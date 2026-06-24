@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Thermometer, Beaker, Play, Square, Info, Activity, Database, CheckCircle, RefreshCw,  XCircle } from 'lucide-react';
+import {Beaker, Play, Square, Info, Activity, Database, CheckCircle, RefreshCw,  XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LoggedData {

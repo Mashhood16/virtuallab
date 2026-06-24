@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Train, Star, Activity, CheckCircle, XCircle, Thermometer, Layers } from 'lucide-react';
+import { Train, Star, Activity, CheckCircle, XCircle, Thermometer} from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP12ThermoMechanics({ onExit }: { onExit?: () => void }) {

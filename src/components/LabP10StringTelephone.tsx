@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Play, Save, RefreshCw, CheckCircle, XCircle } from 'lucide-react';
+import { Play, Save, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {

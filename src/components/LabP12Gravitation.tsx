@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Rocket, Globe, Activity, CheckCircle, XCircle } from 'lucide-react';
+import {Globe, Activity, CheckCircle, XCircle } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabP12Gravitation({ onExit }: { onExit?: () => void }) {
