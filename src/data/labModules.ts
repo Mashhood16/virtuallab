@@ -25,6 +25,7 @@ export const LAB_MODULES = [
   { id: 'c8c_6_2', classLevel: '8', subject: 'computer', title: 'Act 6.2: Digital Marketing', desc: 'Promote PIA incentives via digital channels.', built: true, bg: 'from-emerald-600 to-teal-800' },
   // Class 8 Science
   { id: 'c8s_1_1', classLevel: '8', subject: 'science', title: 'Act 1.1: Greenhouse Effect', desc: 'Observe how a closed environment traps thermal energy.', built: true, bg: 'from-emerald-500 to-green-600' },
+  { id: 'c8s_1_2', classLevel: '8', subject: 'science', title: 'Act 1.2: Oxygen & Carbon Cycles', desc: 'Interact with the complementary pathways of life on Earth.', built: true, bg: 'from-green-500 to-teal-600' },
   { id: 'c8s_2_1', classLevel: '8', subject: 'science', title: 'Act 2.1: Stimulus Response', desc: 'Observe termite behavior towards light vs dark.', built: true, bg: 'from-amber-500 to-orange-600' },
   { id: 'c8s_2_2', classLevel: '8', subject: 'science', title: 'Act 2.2: Knee Jerk Reflex', desc: 'Observe an involuntary reflex action.', built: true, bg: 'from-orange-500 to-red-600' },
   { id: 'c8s_2_3', classLevel: '8', subject: 'science', title: 'Act 2.3: Reflex Time', desc: 'Measure human reaction time.', built: true, bg: 'from-red-500 to-rose-600' },

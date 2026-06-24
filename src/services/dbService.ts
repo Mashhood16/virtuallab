@@ -1,6 +1,12 @@
 import { openDB } from 'idb';
 import type { DBSchema, IDBPDatabase } from 'idb';
 
+export interface DataPoint {
+  key: string;
+  value: string | number;
+  timestamp?: number;
+}
+
 export interface ProgressRecord {
   id?: number;
   userId: string;
@@ -9,7 +15,7 @@ export interface ProgressRecord {
   completionTime: number | null;
   score: number | null;
   synced: number; // 0 for false, 1 for true
-  dataPoints?: any[]; // Store recorded experimental data
+  dataPoints?: DataPoint[]; // Store recorded experimental data
 }
 
 interface VirtualLabDB extends DBSchema {
