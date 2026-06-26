@@ -26,14 +26,14 @@ export default function ClassSelection() {
 
         {/* Hero Section */}
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-700 p-6 sm:p-8 md:p-10 mb-8 md:mb-12 shadow-2xl">
-          <div className="absolute top-0 right-0 -mt-6 -mr-6 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-48 h-48 bg-purple-300 opacity-10 rounded-full blur-2xl"></div>
-          <div className="relative z-10 flex flex-col items-center text-center">
+          <div className="absolute top-0 right-0 -mt-6 -mr-6 w-48 h-48 bg-white opacity-10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 -mb-6 -ml-6 w-48 h-48 bg-purple-300 opacity-10 rounded-full blur-2xl pointer-events-none"></div>
+          <div className="relative z-10 flex flex-col items-center text-center" style={{ WebkitFontSmoothing: 'antialiased', WebkitTextSizeAdjust: '100%' }}>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 md:mb-4 font-outfit tracking-tight">
-              Welcome to <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-200">VirtualLab</span>
+              Welcome to <span className="text-blue-200">VirtualLab</span>
             </h1>
             <p className="text-blue-100 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-6 md:mb-8 font-medium px-2">
-              Explore our library of <span className="font-bold text-white bg-white/20 px-2 py-0.5 rounded-lg backdrop-blur-sm">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics & Computer Science.
+              Explore our library of <span className="font-bold text-white bg-white/15 px-2 py-0.5 rounded-lg">{moduleCount} interactive modules</span> across Physics, Chemistry, Biology, Mathematics & Computer Science.
             </p>
           </div>
         </div>
