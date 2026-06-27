@@ -67,9 +67,9 @@ export default function LabC7BouncingBall({ onExit }: LabProps) {
   }, [isPlaying, dirX, dirY]);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Bouncing Ball Project" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Bouncing Ball Project" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Assemble the correct Scratch blocks to make the ball continuously bounce off the stage edges.</p>
 

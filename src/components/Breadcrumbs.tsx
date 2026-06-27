@@ -10,13 +10,13 @@ export default function Breadcrumbs() {
       {classId && (
         <>
           <span className="text-slate-300">/</span>
-          <Link to={`/class/${classId}`} className={`transition-colors font-semibold ${!subjectId ? 'text-slate-800 cursor-default pointer-events-none' : 'text-indigo-600 hover:text-indigo-700'}`}>Class {classId}</Link>
+          <Link to={`/class/${classId}`} className={`transition-colors font-semibold ${!subjectId ? 'text-slate-800 dark:text-slate-200 cursor-default pointer-events-none' : 'text-indigo-600 hover:text-indigo-700'}`}>Class {classId}</Link>
         </>
       )}
       {subjectId && (
         <>
           <span className="text-slate-300">/</span>
-          <span className="text-slate-800 font-semibold">{formatSubject(subjectId)}</span>
+          <span className="text-slate-800 dark:text-slate-200 font-semibold">{formatSubject(subjectId)}</span>
         </>
       )}
     </div>

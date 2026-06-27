@@ -50,8 +50,9 @@ export default function LabM9RealNumbers({ onExit }: Props) {
   const checkQ2 = () => setQ2Status(Number(q2Ans) === q2Expected);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Grade 9 Math: Real Numbers & Distance" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <LabHeader onExit={onExit} title="Grade 9 Math: Real Numbers & Distance" />
+      
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}

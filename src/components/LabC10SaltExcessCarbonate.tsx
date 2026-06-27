@@ -254,7 +254,7 @@ export default function LabC10SaltExcessCarbonate({ onExit }: Props) {
               {/* Balance Screen */}
               {step <= 2 && (
                 <div className="bg-slate-900 dark:bg-slate-800 w-48 mt-[-10px] z-0 rounded-b-xl border-4 border-slate-700 dark:border-slate-500 p-3 shadow-lg flex justify-center">
-                  <div className="bg-[#a3e635] px-4 py-2 rounded text-slate-900 font-mono text-2xl font-bold tracking-widest shadow-inner">
+                  <div className="bg-[#a3e635] px-4 py-2 rounded text-slate-900 dark:text-slate-200 font-mono text-2xl font-bold tracking-widest shadow-inner">
                     {currentMass.toFixed(2)}<span className="text-sm ml-1">g</span>
                   </div>
                 </div>

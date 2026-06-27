@@ -105,9 +105,10 @@ export default function LabC6Paint3DFace({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Paint 3D Face Design" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Paint 3D Face Design" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Select a 3D or Curve tool from the toolbar and click on the canvas to place it to design a face.</p>
 

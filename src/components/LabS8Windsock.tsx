@@ -92,7 +92,7 @@ export default function LabS8Windsock({ onExit }: LabProps) {
              <div 
                className="absolute top-6 left-2 origin-left transition-all duration-700 ease-out z-20 flex items-center"
                style={{ 
-                 transform: `rotateZ(${droop}deg) rotateX(${sockAngle}deg)`,
+                 transform: `rotateY(${sockAngle - 90}deg) rotateZ(${droop}deg)`,
                  transformStyle: 'preserve-3d'
                }}
              >

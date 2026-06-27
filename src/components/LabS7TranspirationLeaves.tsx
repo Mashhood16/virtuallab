@@ -29,7 +29,7 @@ export default function LabS7TranspirationLeaves({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 1: Transpiration from Leaves" />
 
       <div className="flex-1 p-8 flex flex-col items-center">

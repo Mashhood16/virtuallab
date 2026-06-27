@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Droplets, Beaker } from 'lucide-react';
+import { Droplets, Beaker, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -27,7 +27,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" />
+      <LabHeader onExit={onExit} title="Act 11.1: DIY Toothpaste" subtitle="Mix household ingredients to formulate toothpaste" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-5xl mx-auto w-full">
         
@@ -130,10 +130,7 @@ export default function LabS8Toothpaste({ onExit }: LabProps) {
                <div className="font-medium" style={{color: 'rgb(var(--slate-500))'}}>
                  Add ingredients to the mortar and mix them to form a paste.
                </div>
-            )}
-            {(progress > 0 || isPerfect) && (
-              <button onClick={handleReset} className="mt-3 text-sm font-medium text-slate-400 hover:text-slate-600 dark:text-slate-300 underline">Reset</button>
-            )}
+             )}
           </div>
 
         </div>

@@ -22,7 +22,7 @@ export default function LabS8Neutralization({ onExit }: LabProps) {
   // Determine color based on drops
   let solutionColor = 'bg-pink-400/80'; // Alkaline with phenolphthalein is pink
   if (drops >= ENDPOINT) {
-    solutionColor = 'bg-slate-100 dark:bg-slate-800/30'; // Colorless when neutralized/acidic
+    solutionColor = 'bg-transparent'; // Colorless when neutralized/acidic
   }
 
   return (

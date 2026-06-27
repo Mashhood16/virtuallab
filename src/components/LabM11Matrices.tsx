@@ -76,7 +76,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-purple-500">
-          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2"><Grid size={20} /> Matrix Operations</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center gap-2"><Grid size={20} /> Matrix Operations</h2>
           <p className="text-gray-600 text-sm">
             Matrices can represent geometric transformations or be used as cipher keys to encrypt data.
           </p>
@@ -90,28 +90,28 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="mt-4 space-y-4">
-            <h3 className="font-bold text-gray-800 border-b pb-1">Define Matrix A</h3>
+            <h3 className="font-bold text-gray-800 dark:text-slate-200 border-b pb-1">Define Matrix A</h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">a (m00)</label>
+                <label className="block text-xs font-medium text-gray-700 dark:text-slate-200 mb-1">a (m00)</label>
                 <input type="number" step="0.5" value={m00} onChange={(e) => setM00(parseFloat(e.target.value) || 0)} className="w-full p-2 border rounded" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">b (m01)</label>
+                <label className="block text-xs font-medium text-gray-700 dark:text-slate-200 mb-1">b (m01)</label>
                 <input type="number" step="0.5" value={m01} onChange={(e) => setM01(parseFloat(e.target.value) || 0)} className="w-full p-2 border rounded" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">c (m10)</label>
+                <label className="block text-xs font-medium text-gray-700 dark:text-slate-200 mb-1">c (m10)</label>
                 <input type="number" step="0.5" value={m10} onChange={(e) => setM10(parseFloat(e.target.value) || 0)} className="w-full p-2 border rounded" />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">d (m11)</label>
+                <label className="block text-xs font-medium text-gray-700 dark:text-slate-200 mb-1">d (m11)</label>
                 <input type="number" step="0.5" value={m11} onChange={(e) => setM11(parseFloat(e.target.value) || 0)} className="w-full p-2 border rounded" />
               </div>
             </div>
 
             <div className="pt-2">
-              <label className="block text-xs font-medium text-gray-700 mb-2">Presets:</label>
+              <label className="block text-xs font-medium text-gray-700 dark:text-slate-200 mb-2">Presets:</label>
               <div className="flex flex-wrap gap-2">
                 <button onClick={() => setPreset('identity')} className="px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded text-xs font-medium">Identity</button>
                 <button onClick={() => setPreset('scale')} className="px-2 py-1 bg-gray-200 hover:bg-gray-300 rounded text-xs font-medium">Scale 2x</button>
@@ -124,7 +124,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
 
         {/* MIDDLE: Simulator */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-fuchsia-500 relative">
-          <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Transformation Space</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 absolute top-4 left-6">Transformation Space</h2>
           
           <svg viewBox="-10 -10 20 20" className="w-full h-80 max-w-md mt-6 border border-gray-200 rounded-lg shadow-inner bg-slate-50 dark:bg-slate-900">
             {/* Grid lines */}
@@ -160,11 +160,11 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
 
         {/* RIGHT: Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-pink-500">
-          <h2 className="text-xl font-bold text-gray-800">Cryptography Tasks</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200">Cryptography Tasks</h2>
           <p className="text-sm text-gray-600 mb-2">Use the current matrix A to perform these operations.</p>
 
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2">1. Find the Determinant</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">1. Find the Determinant</p>
             <p className="text-xs text-gray-600 mb-3">
               {"$$ |A| = ad - bc $$"}. A determinant of 0 means the matrix is not invertible (cannot decrypt!).
             </p>
@@ -183,7 +183,7 @@ export default function LabM11Matrices({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2"><Shield size={16} className="text-pink-600"/> 2. Encrypt Vector</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2 flex items-center gap-2"><Shield size={16} className="text-pink-600"/> 2. Encrypt Vector</p>
             <p className="text-xs text-gray-600 mb-3">
               Given the message vector <span className="font-mono">[3, 5]^T</span>, multiply it by Matrix A to find the encrypted vector <span className="font-mono">[x', y']^T</span>.
             </p>

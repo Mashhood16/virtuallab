@@ -17,9 +17,9 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
   ];
 
   return (
-    <div className="flex h-screen font-sans" style={{backgroundColor: 'rgb(var(--slate-50))', color: 'rgb(var(--slate-800))'}}>
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Mother's Day Card Competition" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Mother's Day Card Competition" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Design a creative greeting card applying your digital art skills.</p>
 
@@ -27,7 +27,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
           {/* Toolbar */}
           <div className="w-80 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6 flex flex-col gap-8">
             <div>
-              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center" style={{color: 'rgb(var(--slate-400))'}}><Palette className="w-4 h-4 mr-2" /> Card Color</h3>
+              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Palette className="w-4 h-4 mr-2" /> Card Color</h3>
               <div className="flex gap-2">
                 {backgrounds.map(bg => (
                   <button 
@@ -40,7 +40,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
             </div>
 
             <div>
-              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center" style={{color: 'rgb(var(--slate-400))'}}><Type className="w-4 h-4 mr-2" /> Message</h3>
+              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><Type className="w-4 h-4 mr-2" /> Message</h3>
               <textarea 
                 className="w-full h-24 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-lg p-3 outline-none focus:border-pink-500 resize-none font-serif"
                 value={message}
@@ -49,7 +49,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
             </div>
 
             <div>
-              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center" style={{color: 'rgb(var(--slate-400))'}}><ImageIcon className="w-4 h-4 mr-2" /> Sticker</h3>
+              <h3 className="font-bold text-sm uppercase tracking-wider mb-3 flex items-center text-slate-400"><ImageIcon className="w-4 h-4 mr-2" /> Sticker</h3>
               <div className="grid grid-cols-3 gap-2">
                 {images.map(img => (
                   <button 
@@ -87,7 +87,7 @@ export default function LabC7MothersDay({ onExit }: LabProps) {
                 </div>
               )}
               
-              <h2 className="font-serif text-3xl text-center font-bold leading-snug drop-shadow-sm break-words w-full" style={{color: 'rgb(var(--slate-800))'}}>
+              <h2 className="font-serif text-3xl text-center font-bold leading-snug drop-shadow-sm break-words w-full text-slate-800 dark:text-slate-200">
                 {message || "..."}
               </h2>
             </div>

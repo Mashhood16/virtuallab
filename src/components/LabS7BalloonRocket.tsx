@@ -29,8 +29,8 @@ export default function LabS7BalloonRocket({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#0f172a'}}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 8: Force and Motion (Balloon Rocket)" />
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Unit 8: Force and Motion (Balloon Rocket)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>

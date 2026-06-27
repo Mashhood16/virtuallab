@@ -28,7 +28,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
   const sandScale = baseScale + weeks * 0.1; // Stunted growth
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-orange-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-orange-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 1: Minerals and Plant Growth" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -85,7 +85,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
                  <div className="absolute bottom-0 w-full h-12 bg-blue-300/50 rounded-b-lg"></div>
               </div>
             </div>
-            <h3 className="font-bold text-slate-700 dark:text-slate-200 mt-4 text-center">Bottle A<br/><span className="text-sm font-medium text-amber-600">Pure Sand</span></h3>
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mt-4 text-center">Bottle A<br/><span className="text-sm font-medium text-amber-600 dark:text-amber-400">Pure Sand</span></h3>
           </div>
 
           {/* Bottle B (Compost Mix) */}
@@ -118,7 +118,7 @@ export default function LabS7MineralsPlantGrowth({ onExit }: LabProps) {
                  <div className="absolute bottom-0 w-full h-12 bg-blue-300/50 rounded-b-lg"></div>
               </div>
             </div>
-            <h3 className="font-bold text-slate-700 dark:text-slate-200 mt-4 text-center">Bottle B<br/><span className="text-sm font-medium text-stone-600">Compost-Soil Mix</span></h3>
+            <h3 className="font-bold text-slate-700 dark:text-slate-200 mt-4 text-center">Bottle B<br/><span className="text-sm font-medium text-stone-600 dark:text-stone-400">Compost-Soil Mix</span></h3>
           </div>
 
         </div>

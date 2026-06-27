@@ -14,7 +14,7 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
   const dropStartTime = useRef<number>(0);
   const fallAnimationRef = useRef<number>(0);
 
-  const GRAVITY = 9.8; // m/s^2
+  const GRAVITY = 2.0; // m/s^2 artificially lowered for easier catching
   const PIXELS_PER_CM = 10;
 
   const startDrop = () => {
@@ -42,7 +42,7 @@ export default function LabS8ReflexTime({ onExit }: LabS8ReflexTimeProps) {
 
     setRulerY(distancePixels);
 
-    if (distancePixels < 400) {
+    if (distancePixels < 500) {
       fallAnimationRef.current = requestAnimationFrame(animateFall);
     } else {
       setGameState('missed');

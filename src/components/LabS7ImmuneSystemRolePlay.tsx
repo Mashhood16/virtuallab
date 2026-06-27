@@ -18,7 +18,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-purple-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-purple-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 3: Immune System Role Play" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -44,7 +44,7 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
         </div>
 
         {/* Play Area */}
-        <div className="relative w-full max-w-4xl h-[500px] bg-red-100 rounded-3xl overflow-hidden shadow-inner border-4 border-red-200 flex">
+        <div className="relative w-full max-w-4xl h-[500px] bg-red-100 dark:bg-red-950/20 rounded-3xl overflow-hidden shadow-inner border-4 border-red-200 dark:border-red-900/50 flex">
           
           {/* Outside (Pathogens) */}
           <div className="w-1/4 bg-slate-800 dark:bg-slate-800 h-full p-4 flex flex-col items-center justify-center relative">
@@ -70,8 +70,8 @@ export default function LabS7ImmuneSystemRolePlay({ onExit }: LabProps) {
           </div>
 
           {/* Inside Body (Bloodstream) */}
-          <div className="flex-1 bg-red-50 relative p-8">
-            <h3 className="font-bold text-red-900/50 text-2xl absolute top-8 right-8">Inside the Body</h3>
+          <div className="flex-1 bg-red-50 dark:bg-red-900/20 relative p-8">
+            <h3 className="font-bold text-red-900/50 dark:text-red-100/50 text-2xl absolute top-8 right-8">Inside the Body</h3>
 
             {/* Pathogens entering */}
             {phase >= 1 && (

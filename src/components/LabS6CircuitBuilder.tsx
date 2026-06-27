@@ -28,26 +28,26 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
   const brightness = getBrightness();
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen font-sans text-white" style={{ backgroundColor: '#0f172a' }}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 9: Electricity - Circuit Builder" />
+    <div className="overflow-y-auto flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white">
+      <LabHeader onExit={onExit} title="Unit 9: Electricity - Circuit Builder" />
 
       <div className="flex-1 flex p-6 gap-6">
         
         {/* Controls */}
-        <div className="w-80 bg-slate-800 dark:bg-slate-800 rounded-2xl border border-slate-700 dark:border-slate-500 p-6 flex flex-col">
-          <h2 className="text-lg font-bold mb-6 text-yellow-400 flex items-center gap-2"><Zap /> Circuit Properties</h2>
+        <div className="w-80 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-300 dark:border-slate-700 p-6 flex flex-col">
+          <h2 className="text-lg font-bold mb-6 text-yellow-500 dark:text-yellow-400 flex items-center gap-2"><Zap /> Circuit Properties</h2>
           
           <div className="space-y-6">
             <div>
               <label className="block text-sm font-bold text-slate-400 mb-2">Circuit Type</label>
-              <div className="flex bg-slate-900 dark:bg-slate-800 rounded-lg p-1 border border-slate-700 dark:border-slate-500">
+              <div className="flex bg-slate-200 dark:bg-slate-900 rounded-lg p-1 border border-slate-300 dark:border-slate-700">
                 <button 
                   onClick={() => { setCircuitType('series'); setSwitchClosed(false); }}
-                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? 'bg-slate-700 dark:bg-slate-800 text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-300'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >Series</button>
                 <button 
                   onClick={() => { setCircuitType('parallel'); setSwitchClosed(false); }}
-                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? 'bg-slate-700 dark:bg-slate-800 text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-300'}`}
+                  className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}
                 >Parallel</button>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="mt-auto p-4 rounded-xl border border-slate-700 dark:border-slate-500 text-sm text-slate-400" style={{ backgroundColor: '#0f172a' }}>
+          <div className="mt-auto p-4 rounded-xl border border-slate-300 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-400 bg-slate-200 dark:bg-slate-900">
             <strong>Observations:</strong>
             <ul className="list-disc pl-4 mt-2 space-y-1">
               {circuitType === 'series' ? (
@@ -96,7 +96,7 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
         </div>
 
         {/* Interactive Canvas */}
-        <div className="flex-1 rounded-2xl border border-slate-800 dark:border-slate-500 p-8 flex items-center justify-center relative overflow-hidden" style={{ backgroundColor: '#020617' }}>
+        <div className="flex-1 rounded-2xl border border-slate-300 dark:border-slate-700 p-8 flex items-center justify-center relative overflow-hidden bg-slate-900 dark:bg-slate-950">
           
           <div className="relative w-full max-w-2xl h-96 flex flex-col items-center justify-between p-12">
             

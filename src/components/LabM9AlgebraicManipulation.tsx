@@ -77,8 +77,9 @@ export default function LabM9AlgebraicManipulation({ onExit }: LabProps) {
   const objX = 150 - uVal * 3;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Virtual Lab: Algebraic Manipulation" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <LabHeader onExit={onExit} title="Virtual Lab: Algebraic Manipulation" />
+      
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Column 1: Theory */}

@@ -236,7 +236,7 @@ export default function LabM10Vectors({ onExit }: LabProps) {
           <div className="space-y-4">
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
               <p className="text-sm text-slate-700 dark:text-slate-200 mb-3">
-                A drone flies exactly <strong className="text-slate-900">{qX} km North</strong>, and then turns and flies <strong className="text-slate-900">{qY} km East</strong>.
+                A drone flies exactly <strong className="text-slate-900 dark:text-slate-200">{qX} km North</strong>, and then turns and flies <strong className="text-slate-900 dark:text-slate-200">{qY} km East</strong>.
               </p>
               <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">
                 What is the magnitude of its total displacement from the starting point?

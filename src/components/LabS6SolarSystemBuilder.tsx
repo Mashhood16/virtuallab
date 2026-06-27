@@ -42,24 +42,24 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans text-white" style={{ backgroundColor: '#0f172a' }}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 12: 3-D Solar System Model" />
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white">
+      <LabHeader onExit={onExit} title="Unit 12: 3-D Solar System Model" />
 
       <div className="flex-1 flex overflow-hidden">
         
         {/* Sidebar */}
-        <div className="w-80 bg-slate-800 dark:bg-slate-800 border-r border-slate-700 dark:border-slate-500 p-6 overflow-y-auto flex flex-col">
-          <h2 className="text-lg font-bold mb-4 text-slate-200">Planet Inventory</h2>
-          <p className="text-xs text-slate-400 mb-6">Click to add planets to your 3D model. They will automatically be placed at their relative distances from the Sun.</p>
+        <div className="w-80 bg-slate-100 dark:bg-slate-800 border-r border-slate-300 dark:border-slate-700 p-6 overflow-y-auto flex flex-col">
+          <h2 className="text-lg font-bold mb-4 text-slate-800 dark:text-slate-200">Planet Inventory</h2>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mb-6">Click to add planets to your 3D model. They will automatically be placed at their relative distances from the Sun.</p>
 
           <div className="space-y-3 flex-1">
             {predefinedPlanets.map(p => {
               const isAdded = planets.some(existing => existing.name === p.name);
               return (
-                <div key={p.name} className={`flex items-center justify-between p-3 rounded-lg border ${isAdded ? 'bg-slate-700 dark:bg-slate-800/50 border-slate-600 dark:border-slate-500' : 'bg-slate-700 dark:bg-slate-800 border-slate-600 dark:border-slate-500 hover:border-blue-400'}`}>
+                <div key={p.name} className={`flex items-center justify-between p-3 rounded-lg border ${isAdded ? 'bg-slate-200 dark:bg-slate-800/50 border-slate-300 dark:border-slate-600' : 'bg-slate-50 dark:bg-slate-800 border-slate-300 dark:border-slate-600 hover:border-blue-400'}`}>
                   <div className="flex items-center gap-3">
                     <div className={`w-6 h-6 rounded-full ${p.color} shadow-sm border border-black/20`}></div>
-                    <span className={`font-medium ${isAdded ? 'text-slate-400' : 'text-slate-200'}`}>{p.name}</span>
+                    <span className={`font-medium ${isAdded ? 'text-slate-400' : 'text-slate-700 dark:text-slate-200'}`}>{p.name}</span>
                   </div>
                   {isAdded ? (
                     <button onClick={() => removePlanet(p.name)} className="text-slate-500 dark:text-slate-400 hover:text-red-400 p-1"><Trash2 className="w-4 h-4" /></button>
@@ -72,7 +72,7 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
           </div>
 
           <div className="mt-4 pt-4 border-t border-slate-700 dark:border-slate-500 text-center">
-             <div className="text-2xl font-bold text-slate-300">{planets.length} / 8</div>
+             <div className="text-2xl font-bold text-slate-800 dark:text-slate-300">{planets.length} / 8</div>
              <div className="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wider">Planets Added</div>
           </div>
         </div>
@@ -90,9 +90,9 @@ export default function LabS6SolarSystemBuilder({ onExit }: LabProps) {
 
           {/* Orbits and Planets */}
           {planets.map(planet => (
-            <div key={planet.id} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-slate-600 dark:border-slate-500/30 rounded-full" style={{ width: `${planet.distance * 2}px`, height: `${planet.distance * 2}px` }}>
+            <div key={planet.id} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-slate-600 dark:border-slate-500/30 rounded-full z-20 pointer-events-none" style={{ width: `${planet.distance * 2}px`, height: `${planet.distance * 2}px` }}>
               <div 
-                className={`absolute rounded-full shadow-lg ${planet.color} flex items-center justify-center group cursor-pointer transition-transform hover:scale-150 animate-[orbit_linear_infinite]`}
+                className={`absolute rounded-full shadow-lg ${planet.color} flex items-center justify-center group cursor-pointer transition-transform hover:scale-150 animate-[orbit_linear_infinite] pointer-events-auto`}
                 style={{ 
                   width: `${planet.size}px`, 
                   height: `${planet.size}px`,

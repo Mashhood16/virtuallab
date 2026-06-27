@@ -14,7 +14,7 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
   const getOpactiy = (syrup: number) => Math.min(1, syrup * 0.15 + 0.1);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 7: Dilute and Concentrated Solutions" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -75,7 +75,7 @@ export default function LabS7DiluteConcentratedSolutions({ onExit }: LabProps) {
 
         </div>
 
-        <div className="mt-8 p-6 bg-red-50 text-red-900 rounded-xl border border-red-200 text-center font-medium max-w-2xl">
+        <div className="mt-8 p-6 bg-red-50 dark:bg-red-900/20 text-red-900 dark:text-red-100 rounded-xl border border-red-200 dark:border-red-900/50 text-center font-medium max-w-2xl">
           A solution with a small amount of solute is called a <strong>dilute solution</strong> (lighter color, less sweet). A solution with a large amount of solute dissolved in it is a <strong>concentrated solution</strong> (darker color, very sweet).
         </div>
       </div>

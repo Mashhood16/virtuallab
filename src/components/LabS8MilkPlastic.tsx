@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -13,7 +14,7 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 11.3: Plastic from Milk" subtitle="Casein polymer extraction" />
+      <LabHeader onExit={onExit} title="Act 11.3: Plastic from Milk" subtitle="Casein polymer extraction" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6 max-w-4xl mx-auto w-full">
         
@@ -56,7 +57,6 @@ export default function LabS8MilkPlastic({ onExit }: LabProps) {
               <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl w-full">
                 <h3 className="font-bold text-emerald-800 mb-2">Reaction Complete!</h3>
                 <p className="text-sm text-emerald-700">The acid in the vinegar separated the milk into liquid whey and solid curds (Casein). These curds can be strained, dried, and kneaded into a natural, moldable plastic!</p>
-                <button onClick={handleReset} className="mt-2 text-sm font-medium text-emerald-600 hover:text-emerald-800 underline">Reset</button>
               </div>
             )}
           </div>

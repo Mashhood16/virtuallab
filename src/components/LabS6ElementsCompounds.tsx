@@ -79,7 +79,7 @@ export default function LabS6ElementsCompounds({ onExit }: LabProps) {
             <button 
               onClick={() => setShowResults(true)}
               disabled={Object.keys(answers).length < questions.length}
-              className="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors"
+              className="w-full py-4 bg-blue-600 text-white dark:text-white rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 transition-colors disabled:bg-slate-300 disabled:text-slate-500 dark:disabled:bg-slate-700 dark:disabled:text-slate-400"
             >
               Check Answers
             </button>

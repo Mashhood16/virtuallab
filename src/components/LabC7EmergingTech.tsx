@@ -20,9 +20,9 @@ export default function LabC7EmergingTech({ onExit }: LabProps) {
   ];
 
   return (
-    <div className="flex h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Emerging Technologies" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Emerging Technologies" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Watch the presentation on emerging tech, then select one to build your mini-project.</p>
 

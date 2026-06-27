@@ -46,8 +46,9 @@ export default function LabM9LinearGraphs({ onExit }: LabProps) {
   const scaleY = SVG_SIZE / MAX_Y;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Lab M9.1: Linear Graphs in Real Contexts" subtitle="Modeling Taxi Fares using y = mx + c" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <LabHeader onExit={onExit} title="Lab M9.1: Linear Graphs in Real Contexts" subtitle="Modeling Taxi Fares using y = mx + c" />
+      
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6 flex-1 max-w-7xl mx-auto w-full">
         {/* Column 1: Theory */}

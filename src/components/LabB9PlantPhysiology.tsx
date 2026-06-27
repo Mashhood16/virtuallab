@@ -124,7 +124,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
         {/* Left Column: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col space-y-6">
           <div>
-            <h2 className="text-xl font-bold text-gray-800 flex items-center mb-2">
+            <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-2">
               <Info className="w-5 h-5 mr-2 text-emerald-600" />
               Theory & Context
             </h2>
@@ -134,19 +134,19 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="space-y-4 flex-1">
-            <h3 className="font-bold text-gray-700">Lab Setup: {activeTab}</h3>
+            <h3 className="font-bold text-gray-700 dark:text-slate-200">Lab Setup: {activeTab}</h3>
             
             {activeTab === 'Potometer' && (
               <>
                 <div className="space-y-2 pt-4">
-                  <label className="flex justify-between text-sm font-medium text-gray-700">
+                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
                     <span className="flex items-center"><Thermometer className="w-4 h-4 mr-1 text-red-500" /> Temperature (°C)</span>
                     <span>{temp}°C</span>
                   </label>
                   <input type="range" min="10" max="40" value={temp} onChange={(e) => setTemp(Number(e.target.value))} className="w-full accent-emerald-600" />
                 </div>
                 <div className="space-y-2 pt-4">
-                  <label className="flex justify-between text-sm font-medium text-gray-700">
+                  <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
                     <span className="flex items-center"><Wind className="w-4 h-4 mr-1 text-slate-500 dark:text-slate-400" /> Wind Speed</span>
                     <span>{wind}</span>
                   </label>
@@ -157,7 +157,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
             {activeTab === 'Hydrilla' && (
               <div className="space-y-2 pt-4">
-                <label className="flex justify-between text-sm font-medium text-gray-700">
+                <label className="flex justify-between text-sm font-medium text-gray-700 dark:text-slate-200">
                   <span className="flex items-center"><Sun className="w-4 h-4 mr-1 text-yellow-500" /> Light Intensity (%)</span>
                   <span>{lightIntensity}%</span>
                 </label>
@@ -167,7 +167,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
             {activeTab === 'Indicator' && (
               <div className="space-y-2 pt-4">
-                <label className="text-sm font-medium text-gray-700 block mb-2">Environment State</label>
+                <label className="text-sm font-medium text-gray-700 dark:text-slate-200 block mb-2">Environment State</label>
                 <div className="flex space-x-2">
                   <button onClick={() => setIsLight(true)} className={`flex-1 py-2 flex justify-center items-center rounded-md text-sm font-semibold transition-colors ${isLight ? 'bg-yellow-100 text-yellow-700 border-2 border-yellow-400' : 'bg-gray-100 text-gray-600'}`}>
                     <Sun className="w-4 h-4 mr-2" /> Light
@@ -329,7 +329,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
 
         {/* Right Column: Data & Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm p-6 flex flex-col">
-          <h2 className="text-xl font-bold text-gray-800 flex items-center mb-4">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center mb-4">
             <Save className="w-5 h-5 mr-2 text-emerald-600" />
             Data Logging & Analysis
           </h2>
@@ -367,7 +367,7 @@ export default function LabB9PlantPhysiology({ onExit }: { onExit?: () => void }
           </div>
 
           <div className="flex-1 space-y-4">
-            <h3 className="font-bold text-gray-700">Assessment</h3>
+            <h3 className="font-bold text-gray-700 dark:text-slate-200">Assessment</h3>
             <div className="space-y-3">
               <div>
                 <label className="text-sm text-gray-600 block mb-1">1. How does increasing wind affect the transpiration rate?</label>

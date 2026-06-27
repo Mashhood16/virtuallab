@@ -118,7 +118,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
         
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
@@ -179,7 +179,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-gray-800">Potato Core Plasmolysis</h3>
+                  <h3 className="font-bold text-gray-800 dark:text-slate-200">Potato Core Plasmolysis</h3>
                   <div className="text-sm bg-blue-50 text-blue-700 px-3 py-1 rounded-full font-medium">
                     Initial Mass: 5.00g
                   </div>
@@ -206,14 +206,14 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                   </svg>
                   <div className="mt-4 text-center">
                     <p className="text-sm font-medium text-gray-600">Current Mass</p>
-                    <p className="text-3xl font-bold text-gray-800">{currentMass.toFixed(2)}g</p>
+                    <p className="text-3xl font-bold text-gray-800 dark:text-slate-200">{currentMass.toFixed(2)}g</p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700">Sucrose Molarity</label>
+                      <label className="font-medium text-gray-700 dark:text-slate-200">Sucrose Molarity</label>
                       <span className="text-emerald-700 font-bold">{sucroseMolarity.toFixed(1)} M</span>
                     </div>
                     <input 
@@ -236,7 +236,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                     <button 
                       onClick={clearData}
                       disabled={isSimulatingWP || dataPoints.length === 0}
-                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-medium transition-colors disabled:opacity-50"
+                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-medium transition-colors disabled:opacity-50"
                     >
                       Clear Data
                     </button>
@@ -250,7 +250,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="font-bold text-gray-800">Celery Transpiration</h3>
+                  <h3 className="font-bold text-gray-800 dark:text-slate-200">Celery Transpiration</h3>
                   <div className="text-sm bg-amber-50 text-amber-700 px-3 py-1 rounded-full font-medium">
                     Time: {timePassed.toFixed(0)} min
                   </div>
@@ -277,7 +277,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                 <div className="space-y-4">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700 flex items-center gap-1"><Activity size={14}/> Temperature (°C)</label>
+                      <label className="font-medium text-gray-700 dark:text-slate-200 flex items-center gap-1"><Activity size={14}/> Temperature (°C)</label>
                       <span className="text-emerald-700 font-bold">{temperature}°C</span>
                     </div>
                     <input 
@@ -289,7 +289,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <label className="font-medium text-gray-700 flex items-center gap-1"><Droplets size={14}/> Humidity (%)</label>
+                      <label className="font-medium text-gray-700 dark:text-slate-200 flex items-center gap-1"><Droplets size={14}/> Humidity (%)</label>
                       <span className="text-emerald-700 font-bold">{humidity}%</span>
                     </div>
                     <input 
@@ -314,12 +314,12 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
 
         {/* Column 3: Assessment & Data */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Data Analysis</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Data Analysis</h2>
           
           {activeTab === 'water' && (
             <>
               <div className="bg-slate-50 dark:bg-slate-900 border rounded-xl p-4 mb-6">
-                <h3 className="font-semibold text-sm text-gray-700 mb-2">Recorded Measurements</h3>
+                <h3 className="font-semibold text-sm text-gray-700 dark:text-slate-200 mb-2">Recorded Measurements</h3>
                 {dataPoints.length === 0 ? (
                   <p className="text-sm text-gray-400 italic text-center py-4">No data collected yet. Run the simulation.</p>
                 ) : (
@@ -392,7 +392,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
             
             <div className="space-y-4 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">
                   1. Based on your data, what is the isotonic sucrose concentration? (M)
                 </label>
                 <input 
@@ -406,7 +406,7 @@ export default function LabB11PlantPhysiology({ onExit }: { onExit?: () => void 
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">
                   2. Calculate the solute potential (Ψs) of the potato cells at 20°C in bars.
                 </label>
                 <input 

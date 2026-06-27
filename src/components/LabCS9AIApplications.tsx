@@ -117,7 +117,8 @@ export default function LabCS9AIApplications({ onExit }: LabProps) {
                                 );
                             })}
                             {nodes.map(node => (
-                                <g key={node.id} onClick={() => handleNodeClick(node)} className="cursor-pointer hover:opacity-70" transform={`translate(${node.x}, ${node.y})`}>
+                                <g key={node.id} onClick={() => handleNodeClick(node)} className="cursor-pointer" transform={`translate(${node.x}, ${node.y})`}>
+                                    <circle r="10" fill="transparent" />
                                     <circle 
                                         r="4" 
                                         fill={node.unlocked ? "#4f46e5" : "#e2e8f0"} 

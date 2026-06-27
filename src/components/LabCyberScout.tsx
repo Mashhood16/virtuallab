@@ -51,7 +51,7 @@ export default function LabCyberScout({ onExit }: LabProps) {
       <div className="flex-1 flex overflow-hidden p-8 justify-center items-center bg-[url('https://www.transparenttextures.com/patterns/clean-gray-paper.png')]">
         
         {/* Browser Window Mockup */}
-        <div className="w-[800px] bg-slate-50 dark:bg-slate-900 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-slate-300 dark:border-slate-700 dark:border-slate-500">
+        <div className="w-[800px] max-h-full bg-slate-50 dark:bg-slate-900 rounded-xl shadow-2xl flex flex-col overflow-hidden border border-slate-300 dark:border-slate-700 dark:border-slate-500">
            
            {/* Browser Tab/Address Bar */}
            <div className="bg-slate-200 dark:bg-slate-800 h-12 flex items-center px-4 gap-4 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500">

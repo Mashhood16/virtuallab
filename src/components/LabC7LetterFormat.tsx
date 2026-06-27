@@ -20,9 +20,9 @@ export default function LabC7LetterFormat({ onExit }: LabProps) {
   const isSuccess = isFontCorrect && isSizeCorrect && isColorCorrect && hasSignature && content.length > 50;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Formal Letter Formatting" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Formal Letter Formatting" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-6">Write an application using specific formatting rules: Calibri font, size 11, blue color, and include your signature/details.</p>
 

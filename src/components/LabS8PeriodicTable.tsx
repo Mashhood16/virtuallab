@@ -59,12 +59,12 @@ export default function LabS8PeriodicTable({ onExit }: LabProps) {
         </div>
 
         <div className="w-full md:w-80 flex flex-col gap-4">
-          <div className="bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm text-white p-6 border border-slate-700 dark:border-slate-500">
-            <h3 className="font-bold text-slate-200 mb-4 flex items-center gap-2">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm text-slate-800 dark:text-slate-200 p-6 border border-slate-200 dark:border-slate-700">
+            <h3 className="font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
               <Search className="w-5 h-5" /> Data Table
             </h3>
-            <table className="w-full text-sm text-left text-slate-300">
-              <thead className="text-xs text-slate-400 uppercase bg-slate-700 dark:bg-slate-800/50">
+            <table className="w-full text-sm text-left text-slate-700 dark:text-slate-300">
+              <thead className="text-xs text-slate-500 dark:text-slate-400 uppercase bg-slate-100 dark:bg-slate-700/50">
                 <tr>
                   <th className="px-4 py-2 rounded-tl-lg">Period</th>
                   <th className="px-4 py-2 rounded-tr-lg text-right">Elements</th>
@@ -72,7 +72,7 @@ export default function LabS8PeriodicTable({ onExit }: LabProps) {
               </thead>
               <tbody>
                 {PERIODS.map(p => (
-                  <tr key={p.p} className={`border-b border-slate-700 dark:border-slate-500 ${selectedPeriod === p.p ? 'bg-indigo-900/50 text-indigo-200 font-bold' : ''}`}>
+                  <tr key={p.p} className={`border-b border-slate-200 dark:border-slate-700 ${selectedPeriod === p.p ? 'bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 font-bold' : ''}`}>
                     <td className="px-4 py-2">Period {p.p}</td>
                     <td className="px-4 py-2 text-right">{p.elements}</td>
                   </tr>

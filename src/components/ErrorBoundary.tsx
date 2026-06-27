@@ -36,7 +36,7 @@ export default class ErrorBoundary extends Component<Props, State> {
           <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mb-6">
             <AlertTriangle className="w-8 h-8 text-rose-500" />
           </div>
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">Something went wrong</h2>
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-2">Something went wrong</h2>
           <p className="text-slate-500 text-center max-w-md mb-2">
             This lab encountered an unexpected error and couldn't render properly.
           </p>

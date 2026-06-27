@@ -29,7 +29,7 @@ export default function LabS7CleaningCoins({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-amber-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-amber-50 font-sans dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 7: Cleaning Coins with Solutions" />
 
       <div className="flex-1 p-8 flex flex-col items-center">

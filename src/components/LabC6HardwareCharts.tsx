@@ -38,13 +38,14 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
   const isCorrect = isComplete && hardwareItems.every(item => matches[item.id] === item.id);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Hardware Identification Charts" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Hardware Identification Charts" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Click a label from the word bank, then click an empty slot below the correct hardware icon to label it.</p>
 
-        <div className="flex gap-8 flex-1">
+        <div className="flex flex-col lg:flex-row gap-8 flex-1">
           {/* Main Chart Area */}
           <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-8 flex flex-col">
             <h2 className="text-xl font-bold mb-6 text-center">Hardware Components</h2>
@@ -91,10 +92,10 @@ export default function LabC6HardwareCharts({ onExit }: LabProps) {
           </div>
 
           {/* Word Bank Sidebar */}
-          <div className="w-64 flex flex-col gap-4">
+          <div className="w-full lg:w-64 flex flex-col gap-4">
             <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 p-6">
               <h3 className="font-bold text-slate-700 dark:text-slate-200 mb-4 uppercase text-sm tracking-wider">Word Bank</h3>
-              <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-2 lg:flex lg:flex-col gap-3">
                 {hardwareItems.map(item => {
                   const isUsed = Object.values(matches).includes(item.id);
                   return (

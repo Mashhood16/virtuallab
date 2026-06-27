@@ -38,9 +38,10 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
   }, []);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Tracking Movement with Variables" />
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 overflow-hidden">
+      <LabHeader onExit={onExit} title="Tracking Movement with Variables" />
+      <div className="flex-1 p-8 flex flex-col overflow-y-auto min-h-0">
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Use the Left and Right Arrow keys. Watch how the 'counter' variable tracks the movement.</p>
 
@@ -52,8 +53,8 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
               
               {/* Right Arrow Block */}
               <div>
-                <div className="bg-amber-400 rounded-lg shadow-sm border border-amber-500 p-4 w-full text-amber-900 font-bold text-sm rounded-b-none pb-6 relative z-10">
-                  <div className="absolute top-0 left-4 w-12 h-3 bg-amber-500 rounded-b-full"></div>
+                <div className="bg-amber-500 rounded-lg shadow-sm border border-amber-600 p-4 w-full text-white font-bold text-sm rounded-b-none pb-6 relative z-10">
+                  <div className="absolute top-0 left-4 w-12 h-3 bg-amber-600 rounded-b-full"></div>
                   when [ right arrow ] key pressed
                 </div>
                 <div className="bg-orange-500 rounded-lg shadow-sm border border-orange-600 p-3 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2 mb-1">
@@ -66,8 +67,8 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
 
               {/* Left Arrow Block */}
               <div>
-                <div className="bg-amber-400 rounded-lg shadow-sm border border-amber-500 p-4 w-full text-amber-900 font-bold text-sm rounded-b-none pb-6 relative z-10">
-                  <div className="absolute top-0 left-4 w-12 h-3 bg-amber-500 rounded-b-full"></div>
+                <div className="bg-amber-500 rounded-lg shadow-sm border border-amber-600 p-4 w-full text-white font-bold text-sm rounded-b-none pb-6 relative z-10">
+                  <div className="absolute top-0 left-4 w-12 h-3 bg-amber-600 rounded-b-full"></div>
                   when [ left arrow ] key pressed
                 </div>
                 <div className="bg-orange-500 rounded-lg shadow-sm border border-orange-600 p-3 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2 mb-1">
@@ -93,16 +94,17 @@ export default function LabC6MovementTracking({ onExit }: LabProps) {
             
             <div className="bg-slate-50 dark:bg-slate-900 flex-1 rounded-b-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 relative overflow-hidden flex items-center justify-center">
               
-              <div className="absolute inset-0 bg-slate-900 dark:bg-slate-800">
+              <div className="absolute inset-0 bg-slate-900 dark:bg-slate-950 flex flex-col">
+                <div className="flex-1"></div>
                 {/* Ground */}
-                <div className="absolute bottom-0 left-0 right-0 h-1/4 bg-slate-700 dark:bg-slate-800 border-t-4 border-slate-600 dark:border-slate-500"></div>
+                <div className="h-1/4 bg-slate-800 dark:bg-slate-900 border-t-4 border-slate-700 dark:border-slate-800 w-full"></div>
               </div>
 
               <div className="absolute top-4 left-4 flex gap-2">
-                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === '' ? 'bg-amber-400 text-amber-900' : 'bg-slate-700 dark:bg-slate-800 text-slate-300'}`}>
+                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === 'ArrowLeft' ? 'bg-amber-400 text-slate-900 dark:text-slate-200' : 'bg-slate-700 dark:bg-slate-800 text-slate-300'}`}>
                   &larr; Left
                 </div>
-                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === 'ArrowRight' ? 'bg-amber-400 text-amber-900' : 'bg-slate-700 dark:bg-slate-800 text-slate-300'}`}>
+                <div className={`px-4 py-2 rounded-lg font-bold transition-colors ${pressedKey === 'ArrowRight' ? 'bg-amber-400 text-slate-900 dark:text-slate-200' : 'bg-slate-700 dark:bg-slate-800 text-slate-300'}`}>
                   Right &rarr;
                 </div>
               </div>

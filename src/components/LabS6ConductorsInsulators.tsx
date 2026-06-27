@@ -23,13 +23,13 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen font-sans text-white" style={{ backgroundColor: '#0f172a' }}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 9: Conductors & Insulators" />
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-white">
+      <LabHeader onExit={onExit} title="Unit 9: Conductors & Insulators" />
 
       <div className="flex-1 flex flex-col p-8 items-center overflow-y-auto">
-        <div className="w-full max-w-4xl bg-slate-800 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-700 dark:border-slate-500 p-8">
+        <div className="w-full max-w-4xl bg-slate-100 dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-300 dark:border-slate-700 p-8">
           
-          <div className="bg-slate-900 dark:bg-slate-800 border border-slate-700 dark:border-slate-500 text-slate-300 p-6 rounded-xl mb-8 flex gap-4">
+          <div className="bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 p-6 rounded-xl mb-8 flex gap-4">
             <Zap className="w-8 h-8 text-yellow-500 shrink-0 mt-1" />
             <div>
               <h2 className="text-xl font-bold text-yellow-400 mb-2">Virtual Testing Lab</h2>
@@ -41,9 +41,9 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
 
           <div className="grid grid-cols-2 gap-8">
             {materials.map(mat => (
-              <div key={mat.id} className="bg-slate-700 dark:bg-slate-800 rounded-xl border border-slate-600 dark:border-slate-500 p-6 flex flex-col">
+              <div key={mat.id} className="bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-300 dark:border-slate-600 p-6 flex flex-col">
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="font-bold text-lg text-slate-100">{mat.name}</h3>
+                  <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">{mat.name}</h3>
                   {tested[mat.id] && (
                     <span className={`text-sm font-bold flex items-center gap-1 ${tested[mat.id] === mat.type ? 'text-emerald-400' : 'text-red-400'}`}>
                       {tested[mat.id] === mat.type ? <CheckCircle className="w-4 h-4" /> : <FileQuestion className="w-4 h-4" />}
@@ -72,13 +72,13 @@ export default function LabS6ConductorsInsulators({ onExit }: LabProps) {
                 <div className="flex gap-4 mt-auto">
                   <button 
                     onClick={() => handleClassify(mat.id, 'Conductor')}
-                    className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Conductor' ? 'bg-yellow-500 border-yellow-500 text-slate-900' : 'bg-slate-800 dark:bg-slate-800 border-slate-600 dark:border-slate-500 text-slate-400 hover:border-yellow-500 hover:text-yellow-500'}`}
+                    className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Conductor' ? 'bg-yellow-500 border-yellow-500 text-slate-900' : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-yellow-500 hover:text-yellow-500'}`}
                   >
                     Conductor
                   </button>
                   <button 
                     onClick={() => handleClassify(mat.id, 'Insulator')}
-                    className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Insulator' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-800 dark:bg-slate-800 border-slate-600 dark:border-slate-500 text-slate-400 hover:border-blue-500 hover:text-blue-500'}`}
+                    className={`flex-1 py-2 rounded-lg font-bold transition-colors border-2 ${tested[mat.id] === 'Insulator' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600 text-slate-500 dark:text-slate-400 hover:border-blue-500 hover:text-blue-500'}`}
                   >
                     Insulator
                   </button>

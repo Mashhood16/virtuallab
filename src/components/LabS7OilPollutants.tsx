@@ -24,33 +24,30 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#1e293b'}}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 7: Removing Oil Pollutants" />
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Unit 7: Removing Oil Pollutants" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
+        <div className="p-6 rounded-2xl shadow-xl max-w-2xl w-full text-center mb-8 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
           <h2 className="text-2xl font-bold text-emerald-400 mb-4">Cleaning Oil Spills</h2>
           <p className="text-slate-300 mb-6">Oil is less dense than water, so it floats on top forming a slick. Select different tools to try and clean up the oil spill from the water's surface.</p>
           
           <div className="flex justify-center gap-4 flex-wrap">
             <button 
               onClick={() => applyMethod('spoon')}
-              className="flex items-center px-4 py-2 text-white rounded-lg font-medium"
-              style={{backgroundColor: '#475569'}}
+              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
             >
               <Utensils className="w-4 h-4 mr-2" /> Skim with Spoon
             </button>
             <button 
               onClick={() => applyMethod('cheesecloth')}
-              className="flex items-center px-4 py-2 text-white rounded-lg font-medium"
-              style={{backgroundColor: '#475569'}}
+              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
             >
               <Grid className="w-4 h-4 mr-2" /> Drag Cheesecloth
             </button>
             <button 
               onClick={() => applyMethod('sand')}
-              className="flex items-center px-4 py-2 text-white rounded-lg font-medium"
-              style={{backgroundColor: '#475569'}}
+              className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg font-medium"
             >
               <Droplets className="w-4 h-4 mr-2" /> Sprinkle Sand
             </button>
@@ -108,7 +105,7 @@ export default function LabS7OilPollutants({ onExit }: LabProps) {
         </div>
 
         {method !== 'none' && (
-          <div className="mt-8 p-6 rounded-xl max-w-2xl" style={{backgroundColor: '#334155', color: '#e2e8f0', borderLeft: '4px solid #10b981'}}>
+          <div className="mt-8 p-6 rounded-xl max-w-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-900 dark:text-emerald-100 border-l-4 border-emerald-500">
             {method === 'spoon' && <p>Skimming with a spoon only removes small amounts at a time and is highly inefficient for large spills.</p>}
             {method === 'cheesecloth' && <p>Dragging cheesecloth (a porous material) absorbs and traps oil, working better than a spoon but still leaving a significant slick.</p>}
             {method === 'sand' && <p>Sprinkling sand over the oil causes the sand particles to bind with the oil. The combined mass becomes denser than water, causing it to clump and sink to the bottom, clearing the surface.</p>}

@@ -45,7 +45,8 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
             {hits > 0 && hits < 4 && (
               <div 
                 key={hits} 
-                className="absolute -top-16 right-0 z-30 animate-[strike_0.3s_ease-out]"
+                className="absolute right-8 z-30 animate-[strike_0.3s_ease-out]"
+                style={{ bottom: `${orientation === 'pointed' ? 210 - (hits-1) * 20 : 210}px` }}
               >
                 <div className="w-20 h-4 bg-amber-800 rounded-l-full rotate-45 origin-bottom-left flex items-center justify-end">
                   <div className="w-12 h-8 bg-slate-600 dark:bg-slate-800 rounded-sm translate-x-4 -rotate-45" />
@@ -55,7 +56,7 @@ export default function LabS8NailPressure({ onExit }: LabProps) {
 
             {/* The Nail */}
             <div className={`absolute z-20 flex flex-col items-center transition-all duration-500 ${orientation === 'flat' ? 'rotate-180' : ''}`}
-                 style={{ top: `${orientation === 'pointed' ? -40 + hits * 12 : -40}px` }}
+                 style={{ bottom: `${orientation === 'pointed' ? 96 - hits * 20 : 96}px` }}
             >
               {/* Head */}
               <div className="w-12 h-2 bg-slate-400 dark:bg-slate-800 rounded-sm" />

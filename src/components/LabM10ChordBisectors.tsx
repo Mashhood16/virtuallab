@@ -196,8 +196,8 @@ export default function LabM10ChordBisectors({ onExit }: LabProps) {
           <div className="space-y-4">
             <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-100">
               <p className="text-sm text-slate-700 dark:text-slate-200 mb-3 leading-relaxed">
-                A circle has a radius of <strong className="text-slate-900">{triples[quizIdx].R} cm</strong>. 
-                A chord is drawn at a perpendicular distance of <strong className="text-slate-900">{triples[quizIdx].D} cm</strong> from the center.
+                A circle has a radius of <strong className="text-slate-900 dark:text-slate-200">{triples[quizIdx].R} cm</strong>. 
+                A chord is drawn at a perpendicular distance of <strong className="text-slate-900 dark:text-slate-200">{triples[quizIdx].D} cm</strong> from the center.
               </p>
               <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 mb-2">
                 What is the total length of the chord?

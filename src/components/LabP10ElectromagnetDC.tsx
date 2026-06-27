@@ -71,7 +71,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
         
         {/* Column 1: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col overflow-hidden">
-          <div className="bg-amber-500 p-4 text-slate-900 flex items-center gap-2">
+          <div className="bg-amber-500 p-4 text-slate-900 dark:text-slate-200 flex items-center gap-2">
             <BookOpen className="w-5 h-5" />
             <h2 className="font-bold text-lg">Theory & Setup</h2>
           </div>
@@ -215,7 +215,7 @@ export default function LabP10ElectromagnetDC({ onExit }: LabProps) {
           <div className="bg-slate-800 dark:bg-slate-800 p-4 border-t border-slate-700 dark:border-slate-500 flex justify-center">
             <button 
               onClick={handleRecord}
-              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2"
+              className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 dark:text-slate-200 font-bold rounded-xl shadow-lg transition-colors flex items-center gap-2"
             >
               <Activity className="w-5 h-5" /> Record Deflection
             </button>

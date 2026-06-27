@@ -31,9 +31,10 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
   }, []);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Costume Change Event" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Costume Change Event" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Press the 'c' key on your keyboard to trigger the event and change the Rocket's costume.</p>
 
@@ -43,15 +44,15 @@ export default function LabC6CostumeChange({ onExit }: LabProps) {
             <div className="bg-amber-500 text-white font-bold p-3 text-sm">Events & Looks</div>
             <div className="flex-1 p-6 flex flex-col gap-2 bg-slate-50 dark:bg-slate-900/50">
               
-              <div className="bg-amber-400 rounded-lg shadow-sm border border-amber-500 p-4 w-full text-amber-900 font-bold text-sm rounded-b-none pb-6 relative z-10">
-                <div className="absolute top-0 left-4 w-12 h-3 bg-amber-500 rounded-b-full"></div>
+              <div className="bg-amber-400 dark:bg-amber-500 rounded-lg shadow-sm border border-amber-500 dark:border-amber-400 p-4 w-full text-amber-900 dark:text-slate-900 font-bold text-sm rounded-b-none pb-6 relative z-10">
+                <div className="absolute top-0 left-4 w-12 h-3 bg-amber-500 dark:bg-amber-600 rounded-b-full"></div>
                 when [ c ] key pressed
               </div>
-              <div className="bg-purple-500 rounded-lg shadow-sm border border-purple-600 p-4 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2">
+              <div className="bg-purple-500 dark:bg-purple-600 rounded-lg shadow-sm border border-purple-600 dark:border-purple-500 p-4 w-full text-white font-bold text-sm -mt-4 relative z-20 ml-2">
                 next costume
               </div>
 
-              <div className={`mt-12 p-4 rounded-xl border-2 text-center transition-colors font-bold ${pressedKey === 'c' ? 'bg-amber-100 border-amber-400 text-amber-800' : 'bg-amber-50 border-amber-200 text-amber-700'}`}>
+              <div className={`mt-12 p-4 rounded-xl border-2 text-center transition-colors font-bold ${pressedKey === 'c' ? 'bg-amber-100 dark:bg-amber-900 border-amber-400 dark:border-amber-500 text-amber-900 dark:text-amber-100' : 'bg-amber-50 dark:bg-amber-900/50 border-amber-200 dark:border-amber-800 text-amber-900 dark:text-amber-200'}`}>
                 {pressedKey === 'c' ? 'Event Triggered!' : "Waiting for 'c' key..."}
               </div>
 

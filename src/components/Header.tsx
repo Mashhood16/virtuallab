@@ -89,7 +89,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           V
         </div>
         <h1 className="text-2xl font-bold font-outfit hidden md:block shrink-0">
-          <span className={`${isDark ? 'bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300' : 'text-slate-800'}`}>Dashboard</span>
+          <span className={`${isDark ? 'bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300' : 'text-slate-800 dark:text-slate-200'}`}>Dashboard</span>
         </h1>
 
         {/* Desktop Search Bar */}
@@ -102,7 +102,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               onChange={(e) => { setQuery(e.target.value); setIsOpen(true); }}
               onFocus={() => setIsOpen(true)}
               placeholder="Search for a lab..."
-              className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-slate-200 placeholder:text-slate-500' : 'text-slate-700 placeholder:text-slate-400'}`}
+              className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-slate-200 placeholder:text-slate-500' : 'text-slate-700 dark:text-slate-200 placeholder:text-slate-400'}`}
             />
             <div className={`flex items-center justify-center rounded text-[10px] font-bold px-1.5 py-0.5 shrink-0 ml-2 ${isDark ? 'bg-white/10 border border-white/10 text-slate-400' : 'bg-white border border-slate-200 text-slate-500 shadow-sm'}`}>
               ⌘K
@@ -121,7 +121,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                         className={`w-full text-left px-5 py-3 transition-colors flex flex-col gap-1 border-b last:border-0 ${isDark ? 'hover:bg-white/5 border-slate-700/30' : 'hover:bg-slate-50 border-slate-50'}`}
                       >
                         <div className="flex items-center justify-between">
-                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>{lab.title}</span>
+                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800 dark:text-slate-200'}`}>{lab.title}</span>
                           <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ml-2 ${isDark ? 'bg-white/10 text-slate-300' : 'bg-slate-100 text-slate-600'}`}>
                             Class {lab.classLevel} · {formatSubject(lab.subject)}
                           </span>
@@ -171,7 +171,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
               <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm">
                 {user.name.charAt(0).toUpperCase()}
               </div>
-              <span className={`text-sm font-semibold hidden sm:block ${isDark ? 'text-slate-200' : 'text-slate-700'}`}>{user.name}</span>
+              <span className={`text-sm font-semibold hidden sm:block ${isDark ? 'text-slate-200' : 'text-slate-700 dark:text-slate-200'}`}>{user.name}</span>
             </button>
             <button
               onClick={() => { logout(); navigate('/login'); }}
@@ -198,7 +198,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <div className={`flex items-center gap-3 px-4 py-3 ${isDark ? 'border-b border-slate-800' : 'border-b border-slate-200'}`}>
             <button
               onClick={() => { setMobileSearchOpen(false); setQuery(''); }}
-              className={`p-2 -ml-2 transition-colors shrink-0 ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`p-2 -ml-2 transition-colors shrink-0 ${isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700 dark:text-slate-200'}`}
               aria-label="Close search"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -213,7 +213,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search labs..."
-                className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-white placeholder:text-slate-500' : 'text-slate-700 placeholder:text-slate-400'}`}
+                className={`bg-transparent border-none outline-none text-sm w-full ${isDark ? 'text-white placeholder:text-slate-500' : 'text-slate-700 dark:text-slate-200 placeholder:text-slate-400'}`}
               />
               {query.trim() !== '' && (
                 <button
@@ -238,7 +238,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
                         className={`w-full text-left px-5 py-3 transition-colors flex flex-col gap-1 border-b last:border-0 ${isDark ? 'hover:bg-white/5 active:bg-white/10 border-slate-800' : 'hover:bg-slate-50 active:bg-slate-100 border-slate-50'}`}
                       >
                         <div className="flex items-center justify-between gap-2">
-                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>{lab.title}</span>
+                          <span className={`font-semibold text-sm ${isDark ? 'text-white' : 'text-slate-800 dark:text-slate-200'}`}>{lab.title}</span>
                           <span className={`text-[11px] font-medium px-2 py-0.5 rounded whitespace-nowrap ${isDark ? 'bg-white/10 text-slate-300' : 'bg-slate-100 text-slate-600'}`}>
                             Class {lab.classLevel} · {formatSubject(lab.subject)}
                           </span>

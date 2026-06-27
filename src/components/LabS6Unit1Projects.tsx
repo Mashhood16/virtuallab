@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { CheckCircle, Info, Upload, X } from 'lucide-react';
 import LabHeader from './LabHeader';
 
@@ -12,12 +12,11 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
   const [organSystem, setOrganSystem] = useState<string>('');
   const [cellPhoto, setCellPhoto] = useState<string | null>(null);
   const [organPhoto, setOrganPhoto] = useState<string | null>(null);
-  const cellFileRef = useRef<HTMLInputElement>(null);
-  const organFileRef = useRef<HTMLInputElement>(null);
+
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, setPhoto: (v: string | null) => void) => {
     const file = e.target.files?.[0];
-    if (file && file.size <= 10 * 1024 * 1024) {
+    if (file) {
       const reader = new FileReader();
       reader.onload = (ev) => setPhoto(ev.target?.result as string);
       reader.readAsDataURL(file);
@@ -89,7 +88,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
                    )}
                  </div>
                  <div className="mt-8 pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <input ref={cellFileRef} type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setCellPhoto)} />
+                    <input id="cell-upload" type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setCellPhoto)} />
                     {cellPhoto ? (
                       <div className="relative">
                         <img src={cellPhoto} alt="Uploaded model" className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500" />
@@ -97,10 +96,10 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
                         <p className="text-sm text-emerald-600 font-medium mt-2 text-center">Photo uploaded successfully!</p>
                       </div>
                     ) : (
-                      <button onClick={() => cellFileRef.current?.click()} className="w-full p-6 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-800 transition-colors cursor-pointer">
+                      <label htmlFor="cell-upload" className="block w-full p-6 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
                         <Upload className="w-8 h-8 mx-auto mb-2 opacity-40" />
                         <span className="font-medium">Click to upload a photo of your model</span>
-                      </button>
+                      </label>
                     )}
                  </div>
               </div>
@@ -145,7 +144,7 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
                  </ul>
                  
                  <div className="mt-8 pt-4 border-t border-slate-200 dark:border-slate-700 dark:border-slate-500">
-                    <input ref={organFileRef} type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setOrganPhoto)} />
+                    <input id="organ-upload" type="file" accept="image/*" className="hidden" onChange={e => handleFileUpload(e, setOrganPhoto)} />
                     {organPhoto ? (
                       <div className="relative">
                         <img src={organPhoto} alt="Uploaded model" className="w-full max-h-64 object-contain rounded-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500" />
@@ -153,10 +152,10 @@ export default function LabS6Unit1Projects({ onExit }: LabProps) {
                         <p className="text-sm text-emerald-600 font-medium mt-2 text-center">Photo uploaded successfully!</p>
                       </div>
                     ) : (
-                      <button onClick={() => organFileRef.current?.click()} className="w-full p-6 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 dark:bg-slate-800 transition-colors cursor-pointer">
+                      <label htmlFor="organ-upload" className="block w-full p-6 text-center text-slate-400 border-2 border-dashed border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer">
                         <Upload className="w-8 h-8 mx-auto mb-2 opacity-40" />
                         <span className="font-medium">Click to upload a photo of your model</span>
-                      </button>
+                      </label>
                     )}
                  </div>
               </div>

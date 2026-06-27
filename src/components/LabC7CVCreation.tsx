@@ -15,9 +15,9 @@ export default function LabC7CVCreation({ onExit }: LabProps) {
   const isComplete = hasPicture && hasTable && name.length > 2 && interests.length > 5;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="CV / Resume Creation" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="CV / Resume Creation" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-6">Build a professional CV by inserting your picture, an academic qualifications table, and your interests.</p>
 

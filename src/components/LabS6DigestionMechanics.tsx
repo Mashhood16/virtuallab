@@ -10,11 +10,11 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
   const [bananaState, setBananaState] = useState<'whole' | 'pieces' | 'crushed' | 'mashed'>('whole');
 
   return (
-    <div className="overflow-y-auto flex flex-col h-screen bg-orange-50 font-sans">
+    <div className="overflow-y-auto flex flex-col h-screen bg-orange-50 dark:bg-slate-900 font-sans">
       <LabHeader onExit={onExit} title="Unit 4: Physical Digestion Mechanics" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
-        <div className="bg-slate-50 dark:bg-slate-800 dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-900 max-w-2xl w-full text-center mb-8">
+        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-900 max-w-2xl w-full text-center mb-8">
           <h2 className="text-2xl font-bold text-orange-800 dark:text-orange-200 mb-4">Relating Tools to Digestion</h2>
           <p className="text-slate-600 dark:text-slate-300 mb-6">Physical digestion involves breaking down food into smaller pieces without chemical changes. Apply the tools to the banana to simulate this process.</p>
           
@@ -22,7 +22,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             <button 
               onClick={() => setBananaState('pieces')}
               disabled={bananaState !== 'whole'}
-              className="flex flex-col items-center gap-3 p-4 bg-orange-100 rounded-xl hover:bg-orange-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-orange-200"
+              className="flex flex-col items-center gap-3 p-4 bg-orange-100 dark:bg-slate-800 rounded-xl hover:bg-orange-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-orange-200 dark:border-slate-700"
             >
               <KnifeIcon className="w-8 h-8 text-orange-700" />
               <span className="font-bold text-orange-900 dark:text-orange-200">Knife</span>
@@ -31,7 +31,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             <button 
               onClick={() => setBananaState('crushed')}
               disabled={bananaState !== 'pieces'}
-              className="flex flex-col items-center gap-3 p-4 bg-amber-100 rounded-xl hover:bg-amber-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-amber-200"
+              className="flex flex-col items-center gap-3 p-4 bg-amber-100 dark:bg-slate-800 rounded-xl hover:bg-amber-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-amber-200 dark:border-slate-700"
             >
               <Utensils className="w-8 h-8 text-amber-700" />
               <span className="font-bold text-amber-900 dark:text-amber-200">Spoon</span>
@@ -40,7 +40,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
             <button 
               onClick={() => setBananaState('mashed')}
               disabled={bananaState !== 'crushed'}
-              className="flex flex-col items-center gap-3 p-4 bg-yellow-100 rounded-xl hover:bg-yellow-200 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-yellow-200"
+              className="flex flex-col items-center gap-3 p-4 bg-yellow-100 dark:bg-slate-800 rounded-xl hover:bg-yellow-200 dark:hover:bg-slate-700 disabled:opacity-50 disabled:cursor-not-allowed w-32 border border-yellow-200 dark:border-slate-700"
             >
               <Utensils className="w-8 h-8 text-yellow-700 rotate-180" />
               <span className="font-bold text-yellow-900 dark:text-yellow-200">Fork</span>
@@ -52,7 +52,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
         {/* The Bowl and Banana */}
         <div className="w-96 h-96 relative flex items-center justify-center">
           {/* Wooden Cutting Board / Bowl */}
-          <div className="absolute w-full h-full bg-orange-200 rounded-full border-8 border-orange-300 shadow-inner overflow-hidden flex items-center justify-center">
+          <div className="absolute w-full h-full bg-orange-200 dark:bg-slate-800 rounded-full border-8 border-orange-300 dark:border-slate-700 shadow-inner overflow-hidden flex items-center justify-center">
             
             {bananaState === 'whole' && (
               <div className="w-48 h-16 bg-yellow-400 rounded-full border-2 border-yellow-500 transform -rotate-12 shadow-lg relative flex items-center overflow-hidden">
@@ -91,7 +91,7 @@ export default function LabS6DigestionMechanics({ onExit }: LabProps) {
         </div>
 
         {bananaState === 'mashed' && (
-          <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-xl border border-green-200 text-center font-medium max-w-xl">
+          <div className="mt-8 p-4 bg-green-100 dark:bg-emerald-900/50 text-green-800 dark:text-emerald-200 rounded-xl border border-green-200 dark:border-emerald-800 text-center font-medium max-w-xl">
             You successfully simulated physical digestion! The knife acted as incisors to cut, the spoon acted as premolars to crush, and the fork (with milk/saliva) acted as molars and the tongue to mash it into a swallowable bolus.
             <button onClick={() => setBananaState('whole')} className="block mx-auto mt-4 px-4 py-2 bg-green-600 text-white rounded font-bold hover:bg-green-700">Reset</button>
           </div>

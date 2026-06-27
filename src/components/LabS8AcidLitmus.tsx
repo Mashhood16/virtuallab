@@ -12,12 +12,21 @@ const SOLUTIONS = [
 
 export default function LabS8AcidLitmus({ onExit }: LabProps) {
   const [selected, setSelected] = useState(SOLUTIONS[0]);
-  const [testedBlue, setTestedBlue] = useState(false);
-  const [testedRed, setTestedRed] = useState(false);
+  const [testedBlue, setTestedBlue] = useState<'idle'|'dipping'|'tested'>('idle');
+  const [testedRed, setTestedRed] = useState<'idle'|'dipping'|'tested'>('idle');
 
   const reset = () => {
-    setTestedBlue(false);
-    setTestedRed(false);
+    setTestedBlue('idle');
+    setTestedRed('idle');
+  };
+
+  const dipBlue = () => {
+    setTestedBlue('dipping');
+    setTimeout(() => setTestedBlue('tested'), 1000);
+  };
+  const dipRed = () => {
+    setTestedRed('dipping');
+    setTimeout(() => setTestedRed('tested'), 1000);
   };
 
   return (
@@ -50,41 +59,41 @@ export default function LabS8AcidLitmus({ onExit }: LabProps) {
             {/* Litmus Papers (Draggable visually via buttons here) */}
             <div className="absolute top-0 flex gap-12 w-full justify-center">
               {/* Blue Litmus */}
-              <div className={`w-8 h-32 bg-blue-300 border border-blue-400 rounded-sm shadow-md transition-all duration-700 ease-out ${testedBlue ? 'translate-y-20' : ''} relative overflow-hidden`}>
-                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedBlue ? 'bg-red-400' : 'bg-blue-300'}`} />
-                {testedBlue && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">RED</div>}
+              <div className={`w-8 h-32 bg-blue-300 border border-blue-400 rounded-sm shadow-md transition-all duration-700 ease-out ${testedBlue === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
+                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedBlue !== 'idle' ? 'bg-red-400' : 'bg-blue-300'}`} />
+                {testedBlue === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">RED</div>}
               </div>
 
               {/* Red Litmus */}
-              <div className={`w-8 h-32 bg-red-400 border border-red-500 rounded-sm shadow-md transition-all duration-700 ease-out ${testedRed ? 'translate-y-20' : ''} relative overflow-hidden`}>
-                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedRed ? 'bg-red-400' : 'bg-red-400'}`} />
-                {testedRed && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">STAYS RED</div>}
+              <div className={`w-8 h-32 bg-red-400 border border-red-500 rounded-sm shadow-md transition-all duration-700 ease-out ${testedRed === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
+                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedRed !== 'idle' ? 'bg-red-400' : 'bg-red-400'}`} />
+                {testedRed === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-red-800">STAYS RED</div>}
               </div>
             </div>
           </div>
 
           <div className="flex gap-6 w-full max-w-sm">
             <button 
-              onClick={() => setTestedBlue(true)}
-              disabled={testedBlue}
+              onClick={dipBlue}
+              disabled={testedBlue !== 'idle'}
               className="flex-1 bg-blue-500 text-white py-3 rounded-lg font-bold hover:bg-blue-600 disabled:opacity-50"
             >
               Dip Blue Litmus
             </button>
             <button 
-              onClick={() => setTestedRed(true)}
-              disabled={testedRed}
+              onClick={dipRed}
+              disabled={testedRed !== 'idle'}
               className="flex-1 bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600 disabled:opacity-50"
             >
               Dip Red Litmus
             </button>
           </div>
 
-          {(testedBlue || testedRed) && (
+          {(testedBlue === 'tested' || testedRed === 'tested') && (
             <div className="mt-8 px-6 py-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl max-w-md text-center animate-fade-in">
               <h3 className="font-bold text-lg mb-2">Observation</h3>
-              {testedBlue && <p className="mb-1 text-red-600 font-medium">Blue Litmus turned RED.</p>}
-              {testedRed && <p className="mb-1 text-red-600 font-medium">Red Litmus stayed RED.</p>}
+              {testedBlue === 'tested' && <p className="mb-1 text-red-600 font-medium">Blue Litmus turned RED.</p>}
+              {testedRed === 'tested' && <p className="mb-1 text-red-600 font-medium">Red Litmus stayed RED.</p>}
               <p className="text-sm mt-2 text-slate-600 dark:text-slate-300">This indicates that <strong>{selected.name}</strong> contains an ACID.</p>
             </div>
           )}

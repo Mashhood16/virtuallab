@@ -7,7 +7,7 @@ interface LabProps {
 
 export default function LabS7Unit2Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 2: Human Body Systems Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -20,7 +20,7 @@ export default function LabS7Unit2Projects({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="prose prose-slate max-w-none">
+          <div className="prose prose-slate dark:prose-invert max-w-none">
             <h3>Activity A: Observing Blood Vessels</h3>
             <p>Stand in front of a mirror and gently pull down your lower eyelid. Observe the tiny red lines. These are capillaries, the smallest blood vessels in your body, delivering oxygen directly to the tissues of your eye.</p>
 

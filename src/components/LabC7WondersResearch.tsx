@@ -17,9 +17,9 @@ export default function LabC7WondersResearch({ onExit }: LabProps) {
   const [isSent, setIsSent] = useState(false);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Seven Wonders Research" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Seven Wonders Research" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-6">Complete the 3-step project: Research the internet, compile a document with pictures, and email it to your teacher.</p>
 

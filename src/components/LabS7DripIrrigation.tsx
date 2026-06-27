@@ -25,7 +25,7 @@ export default function LabS7DripIrrigation({ onExit }: LabProps) {
   }, [running, waterTank]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-green-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-green-50 font-sans dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 11: Drip Irrigation Model" />
 
       <div className="flex-1 p-8 flex flex-col items-center">

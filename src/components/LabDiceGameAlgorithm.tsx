@@ -59,7 +59,7 @@ export default function LabDiceGameAlgorithm({ onExit }: LabProps) {
   };
 
   return (
-    <div className="w-full h-screen bg-slate-900 dark:bg-slate-800 flex flex-col font-sans">
+    <div className="w-full h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 3.2: Dice Game Algorithm" variant="dark" />
 
       <div className="flex-1 flex overflow-hidden">

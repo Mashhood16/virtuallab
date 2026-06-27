@@ -81,9 +81,10 @@ export default function LabC6PitchPresentation({ onExit }: LabProps) {
   const SlideIcon = slides[slide].icon;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Tech Startup Pitch" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Tech Startup Pitch" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Prepare a presentation to pitch a new IT solution addressing a problem in the agriculture sector.</p>
 

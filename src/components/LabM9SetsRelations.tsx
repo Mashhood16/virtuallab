@@ -72,8 +72,9 @@ export default function LabM9SetsRelations({ onExit }: Props) {
   const isAllCorrect = students.every(s => s.region === getCorrectRegion(s)) && students.every(s => s.region !== 'unassigned');
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Grade 9 Math: Sets & Venn Diagrams" />
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans select-none text-slate-800 dark:text-slate-100">
+        <LabHeader onExit={onExit} title="Grade 9 Math: Sets & Venn Diagrams" />
+      
 
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Theory Column */}

@@ -11,7 +11,7 @@ const ChemicalBottle = ({ label, color, onClick, selected }: { label: string, co
     <div className="relative w-10 h-16 border-2 border-gray-400 rounded-b-lg rounded-t-sm overflow-hidden flex items-end">
       <div className="w-full" style={{ height: '60%', backgroundColor: color }}></div>
     </div>
-    <span className="text-xs font-bold mt-1 text-gray-700">{label}</span>
+    <span className="text-xs font-bold mt-1 text-gray-700 dark:text-slate-200">{label}</span>
   </button>
 );
 
@@ -120,7 +120,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
           {activeTab === 'halogen' ? (
             <div className="space-y-4 text-slate-700 dark:text-slate-200">
               <p><strong>Halogen Displacement:</strong> Group 7 elements (Halogens) become less reactive as you go down the group. A more reactive halogen will displace a less reactive halogen from an aqueous solution of its halide salt.</p>
-              <ul className="list-disc pl-5 font-mono text-sm bg-gray-50 p-2 rounded">
+              <ul className="list-disc pl-5 font-mono text-sm bg-slate-50 dark:bg-slate-900 p-2 rounded">
                 <li>F₂ (Pale yellow)</li>
                 <li>Cl₂ (Pale green)</li>
                 <li>Br₂ (Orange)</li>
@@ -165,7 +165,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
                 </div>
               </div>
 
-              <div className="relative w-48 h-56 border-4 border-gray-300 rounded-b-3xl rounded-t-sm flex items-end justify-center bg-gray-50 overflow-hidden shadow-inner mb-6">
+              <div className="relative w-48 h-56 border-4 border-gray-300 rounded-b-3xl rounded-t-sm flex items-end justify-center bg-slate-50 dark:bg-slate-900 overflow-hidden shadow-inner mb-6">
                 <div className="w-full transition-colors duration-1000" style={{ height: '70%', backgroundColor: beakerColor }}></div>
               </div>
 
@@ -175,7 +175,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
             </div>
           ) : (
             <div className="flex flex-col w-full items-center">
-              <div className="relative w-64 h-64 border-2 border-dashed border-gray-300 rounded-full flex items-center justify-center bg-gray-50 overflow-hidden mb-6">
+              <div className="relative w-64 h-64 border-2 border-dashed border-gray-300 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 overflow-hidden mb-6">
                 {/* Nucleus visualizer */}
                 <div className="text-center z-10 bg-slate-50 dark:bg-slate-900/80 p-2 rounded font-bold text-purple-900 border border-purple-200">
                   Parent: {u238Count} <br/> Daughter: {th234Count}
@@ -199,7 +199,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
           <div className="flex-grow overflow-y-auto mb-4 border rounded">
             {activeTab === 'halogen' ? (
               <table className="w-full text-sm text-left">
-                <thead className="bg-gray-50 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                   <tr><th className="p-2">Halogen</th><th className="p-2">Halide</th><th className="p-2">Result</th></tr>
                 </thead>
                 <tbody>
@@ -210,7 +210,7 @@ export default function LabC9AtomicStructure({ onExit }: Props) {
               </table>
             ) : (
               <table className="w-full text-sm text-left">
-                <thead className="bg-gray-50 sticky top-0">
+                <thead className="bg-slate-50 dark:bg-slate-900 sticky top-0">
                   <tr><th className="p-2">Time (s)</th><th className="p-2">Parent (U-238)</th><th className="p-2">Daughter (Th-234)</th></tr>
                 </thead>
                 <tbody>

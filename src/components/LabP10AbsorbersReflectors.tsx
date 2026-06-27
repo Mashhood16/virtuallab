@@ -144,7 +144,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
             <div>
               <label className="flex justify-between text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
                 <span>Time (Minutes)</span>
-                <span className="text-slate-900 font-mono">{time} min</span>
+                <span className="text-slate-900 dark:text-slate-200 font-mono">{time} min</span>
               </label>
               <input 
                 type="range" min="0" max="30" step="1" 
@@ -190,7 +190,7 @@ export default function LabP10AbsorbersReflectors({ onExit }: LabProps) {
                   <tr key={i} className="hover:bg-slate-50 dark:bg-slate-900">
                     <td className="px-3 py-1.5">{d.time}</td>
                     <td className="px-3 py-1.5">{d.power}W</td>
-                    <td className="px-3 py-1.5 font-medium text-slate-900">{d.tBlack.toFixed(1)}</td>
+                    <td className="px-3 py-1.5 font-medium text-slate-900 dark:text-slate-200">{d.tBlack.toFixed(1)}</td>
                     <td className="px-3 py-1.5 font-medium text-slate-400">{d.tSilver.toFixed(1)}</td>
                   </tr>
                 ))}

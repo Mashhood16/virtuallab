@@ -11,14 +11,14 @@ const ChemicalBottle = ({ label, color, onClick }: { label: string, color: strin
     <div className="relative w-10 h-16 border-2 border-gray-400 rounded-b-lg rounded-t-sm overflow-hidden flex items-end">
       <div className="w-full" style={{ height: '60%', backgroundColor: color }}></div>
     </div>
-    <span className="text-xs font-bold mt-1 text-gray-700">{label}</span>
+    <span className="text-xs font-bold mt-1 text-gray-700 dark:text-slate-200">{label}</span>
   </button>
 );
 
 const EquationDisplay = ({ equation }: { equation: string[] }) => (
-  <div className="min-h-[4rem] flex items-center justify-center bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-sm md:text-lg rounded px-4 shadow-inner mb-4 overflow-hidden flex-wrap">
+  <div className="min-h-[4rem] flex flex-wrap items-center justify-center bg-slate-900 dark:bg-slate-800 text-green-400 font-mono text-sm md:text-lg rounded p-4 shadow-inner mb-4 overflow-hidden gap-y-2 text-center">
     {equation.length === 0 ? <span className="text-gray-500">Awaiting reaction...</span> : 
-      equation.map((part, i) => <span key={i} className="mx-1 animate-pulse">{part}</span>)
+      equation.map((part, i) => part === 'NEWLINE' ? <div key={i} className="w-full h-1"></div> : <span key={i} className="mx-1 animate-pulse">{part}</span>)
     }
   </div>
 );
@@ -78,7 +78,8 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
 
   // Redox Logic
   const addTitrant = () => {
-    setEquation(['MnO4⁻(aq)', '+', '5Fe²⁺(aq)', '+', '8H⁺(aq)']);
+    if (volAdded >= 100) return;
+    setEquation(['MnO4-(aq)', '+', '5Fe2+(aq)', '+', '8H+(aq)']);
     setTimeout(() => {
       setVolAdded(v => {
         const newV = v + 10;
@@ -87,12 +88,12 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
           // Exothermic reaction until equivalence point (50mL)
           newTemp = 20 + newV * 0.2;
           setBeakerColor('rgba(200,200,200,0.1)'); // Fe3+ is pale yellow but mostly clear here
-          setEquation(prev => [...prev, '→', 'Mn²⁺(aq)', '+', '5Fe³⁺(aq)', '+', '4H2O(l)']);
+          setEquation(prev => [...prev.filter(p => p !== 'NEWLINE'), 'NEWLINE', '->', 'Mn2+(aq)', '+', '5Fe3+(aq)', '+', '4H2O(l)']);
         } else {
           // Cooling down after equivalence point
           newTemp = 20 + 50 * 0.2 - (newV - 50) * 0.05;
           setBeakerColor('rgba(128,0,128,0.5)'); // Purple KMnO4 excess
-          setEquation(['Excess MnO4⁻ remains']);
+          setEquation(['Excess MnO4- remains']);
         }
         setTemp(Number(newTemp.toFixed(1)));
         return newV;
@@ -112,7 +113,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
       if (hasWater && hasOxygen) {
         const rate = hasSalt ? 4 : 1;
         setRustLevel(r => Math.min(r + rate, 100));
-        setEquation(['4Fe(s)', '+', '3O2(g)', '+', '6H2O(l)', '→', '4Fe(OH)3(s)']);
+        setEquation(['4Fe(s)', '+', '3O2(g)', '+', '6H2O(l)', 'NEWLINE', '->', '4Fe(OH)3(s)']);
       } else {
         setEquation(['No reaction (requires O2 and H2O)']);
       }
@@ -201,7 +202,7 @@ export default function LabC9Electrochemistry({ onExit }: Props) {
               </div>
               
               <div className="mt-4 text-center">
-                <div className="text-xl font-mono text-gray-700">Day: {timeDays}</div>
+                <div className="text-xl font-mono text-gray-700 dark:text-slate-200">Day: {timeDays}</div>
                 <div className="text-sm text-orange-800 font-bold">Rust Level: {rustLevel.toFixed(0)}%</div>
               </div>
             </div>

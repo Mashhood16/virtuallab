@@ -76,7 +76,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
           
           <div className="space-y-4 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2">
                 <Shield size={16} className="text-emerald-600"/> Nuclear Fission & Reactors
               </h3>
               <p className="mt-1">
@@ -90,7 +90,7 @@ export default function LabP12QuantumNuclear({ onExit }: { onExit?: () => void }
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
                 <Zap size={16} className="text-amber-500"/> PET Scans & Antimatter
               </h3>
               <p className="mt-1">

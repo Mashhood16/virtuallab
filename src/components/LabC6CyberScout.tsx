@@ -12,13 +12,13 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
   const [joined, setJoined] = useState(false);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
-      <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Cyber Scout Exploration" />
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Cyber Scout Exploration" />
+      <div className="flex-1 px-8 pb-8 flex flex-col overflow-hidden min-h-0">
+        
+        <p className="text-slate-600 dark:text-slate-300 mb-4 shrink-0">Search the internet simulator to find out how to become a Cyber Scout and join the program.</p>
 
-        <p className="text-slate-600 dark:text-slate-300 mb-8">Search the internet simulator to find out how to become a Cyber Scout and join the program.</p>
-
-        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 dark:border-slate-500 overflow-hidden flex flex-col min-h-0">
           {/* Browser Chrome */}
           <div className="bg-slate-200 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 dark:border-slate-500 p-3 flex items-center gap-4">
             <div className="flex gap-2">
@@ -55,8 +55,8 @@ export default function LabC6CyberScout({ onExit }: LabProps) {
               </button>
             </div>
           ) : (
-            <div className="flex-1 flex bg-slate-50 dark:bg-slate-900 overflow-hidden">
-              <div className="flex-1 px-8 pb-8 overflow-y-auto">
+            <div className="flex-1 flex bg-slate-50 dark:bg-slate-900 overflow-hidden min-h-0">
+              <div className="flex-1 px-8 pb-8 pt-8 overflow-y-auto min-h-0">
                 <div className="flex items-center gap-4 mb-8 border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 pb-6">
                   <Search className="text-blue-500 w-8 h-8" />
                   <input 

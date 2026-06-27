@@ -7,7 +7,7 @@ interface LabProps {
 
 export default function LabS7Unit11Projects({ onExit }: LabProps) {
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 11: Technology in Everyday Life Projects" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -20,7 +20,7 @@ export default function LabS7Unit11Projects({ onExit }: LabProps) {
             </div>
           </div>
 
-          <div className="prose prose-slate max-w-none">
+          <div className="prose prose-slate dark:prose-invert max-w-none">
             <h3>Objective</h3>
             <p>Calculate your direct water usage over a five-day period and lead a water conservation drive in your school.</p>
             

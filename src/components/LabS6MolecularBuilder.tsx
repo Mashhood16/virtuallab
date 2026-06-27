@@ -71,7 +71,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               disabled={countAtoms('H') >= (requirements[molecule].H || 0)}
               className="w-full p-3 flex items-center gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-100 dark:bg-slate-800 disabled:opacity-50"
             >
-              <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 border-2 border-slate-300 dark:border-slate-700 dark:border-slate-500 flex items-center justify-center font-bold text-slate-700 dark:text-slate-200">H</div>
+              <div className="w-8 h-8 rounded-full bg-white dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center font-bold text-slate-800 dark:text-white">H</div>
               <span className="font-medium text-slate-700 dark:text-slate-200">Hydrogen (White)</span>
             </button>
             
@@ -80,7 +80,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               disabled={countAtoms('C') >= (requirements[molecule].C || 0)}
               className="w-full p-3 flex items-center gap-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl hover:bg-slate-100 dark:bg-slate-800 disabled:opacity-50"
             >
-              <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-slate-800 flex items-center justify-center font-bold text-white border-2 border-white/20">C</div>
+              <div className="w-8 h-8 rounded-full bg-slate-800 dark:bg-slate-900 flex items-center justify-center font-bold text-white border-2 border-slate-600">C</div>
               <span className="font-medium text-slate-700 dark:text-slate-200">Carbon (Black)</span>
             </button>
 
@@ -120,9 +120,9 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
                 {/* O */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-red-500 rounded-full shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.3)] z-10 flex items-center justify-center text-white font-bold text-2xl">O</div>
                 {/* H */}
-                <div className="absolute top-3/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-800 dark:text-white font-bold text-lg">H</div>
                 {/* H */}
-                <div className="absolute top-3/4 left-3/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-3/4 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-800 dark:text-white font-bold text-lg">H</div>
                 
                 {/* Bonds */}
                 <div className="absolute top-[60%] left-[30%] w-16 h-3 bg-slate-300 dark:bg-slate-800 rounded-full origin-left -rotate-45 shadow-sm"></div>
@@ -146,19 +146,19 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-slate-800 dark:bg-slate-800 rounded-full shadow-[inset_-5px_-5px_15px_rgba(0,0,0,0.5)] z-10 flex items-center justify-center text-white font-bold text-2xl">C</div>
                 
                 {/* Top H */}
-                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-lg">H</div>
+                <div className="absolute top-[10%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-800 dark:text-white font-bold text-lg">H</div>
                 <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-3 h-20 bg-slate-300 dark:bg-slate-800 rounded-full z-0"></div>
 
                 {/* Left H */}
-                <div className="absolute top-3/4 left-[20%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-[20%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-800 dark:text-white font-bold text-lg">H</div>
                 <div className="absolute top-[55%] left-[25%] w-16 h-3 bg-slate-300 dark:bg-slate-800 rounded-full origin-left rotate-[30deg] z-0"></div>
 
                 {/* Right H */}
-                <div className="absolute top-3/4 left-[80%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-lg">H</div>
+                <div className="absolute top-3/4 left-[80%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_10px_rgba(0,0,0,0.1)] z-10 flex items-center justify-center text-slate-800 dark:text-white font-bold text-lg">H</div>
                 <div className="absolute top-[55%] right-[25%] w-16 h-3 bg-slate-300 dark:bg-slate-800 rounded-full origin-right -rotate-[30deg] z-0"></div>
                 
                 {/* Front/Bottom H (3D projection simulation) */}
-                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-full shadow-[inset_-3px_-3px_15px_rgba(0,0,0,0.2)] z-20 flex items-center justify-center text-slate-500 dark:text-slate-400 font-bold text-xl">H</div>
+                <div className="absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-full shadow-[inset_-3px_-3px_15px_rgba(0,0,0,0.2)] z-20 flex items-center justify-center text-slate-800 dark:text-white font-bold text-xl">H</div>
                 <div className="absolute top-[65%] left-1/2 -translate-x-1/2 w-4 h-16 bg-slate-400 dark:bg-slate-800 rounded-full z-10"></div>
               </div>
             )}
@@ -168,7 +168,7 @@ export default function LabS6MolecularBuilder({ onExit }: LabProps) {
               <div className="relative w-full h-full animate-pulse opacity-50">
                 {atoms.map((a, i) => (
                   <div key={i} className="absolute" style={{ top: `${Math.random() * 80 + 10}%`, left: `${Math.random() * 80 + 10}%` }}>
-                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md ${a.type === 'H' ? 'bg-slate-200 dark:bg-slate-800 border border-slate-400 dark:border-slate-500 text-slate-700 dark:text-slate-200' : a.type === 'C' ? 'bg-slate-900 dark:bg-slate-800 text-white border border-white/30' : 'bg-red-500 text-white'}`}>
+                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-md ${a.type === 'H' ? 'bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 text-slate-800 dark:text-white' : a.type === 'C' ? 'bg-slate-800 dark:bg-slate-900 text-white border border-slate-600' : 'bg-red-500 text-white'}`}>
                        {a.type}
                      </div>
                   </div>

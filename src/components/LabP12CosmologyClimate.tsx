@@ -89,7 +89,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
           
           <div className="space-y-4 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2">
                 <Star size={16} className="text-amber-500"/> Wien's Displacement Law
               </h3>
               <p className="mt-1">
@@ -102,7 +102,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
                 <Orbit size={16} className="text-blue-500"/> Doppler Red-Shift
               </h3>
               <p className="mt-1">
@@ -115,7 +115,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
                 <Waves size={16} className="text-teal-500"/> Thermohaline Circulation
               </h3>
               <p className="mt-1">

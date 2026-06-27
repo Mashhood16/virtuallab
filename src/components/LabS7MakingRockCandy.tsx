@@ -23,7 +23,7 @@ export default function LabS7MakingRockCandy({ onExit }: LabProps) {
   }, [running, days]);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-pink-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-pink-50 dark:bg-slate-900 font-sans text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 7: Making Rock Candy" />
 
       <div className="flex-1 p-8 flex flex-col items-center">

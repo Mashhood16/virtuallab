@@ -93,7 +93,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory & Setup */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-blue-500">
-          <h2 className="text-xl font-bold text-gray-800">Theory: Euler's Formula</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200">Theory: Euler's Formula</h2>
           <p className="text-gray-600 text-sm">
             A complex number can be written in polar form using Euler's formula:
             <br />
@@ -101,7 +101,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
               {"$$ z(t) = A e^{i(\\omega t + \\phi)} = A(\\cos(\\omega t + \\phi) + i\\sin(\\omega t + \\phi)) $$"}
             </span>
           </p>
-          <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+          <ul className="list-disc list-inside text-sm text-gray-700 dark:text-slate-200 space-y-1">
             <li><b>A</b>: Amplitude (radius of the circle)</li>
             <li><b>{"$$\\omega$$"}</b>: Angular frequency (rad/s)</li>
             <li><b>{"$$\\phi$$"}</b>: Initial phase angle (rad)</li>
@@ -109,17 +109,17 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
           </ul>
 
           <div className="mt-4 space-y-4">
-            <h3 className="font-bold text-gray-800 border-b pb-1">Control Panel</h3>
+            <h3 className="font-bold text-gray-800 dark:text-slate-200 border-b pb-1">Control Panel</h3>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Amplitude (A): {amplitude.toFixed(1)}</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Amplitude (A): {amplitude.toFixed(1)}</label>
               <input type="range" min="1" max="10" step="0.5" value={amplitude} onChange={(e) => setAmplitude(parseFloat(e.target.value))} className="w-full" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Angular Freq ({"$$\\omega$$"}): {omega.toFixed(1)} rad/s</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Angular Freq ({"$$\\omega$$"}): {omega.toFixed(1)} rad/s</label>
               <input type="range" min="0.5" max="5" step="0.1" value={omega} onChange={(e) => setOmega(parseFloat(e.target.value))} className="w-full" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Phase ({"$$\\phi$$"}): {phase.toFixed(2)} rad</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Phase ({"$$\\phi$$"}): {phase.toFixed(2)} rad</label>
               <input type="range" min="0" max="6.28" step="0.1" value={phase} onChange={(e) => setPhase(parseFloat(e.target.value))} className="w-full" />
             </div>
 
@@ -132,7 +132,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
               </button>
               <button
                 onClick={resetSimulation}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded flex items-center justify-center"
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 dark:text-slate-200 font-bold py-2 px-4 rounded flex items-center justify-center"
               >
                 <RefreshCw size={18} />
               </button>
@@ -142,7 +142,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
 
         {/* MIDDLE: Simulation */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-indigo-500 overflow-hidden relative">
-          <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Phasor Simulation</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 absolute top-4 left-6">Phasor Simulation</h2>
           <div className="text-sm text-gray-500 absolute top-10 left-6">t = {time.toFixed(2)} s</div>
           
           <svg viewBox="-15 -15 30 30" className="w-full h-64 max-w-sm mt-8 border border-gray-100 rounded-lg shadow-inner bg-slate-50 dark:bg-slate-900">
@@ -191,12 +191,12 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
 
         {/* RIGHT: Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
-          <h2 className="text-xl font-bold text-gray-800">Analysis & Assessment</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200">Analysis & Assessment</h2>
           <p className="text-sm text-gray-600 mb-2">Use the simulation parameters to solve the following problems.</p>
 
           {/* Question 1 */}
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2">1. Initial Real Value</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">1. Initial Real Value</p>
             <p className="text-sm text-gray-600 mb-3">
               Given A = {amplitude.toFixed(1)}, {"$$\\phi$$"} = {phase.toFixed(2)} rad, calculate the <b>Real Part</b> at t = 0.
             </p>
@@ -216,7 +216,7 @@ export default function LabM11ComplexNumbers({ onExit }: { onExit?: () => void }
 
           {/* Question 2 */}
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2">2. Wave Period</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">2. Wave Period</p>
             <p className="text-sm text-gray-600 mb-3">
               Given angular frequency {"$$\\omega$$"} = {omega.toFixed(1)} rad/s, calculate the <b>Period T</b> in seconds.
             </p>

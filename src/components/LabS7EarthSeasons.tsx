@@ -49,13 +49,13 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
   const earthScale = 1 + (earthY / orbitRadiusY) * 0.2;
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#020617'}}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 12: Earth's Seasons" />
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Unit 12: Earth's Seasons" />
 
       <div className="flex-1 relative flex flex-col items-center p-8">
-        <div className="backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-2xl w-full text-center mb-12" style={{backgroundColor: 'rgba(15,23,42,0.8)', borderColor: '#1e293b', borderWidth: '1px', borderStyle: 'solid', position: 'sticky', top: '60px', zIndex: 50}}>
-          <h2 className="text-2xl font-bold text-blue-400 mb-4">Axial Tilt and Revolution</h2>
-          <p className="text-slate-300 mb-6">The Earth's axis is tilted at 23.5 degrees. As it revolves around the Sun, this constant tilt causes the Northern and Southern Hemispheres to receive varying amounts of direct sunlight, creating the seasons.</p>
+        <div className="backdrop-blur-md p-6 rounded-2xl shadow-2xl max-w-2xl w-full text-center mb-12 bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 relative z-10">
+          <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">Axial Tilt and Revolution</h2>
+          <p className="text-slate-600 dark:text-slate-300 mb-6">The Earth's axis is tilted at 23.5 degrees. As it revolves around the Sun, this constant tilt causes the Northern and Southern Hemispheres to receive varying amounts of direct sunlight, creating the seasons.</p>
           
           <div className="flex justify-center gap-4 items-center">
             <button 
@@ -65,7 +65,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
               {running ? <><Pause className="w-5 h-5 mr-2" /> Pause Orbit</> : <><Play className="w-5 h-5 mr-2" /> Start Orbit</>}
             </button>
             <div className="ml-8 text-left">
-              <div className="text-sm text-slate-400 uppercase tracking-widest font-bold">Northern Hemisphere</div>
+              <div className="text-sm text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Northern Hemisphere</div>
               <div className={`text-3xl font-black ${seasonColor}`}>{season}</div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function LabS7EarthSeasons({ onExit }: LabProps) {
         <div className="relative flex justify-center items-center w-full h-[600px] perspective-1000">
            
            {/* Orbit Path (Ellipse) */}
-           <div className="absolute w-[600px] h-[200px] rounded-[100%] shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0" style={{borderColor: 'rgba(51,65,85,0.5)', borderWidth: '1px', borderStyle: 'solid'}}></div>
+           <div className="absolute w-[600px] h-[200px] rounded-[100%] shadow-[0_0_50px_rgba(0,0,0,0.05)_inset] dark:shadow-[0_0_50px_rgba(255,255,255,0.05)_inset] z-0 border border-slate-300 dark:border-slate-700/50"></div>
 
            {/* The Sun */}
            <div className="absolute w-32 h-32 bg-yellow-500 rounded-full shadow-[0_0_100px_#facc15] z-20 flex justify-center items-center">

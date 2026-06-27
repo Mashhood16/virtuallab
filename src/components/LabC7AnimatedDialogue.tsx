@@ -41,9 +41,9 @@ export default function LabC7AnimatedDialogue({ onExit }: LabProps) {
   const currentMsg = chatLog[0];
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Animated Dialogue" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Animated Dialogue" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Set the stage background and run the dialogue script between two sprites.</p>
 

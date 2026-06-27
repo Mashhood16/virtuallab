@@ -36,9 +36,10 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
                         identifiedPnP.every(id => devices.find(d => d.id === id)?.isPnP);
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="System Software & Devices" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="System Software & Devices" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Identify Plug and Play (PnP) devices and explore common utility programs.</p>
 
@@ -59,11 +60,11 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
                     onClick={() => togglePnP(device.id)}
                     className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
                       isSelected 
-                        ? 'border-blue-500 bg-blue-50' 
-                        : 'border-slate-200 dark:border-slate-700 dark:border-slate-500 hover:border-slate-300 dark:border-slate-700 dark:border-slate-500 bg-slate-50 dark:bg-slate-900'
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900 text-blue-900 dark:text-blue-100' 
+                        : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-slate-50 dark:bg-slate-800'
                     }`}
                   >
-                    <div className={`p-3 rounded-lg ${isSelected ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'}`}>
+                    <div className={`p-3 rounded-lg ${isSelected ? 'bg-blue-200 dark:bg-blue-800 text-blue-700 dark:text-blue-200' : 'bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400'}`}>
                       <Icon className="w-6 h-6" />
                     </div>
                     <span className="font-bold text-lg">{device.name}</span>
@@ -72,12 +73,12 @@ export default function LabC6SystemSoftware({ onExit }: LabProps) {
               })}
             </div>
 
-            <div className={`mt-6 p-4 rounded-xl border font-bold text-center ${
+            <div className={`mt-6 p-4 rounded-xl font-bold text-center ${
               isPnPComplete 
-                ? 'bg-green-100 text-green-700 border-green-200' 
-                : 'bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700 dark:border-slate-500'
+                ? 'bg-green-100 text-green-700 border-green-200 border' 
+                : 'text-slate-500 dark:text-slate-400'
             }`}>
-              {isPnPComplete ? "Correct! You've identified all PnP devices." : "Select the PnP devices."}
+              {isPnPComplete ? "Correct! You've identified all PnP devices." : "Select the PnP devices above."}
             </div>
           </div>
 

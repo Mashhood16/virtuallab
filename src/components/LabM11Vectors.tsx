@@ -60,7 +60,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
       <main className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
         {/* LEFT: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 overflow-y-auto border-t-4 border-teal-500">
-          <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2"><Navigation size={20} /> Vector Components</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 flex items-center gap-2"><Navigation size={20} /> Vector Components</h2>
           <p className="text-gray-600 text-sm">
             In aviation, a plane's true velocity is the vector sum of its intended heading velocity (<b>Va</b>) and the wind velocity (<b>Vw</b>).
           </p>
@@ -69,23 +69,23 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
           </p>
 
           <div className="mt-4 space-y-4">
-            <h3 className="font-bold text-gray-800 border-b pb-1">Plane Velocity (Va)</h3>
+            <h3 className="font-bold text-gray-800 dark:text-slate-200 border-b pb-1">Plane Velocity (Va)</h3>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Speed: {speedA} km/h</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Speed: {speedA} km/h</label>
               <input type="range" min="100" max="500" step="10" value={speedA} onChange={(e) => setSpeedA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Heading: {angleA}° (0=N, 90=E)</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Heading: {angleA}° (0=N, 90=E)</label>
               <input type="range" min="0" max="360" step="5" value={angleA} onChange={(e) => setAngleA(parseFloat(e.target.value))} className="w-full accent-blue-600" />
             </div>
 
-            <h3 className="font-bold text-gray-800 border-b pb-1 mt-6">Wind Velocity (Vw)</h3>
+            <h3 className="font-bold text-gray-800 dark:text-slate-200 border-b pb-1 mt-6">Wind Velocity (Vw)</h3>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Speed: {speedW} km/h</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Speed: {speedW} km/h</label>
               <input type="range" min="0" max="150" step="5" value={speedW} onChange={(e) => setSpeedW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Blowing Towards: {angleW}°</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-slate-200 mb-1">Blowing Towards: {angleW}°</label>
               <input type="range" min="0" max="360" step="5" value={angleW} onChange={(e) => setAngleW(parseFloat(e.target.value))} className="w-full accent-gray-500" />
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
 
         {/* MIDDLE: Simulator */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col items-center justify-center border-t-4 border-cyan-500 relative overflow-hidden">
-          <h2 className="text-xl font-bold text-gray-800 absolute top-4 left-6">Radar Display</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200 absolute top-4 left-6">Radar Display</h2>
           
           {/* Compass rose background */}
           <div className="absolute opacity-10 pointer-events-none" style={{width: 300, height: 300}}>
@@ -149,10 +149,10 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
 
         {/* RIGHT: Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 rounded-lg shadow flex flex-col gap-4 border-t-4 border-emerald-500">
-          <h2 className="text-xl font-bold text-gray-800">Flight Analysis</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-slate-200">Flight Analysis</h2>
 
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2">1. Resultant Speed</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">1. Resultant Speed</p>
             <p className="text-xs text-gray-600 mb-3">
               Calculate the resultant speed {"$$ |\\vec{V}_r| $$"} using the law of cosines or components.
             </p>
@@ -171,7 +171,7 @@ export default function LabM11Vectors({ onExit }: { onExit?: () => void }) {
           </div>
 
           <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-            <p className="text-sm font-semibold text-gray-800 mb-2">2. Dot Product (Work Analogy)</p>
+            <p className="text-sm font-semibold text-gray-800 dark:text-slate-200 mb-2">2. Dot Product (Work Analogy)</p>
             <p className="text-xs text-gray-600 mb-3">
               Calculate the dot product {"$$ \\vec{V}_a \\cdot \\vec{V}_w $$"}.
               <br/>

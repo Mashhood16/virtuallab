@@ -10,8 +10,8 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
   const [isIon, setIsIon] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto font-sans" style={{backgroundColor: '#0f172a'}}>
-      <LabHeader onExit={onExit} variant="dark" title="Unit 6: Chemical Bonds (Atoms vs. Ions)" />
+    <div className="flex flex-col h-screen overflow-y-auto font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Unit 6: Chemical Bonds (Atoms vs. Ions)" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
         <div className="p-6 rounded-2xl shadow-xl max-w-3xl w-full text-center mb-8" style={{backgroundColor: '#1e293b', borderColor: '#334155', borderWidth: '1px', borderStyle: 'solid'}}>
@@ -51,7 +51,7 @@ export default function LabS7LithiumBonding({ onExit }: LabProps) {
              </div>
 
              {/* Charge Badge */}
-             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-slate-800 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-900">
+             <div className="absolute -top-8 -right-8 w-16 h-16 rounded-full flex items-center justify-center font-black text-2xl shadow-lg transition-colors duration-500 border-4 border-slate-800 dark:border-slate-500 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-200">
                {isIon ? '+1' : '0'}
              </div>
           </div>

@@ -91,7 +91,7 @@ export default function LabB9Microscopy({ onExit }: { onExit: () => void }) {
                 <li><strong>Animal Cells (Cheek):</strong> Only have a flexible cell membrane, resulting in irregular shapes.</li>
               </ul>
             </div>
-            <div className="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100">
+            <div className="bg-fuchsia-50 p-4 rounded-lg border border-fuchsia-100 text-fuchsia-900">
               <h3 className="font-bold text-fuchsia-800 mb-2">Mitosis in Onion Root Tip</h3>
               <p>Root tips grow rapidly via cell division (mitosis).</p>
               <ul className="list-disc pl-5 space-y-1 mt-2">

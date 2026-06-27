@@ -50,9 +50,9 @@ export default function LabC7InteractivePiano({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans text-slate-100" style={{backgroundColor: '#0f172a'}}>
+    <div className="flex flex-col h-screen font-sans text-slate-100" style={{backgroundColor: '#0f172a'}}>
+      <LabHeader onExit={onExit} title="Interactive Piano" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto items-center">
-        <LabHeader onExit={onExit} title="Interactive Piano" />
 
         <p className="text-slate-400 mb-12">Click the keys to trigger different sounds, simulating a programmed Scratch digital piano.</p>
 

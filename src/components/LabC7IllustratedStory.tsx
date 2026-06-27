@@ -24,9 +24,9 @@ export default function LabC7IllustratedStory({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Illustrated Story Writing" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Illustrated Story Writing" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Write a short story and insert relevant pictures from the gallery to illustrate it.</p>
 

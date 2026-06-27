@@ -80,7 +80,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
         
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
@@ -133,7 +133,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
           {activeTab === 'meselson' && (
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col items-center">
-                <h3 className="font-bold text-gray-800 mb-2">Density Gradient Centrifugation</h3>
+                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-2">Density Gradient Centrifugation</h3>
                 <p className="text-sm text-gray-500 mb-6">Current Medium: <span className="font-bold text-blue-600">14N (Light)</span></p>
                 
                 <div className="flex-1 flex items-center justify-center relative w-full">
@@ -181,7 +181,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                 </div>
 
                 <div className="w-full mt-6 space-y-3">
-                  <div className="flex justify-between items-center text-sm font-bold text-gray-700 bg-gray-100 p-3 rounded-lg">
+                  <div className="flex justify-between items-center text-sm font-bold text-gray-700 dark:text-slate-200 bg-gray-100 p-3 rounded-lg">
                     <span>Generation: {generation}</span>
                     <span>{generation === 0 ? '100% 15N' : generation === 1 ? '100% Hybrid' : generation === 2 ? '50% Light / 50% Hybrid' : '75% Light / 25% Hybrid'}</span>
                   </div>
@@ -196,7 +196,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                     <button 
                       onClick={handleResetMS}
                       disabled={isSpinning}
-                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-bold transition-colors disabled:opacity-50"
+                      className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-bold transition-colors disabled:opacity-50"
                     >
                       Reset
                     </button>
@@ -209,7 +209,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
           {activeTab === 'hershey' && (
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 mb-4">Hershey-Chase Viral Infection</h3>
+                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Hershey-Chase Viral Infection</h3>
                 
                 <div className="flex bg-gray-100 rounded-lg p-1 mb-6">
                   <button 
@@ -308,7 +308,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
                   <button 
                     onClick={handleResetHC}
                     disabled={isSpinning || hcStep === 0}
-                    className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-bold transition-colors disabled:opacity-50"
+                    className="px-4 bg-gray-200 hover:bg-gray-300 text-gray-700 dark:text-slate-200 rounded-lg font-bold transition-colors disabled:opacity-50"
                   >
                     Reset
                   </button>
@@ -320,14 +320,14 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
 
         {/* Column 3: Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Assessment</h2>
           
           <div className="bg-indigo-50 rounded-xl p-5 border border-indigo-100 flex-1 flex flex-col">
             <h3 className="font-bold text-indigo-900 mb-4">Knowledge Check</h3>
             
             <div className="space-y-6 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   1. In the Meselson-Stahl experiment, after 2 generations in 14N, what percentage of the DNA is fully light (14N/14N)?
                 </label>
                 <div className="flex items-center gap-2">
@@ -343,7 +343,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   2. Which radioactive isotope was used to label DNA in the Hershey-Chase experiment?
                 </label>
                 <input 
@@ -356,7 +356,7 @@ export default function LabB11Genetics({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   3. The Meselson-Stahl experiment proved that DNA replication is:
                 </label>
                 <input 

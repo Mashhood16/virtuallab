@@ -42,7 +42,7 @@ export default function LabAntivirus({ onExit }: LabProps) {
   const [threatsRemoved, setThreatsRemoved] = useState(false);
 
   return (
-    <div className="overflow-y-auto w-full h-screen bg-slate-900 dark:bg-slate-800 flex flex-col font-sans">
+    <div className="overflow-y-auto w-full h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 flex flex-col font-sans">
       <LabHeader onExit={onExit} title="Act 5.2: Malware Protection" subtitle="Install an antivirus and run a system scan to remove threats." variant="dark" />
 
       <div className="flex-1 relative flex items-center justify-center overflow-hidden bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center">

@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import {Flame } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Flame, RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -7,6 +7,7 @@ interface LabProps { onExit?: () => void; }
 export default function LabS8Exothermic({ onExit }: LabProps) {
   const [stage, setStage] = useState<'initial' | 'adding' | 'reaction'>('initial');
   const [temp, setTemp] = useState(20); // Celsius
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
     if (stage === 'reaction' && temp < 45) {
@@ -17,17 +18,18 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
 
   const handleAdd = () => {
     setStage('adding');
-    setTimeout(() => setStage('reaction'), 1500);
+    timeoutRef.current = setTimeout(() => setStage('reaction'), 1500);
   };
 
   const handleReset = () => {
+    clearTimeout(timeoutRef.current);
     setStage('initial');
     setTemp(20);
   };
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans">
-      <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" />
+      <LabHeader onExit={onExit} title="Act 6.4: Exothermic Reaction" subtitle="Water + Calcium Chloride (Releases Heat)" rightContent={<button onClick={handleReset} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         <div className="bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl shadow-lg border border-slate-200 dark:border-slate-700 dark:border-slate-500 max-w-2xl w-full flex flex-col items-center min-h-[500px]">
@@ -99,7 +101,6 @@ export default function LabS8Exothermic({ onExit }: LabProps) {
                   <h3 className="font-bold text-lg mb-1">Temperature Increased!</h3>
                   <p className="text-sm">This is an <strong>Exothermic</strong> reaction. It releases energy as heat into its surroundings.</p>
                 </div>
-                <button onClick={handleReset} className="mt-4 text-sm font-medium text-slate-400 hover:text-slate-600 dark:text-slate-300 underline">Reset Experiment</button>
               </>
             )}
           </div>

@@ -45,7 +45,7 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-red-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-red-50 font-sans dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 2: Pulse Rate and Exercise" />
 
       <div className="flex-1 p-8 flex flex-col items-center">
@@ -112,13 +112,20 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
                <h3 className="font-mono font-bold tracking-widest">ECG MONITOR</h3>
              </div>
              
-             <div className="flex-1 relative border-b border-l border-green-900 flex items-end">
-                {/* Fake Graph Line based on pulse */}
-                <div className="absolute inset-0 flex items-center">
-                   <svg width="100%" height="100%" preserveAspectRatio="none" className="text-green-500" stroke="currentColor" fill="none" strokeWidth="2">
+             <div className="flex-1 relative border-b border-l border-green-900 flex items-end overflow-hidden">
+                {/* Continuous Scrolling Graph Line */}
+                <div 
+                  className="absolute inset-0 w-[200%] flex items-center"
+                  style={{
+                    animation: `scrollECG ${10 * (60 / pulse)}s linear infinite`
+                  }}
+                >
+                   <svg width="100%" height="100%" preserveAspectRatio="none" className="text-green-500" stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 1000 100">
                      <path 
-                       d={`M 0 50 Q 5 50, 10 50 L 15 50 L 20 ${100 - (pulse/2)} L 25 50 L 30 100 L 35 ${100 - pulse} L 40 50 L 45 ${100 - (pulse/2)} L 50 50 Q 55 50, 60 50 L 65 50 L 70 ${100 - (pulse/2)} L 75 50 L 80 100 L 85 ${100 - pulse} L 90 50 L 95 ${100 - (pulse/2)} L 100 50`} 
-                       transform={`scale(1, ${pulse/100})`}
+                       d={`M 0 50 ${Array.from({length: 20}).map((_, i) => {
+                         const o = i * 50;
+                         return `L ${o + 10} 50 L ${o + 15} ${50 - pulse/8} L ${o + 20} 50 L ${o + 25} ${50 + pulse/5} L ${o + 30} ${50 - pulse/3.5} L ${o + 35} 50 L ${o + 40} ${50 - pulse/8} L ${o + 45} 50 L ${o + 50} 50`;
+                       }).join(' ')}`} 
                      />
                    </svg>
                 </div>
@@ -131,6 +138,10 @@ export default function LabS7PulseRateExercise({ onExit }: LabProps) {
                  10% { opacity: 1; }
                  90% { opacity: 1; }
                  100% { left: 100%; opacity: 0; }
+               }
+               @keyframes scrollECG {
+                 0% { transform: translateX(0); }
+                 100% { transform: translateX(-50%); }
                }
              `}</style>
           </div>

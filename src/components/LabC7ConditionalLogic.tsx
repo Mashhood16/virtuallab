@@ -57,9 +57,9 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
   const isAllComplete = completed.every(c => c);
 
   return (
-    <div className="flex h-screen font-sans" style={{backgroundColor: 'rgb(var(--slate-50))', color: 'rgb(var(--slate-800))'}}>
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Conditional Logic Translation" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Conditional Logic Translation" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Translate the English scenario into a strict algorithmic IF-THEN or IF-THEN-ELSE structure.</p>
 
@@ -107,7 +107,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
             </div>
 
             {/* Workspace */}
-            <div className="flex-1 rounded-xl p-6 shadow-inner relative border-4" style={{backgroundColor: '#1e293b', borderColor: '#0f172a'}}>
+            <div className="flex-1 rounded-xl p-6 shadow-inner relative border-4 bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700">
               <h3 className="font-bold text-sm uppercase text-slate-400 tracking-wider mb-4 text-center">Translation Workspace</h3>
               
               <div className="flex flex-wrap gap-2 mb-6 min-h-[100px] content-start">
@@ -132,7 +132,7 @@ export default function LabC7ConditionalLogic({ onExit }: LabProps) {
 
               {!completed[selectedScenario] ? (
                 <div className="flex gap-4">
-                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg transition-colors border" style={{backgroundColor: 'rgb(var(--slate-700))', borderColor: 'rgb(var(--slate-600))', color: 'rgb(var(--slate-100))'}}>Clear</button>
+                  <button onClick={() => setWorkspace([])} className="flex-1 py-3 font-bold rounded-lg transition-colors border bg-slate-200 dark:bg-slate-700 border-slate-300 dark:border-slate-600 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600">Clear</button>
                   <button onClick={checkSolution} className="flex-1 py-3 font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-500 transition-colors">Check Code</button>
                 </div>
               ) : (

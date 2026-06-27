@@ -1,15 +1,30 @@
 import { useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
 
 export default function LabS8AlkaliLitmus({ onExit }: LabProps) {
-  const [testedBlue, setTestedBlue] = useState(false);
-  const [testedRed, setTestedRed] = useState(false);
+  const [testedBlue, setTestedBlue] = useState<'idle'|'dipping'|'tested'>('idle');
+  const [testedRed, setTestedRed] = useState<'idle'|'dipping'|'tested'>('idle');
+
+  const reset = () => {
+    setTestedBlue('idle');
+    setTestedRed('idle');
+  };
+
+  const dipBlue = () => {
+    setTestedBlue('dipping');
+    setTimeout(() => setTestedBlue('tested'), 1000);
+  };
+  const dipRed = () => {
+    setTestedRed('dipping');
+    setTimeout(() => setTestedRed('tested'), 1000);
+  };
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 7.2: Effects of Alkalies on Litmus" subtitle="Test Sodium Hydroxide with litmus paper" />
+      <LabHeader onExit={onExit} title="Act 7.2: Effects of Alkalies on Litmus" subtitle="Test Sodium Hydroxide with litmus paper" rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col p-6 gap-6 max-w-4xl mx-auto w-full items-center justify-center">
         
@@ -29,41 +44,41 @@ export default function LabS8AlkaliLitmus({ onExit }: LabProps) {
             {/* Litmus Papers */}
             <div className="absolute top-0 flex gap-12 w-full justify-center">
               {/* Blue Litmus */}
-              <div className={`w-8 h-32 bg-blue-300 border border-blue-400 rounded-sm shadow-md transition-all duration-700 ease-out ${testedBlue ? 'translate-y-20' : ''} relative overflow-hidden`}>
-                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedBlue ? 'bg-blue-300' : 'bg-blue-300'}`} />
-                {testedBlue && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-blue-800">STAYS BLUE</div>}
+              <div className={`w-8 h-32 bg-blue-300 border border-blue-400 rounded-sm shadow-md transition-all duration-700 ease-out ${testedBlue === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
+                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedBlue !== 'idle' ? 'bg-blue-300' : 'bg-blue-300'}`} />
+                {testedBlue === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-blue-800">STAYS BLUE</div>}
               </div>
 
               {/* Red Litmus */}
-              <div className={`w-8 h-32 bg-red-400 border border-red-500 rounded-sm shadow-md transition-all duration-700 ease-out ${testedRed ? 'translate-y-20' : ''} relative overflow-hidden`}>
-                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedRed ? 'bg-blue-300' : 'bg-red-400'}`} />
-                {testedRed && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-blue-800">TURNED BLUE</div>}
+              <div className={`w-8 h-32 bg-red-400 border border-red-500 rounded-sm shadow-md transition-all duration-700 ease-out ${testedRed === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
+                <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${testedRed !== 'idle' ? 'bg-blue-300' : 'bg-red-400'}`} />
+                {testedRed === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-blue-800">TURNED BLUE</div>}
               </div>
             </div>
           </div>
 
           <div className="flex gap-6 w-full max-w-sm">
             <button 
-              onClick={() => setTestedBlue(true)}
-              disabled={testedBlue}
+              onClick={dipBlue}
+              disabled={testedBlue !== 'idle'}
               className="flex-1 bg-blue-500 text-white py-3 rounded-lg font-bold hover:bg-blue-600 disabled:opacity-50"
             >
               Dip Blue Litmus
             </button>
             <button 
-              onClick={() => setTestedRed(true)}
-              disabled={testedRed}
+              onClick={dipRed}
+              disabled={testedRed !== 'idle'}
               className="flex-1 bg-red-500 text-white py-3 rounded-lg font-bold hover:bg-red-600 disabled:opacity-50"
             >
               Dip Red Litmus
             </button>
           </div>
 
-          {(testedBlue || testedRed) && (
+          {(testedBlue === 'tested' || testedRed === 'tested') && (
             <div className="mt-8 px-6 py-4 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 dark:border-slate-500 rounded-xl max-w-md text-center animate-fade-in">
               <h3 className="font-bold text-lg mb-2">Observation</h3>
-              {testedBlue && <p className="mb-1 text-blue-600 font-medium">Blue Litmus stayed BLUE.</p>}
-              {testedRed && <p className="mb-1 text-blue-600 font-medium">Red Litmus turned BLUE.</p>}
+              {testedBlue === 'tested' && <p className="mb-1 text-blue-600 font-medium">Blue Litmus stayed BLUE.</p>}
+              {testedRed === 'tested' && <p className="mb-1 text-blue-600 font-medium">Red Litmus turned BLUE.</p>}
               <p className="text-sm mt-2 text-slate-600 dark:text-slate-300">This indicates that <strong>Sodium Hydroxide</strong> is an ALKALI (Base).</p>
             </div>
           )}

@@ -71,7 +71,7 @@ export default function LabS6Microscope({ onExit }: LabProps) {
               <button 
                 onClick={handleCoverSlip}
                 disabled={!stainAdded || coverSlipAdded}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold disabled:opacity-40 disabled:bg-slate-300 dark:bg-slate-800 disabled:text-slate-500 dark:text-slate-400 hover:bg-blue-700 transition-colors"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-bold disabled:opacity-50 hover:bg-blue-700"
               >
                 3. Place Cover Slip
               </button>

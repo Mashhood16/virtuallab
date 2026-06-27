@@ -46,9 +46,9 @@ export default function LabC7DesignPrototype({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Design Thinking Prototype" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Design Thinking Prototype" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Design a prototype to carry water from Point A to Point B without using standard kitchen tools.</p>
 

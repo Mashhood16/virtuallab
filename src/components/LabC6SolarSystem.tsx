@@ -106,9 +106,10 @@ export default function LabC6SolarSystem({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Solar System 3D Creator" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Solar System 3D Creator" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Draw planets using 3D shapes, fill them with colors, draw orbits, and label them.</p>
 

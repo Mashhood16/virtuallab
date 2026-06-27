@@ -170,7 +170,7 @@ export default function LabS6EnergyTransformation({ onExit }: LabProps) {
               </div>
             </div>
 
-            <div className="mt-8 p-4 bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800 rounded-xl text-yellow-800 dark:text-yellow-200 text-center max-w-xl">
+            <div className="mt-8 p-4 bg-yellow-50 dark:bg-slate-800 border border-yellow-200 dark:border-slate-700 rounded-xl text-yellow-800 dark:text-yellow-200 text-center max-w-xl">
               <h3 className="font-bold flex items-center justify-center gap-2 mb-2"><Zap className="w-5 h-5" /> Energy Conversion</h3>
               <p>
                 <strong>Light Energy</strong> (from the Sun) is converted into <strong>Electrical Energy</strong> by the solar panel. When the circuit is closed, this electrical energy flows to the motor, converting it into <strong>Mechanical (Kinetic) Energy</strong> to spin the fan blades.

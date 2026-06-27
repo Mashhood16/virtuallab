@@ -58,24 +58,24 @@ export default function LabS6SolutionInvestigation({ onExit }: LabProps) {
                 <button 
                   onClick={() => runExperiment('NaOH')}
                   disabled={running}
-                  className="w-full p-4 border-2 border-red-200 bg-red-50 hover:bg-red-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-red-800 dark:bg-red-950 dark:hover:bg-red-900"
+                  className="w-full p-4 border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
                 >
                   <div className="w-12 h-12 bg-red-500 text-white rounded-full flex items-center justify-center shrink-0"><Flame className="w-6 h-6" /></div>
                   <div>
-                    <h3 className="font-bold text-red-900 dark:text-red-200">Dissolve Sodium Hydroxide (NaOH)</h3>
-                    <p className="text-xs text-red-700 dark:text-red-300">Observe what happens to the temperature.</p>
+                    <h3 className="font-bold text-slate-800 dark:text-slate-100">Dissolve Sodium Hydroxide (NaOH)</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">Observe what happens to the temperature.</p>
                   </div>
                 </button>
 
                 <button 
                   onClick={() => runExperiment('NH4NO3')}
                   disabled={running}
-                  className="w-full p-4 border-2 border-blue-200 bg-blue-50 hover:bg-blue-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-blue-800 dark:bg-blue-950 dark:hover:bg-blue-900"
+                  className="w-full p-4 border-2 border-slate-200 bg-slate-50 hover:bg-slate-100 rounded-xl flex items-center gap-4 text-left transition-colors disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
                 >
                   <div className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shrink-0"><Snowflake className="w-6 h-6" /></div>
                   <div>
-                    <h3 className="font-bold text-blue-900 dark:text-blue-200">Dissolve Ammonium Nitrate (NH₄NO₃)</h3>
-                    <p className="text-xs text-blue-700 dark:text-blue-300">Observe what happens to the temperature.</p>
+                    <h3 className="font-bold text-slate-800 dark:text-slate-100">Dissolve Ammonium Nitrate (NH₄NO₃)</h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">Observe what happens to the temperature.</p>
                   </div>
                 </button>
               </div>

@@ -37,9 +37,9 @@ export default function LabC7NetworkDiagram({ onExit }: LabProps) {
   const isValid = hasSwitch && hasServer && hasClient;
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Network Diagram Builder" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Network Diagram Builder" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-6">Select a component from the toolbar and click on the canvas to place it. Build a basic Client-Server network topology.</p>
 

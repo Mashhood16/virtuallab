@@ -71,7 +71,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               V
             </div>
             <div>
-              <h2 className={`text-2xl font-bold tracking-tight font-outfit ${isDark ? 'text-white' : 'text-slate-800'}`}>
+              <h2 className={`text-2xl font-bold tracking-tight font-outfit ${isDark ? 'text-white' : 'text-slate-800 dark:text-slate-200'}`}>
                 Virtual<span className={`bg-clip-text text-transparent ${isDark ? 'bg-gradient-to-r from-blue-400 to-indigo-400' : 'bg-gradient-to-r from-blue-600 to-indigo-600'}`}>Lab</span>
               </h2>
               <p className={`text-[10px] font-bold uppercase tracking-[0.2em] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Virtual Labs Engine</p>
@@ -107,7 +107,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     ? c.active + ' shadow-inner'
                     : isDark
                       ? 'text-slate-400 hover:bg-white/5 hover:text-slate-200 hover:translate-x-1 border border-transparent'
-                      : 'text-slate-500 hover:bg-slate-100 hover:text-slate-700 hover:translate-x-1 border border-transparent'
+                      : 'text-slate-500 hover:bg-slate-100 hover:text-slate-700 dark:text-slate-200 hover:translate-x-1 border border-transparent'
                 }`}
               >
                 {isActive && (
@@ -166,7 +166,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 <div className={`w-2.5 h-2.5 rounded-full ${isDark ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]' : 'bg-emerald-500'}`}></div>
                 <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping opacity-75"></div>
               </div>
-              <span className={`text-sm font-medium transition-colors ${isDark ? 'text-slate-400 group-hover:text-white' : 'text-slate-500 group-hover:text-slate-700'}`}>{moduleCount} Modules Online</span>
+              <span className={`text-sm font-medium transition-colors ${isDark ? 'text-slate-400 group-hover:text-white' : 'text-slate-500 group-hover:text-slate-700 dark:text-slate-200'}`}>{moduleCount} Modules Online</span>
             </div>
             <div className={`mt-3 h-1 rounded-full bg-gradient-to-r from-blue-500 via-emerald-500 to-violet-500 transition-opacity ${isDark ? 'opacity-60 group-hover:opacity-100' : 'opacity-50 group-hover:opacity-80'}`}></div>
           </div>

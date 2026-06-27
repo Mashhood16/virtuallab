@@ -86,7 +86,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
         
         {/* Column 1: Theory */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-r overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Background Theory</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Background Theory</h2>
           
           <div className="space-y-6 text-gray-600">
             <section>
@@ -141,7 +141,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
           {activeTab === 'transfusion' && (
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 mb-4">Cross-Match Simulator</h3>
+                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Cross-Match Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="p-4 bg-gray-50 rounded-lg border">
@@ -230,7 +230,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
           {activeTab === 'hdn' && (
             <div className="flex-1 flex flex-col">
               <div className="bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border p-6 flex-1 flex flex-col">
-                <h3 className="font-bold text-gray-800 mb-4">Pregnancy & HDN Simulator</h3>
+                <h3 className="font-bold text-gray-800 dark:text-slate-200 mb-4">Pregnancy & HDN Simulator</h3>
                 
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div>
@@ -297,14 +297,14 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
 
         {/* Column 3: Assessment */}
         <div className="bg-slate-50 dark:bg-slate-900 p-6 border-l flex flex-col overflow-y-auto">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Assessment</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200 mb-4">Assessment</h2>
           
           <div className="bg-rose-50 rounded-xl p-5 border border-rose-100 flex-1 flex flex-col">
             <h3 className="font-bold text-rose-900 mb-4">Clinical Scenarios</h3>
             
             <div className="space-y-6 flex-1">
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   1. A patient with B- blood needs a transfusion. What blood types can they receive safely?
                 </label>
                 <input 
@@ -318,7 +318,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   2. An A- mother gives birth to an O+ baby. Does she need to be given RhoGAM? (Yes/No)
                 </label>
                 <input 
@@ -331,7 +331,7 @@ export default function LabB11Inheritance({ onExit }: { onExit?: () => void }) {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-800 mb-1">
+                <label className="block text-sm font-medium text-gray-800 dark:text-slate-200 mb-1">
                   3. What surface antigens are present on the red blood cells of a person with AB+ blood?
                 </label>
                 <input 

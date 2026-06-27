@@ -30,9 +30,9 @@ export default function LabC7UrduTyping({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Urdu Typing Practice" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Urdu Typing Practice" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Toggle the Pak Urdu Installer layout and type a sentence in Urdu.</p>
 

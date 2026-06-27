@@ -18,55 +18,100 @@ function getAudioCtx(): AudioContext {
   return audioCtx;
 }
 
-function playMetalRing() {
+function playSteelRing() {
   const ctx = getAudioCtx();
   const now = ctx.currentTime;
-  // Bell-like: multiple sine partials with fast attack and long decay
-  const freqs = [523, 659, 784, 1047, 1319]; // C5, E5, G5, C6, E6
+  const freqs = [880, 1108, 1318, 1760, 2217]; // Sharp, high pitched
   freqs.forEach((freq, i) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.type = 'sine';
     osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0.25 / (i + 1), now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5 - i * 0.1);
+    gain.gain.setValueAtTime(0.2 / (i + 1), now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2 - i * 0.15);
     osc.connect(gain);
     gain.connect(ctx.destination);
     osc.start(now);
-    osc.stop(now + 1.8);
+    osc.stop(now + 1.5);
   });
 }
 
-function playThud() {
+function playBrassRing() {
   const ctx = getAudioCtx();
   const now = ctx.currentTime;
-  // Dull thud: low frequency burst with noise
+  const freqs = [440, 554, 659, 880, 1108]; // Lower, richer tone
+  freqs.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.3 / (i + 1), now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 2.0 - i * 0.2);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 2.2);
+  });
+}
+
+function playWoodThud() {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(120, now);
-  osc.frequency.exponentialRampToValueAtTime(60, now + 0.15);
-  gain.gain.setValueAtTime(0.6, now);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(150, now);
+  osc.frequency.exponentialRampToValueAtTime(40, now + 0.1);
+  gain.gain.setValueAtTime(0.7, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
   osc.connect(gain);
   gain.connect(ctx.destination);
   osc.start(now);
-  osc.stop(now + 0.3);
+  osc.stop(now + 0.2);
 
-  // Add a noise burst for the "knock" texture
-  const bufferSize = ctx.sampleRate * 0.1;
+  const bufferSize = ctx.sampleRate * 0.05;
   const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
   const data = buffer.getChannelData(0);
-  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.2;
   const noise = ctx.createBufferSource();
   noise.buffer = buffer;
   const noiseGain = ctx.createGain();
-  noiseGain.gain.setValueAtTime(0.4, now);
-  noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+  noiseGain.gain.setValueAtTime(0.5, now);
+  noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
   noise.connect(noiseGain);
   noiseGain.connect(ctx.destination);
   noise.start(now);
-  noise.stop(now + 0.15);
+  noise.stop(now + 0.1);
+}
+
+function playPlasticThud() {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(300, now);
+  osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+  gain.gain.setValueAtTime(0.5, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + 0.25);
+
+  const bufferSize = ctx.sampleRate * 0.02;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.1;
+  const noise = ctx.createBufferSource();
+  noise.buffer = buffer;
+  const noiseGain = ctx.createGain();
+  noiseGain.gain.setValueAtTime(0.2, now);
+  noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+  noise.connect(noiseGain);
+  noiseGain.connect(ctx.destination);
+  noise.start(now);
+  noise.stop(now + 0.05);
 }
 
 export default function LabS8Sonorous({ onExit }: LabProps) {
@@ -80,11 +125,17 @@ export default function LabS8Sonorous({ onExit }: LabProps) {
       setIsStriking(false);
       
       // Play the matching sound
-      if (selected.soundType === 'ring') {
-        playMetalRing();
+      if (selected.id === 'steel') {
+        playSteelRing();
         setWaves([1, 2, 3, 4, 5]);
-      } else {
-        playThud();
+      } else if (selected.id === 'brass') {
+        playBrassRing();
+        setWaves([1, 2, 3, 4, 5]);
+      } else if (selected.id === 'wood') {
+        playWoodThud();
+        setWaves([1]);
+      } else if (selected.id === 'plastic') {
+        playPlasticThud();
         setWaves([1]);
       }
       

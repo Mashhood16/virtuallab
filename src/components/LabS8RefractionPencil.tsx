@@ -40,7 +40,8 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
           <div className="relative w-64 h-80 flex flex-col items-center justify-end mb-8">
             
             {/* The Pencil (Top Half in Air) */}
-            <div className="absolute top-10 left-32 w-4 h-48 bg-yellow-400 border-x border-t border-yellow-600 rounded-t-sm rotate-[15deg] origin-bottom shadow-sm z-20 transition-all duration-500">
+            <div className="absolute w-4 h-48 bg-yellow-400 border-x border-t border-yellow-600 rounded-t-sm origin-bottom shadow-sm z-20 transition-all duration-500"
+                 style={{ left: '128px', bottom: '192px', transform: 'rotate(15deg)' }}>
                {/* Eraser */}
                <div className="absolute top-0 w-full h-4 bg-pink-400 border-b border-pink-600 rounded-t-sm" />
             </div>
@@ -51,10 +52,10 @@ export default function LabS8RefractionPencil({ onExit }: LabProps) {
                {/* The Pencil (Bottom Half in Liquid) */}
                {/* We clip the pencil so it only shows inside the glass, and shift it based on the refraction bend */}
                <div 
-                 className="absolute top-[-20%] w-4 h-64 bg-yellow-400 border-x border-b border-yellow-600 origin-top transition-transform duration-500 z-10"
+                 className="absolute top-0 w-4 h-64 bg-yellow-400 border-x border-b border-yellow-600 origin-top transition-transform duration-500 z-10"
                  style={{ 
-                   left: 'calc(50% + 12px)',
-                   transform: `rotate(${15 + current.bend * 0.3}deg) translateX(-${current.bend}px)`
+                   left: '96px',
+                   transform: `rotate(${15 - current.bend * 0.3}deg) translateX(-${current.bend}px)`
                  }}
                >
                  {/* Tip */}

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RefreshCw } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps { onExit?: () => void; }
@@ -14,13 +15,18 @@ const SOLUTIONS = [
 
 export default function LabS8DeterminingPH({ onExit }: LabProps) {
   const [selected, setSelected] = useState(SOLUTIONS[0]);
-  const [isTested, setIsTested] = useState(false);
+  const [isTested, setIsTested] = useState<'idle'|'dipping'|'tested'>('idle');
 
-  const reset = () => setIsTested(false);
+  const reset = () => setIsTested('idle');
+
+  const dipPaper = () => {
+    setIsTested('dipping');
+    setTimeout(() => setIsTested('tested'), 1000);
+  };
 
   return (
     <div className="overflow-y-auto flex flex-col h-screen bg-slate-50 dark:bg-slate-900 font-sans select-none">
-      <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" />
+      <LabHeader onExit={onExit} title="Act 7.4: Determining pH" subtitle="Test different solutions with universal pH paper" rightContent={<button onClick={reset} className="flex items-center gap-2 bg-slate-200 dark:bg-slate-800 px-4 py-2 rounded-md font-medium hover:bg-slate-300 dark:bg-slate-700"><RefreshCw className="w-4 h-4" /> Reset</button>} />
 
       <div className="flex-1 flex flex-col md:flex-row p-6 gap-6 max-w-6xl mx-auto w-full">
         {/* Solution Select */}
@@ -60,23 +66,23 @@ export default function LabS8DeterminingPH({ onExit }: LabProps) {
             </div>
 
             {/* pH Paper */}
-            <div className={`absolute top-0 w-8 h-40 bg-[#fde047] border border-[#ca8a04] rounded-sm shadow-md transition-all duration-700 ease-out ${isTested ? 'translate-y-20' : ''} relative overflow-hidden`}>
-              <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${isTested ? selected.color : 'bg-[#fde047]'}`} />
-              {isTested && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-white drop-shadow">pH {selected.ph}</div>}
+            <div className={`absolute top-0 w-8 h-40 bg-[#fde047] border border-[#ca8a04] rounded-sm shadow-md transition-all duration-700 ease-out ${isTested === 'dipping' ? 'translate-y-20' : ''} relative overflow-hidden`}>
+              <div className={`absolute bottom-0 w-full h-1/2 transition-colors duration-1000 ${isTested !== 'idle' ? selected.color : 'bg-[#fde047]'}`} />
+              {isTested === 'tested' && <div className="absolute top-1 left-1/2 -translate-x-1/2 text-[6px] font-bold text-white drop-shadow">pH {selected.ph}</div>}
             </div>
           </div>
 
           <div className="text-center mb-8">
             <button 
-              onClick={() => setIsTested(true)}
-              disabled={isTested}
+              onClick={dipPaper}
+              disabled={isTested !== 'idle'}
               className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 text-xl shadow-lg transition-transform active:scale-95"
             >
               Dip pH Paper
             </button>
           </div>
 
-          {isTested && (
+          {isTested === 'tested' && (
             <div className="px-6 py-4 bg-slate-50 dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 dark:border-slate-500 rounded-xl max-w-sm text-center animate-fade-in w-full">
               <h3 className="font-bold text-xl mb-1 text-slate-800 dark:text-slate-100">pH = {selected.ph}</h3>
               <p className="text-lg font-bold" style={{ color: `var(--tw-colors-${selected.color.split('-')[1]}-${selected.color.split('-')[2]})` }}>

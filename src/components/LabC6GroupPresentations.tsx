@@ -19,6 +19,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
   const [slides, setSlides] = useState([{ title: 'Title Slide', content: 'Presenting our group topic.' }]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [activeFormat, setActiveFormat] = useState('text');
 
   const addSlide = () => {
     setSlides([...slides, { title: 'New Slide', content: '' }]);
@@ -62,7 +63,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
           <button 
             disabled={currentSlide === 0}
             onClick={() => setCurrentSlide(c => c - 1)}
-            className="px-6 py-3 bg-slate-700 dark:bg-slate-800 hover:bg-slate-600 dark:bg-slate-800 disabled:opacity-50 rounded-lg font-bold transition-colors text-white"
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold transition-colors text-white"
           >
             Previous
           </button>
@@ -72,7 +73,7 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
           <button 
             disabled={currentSlide === slides.length - 1}
             onClick={() => setCurrentSlide(c => c + 1)}
-            className="px-6 py-3 bg-slate-700 dark:bg-slate-800 hover:bg-slate-600 dark:bg-slate-800 disabled:opacity-50 rounded-lg font-bold transition-colors text-white"
+            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-bold transition-colors text-white"
           >
             Next
           </button>
@@ -82,9 +83,10 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
   }
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Unit 1: Group Presentations" subtitle={selectedTopic ? `Presenting: ${topics.find(t => t.id === selectedTopic)?.label}` : undefined} />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Group Presentation Builder" subtitle={selectedTopic ? `Presenting: ${topics.find(t => t.id === selectedTopic)?.label}` : undefined} />
+        
 
         <div className="flex justify-between items-end mb-6">
           <div>
@@ -165,15 +167,15 @@ export default function LabC6GroupPresentations({ onExit }: LabProps) {
           {/* Editor Area */}
           <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 dark:border-slate-500 flex flex-col">
             <div className="border-b border-slate-200 dark:border-slate-700 dark:border-slate-500 p-4 flex gap-4 bg-slate-50 dark:bg-slate-900 rounded-t-xl">
-              <button className="flex flex-col items-center gap-1 p-2 text-blue-600 bg-blue-50 rounded w-16" title="Text formatting active">
+              <button onClick={() => setActiveFormat('text')} className={`flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors ${activeFormat === 'text' ? 'text-blue-600 bg-blue-50 dark:bg-blue-900/50' : 'text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-800'}`}>
                 <Type className="w-5 h-5" />
                 <span className="text-[10px] font-bold">Text</span>
               </button>
-              <button className="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors w-16" title="Click to insert image">
+              <button onClick={() => alert("Image format simulation not available in this demo.")} className="flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-800">
                 <ImageIcon className="w-5 h-5" />
                 <span className="text-[10px] font-bold">Image</span>
               </button>
-              <button className="flex flex-col items-center gap-1 p-2 text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded transition-colors w-16" title="Click to change layout">
+              <button onClick={() => alert("Layout formatting not available in this demo.")} className="flex flex-col items-center gap-1 p-2 rounded w-16 transition-colors text-slate-500 dark:text-slate-400 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-slate-800">
                 <Presentation className="w-5 h-5" />
                 <span className="text-[10px] font-bold">Layout</span>
               </button>

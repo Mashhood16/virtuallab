@@ -35,9 +35,10 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Eating and Exercise Research" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Eating and Exercise Research" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Investigate the relationship between calories consumed and calories burned.</p>
 
@@ -97,7 +98,7 @@ export default function LabC6DietExercise({ onExit }: LabProps) {
                 <div className="absolute bottom-0 w-4 h-32 bg-slate-800 dark:bg-slate-800 left-1/2 -translate-x-1/2 rounded-t-sm"></div>
                 <div 
                   className="absolute bottom-32 w-full h-2 bg-slate-600 dark:bg-slate-800 rounded-full transition-transform duration-500 ease-in-out origin-center"
-                  style={{ transform: `rotate(${Math.max(-20, Math.min(20, (caloriesOut - caloriesIn) * 0.01))}deg)` }}
+                  style={{ transform: `rotate(${Math.max(-20, Math.min(20, -(caloriesIn - caloriesOut) * 0.01))}deg)` }}
                 >
                   <div className="absolute -left-6 -top-12 w-12 h-12 bg-rose-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-rose-500/30 text-xs">IN</div>
                   <div className="absolute -right-6 -top-12 w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30 text-xs">OUT</div>

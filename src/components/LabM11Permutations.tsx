@@ -154,7 +154,7 @@ export default function LabM11Permutations({ onExit }: { onExit?: () => void }) 
                             <div className="w-full max-w-md flex flex-col items-center gap-6">
                                 <div className="bg-yellow-400 p-4 rounded-lg shadow-lg border-4 border-yellow-500 w-full text-center relative overflow-hidden">
                                     <div className="text-xs font-bold text-yellow-800 mb-1">VIRTUAL STATE</div>
-                                    <div className="text-4xl font-mono font-bold tracking-widest text-slate-900">
+                                    <div className="text-4xl font-mono font-bold tracking-widest text-slate-900 dark:text-slate-200">
                                         {samplePlate}
                                     </div>
                                     <div className="text-[10px] text-yellow-800 mt-1">THE PERMUTATION STATE</div>

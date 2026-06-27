@@ -23,9 +23,10 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
   };
 
   return (
-    <div className="flex h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Coordinate Experimentation" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Coordinate Experimentation" />
+        
 
         <p className="text-slate-600 dark:text-slate-300 mb-8">Relocate the Rocket sprite to different coordinates on the Cartesian plane stage.</p>
 
@@ -58,7 +59,7 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
 
               <button 
                 onClick={applyCoordinates}
-                className="mt-4 px-4 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors"
+                className="mt-4 px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Execute Block
               </button>
@@ -102,7 +103,7 @@ export default function LabC6CoordinateExp({ onExit }: LabProps) {
               >
                 <div className="relative">
                   <Rocket className="w-12 h-12 text-blue-600" fill="#3b82f6" strokeWidth={1} />
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-2 py-0.5 rounded text-[10px] whitespace-nowrap opacity-90 font-mono">
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white dark:bg-slate-700 dark:text-white px-2 py-0.5 rounded text-[10px] whitespace-nowrap opacity-90 font-mono">
                     ({x}, {y})
                   </div>
                 </div>

@@ -41,7 +41,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
           
           {activeProject === 'windmill' && (
             <div className="space-y-8">
-              <div className="flex gap-4 items-start bg-purple-50 dark:bg-purple-950 border border-purple-200 dark:border-purple-800 p-6 rounded-xl">
+              <div className="flex gap-4 items-start bg-purple-50 dark:bg-slate-800 border border-purple-200 dark:border-slate-700 p-6 rounded-xl">
                 <Activity className="w-8 h-8 text-purple-600 shrink-0 mt-1" />
                 <div>
                   <h2 className="text-xl font-bold text-purple-900 dark:text-purple-200 mb-2">Build a Working Windmill</h2>
@@ -80,7 +80,7 @@ export default function LabS6EnergyProjects({ onExit }: LabProps) {
 
           {activeProject === 'rollercoaster' && (
             <div className="space-y-8">
-              <div className="flex gap-4 items-start bg-indigo-50 dark:bg-indigo-950 border border-indigo-200 dark:border-indigo-800 p-6 rounded-xl">
+              <div className="flex gap-4 items-start bg-indigo-50 dark:bg-slate-800 border border-indigo-200 dark:border-slate-700 p-6 rounded-xl">
                 <Activity className="w-8 h-8 text-indigo-600 shrink-0 mt-1" />
                 <div>
                   <h2 className="text-xl font-bold text-indigo-900 dark:text-indigo-200 mb-2">Design a Roller Coaster Track</h2>

@@ -27,7 +27,7 @@ export default function LabS7ThermalConduction({ onExit }: LabProps) {
   const woodMelt = 0; // Doesn't melt
 
   return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-amber-50 font-sans">
+    <div className="flex flex-col h-screen overflow-y-auto bg-amber-50 font-sans dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="Unit 4: Thermal Conduction" />
 
       <div className="flex-1 p-8 flex flex-col items-center">

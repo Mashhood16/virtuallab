@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createPortal } from 'react-dom';
+
 import { Square, Circle, Triangle, Play, MousePointer2 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
@@ -33,7 +33,7 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
   };
 
   if (isPlaying) {
-    return createPortal(
+    return (
       <div className="fixed inset-0 bg-black z-50 flex items-center justify-center" onClick={handleExitPlay}>
         <div className="w-full max-w-5xl aspect-[16/9] bg-white relative overflow-hidden shadow-2xl">
           {shapes.map(shape => {
@@ -54,15 +54,14 @@ export default function LabC7PowerPointGeometry({ onExit }: LabProps) {
           })}
         </div>
         <div className="absolute top-8 right-8 text-white/50 text-sm">Click anywhere to exit</div>
-      </div>,
-      document.body
+      </div>
     );
   }
 
   return (
-    <div className="flex h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+    <div className="flex flex-col h-screen font-sans bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+      <LabHeader onExit={onExit} title="Geometry Presentation" />
       <div className="flex-1 px-8 pb-8 flex flex-col overflow-y-auto">
-        <LabHeader onExit={onExit} title="Geometry Presentation" />
 
         <p className="text-slate-600 dark:text-slate-300 mb-6">Insert geometrical figures onto the slide, apply animations to them, and set a slide transition.</p>
 

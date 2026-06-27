@@ -108,7 +108,7 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
                <div className={`transition-colors ${temperature >= 40 && temperature < 150 ? 'text-blue-600 text-sm' : ''}`}>Gasoline (40-150°C)</div>
                <div className={`transition-colors ${temperature >= 150 && temperature < 250 ? 'text-yellow-600 text-sm' : ''}`}>Kerosene (150-250°C)</div>
                <div className={`transition-colors ${temperature >= 250 && temperature < 350 ? 'text-red-600 text-sm' : ''}`}>Diesel (250-350°C)</div>
-               <div className={`transition-colors ${temperature >= 350 ? 'text-slate-900 text-sm' : ''}`}>Bitumen (&gt;350°C)</div>
+               <div className={`transition-colors ${temperature >= 350 ? 'text-slate-900 dark:text-slate-200 text-sm' : ''}`}>Bitumen (&gt;350°C)</div>
             </div>
           </div>
 

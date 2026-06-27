@@ -23,6 +23,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
   const [isCreating, setIsCreating] = useState(false);
   const [isRenaming, setIsRenaming] = useState(false);
   const [inputName, setInputName] = useState('');
+  const [clipboardFolderId, setClipboardFolderId] = useState<string | null>(null);
 
   const currentItems = items.filter(i => i.parentId === currentFolderId);
   const currentFolder = items.find(i => i.id === currentFolderId);
@@ -56,6 +57,19 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
     setSelectedItemId(null);
   };
 
+  const handlePaste = () => {
+    const folderToCopy = items.find(i => i.id === clipboardFolderId);
+    if (folderToCopy) {
+      setItems([...items, {
+        id: `item_${Date.now()}`,
+        name: `${folderToCopy.name} - Copy`,
+        type: folderToCopy.type,
+        parentId: currentFolderId
+      }]);
+    }
+    setClipboardFolderId(null);
+  };
+
   return (
     <div className="flex flex-col h-screen font-sans bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100">
       <LabHeader onExit={onExit} title="File and Folder Management 1" subtitle="Practice creating folders and navigating the file system" />
@@ -65,7 +79,7 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
           <ul className="list-disc pl-5 space-y-1 text-sm">
             <li className={hasRollNumFolderInD ? 'text-green-600 line-through' : ''}>Create a folder in Drive D: saved by your roll number (e.g., "Roll 42").</li>
             <li className={hasHomeworkFolder ? 'text-green-600 line-through' : ''}>Open it and create a sub-folder named 'homework'.</li>
-            <li className={hasAssignmentOnDesktop ? 'text-green-600 line-through' : ''}>Copy this folder to the Desktop and rename it 'assignment'.</li>
+            <li className={hasAssignmentOnDesktop ? 'text-green-600 line-through' : ''}>Copy this folder to the Desktop and rename it to 'assignment'. (Use Copy & Paste)</li>
           </ul>
         </div>
 
@@ -113,6 +127,16 @@ export default function LabC6FileManagement1({ onExit }: LabProps) {
             {selectedItemId && (
               <button onClick={() => { setIsRenaming(true); setInputName(selectedItem?.name || ''); }} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-bold transition-colors">
                 Rename
+              </button>
+            )}
+            {selectedItemId && selectedItem?.type === 'folder' && (
+              <button onClick={() => setClipboardFolderId(selectedItemId)} className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded text-sm font-bold transition-colors">
+                Copy
+              </button>
+            )}
+            {clipboardFolderId && (
+              <button onClick={handlePaste} className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 text-white rounded text-sm font-bold transition-colors">
+                Paste
               </button>
             )}
           </div>

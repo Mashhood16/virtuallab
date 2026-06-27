@@ -81,7 +81,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
           
           <div className="space-y-4 text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2">
                 <Waves size={16} className="text-blue-500"/> Piezoelectric Ultrasound
               </h3>
               <p className="mt-1">
@@ -91,7 +91,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
             </section>
 
             <section>
-              <h3 className="font-semibold text-slate-900 flex items-center gap-2 mt-4">
+              <h3 className="font-semibold text-slate-900 dark:text-slate-200 flex items-center gap-2 mt-4">
                 <Bone size={16} className="text-slate-500 dark:text-slate-400"/> X-Ray Attenuation
               </h3>
               <p className="mt-1">
@@ -124,7 +124,7 @@ export default function LabP12MedicalImaging({ onExit }: { onExit?: () => void }
             />
             
             <div className="h-48 bg-slate-900 dark:bg-slate-800 rounded-lg relative overflow-hidden flex flex-col">
-              <div className="h-4 w-full bg-slate-400 dark:bg-slate-800 absolute top-0 z-10 flex items-center justify-center text-[10px] text-slate-900 font-bold">Transducer</div>
+              <div className="h-4 w-full bg-slate-400 dark:bg-slate-800 absolute top-0 z-10 flex items-center justify-center text-[10px] text-slate-900 dark:text-slate-200 font-bold">Transducer</div>
               
               <div className="flex-1 w-full flex flex-col relative pt-4">
                 <div className="absolute w-full bg-pink-900/30" style={{ height: `${tissueDepth * 20}px` }}></div>

@@ -11,7 +11,7 @@ const ChemicalBottle = ({ label, color, onClick }: { label: string, color: strin
     <div className="relative w-10 h-16 border-2 border-gray-400 rounded-b-lg rounded-t-sm overflow-hidden flex items-end">
       <div className="w-full" style={{ height: '60%', backgroundColor: color }}></div>
     </div>
-    <span className="text-xs font-bold mt-1 text-gray-700">{label}</span>
+    <span className="text-xs font-bold mt-1 text-gray-700 dark:text-slate-200">{label}</span>
   </button>
 );
 
@@ -210,7 +210,7 @@ export default function LabC9StatesOfMatter({ onExit }: Props) {
 
               <div className="mt-6 w-full max-w-xs space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Water Temperature: {waterTemp}°C</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-slate-200">Water Temperature: {waterTemp}°C</label>
                   <input type="range" min="20" max="100" value={waterTemp} onChange={(e) => setWaterTemp(Number(e.target.value))} className="w-full" />
                 </div>
                 {isSupersaturated && (
