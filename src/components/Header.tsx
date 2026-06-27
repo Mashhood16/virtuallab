@@ -72,7 +72,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   };
 
   return (
-    <header className={`${isDark ? 'bg-gradient-to-r from-[#0f172a] via-[#141b30] to-[#0f172a]' : 'bg-white border-b border-slate-200'} px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50 relative`}>
+    <header className={`${isDark ? 'bg-gradient-to-r from-[#0f172a] via-[#141b30] to-[#0f172a]' : 'bg-[#faf8ff] border-b border-slate-200'} px-5 md:px-10 py-4 flex items-center justify-between sticky top-0 z-50 relative`}>
       {/* Subtle glow in dark mode */}
       {isDark && <div className="absolute top-0 left-0 right-0 h-full bg-gradient-to-b from-blue-600/5 to-transparent pointer-events-none"></div>}
       {/* Left: Hamburger + Logo */}
@@ -85,11 +85,11 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <Menu className="w-6 h-6" />
         </button>
 
-        <div className="md:hidden w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-blue-500/30 shrink-0">
+        <div className="md:hidden w-10 h-10 bg-gradient-to-br from-[#3525cd] to-[#712ae2] rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-primary/30 shrink-0">
           V
         </div>
         <h1 className="text-2xl font-bold font-outfit hidden md:block shrink-0">
-          <span className={`${isDark ? 'bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300' : 'text-slate-800 dark:text-slate-200'}`}>Dashboard</span>
+          <span className={`${isDark ? 'bg-clip-text text-transparent bg-gradient-to-br from-white to-slate-300' : 'text-slate-800 dark:text-slate-200'}`}>Dashboard</span>
         </h1>
 
         {/* Desktop Search Bar */}
@@ -184,7 +184,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
         ) : (
           <button
             onClick={() => navigate('/login')}
-            className="flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-full hover:from-blue-700 hover:to-indigo-700 transition-all hover:shadow-lg hover:shadow-blue-500/30"
+            className="flex items-center gap-2 px-5 py-2 bg-gradient-to-br from-[#3525cd] to-[#712ae2] text-white font-semibold rounded-full hover:opacity-95 transition-all hover:shadow-lg hover:shadow-primary/30"
           >
             <LogIn className="w-4 h-4" />
             <span className="hidden sm:block">Log In</span>

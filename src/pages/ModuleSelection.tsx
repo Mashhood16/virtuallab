@@ -26,7 +26,7 @@ export default function ModuleSelection() {
         <Breadcrumbs />
 
         {filteredModules.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-2xl border-2 border-dashed border-slate-200">
+          <div className="flex flex-col items-center justify-center py-20 glass rounded-2xl border border-dashed border-slate-200/50 dark:border-slate-800/50">
             <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${accent} flex items-center justify-center mb-4 opacity-50`}>
               <Lock className="w-10 h-10 text-white" />
             </div>
@@ -38,7 +38,7 @@ export default function ModuleSelection() {
             <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Curriculum Modules</h2>
             <p className="text-slate-500 mt-1 mb-6">High-End Interactive Experiments &mdash; Class {classId} {subjectId && formatSubject(subjectId)}</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredModules.map((lab) => {
                 const isBuilt = lab.built;
                 return (
@@ -47,8 +47,8 @@ export default function ModuleSelection() {
                     onClick={() => isBuilt && navigate(`/class/${classId}/${subjectId}/lab/${lab.id}`)}
                     className={`relative group rounded-2xl overflow-hidden transition-all duration-300 flex flex-col h-full ${
                       isBuilt
-                        ? 'bg-white border-2 border-transparent hover:border-slate-200 hover:-translate-y-2 hover:shadow-xl cursor-pointer'
-                        : 'bg-white border-2 border-dashed border-slate-200 opacity-70'
+                        ? 'glass border border-slate-200/50 dark:border-slate-800/50 hover:-translate-y-2 hover:shadow-xl cursor-pointer'
+                        : 'glass border border-dashed border-slate-200/50 dark:border-slate-800/50 opacity-70'
                     }`}
                   >
                     {/* Gradient header strip */}
@@ -63,7 +63,7 @@ export default function ModuleSelection() {
                       <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/20 backdrop-blur-md text-white text-xs font-bold tracking-wider border border-white/20">
                         {formatSubject(lab.subject)} &middot; Class {lab.classLevel}
                       </div>
-
+                      
                       {/* Built indicator */}
                       {isBuilt ? (
                         <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-green-500/90 text-white text-xs font-bold backdrop-blur-sm">
@@ -77,7 +77,7 @@ export default function ModuleSelection() {
                     </div>
 
                     {/* Card body */}
-                    <div className="p-5 flex-1 flex flex-col bg-white">
+                    <div className="p-6 flex-1 flex flex-col bg-transparent">
                       <h3 className={`text-base font-bold font-outfit leading-snug mb-2 ${isBuilt ? 'text-slate-800 group-hover:text-slate-900' : 'text-slate-600'}`}>
                         {lab.title}
                       </h3>

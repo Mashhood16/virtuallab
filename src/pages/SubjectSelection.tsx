@@ -37,7 +37,7 @@ export default function SubjectSelection() {
           <h2 className="text-2xl md:text-3xl font-bold text-slate-800 tracking-tight">Select Subject</h2>
           <p className="text-slate-500 mt-1 mb-6">Class {classId} Curriculum</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {subjects.map(subject => {
               const config = SUBJECT_CONFIG[subject] || { gradient: 'from-slate-500 to-slate-600', icon: BookOpen, description: 'Explore modules', moduleKey: subject };
               const Icon = config.icon;
@@ -46,7 +46,7 @@ export default function SubjectSelection() {
                 <button
                   key={subject}
                   onClick={() => navigate(`/class/${classId}/${subject}`)}
-                  className="relative group p-4 md:p-6 rounded-2xl bg-white border-2 border-transparent hover:border-current hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
+                  className="relative group p-6 rounded-2xl glass border border-slate-200/50 dark:border-slate-800/50 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 overflow-hidden text-left"
                 >
                   {/* Top accent bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${config.gradient} rounded-t-2xl group-hover:h-2 transition-all duration-300`}></div>

@@ -55,5 +55,9 @@ export default function LabRunnerInner({ moduleId, onExit }: LabRunnerInnerProps
     );
   }
 
-  return <LabComponent onExit={handleExit} />;
+  return (
+    <div className="text-slate-800 dark:text-slate-200 bg-slate-50 dark:bg-slate-900 min-h-screen">
+      <LabComponent onExit={handleExit} />
+    </div>
+  );
 }

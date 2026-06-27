@@ -67,12 +67,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
         <div className="p-8 pb-4 relative z-10">
           <div className="flex items-center gap-4">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/40 transform hover:rotate-12 transition-transform cursor-pointer">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#3525cd] via-[#4d44e3] to-[#712ae2] flex items-center justify-center font-bold text-white shadow-lg shadow-primary/40 transform hover:rotate-12 transition-transform cursor-pointer">
               V
             </div>
             <div>
               <h2 className={`text-2xl font-bold tracking-tight font-outfit ${isDark ? 'text-white' : 'text-slate-800 dark:text-slate-200'}`}>
-                Virtual<span className={`bg-clip-text text-transparent ${isDark ? 'bg-gradient-to-r from-blue-400 to-indigo-400' : 'bg-gradient-to-r from-blue-600 to-indigo-600'}`}>Lab</span>
+                Virtual<span className={`bg-clip-text text-transparent bg-gradient-to-br from-[#3525cd] to-[#712ae2]`}>Lab</span>
               </h2>
               <p className={`text-[10px] font-bold uppercase tracking-[0.2em] ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>Virtual Labs Engine</p>
             </div>
@@ -80,7 +80,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
         
         <div className="px-6 py-2 relative z-10">
-          <div className={`h-px w-full bg-gradient-to-r ${isDark ? 'from-transparent via-blue-500/30 to-transparent' : 'from-transparent via-blue-300/40 to-transparent'}`}></div>
+          <div className={`h-px w-full bg-gradient-to-r ${isDark ? 'from-transparent via-primary/30 to-transparent' : 'from-transparent via-primary/20 to-transparent'}`}></div>
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-2 relative z-10">
@@ -168,7 +168,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               </div>
               <span className={`text-sm font-medium transition-colors ${isDark ? 'text-slate-400 group-hover:text-white' : 'text-slate-500 group-hover:text-slate-700 dark:text-slate-200'}`}>{moduleCount} Modules Online</span>
             </div>
-            <div className={`mt-3 h-1 rounded-full bg-gradient-to-r from-blue-500 via-emerald-500 to-violet-500 transition-opacity ${isDark ? 'opacity-60 group-hover:opacity-100' : 'opacity-50 group-hover:opacity-80'}`}></div>
+            <div className={`mt-3 h-1 rounded-full bg-gradient-to-r from-[#3525cd] via-emerald-500 to-[#712ae2] transition-opacity ${isDark ? 'opacity-60 group-hover:opacity-100' : 'opacity-50 group-hover:opacity-80'}`}></div>
           </div>
         </div>
       </aside>
