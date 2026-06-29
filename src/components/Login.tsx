@@ -309,7 +309,7 @@ export default function Login() {
 
           {/* Footer */}
           <div className="mt-6 pt-5 border-t border-slate-200/60 dark:border-slate-300/60 text-center">
-            <p className="text-xs text-slate-400 dark:text-[#71717a]">VirtualLab Engine v2.0</p>
+            <p className="text-xs text-slate-400 dark:text-[#71717a]">Cendronyx Labs v2.0</p>
           </div>
         </div>
       </div>

@@ -9,8 +9,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
       manifest: {
-        name: 'VirtualLab',
-        short_name: 'VirtualLab',
+        name: 'Cendronyx Labs',
+        short_name: 'Cendronyx',
         description: 'Offline-first 3D science experiments',
         theme_color: '#0f172a',
         background_color: '#f8fafc',

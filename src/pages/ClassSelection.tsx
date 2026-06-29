@@ -33,7 +33,7 @@ export default function ClassSelection() {
           
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 font-outfit tracking-tight">
-            Next-Generation Virtual Laboratory
+            Next-Generation Cendronyx Labs
           </h1>
           
           <p className="text-white/80 text-sm sm:text-base md:text-lg max-w-2xl mb-2 font-medium leading-relaxed mx-auto">

@@ -73,7 +73,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       >
         <div className={`h-[72px] px-8 flex items-center border-b shrink-0 relative z-10 ${isDark ? 'border-[#1c1b1b]' : 'border-slate-200'}`}>
           <h2 className={`text-2xl font-bold tracking-tight font-outfit ${isDark ? 'text-[#ffffff]' : 'text-slate-800'}`}>
-            Virtual<span className={isDark ? 'text-[#a855f7]' : 'text-purple-600'}>Lab</span>
+            Cendronyx<span className={isDark ? 'text-[#a855f7]' : 'text-purple-600'}>Labs</span>
           </h2>
         </div>
 
