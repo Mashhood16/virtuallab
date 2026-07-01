@@ -57,22 +57,22 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
   {/* Main Grid */}
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
   
   {/* Column 1: Theory */}
-  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
    <Info className="w-5 h-5 text-rose-600" /> Theory & Context
    </h2>
@@ -99,14 +99,14 @@ export default function LabC11OrganicSynthesis({ onExit }: Props) {
   </div>
 
   {/* Column 2: Simulator */}
-  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex flex-col lg: ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex flex-col lg:  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2 shrink-0">
    <Settings className="w-5 h-5 text-rose-600" /> Tower Simulator
    </h2>
 
    <div className="flex-1 flex items-center justify-center relative mb-4 min-h-[300px]">
    {/* Distillation Tower */}
-   <div className={`w-24 h-64 bg-white lg:bg-slate-300 dark:bg-[#121212] lg:dark:bg-[#121212] border-4 border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-full relative flex flex-col justify-between p-2 pb-0 z-10 shrink-0 ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className={`w-full w-24 h-64 bg-white lg:bg-slate-300 dark:bg-[#121212] lg:dark:bg-[#121212] border-4 border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-t-full relative flex flex-col justify-between p-2 pb-0 z-10 shrink-0  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
     {/* Trays */}
     <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 40 && temperature < 150 ? 'shadow-[0_0_10px_2px_rgba(59,130,246,0.8)]' : ''}`}></div>
     <div className={`w-full h-1 bg-slate-400 dark:bg-[#121212] my-2 transition-shadow ${temperature >= 150 && temperature < 250 ? 'shadow-[0_0_10px_2px_rgba(234,179,8,0.8)]' : ''}`}></div>

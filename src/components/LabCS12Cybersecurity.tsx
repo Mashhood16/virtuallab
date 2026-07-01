@@ -72,16 +72,16 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
 
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
@@ -189,7 +189,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
     </div>
    ) : (
     <div className="flex flex-col h-full gap-6">
-    <div className={`flex gap-6 justify-center bg-[#121212] dark:bg-[#121212] p-3 rounded-lg flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full flex gap-6 justify-center bg-[#121212] dark:bg-[#121212] p-3 rounded-lg flex-col  ? 'flex' : 'hidden'} lg:flex`}>
      <label className="flex items-center gap-2 cursor-pointer font-medium">
      <input type="radio" checked={cipherType === 'caesar'} onChange={() => setCipherType('caesar')} className="accent-blue-500 w-4 h-4" /> Caesar Cipher
      </label>
@@ -205,7 +205,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
       type="text" 
       value={cryptoInput} 
       onChange={e => setCryptoInput(e.target.value)} 
-      className={`w-full bg-[#121212] dark:bg-[#121212] border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg p-3 text-white font-mono uppercase focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}
+      className={`w-full bg-[#121212] dark:bg-[#121212] border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg p-3 text-white font-mono uppercase focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all  'block' : 'hidden'} lg:block`}
      />
      </div>
      <div>
@@ -214,7 +214,7 @@ export default function LabCS12Cybersecurity({ onExit }: { onExit?: () => void }
       type={cipherType === 'caesar' ? 'number' : 'text'} 
       value={cryptoKey} 
       onChange={e => setCryptoKey(e.target.value)} 
-      className={`w-full bg-[#121212] dark:bg-[#121212] border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg p-3 text-emerald-400 font-mono uppercase focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}
+      className={`w-full bg-[#121212] dark:bg-[#121212] border border-[#1c1b1b] dark:border-[#1c1b1b] rounded-lg p-3 text-emerald-400 font-mono uppercase focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all  'block' : 'hidden'} lg:block`}
      />
      </div>
     </div>

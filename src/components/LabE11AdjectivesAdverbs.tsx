@@ -211,16 +211,16 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    </header>
 
    {/* Mobile Tab Navigation */}
-   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+   <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
      onClick={() => setActiveMobileTab('theory')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >
      Theory
     </button>
    <button 
      onClick={() => setActiveMobileTab('lab')}
-     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+     className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
     >Lab</button>
   </div>
 
@@ -228,7 +228,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
    <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
     
     {/* Window 1: Theory */}
-    <section className={`rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+    <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] overflow-hidden flex-col  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4 flex-shrink-0">
       <BookOpen className="w-5 h-5 text-indigo-500" />
       <h2 className="text-lg font-semibold">Grammar Theory</h2>
@@ -268,7 +268,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
     </section>
 
     {/* Window 2: Controls */}
-    <section className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
      <div className="flex items-center gap-2 mb-6 flex-shrink-0">
       <Activity className="w-5 h-5 text-indigo-500" />
       <h2 className="text-lg font-semibold">Lab Controls</h2>
@@ -276,7 +276,7 @@ export default function LabE11AdjectivesAdverbs({ onExit }: { onExit?: () => voi
 
      <div className="space-y-6 flex-grow">
       {/* Configuration */}
-      <div className={`p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+      <div className={`w-full p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
        <label className="text-sm font-semibold mb-2 block">Grammar Complexity: {complexity}</label>
        <input 
         type="range" 

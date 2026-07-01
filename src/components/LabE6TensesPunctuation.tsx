@@ -147,13 +147,13 @@ export default function LabE6TensesPunctuation({ onExit }: { onExit?: () => void
    <div className="flex bg-slate-200 dark:bg-slate-700 p-1 rounded-lg mb-8 shrink-0">
    <button 
     onClick={() => setActiveTab('tenses')}
-    className={`flex-1 py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'tenses' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
+    className={`w-full py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'tenses' ? ' shadow-sm text-blue-600 dark:text-blue-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
     Time Machine (Tenses)
    </button>
    <button 
     onClick={() => setActiveTab('gerunds')}
-    className={`flex-1 py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'gerunds' ? ' shadow-sm text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
+    className={`w-full py-2 text-sm font-bold rounded-md transition-all whitespace-nowrap flex-shrink-0 ${activeTab === 'gerunds' ? ' shadow-sm text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-[#ffffff] hover:bg-slate-300 dark:hover:bg-slate-600'}`}
    >
     Gerund Scanner
    </button>

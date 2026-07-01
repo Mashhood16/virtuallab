@@ -43,11 +43,11 @@ export default function LabS6CircuitBuilder({ onExit }: LabProps) {
     <div className="flex bg-slate-200 dark:bg-[#121212] rounded-lg p-1 border border-slate-300 dark:border-[#1c1b1b]">
     <button 
      onClick={() => { setCircuitType('series'); setSwitchClosed(false); }}
-     className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
+     className={`w-full py-2 text-sm font-bold rounded-md ${circuitType === 'series' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
     >Series</button>
     <button 
      onClick={() => { setCircuitType('parallel'); setSwitchClosed(false); }}
-     className={`flex-1 py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
+     className={`w-full py-2 text-sm font-bold rounded-md ${circuitType === 'parallel' ? ' text-slate-900 dark:text-white shadow' : 'text-slate-500 dark:text-[#a1a1aa] hover:text-slate-700 dark:hover:text-slate-300'}`}
     >Parallel</button>
     </div>
    </div>

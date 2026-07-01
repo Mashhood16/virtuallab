@@ -71,7 +71,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
   {/* Left Column: Controls & Workspace */}
   <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8">
    
-   <section className={`bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+   <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Zap className="w-5 h-5 text-yellow-500" />
     Modal Verbs Strength Meter
@@ -104,7 +104,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    </div>
    </section>
 
-   <section className={`bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Play className="w-5 h-5 text-blue-500" />
     Adverbs Controller
@@ -161,7 +161,7 @@ export default function LabE6VerbsAdverbs({ onExit }: { onExit?: () => void }) {
    </div>
    </section>
 
-   <section className={`bg-blue-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:flex-1 flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <section className={`w-full bg-blue-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] lg:flex-1 flex flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300">Knowledge Check</h2>
    <div className="flex-1 flex flex-col justify-center space-y-4">
     <p className="font-medium text-lg">{questions[questionIndex].q}</p>

@@ -77,14 +77,14 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
 
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
   {/* Left Controls */}
-  <div className={`bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    {activeTab === 'sets' && (
    <div className="space-y-6 animate-in fade-in duration-300">
     <h2 className="text-lg font-semibold flex items-center">
     <CircleDot className="w-5 h-5 mr-2 text-indigo-500" />
     Venn Diagram Workspace
     </h2>
-    <div className={`bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-100 dark:border-indigo-800 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`w-full bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg border border-indigo-100 dark:border-indigo-800  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     <p className="font-semibold mb-2">Given Sets:</p>
     <p className="font-mono mb-1">Universal Set (U) = {'{1, 2, 3, 4, 5, 6, 7, 8}'}</p>
     <p className="font-mono mb-1">A = {'{1, 2, 3, 4}'}</p>
@@ -92,7 +92,7 @@ export default function LabM7SetsAlgebra({ onExit }: { onExit?: () => void }) {
     </div>
     <p className="text-sm text-slate-600 dark:text-[#71717a]">Drag the elements into the correct regions on the Venn diagram.</p>
     
-    <div className={`lg:min-h-[80px] p-4 bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
+    <div className={`w-full lg:min-h-[80px] p-4 bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 rounded-lg flex flex-wrap gap-2 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
      onDrop={(e) => handleDrop(e, 'unassigned')}
      onDragOver={handleDragOver}>
     {elements.filter(e => e.region === 'unassigned').map(el => (

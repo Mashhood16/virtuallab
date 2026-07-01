@@ -84,22 +84,22 @@ export default function LabE10AdverbsPrepositions({ onExit = () => {} }: LabE10A
   <LabHeader title="Unit 3: Contextual Vectors (Adverbs & Prepositions)" variant="dark" onExit={onExit} />
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
   {/* Window 1: Theory */}
-  <section className={`rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:flex lg:h-full overflow-hidden ${activeMobileTab === 'theory' ? 'flex' : 'hidden'}`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col lg:flex lg:h-full overflow-hidden  ? 'flex' : 'hidden'}`}>
    <div className="flex items-center gap-3 mb-6 shrink-0">
    <div className={`p-2 bg-[#4158D1]/10 dark:bg-[#4158D1]/20 text-[#4158D1] dark:text-[#a1a1aa] rounded-lg flex-col `}>
     <BookOpen className="w-6 h-6" />
@@ -137,7 +137,7 @@ export default function LabE10AdverbsPrepositions({ onExit = () => {} }: LabE10A
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col lg:h-full ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col lg:h-full  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <div className="flex items-center gap-3 mb-6 shrink-0">
    <div className={`p-2 bg-[#4158D1]/10 dark:bg-[#4158D1]/20 text-[#4158D1] dark:text-[#a1a1aa] rounded-lg flex-col `}>
     <Navigation className="w-6 h-6" />
@@ -202,7 +202,7 @@ export default function LabE10AdverbsPrepositions({ onExit = () => {} }: LabE10A
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] lg:h-full flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    {/* Subtle background pattern */}
    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4158D1_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
 

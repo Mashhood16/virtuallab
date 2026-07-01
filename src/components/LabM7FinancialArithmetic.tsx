@@ -70,7 +70,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
   {/* 2-column Layout */}
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
   {/* Left Column: Controls & Questions */}
-  <div className={`bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 flex flex-col lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-semibold mb-4 flex items-center">
    <Calculator className="w-5 h-5 mr-2 text-indigo-500" />
    Interactive Workspace
@@ -91,7 +91,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
     <label className="block text-sm font-medium mb-1">Tax Rate (%): {taxRate}</label>
     <input type="range" min="0" max="25" step="1" value={taxRate} onChange={(e) => setTaxRate(Number(e.target.value))} className="w-full accent-indigo-600" />
     </div>
-    <div className={`mt-8 p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg border border-indigo-100 dark:border-indigo-800 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full mt-8 p-4 bg-indigo-50 dark:bg-indigo-900/30 rounded-lg border border-indigo-100 dark:border-indigo-800  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
     <h3 className="font-semibold mb-2 text-indigo-900 dark:text-indigo-100">Solve it!</h3>
     <p className="text-sm mb-4">What is the net amount received after tax?</p>
     <div className="flex space-x-2">
@@ -110,7 +110,7 @@ export default function LabM7FinancialArithmetic({ onExit }: { onExit?: () => vo
     <label className="block text-sm font-medium mb-1">Wealth Amount (Rs): {wealthAmount.toLocaleString()}</label>
     <input type="range" min="10000" max="1000000" step="10000" value={wealthAmount} onChange={(e) => setWealthAmount(Number(e.target.value))} className="w-full accent-emerald-600" />
     </div>
-    <div className={`mt-8 p-4 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg border border-emerald-100 dark:border-emerald-800 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`w-full mt-8 p-4 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg border border-emerald-100 dark:border-emerald-800  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     <h3 className="font-semibold mb-2 text-emerald-900 dark:text-emerald-100">Solve it!</h3>
     <p className="text-sm mb-4">Calculate the Zakat payable on this wealth.</p>
     <div className="flex space-x-2">

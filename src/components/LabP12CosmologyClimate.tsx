@@ -86,16 +86,16 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
 
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
@@ -151,7 +151,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
     onChange={(e) => setStarTemp(Number(e.target.value))}
     className="w-full mb-4 accent-amber-500"
    />
-   <div className={`flex gap-4 items-center bg-[#000000] dark:bg-[#121212] p-4 rounded-lg overflow-hidden flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`w-full flex gap-4 items-center bg-[#000000] dark:bg-[#121212] p-4 rounded-lg overflow-hidden flex-col  ? 'flex' : 'hidden'} lg:flex`}>
     <div 
      className="w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)] flex-shrink-0"
      style={{ backgroundColor: getStarColor(starTemp), boxShadow: `0 0 ${starTemp/200}px ${getStarColor(starTemp)}` }}
@@ -164,7 +164,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
    </div>
    </div>
 
-   <div className={`bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Spectrometer (Doppler Shift)</h3>
    <label className="text-xs font-semibold text-slate-600 dark:text-[#a1a1aa] uppercase block mb-1">
     Relative Velocity (v/c): {velocityC.toFixed(2)}c {velocityC > 0 ? '(Receding)' : velocityC < 0 ? '(Approaching)' : ''}
@@ -178,7 +178,7 @@ export default function LabP12CosmologyClimate({ onExit }: { onExit?: () => void
    <p className="text-xs text-slate-500 dark:text-[#71717a] mt-2 text-center">Black lines = observed absorption lines. White dashed = rest frame.</p>
    </div>
 
-   <div className={`bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h3 className="font-bold text-slate-800 dark:text-[#ffffff] mb-2">Thermohaline Downwelling</h3>
    <div className="flex gap-4 mb-2">
     <div className="flex-1">

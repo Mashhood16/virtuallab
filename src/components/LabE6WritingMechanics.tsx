@@ -107,11 +107,11 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
    <p className="text-slate-600 dark:text-[#71717a]">Choose the correct internet verb to navigate the digital world.</p>
    </div>
 
-   <div className={`bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+   <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <h3 className="text-lg font-semibold mb-4 text-indigo-700 dark:text-indigo-400">
     Task {currentIndex + 1} of {tasks.length}
    </h3>
-   <p className={`text-lg font-medium mb-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <p className={`w-full text-lg font-medium mb-6 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     "{currentTask.prompt}"
    </p>
 
@@ -121,7 +121,7 @@ export default function LabE6WritingMechanics({ onExit }: { onExit?: () => void 
      key={opt}
      onClick={() => setSelectedAction(opt)}
      disabled={browserAction === currentTask.answer}
-     className={`p-4 rounded-xl text-base font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedAction === opt ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-md' : ' border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50 shadow-sm' } flex-col ${activeMobileTab 'lab' 'flex' 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
+     className={`w-full p-4 rounded-xl text-base font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedAction === opt ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300 shadow-md' : ' border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50 shadow-sm' } flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
     >
      {opt}
     </button>

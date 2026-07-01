@@ -180,7 +180,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
    </div>
 
    {activeTab === 'voice' ? (
-    <div className={`bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:flex-1 flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full bg-white dark:!bg-[#121212] p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:flex-1 flex-col  ? 'flex' : 'hidden'} lg:flex`}>
      <div className="flex items-center gap-2 mb-4">
      <ArrowLeftRight className="w-6 h-6 text-blue-500 dark:text-blue-400" />
      <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Voice Transformer</h2>
@@ -189,7 +189,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
      Convert the given sentence into the target voice. Type the correct verb phrase.
      </p>
 
-     <div className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white lg:bg-slate-700 p-4 rounded-xl mb-6 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+     <div className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] lg:dark:bg-[#121212]/50 dark:bg-white lg:bg-slate-700 p-4 rounded-xl mb-6  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
       <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-[#71717a] dark:text-[#a1a1aa] mb-2 block">
       {currentQ.originalContext}
       </span>
@@ -225,7 +225,7 @@ export default function LabE8TensesVoice({ onExit }: { onExit?: () => void }) {
      </div>
      
      {vFeedback === 'correct' && (
-     <div className={`mt-4 p-4 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+     <div className={`w-full mt-4 p-4 bg-green-100 dark:bg-green-900/50 dark:bg-green-900/60 dark:bg-green-900/30 text-green-700 dark:text-green-300 dark:text-green-400 rounded-xl flex items-center gap-2 animate-in fade-in slide-in-from-bottom-2 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
       <CheckCircle2 className="w-5 h-5" />
       <span className="font-semibold">Correct! Awesome job.</span>
      </div>

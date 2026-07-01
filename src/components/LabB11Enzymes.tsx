@@ -68,22 +68,22 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
 
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <main className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 lg: overflow-y-auto lg:overflow-visible">
   
   {/* Column 1: Theory */}
-  <section className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6 lg:overflow-y-auto flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-2xl font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Principles</h2>
    
    <div className="space-y-4 text-sm text-slate-700 dark:text-[#ffffff]">
@@ -112,7 +112,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
   </section>
 
   {/* Column 2: Interactive Simulator */}
-  <section className={`bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow- ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-[#121212] dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl shadow-inner border border-[#1c1b1b] dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-6 flex flex-col items-center relative overflow-  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
    <Activity className="text-indigo-400" /> Bioreactor Simulation
    </h3>
@@ -121,7 +121,7 @@ export default function LabB11Enzymes({ onExit }: { onExit?: () => void }) {
    
    {/* Milk Pouring Animation */}
    {isPouringMilk && (
-    <div className={`absolute top-0 w-8 h-32 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
+    <div className={`w-full absolute top-0 w-8 h-32 bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212]/80 animate-pulse rounded-b-full shadow-lg z-10 border-x border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}></div>
    )}
 
    {/* The Column / Beaker */}

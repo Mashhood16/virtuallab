@@ -157,7 +157,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
    <p className="text-slate-600 dark:text-[#71717a]">Decode the non-literal language to find its true meaning.</p>
    </div>
 
-   <div className={`bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+   <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <div className="mb-6">
     <h3 className="text-lg font-semibold mb-3 flex items-center justify-between">
     <span>1. Identify the Figure of Speech</span>
@@ -169,7 +169,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
      key={type}
      onClick={() => setSelectedType(type)}
      disabled={analyzerState === 'analyzing' || analyzerState === 'success'}
-     className={`p-3 rounded-lg text-sm font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedType === type ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50' } flex-col ${activeMobileTab 'lab' 'flex' 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}
+     className={`w-full p-3 rounded-lg text-sm font-medium transition-colors border whitespace-nowrap flex-shrink-0 ${ selectedType === type ? 'bg-indigo-100 dark:bg-indigo-900/50 border-indigo-500 text-indigo-700 dark:text-indigo-300' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-indigo-300 dark:hover:border-indigo-600 disabled:opacity-50' } flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}
      >
      {type}
      </button>
@@ -185,7 +185,7 @@ export default function LabE6FiguresOfSpeech({ onExit }: { onExit?: () => void }
      key={opt}
      onClick={() => setSelectedLiteral(opt)}
      disabled={analyzerState === 'analyzing' || analyzerState === 'success'}
-     className={`w-full text-left p-3 rounded-lg text-sm font-medium transition-colors border ${ selectedLiteral === opt ? 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-500 text-emerald-800 dark:text-emerald-200' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50' } ${activeMobileTab 'lab' 'block' 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
+     className={`w-full text-left p-3 rounded-lg text-sm font-medium transition-colors border ${ selectedLiteral === opt ? 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-500 text-emerald-800 dark:text-emerald-200' : 'bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#121212] border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] hover:border-emerald-300 dark:hover:border-emerald-600 disabled:opacity-50' }  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}
      >
      {opt}
      </button>

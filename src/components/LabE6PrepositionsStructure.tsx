@@ -116,7 +116,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
   {/* Left Column: Controls & Workspace */}
   <div className="flex flex-col p-6 lg:overflow-y-auto border-r border-slate-200 dark:border-[#1c1b1b] space-y-8">
    
-   <section className={`bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+   <section className={`w-full bg-white dark:!bg-[#121212] rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-[#1c1b1b]  ? 'block' : 'hidden'} lg:block`}>
    <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
     <Navigation className="w-5 h-5 text-blue-500" />
     Prepositions of Direction
@@ -141,7 +141,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
    </button>
    </section>
 
-   <section className={`bg-blue-50 dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#1c1b1b] lg:flex-1 flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+   <section className={`w-full bg-blue-50 dark:bg-[#121212]/80 rounded-2xl p-6 border border-blue-100 dark:border-[#1c1b1b] lg:flex-1 flex flex-col  'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold mb-4 text-blue-900 dark:text-blue-300 flex items-center gap-2">
     <MousePointer2 className="w-5 h-5" /> Sentence Parser
    </h2>
@@ -231,7 +231,7 @@ export default function LabE6PrepositionsStructure({ onExit }: { onExit?: () => 
    </div>
 
    {/* Structural Diagram */}
-   <div className={`w-full max-w-lg bg-white dark:!bg-[#121212] p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-[#1c1b1b] ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block`}>
+   <div className={`w-full max-w-lg bg-white dark:!bg-[#121212] p-6 rounded-3xl shadow-xl border border-slate-100 dark:border-[#1c1b1b]  'block' : 'hidden'} lg:block`}>
    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-6 text-center">Sentence Map</h3>
    <div className="flex flex-wrap gap-2 justify-center">
     {tokens.map((t, i) => (

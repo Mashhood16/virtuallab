@@ -105,22 +105,22 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
   <div className="flex-1 p-6">
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:h-full overflow-y-auto lg:overflow-visible">
    
    {/* Column 1: Theory */}
-   <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:h-full lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <div className={`w-full bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-5 flex flex-col lg:h-full lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex items-center gap-2 mb-4 text-rose-600">
     <BookOpen className="w-5 h-5" />
     <h2 className="text-lg font-semibold">Theory: Core Concepts</h2>
@@ -149,7 +149,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
    </div>
 
    {/* Column 2: Simulation */}
-   <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex flex-col lg:h-full ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex flex-col lg:h-full  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <div className="flex items-center justify-between mb-4">
     <div className="flex items-center gap-2 text-cyan-600">
     <Settings className="w-5 h-5" />
@@ -198,7 +198,7 @@ export default function LabCS10ComputationalThinking({ onExit }: LabProps) {
      </div>
      
      {/* Visual Map */}
-     <div className={`lg:flex-1 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-xl relative overflow- bg-amber-50 mt-2 p-4 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+     <div className={`w-full lg:flex-1 border-2 border-dashed border-slate-300 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] rounded-xl relative overflow- bg-amber-50 mt-2 p-4 dark:bg-[#121212] lg:dark:bg-[#121212] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
      {mapDetails.roads && (
       <div className={`absolute top-1/2 left-0 right-0 h-8 bg-slate-400 dark:bg-[#121212] transform -translate-y-1/2 flex items-center justify-center text-white text-xs font-bold tracking-widest opacity-80 flex-col `}>
       MAIN ROAD

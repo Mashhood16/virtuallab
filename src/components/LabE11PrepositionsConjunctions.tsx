@@ -95,19 +95,19 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
   <div className="lg:hidden px-4 pt-4 md:px-6 flex gap-2 shrink-0">
    <button 
    onClick={() => setActiveMobileTab('theory')}
-   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >
    Theory
   </button>
    <button 
    onClick={() => setActiveMobileTab('lab')}
-   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
   >Lab</button>
   </div>
 
   <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg: overflow-y-auto lg:overflow-visible">
   {/* Window 1: Theory */}
-  <section className={`rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <section className={`w-full rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col overflow-hidden  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2 shrink-0">
    <BookOpen className="w-5 h-5 text-[#4158D1]" />
    Grammar Theory
@@ -148,7 +148,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
   </section>
 
   {/* Window 2: Controls */}
-  <section className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+  <section className={`w-full bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2 shrink-0">
    <List className="w-5 h-5 text-[#4158D1]" />
    Options
@@ -222,7 +222,7 @@ export default function LabE11PrepositionsConjunctions({ onExit }: { onExit?: ()
   </section>
 
   {/* Window 3: Simulation */}
-  <section className={`bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+  <section className={`w-full bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] relative flex items-center justify-center p-8 lg:min-h-[35vh] lg:min-h-[500px] flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
    <h2 className="absolute top-6 left-6 text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
    <Puzzle className="w-5 h-5 text-[#4158D1]" />
    Sentence Construction

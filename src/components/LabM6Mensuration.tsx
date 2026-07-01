@@ -51,7 +51,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
   {/* Main Content */}
   <div className="lg:flex-1 min-w-0 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 overflow-y-auto lg:overflow-visible">
   {/* Left: Controls */}
-  <div className={`bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 flex flex-col gap-6 lg:overflow-y-auto  ? 'flex' : 'hidden'} lg:flex`}>
    <div className="flex gap-4 border-b border-slate-200 dark:border-[#1c1b1b] pb-4">
    <button
     onClick={() => { setMode('2D'); setQuestionType('area'); }}
@@ -93,7 +93,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
    )}
    </div>
 
-   <div className={`bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 p-4 rounded-xl space-y-4 ${activeMobileTab === 'lab' ? 'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className={`w-full bg-white lg:bg-slate-100 dark:bg-white lg:bg-slate-700 p-4 rounded-xl space-y-4  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
    <h2 className="text-xl font-semibold">Assessment</h2>
    {mode === '2D' ? (
     <div className="flex gap-4 mb-4">
@@ -131,7 +131,7 @@ export default function LabM6Mensuration({ onExit }: { onExit?: () => void }) {
    </div>
 
    {feedback !== 'none' && (
-    <div className={`flex items-center gap-2 p-3 rounded-lg ${feedback === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'} flex-col ${activeMobileTab 'lab' 'flex' 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full flex items-center gap-2 p-3 rounded-lg ${feedback === 'correct' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'} flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
     {feedback === 'correct' ? <CheckCircle size={20} /> : <XCircle size={20} />}
     <span className="font-medium">{feedback === 'correct' ? 'Correct! Great job.' : 'Incorrect. Try again!'}</span>
     </div>

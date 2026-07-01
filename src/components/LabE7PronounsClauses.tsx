@@ -135,7 +135,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
    <div className="lg:flex-1 flex flex-col lg:grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-4 p-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
     
     {/* Left Column: Controls & Workspace */}
-    <div className={`flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]  ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
       <Zap className="w-5 h-5 text-indigo-500" />
       Mission Control
@@ -198,7 +198,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
      </div>
 
      {feedback && (
-      <div className={`mt-auto p-4 rounded-lg flex items-center gap-3 ${feedback.includes('Perfect') || feedback.includes('Correct') ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : feedback.includes('Hmm') feedback.includes('Incorrect') 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200' 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200'} flex-col ${activeMobileTab === 'lab' 'flex' 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+      <div className={`w-full mt-auto p-4 rounded-lg flex items-center gap-3 ${feedback.includes('Perfect') || feedback.includes('Correct') ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : feedback.includes('Hmm') || feedback.includes('Incorrect') ? 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200' : 'bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200'} flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
        {feedback.includes('Perfect') || feedback.includes('Correct') ? <CheckCircle className="w-5 h-5 flex-shrink-0" /> : <ShieldAlert className="w-5 h-5 flex-shrink-0" />}
        <span className="font-medium text-sm whitespace-pre-wrap">{feedback}</span>
       </div>
@@ -209,7 +209,7 @@ export default function LabE7PronounsClauses({ onExit }: { onExit?: () => void }
     <div className="bg-[#000000] rounded-2xl shadow-sm p-2 flex flex-col relative overflow-hidden border border-[#1c1b1b] h-full min-h-[400px]">
      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-10 opacity-20"></div>
      
-     <div className={`bg-black/50 p-3 rounded-t-xl border-b border-[#1c1b1b] flex items-center justify-between z-20 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+     <div className={`w-full bg-black/50 p-3 rounded-t-xl border-b border-[#1c1b1b] flex items-center justify-between z-20 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
       <div className="flex items-center gap-2">
        <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
        <span className="text-emerald-500 font-mono text-sm tracking-wider">SCANNER_ACTIVE</span>

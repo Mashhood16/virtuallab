@@ -103,16 +103,16 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
 
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg: overflow-y-auto lg:overflow-visible">
@@ -176,7 +176,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
      <div 
       key={f.key} 
       onClick={() => toggleFeature(f.key as keyof typeof features)}
-      className={`p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-blue-300'} flex-col ${activeMobileTab === 'theory' 'flex' 'hidden'} lg:flex`}
+      className={`w-full p-4 rounded-lg border-2 cursor-pointer transition-all flex justify-between items-center ${features[f.key as keyof typeof features] ? 'border-blue-500 bg-blue-50' : 'border-slate-200 dark:border-[#1c1b1b] bg-slate-50 dark:bg-[#121212] hover:border-blue-300'} flex-col  ? 'flex' : 'hidden'} lg:flex`}
      >
       <div>
       <div className="font-bold text-slate-800 dark:text-[#ffffff]">{f.name}</div>
@@ -219,7 +219,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
      </div>
      <div className="p-4 space-y-3">
      {feedback.map((msg, i) => (
-      <div key={i} className={`p-3 rounded-md text-sm border-l-4 ${msg.includes('CRITICAL') ? 'bg-red-50 border-red-500 text-red-700' : msg.includes('Solid') || msg.includes('Love') 'bg-emerald-50 border-emerald-500 text-emerald-800' 'bg-amber-50 border-amber-500 text-amber-800'} ${activeMobileTab === 'lab' 'block' 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+      <div key={i} className={`w-full p-3 rounded-md text-sm border-l-4 ${msg.includes('CRITICAL') ? 'bg-red-50 border-red-500 text-red-700' : msg.includes('Solid') || msg.includes('Love') ? 'bg-emerald-50 border-emerald-500 text-emerald-800' : 'bg-amber-50 border-amber-500 text-amber-800'}  'block' : 'hidden'} lg:block order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
       {msg}
       </div>
      ))}
@@ -282,7 +282,7 @@ export default function LabCS12Entrepreneurship({ onExit }: { onExit?: () => voi
    </button>
 
    {assessmentStatus && (
-    <div className={`p-4 rounded-lg text-sm font-medium border ${assessmentStatus.includes('Success') ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-red-50 text-red-800 border-red-200'} ${activeMobileTab === 'lab' 'block' 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`w-full p-4 rounded-lg text-sm font-medium border ${assessmentStatus.includes('Success') ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-red-50 text-red-800 border-red-200'}  'block' : 'hidden'} lg:block rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     {assessmentStatus}
     </div>
    )}

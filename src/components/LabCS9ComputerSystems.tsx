@@ -124,21 +124,21 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
 
   
   {/* Mobile Tab Navigation */}
-  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative mb-4">
    <button 
     onClick={() => setActiveMobileTab('theory')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >
     Theory
    </button>
    <button 
     onClick={() => setActiveMobileTab('lab')}
-    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center  'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
    >Lab</button>
   </div>
   <div className="lg:flex-1 p-4 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
   
-  <div className={`bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-4 ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+  <div className={`w-full bg-slate-50 dark:!bg-[#121212] p-4 rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] lg:overflow-y-auto flex flex-col gap-4  ? 'flex' : 'hidden'} lg:flex`}>
    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] border-b pb-2">Theory & Context</h2>
    {activeTab === 'hardware' ? (
    <div className="text-slate-600 dark:text-[#a1a1aa] space-y-4 text-sm leading-relaxed">
@@ -147,7 +147,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     <p><strong>GPU (Graphics Processing Unit):</strong> Specialized processor for rendering images and video.</p>
     <p><strong>SSD (Solid State Drive):</strong> Long-term non-volatile storage for the OS and files.</p>
     <p><strong>PSU (Power Supply Unit):</strong> Converts electrical power from an outlet into usable power for components.</p>
-    <div className={`bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+    <div className={`w-full bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
     <strong className="text-blue-800 dark:text-[#ffffff]">Task:</strong> Select a component from the list and place it into the correct motherboard slot.
     </div>
    </div>
@@ -163,7 +163,7 @@ export default function LabCS9ComputerSystems({ onExit }: { onExit?: () => void 
     <li><strong>2. Data Link:</strong> MAC addresses, switches.</li>
     <li><strong>1. Physical:</strong> Raw bits over cables/radio.</li>
     </ul>
-    <div className={`bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+    <div className={`w-full bg-blue-50 p-3 rounded-md border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900 flex-col  'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
     <strong className="text-blue-800 dark:text-[#ffffff]">Task:</strong> Assign the correct functional role to each layer of the OSI stack.
     </div>
    </div>

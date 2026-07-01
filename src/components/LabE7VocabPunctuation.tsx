@@ -189,7 +189,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
    <div className="lg:flex-1 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-4 p-4 lg:min-h-0 overflow-y-auto lg:overflow-visible">
     
     {/* Left Column: Editor Instructions */}
-    <div className={`lg:col-span-1 flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full lg:col-span-1 flex flex-col gap-4 bg-white dark:!bg-[#121212] rounded-2xl shadow-sm p-6 lg:overflow-y-auto border border-slate-200 dark:border-[#1c1b1b]  ? 'flex' : 'hidden'} lg:flex`}>
      <h2 className="text-xl font-bold mb-2 flex items-center gap-2 text-slate-800 dark:text-[#ffffff]">
       <Zap className="w-5 h-5 text-teal-500" />
       Editor's Brief
@@ -228,7 +228,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
      </button>
 
      {feedback && (
-      <div className={`mt-auto p-4 rounded-lg flex items-start gap-3 ${feedback.includes('Perfect') ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200'} flex-col ${activeMobileTab === 'lab' 'flex' 'hidden'} lg:flex`}>
+      <div className={`w-full mt-auto p-4 rounded-lg flex items-start gap-3 ${feedback.includes('Perfect') ? 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-200' : 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-200'} flex-col  'flex' : 'hidden'} lg:flex`}>
        {feedback.includes('Perfect') ? <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" /> : <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />}
        <span className="font-medium text-sm whitespace-pre-wrap">{feedback}</span>
       </div>
@@ -236,7 +236,7 @@ export default function LabE7VocabPunctuation({ onExit }: { onExit?: () => void 
     </div>
 
     {/* Right Column: Manuscript Canvas */}
-    <div className={`lg:col-span-2 bg-slate-200 dark:!bg-[#121212] rounded-2xl shadow-sm p-4 md:p-8 flex flex-col relative lg:overflow-y-auto border border-slate-300 dark:border-[#1c1b1b] items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
+    <div className={`w-full lg:col-span-2 bg-slate-200 dark:!bg-[#121212] rounded-2xl shadow-sm p-4 md:p-8 flex flex-col relative lg:overflow-y-auto border border-slate-300 dark:border-[#1c1b1b] items-center  'flex' : 'hidden'} lg:flex`}>
      
      <div className="bg-[#fdfbf7] dark:bg-[#252525] rounded-sm shadow-xl p-8 max-w-2xl w-full min-h-[60vh] font-serif text-lg text-slate-800 dark:text-[#ffffff] relative border border-slate-300 dark:border-[#1c1b1b]">
       {/* decorative paper lines */}
