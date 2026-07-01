@@ -120,19 +120,19 @@ export default function LabC10SaturatedUnsaturated({ onExit }: { onExit: () => v
   {/* Simulation Section */}
   <div className={`w-full bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] p-5 flex-col items-center '' : ''} ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex`}>
    <div className={`flex justify-around w-full mb-6 bg-slate-50 dark:bg-[#121212] p-3 rounded-lg flex-col `}>
-   <button onClick={() => addSample('Oil')} disabled={flaskSample !== null} className={`flex flex-col items-center p-2 border rounded hover:bg-yellow-50 disabled:opacity-50 transition-colors `}>
+   <button onClick={() => addSample('Oil')} disabled={flaskSample !== null} className="flex flex-col items-center p-2 border border-slate-200 rounded bg-white text-slate-800 transition-colors hover:bg-yellow-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#111827] dark:border-slate-700 dark:text-slate-100 dark:hover:bg-yellow-400/10">
     <FlaskConical className="text-yellow-500 w-8 h-8 mb-1" />
     <span className="text-xs font-semibold">Add Oil</span>
    </button>
-   <button onClick={() => addSample('Butter')} disabled={flaskSample !== null} className="flex flex-col items-center p-2 border rounded hover:bg-orange-50 disabled:opacity-50 transition-colors">
+   <button onClick={() => addSample('Butter')} disabled={flaskSample !== null} className="flex flex-col items-center p-2 border border-slate-200 rounded bg-white text-slate-800 transition-colors hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#111827] dark:border-slate-700 dark:text-slate-100 dark:hover:bg-orange-400/10">
     <FlaskConical className="text-orange-300 w-8 h-8 mb-1" />
     <span className="text-xs font-semibold">Add Butter</span>
    </button>
-   <button onClick={addBr2} disabled={!flaskSample} className="flex flex-col items-center p-2 border rounded hover:bg-red-50 disabled:opacity-50 transition-colors">
+   <button onClick={addBr2} disabled={!flaskSample} className="flex flex-col items-center p-2 border border-slate-200 rounded bg-white text-slate-800 transition-colors hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#111827] dark:border-slate-700 dark:text-slate-100 dark:hover:bg-red-400/10">
     <Droplets className="text-orange-700 w-8 h-8 mb-1" />
     <span className="text-xs font-semibold">+ 0.5mL Br₂</span>
    </button>
-   <button onClick={resetFlask} className="flex flex-col items-center p-2 border rounded hover:bg-slate-100 dark:bg-[#121212] transition-colors">
+   <button onClick={resetFlask} className="flex flex-col items-center p-2 border border-slate-200 rounded bg-white text-slate-800 transition-colors hover:bg-slate-100 dark:bg-[#111827] dark:border-slate-700 dark:text-slate-100 dark:hover:bg-slate-700/10">
     <RefreshCw className="text-slate-500 dark:text-[#71717a] w-8 h-8 mb-1" />
     <span className="text-xs font-semibold">Empty Flask</span>
    </button>
