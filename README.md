@@ -12,37 +12,44 @@ Each module in the application typically features a meticulously balanced three-
 
 The application is fully responsive, condensing into a streamlined, tab-based mobile experience that ensures students can learn interactively on any device.
 
+## 📡 Offline-First & PWA Architecture
+A core pillar of this platform is its **Offline-First** design. Built as a Progressive Web Application (PWA) with aggressive service worker caching, the Virtual Lab Platform is explicitly engineered for environments with unreliable or zero internet connectivity.
+- **100% Offline Capability**: Once the application is loaded for the first time, all 464 lab modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
+- **Installable**: Students can "install" the web app directly to their home screens (iOS/Android) or desktops (Windows/macOS), functioning indistinguishably from a native application.
+- **Zero-Latency**: Because the application serves interactive simulations entirely from local device memory rather than relying on server-side rendering, experiments and animations run instantly and seamlessly, regardless of bandwidth.
+
 ## 🎯 What Is It Good For?
-- **Remote & Hybrid Learning**: Allows students to perform scientific experiments safely from home without needing physical lab equipment.
+- **Low-Bandwidth / Remote Education**: Provides world-class, high-fidelity STEM education to students in regions with limited, intermittent, or no internet access.
 - **Visualizing Abstract Concepts**: Makes invisible forces (like electromagnetic fields, molecular bonding, algorithmic sorting, or atomic structures) visible and intuitive.
 - **Safe Experimentation**: Students can explore dangerous reactions (like the Electrolysis of Molten Lead Chloride) or extreme physics scenarios without any physical risk.
 - **Cross-Disciplinary Education**: Provides a unified platform for learning not just the hard sciences, but also applied mathematics, computer programming, and English grammar/vocabulary.
-- **Scalable Education Delivery**: Schools and institutions can deploy this lightweight, highly performant React application to thousands of students simultaneously.
+- **Scalable Education Delivery**: Schools and institutions can deploy this lightweight, highly performant React application to thousands of students simultaneously without incurring massive server or bandwidth costs.
 
 ## 📚 Curriculum Breakdown
 The platform contains a staggering **464 distinct interactive modules** spanning across Grades 6 through 12. Below is the detailed breakdown of the curriculum by Grade and Subject:
 
-### Grade 6 (55 Labs)
-- **Science**: 20 labs
-- **Computer Science**: 19 labs
-- **Mathematics**: 8 labs
+### Grade 6 (59 Labs)
+- **Computer Science**: 22 labs
+- **Science**: 21 labs
 - **English**: 8 labs
+- **Mathematics**: 8 labs
 
-### Grade 7 (61 Labs)
-- **Science**: 22 labs
+### Grade 7 (69 Labs)
+- **Science**: 30 labs
 - **Computer Science**: 23 labs
-- **Mathematics**: 8 labs
 - **English**: 8 labs
+- **Mathematics**: 8 labs
 
-### Grade 8 (57 Labs)
+### Grade 8 (68 Labs)
 - **Science**: 41 labs
-- **Mathematics**: 8 labs
+- **Computer Science**: 11 labs
 - **English**: 8 labs
+- **Mathematics**: 8 labs
 
 ### Grade 9 (49 Labs)
 - **Physics**: 10 labs
-- **Computer Science**: 9 labs
 - **Mathematics**: 9 labs
+- **Computer Science**: 9 labs
 - **English**: 8 labs
 - **Chemistry**: 7 labs
 - **Biology**: 6 labs
@@ -66,16 +73,14 @@ The platform contains a staggering **464 distinct interactive modules** spanning
 ### Grade 12 (52 Labs)
 - **Physics**: 9 labs
 - **Chemistry**: 9 labs
-- **Biology**: 9 labs
 - **Computer Science**: 9 labs
+- **Biology**: 9 labs
 - **Mathematics**: 8 labs
 - **English**: 8 labs
 
-### Additional Modules
-- **General / Activity-Based Computer Science**: 23 labs *(cross-grade ICT, networking, and programming activities)*
-
 ## 🛠️ Technology Stack
 - **Framework**: React (Vite)
+- **Progressive Web App**: Vite PWA Plugin for Service Worker precaching & offline-first delivery
 - **Styling**: Tailwind CSS (with highly customized dark mode integration)
 - **Icons**: Lucide React
 - **Animations/Visuals**: React state-driven SVG manipulations
