@@ -1,6 +1,29 @@
-# Virtual Lab Platform
+# Cendronyx Labs
 
-Welcome to the **Virtual Lab Platform**, a comprehensive, interactive, and highly visual educational web application designed to bring science, technology, engineering, mathematics, and language arts to life.
+> **Cendronyx Labs is an offline-first Progressive Web App that delivers 464 interactive simulations for Science, Mathematics, Computer Science, and English, aligned with Grades 6–12 curricula. Designed for schools with limited internet access, it transforms traditional lessons into immersive, hands-on learning experiences.**
+
+## 👁️ Vision
+To make high-quality interactive STEM and language education accessible to every student in Pakistan, regardless of internet connectivity or laboratory resources.
+
+## 📸 Screenshots
+
+| Home Page | Subject Selection |
+|:---:|:---:|
+| ![Home Page](public/screenshots/home-page.png) | ![Subject Selection](public/screenshots/subject-selection.png) |
+
+| Interactive Lab | Mobile View |
+|:---:|:---:|
+| ![Interactive Lab](public/screenshots/interactive-lab.png) | ![Mobile View](public/screenshots/mobile-view.png) |
+
+## ✨ Key Features
+- ✅ **464 interactive virtual labs** spanning multiple subjects.
+- ✅ **Offline-first Progressive Web App** architecture.
+- ✅ **Installable** on Windows, Android, iOS, and Chromebooks.
+- ✅ **Dark & Light themes** perfectly customized for readability.
+- ✅ **Responsive design** optimized for both desktop and mobile devices.
+- ✅ **Interactive quizzes** and assessments to test student comprehension.
+- ✅ **Real-time simulations** driven by dynamic inputs.
+- ✅ **Curriculum organized** systematically by grade and subject.
 
 ## 🚀 What This Web App Does
 This application serves as a massive suite of **interactive educational simulations**. It replaces static textbook diagrams with dynamic, interactive digital laboratories where students can tweak parameters (like voltage, temperature, mass, and velocity) and instantly observe real-time visual results. 
@@ -8,18 +31,18 @@ This application serves as a massive suite of **interactive educational simulati
 Each module in the application typically features a meticulously balanced three-column layout (on desktop) consisting of:
 1. **Theory & Setup**: Explains the underlying concepts, formulas, and expectations, while providing interactive controls (sliders, buttons, toggles) to manipulate the simulation.
 2. **Interactive Simulator / Visualizer**: A custom-built SVG or Canvas-based visual rendering of the experiment or concept that reacts immediately to user input.
-3. **Data & Analysis**: Dynamic tables, assessments, and real-time logs that record the results of the experiment, complete with interactive quizzes to test student comprehension.
+3. **Data & Analysis**: Dynamic tables, assessments, and real-time logs that record the results of the experiment.
 
 The application is fully responsive, condensing into a streamlined, tab-based mobile experience that ensures students can learn interactively on any device.
 
 ## 📡 Offline-First & PWA Architecture
-A core pillar of this platform is its **Offline-First** design. Built as a Progressive Web Application (PWA) with aggressive service worker caching, the Virtual Lab Platform is explicitly engineered for environments with unreliable or zero internet connectivity.
-- **100% Offline Capability**: Once the application is loaded for the first time, all 464 lab modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
-- **Installable**: Students can "install" the web app directly to their home screens (iOS/Android) or desktops (Windows/macOS), functioning indistinguishably from a native application.
-- **Zero-Latency**: Because the application serves interactive simulations entirely from local device memory rather than relying on server-side rendering, experiments and animations run instantly and seamlessly, regardless of bandwidth.
+A core pillar of this platform is its **Offline-First** design. Built as a Progressive Web Application (PWA) with aggressive service worker caching, Cendronyx Labs is explicitly engineered for environments with unreliable or zero internet connectivity.
+- **Offline Reliability**: Designed to function fully offline after the initial installation. All 464 lab modules, SVG simulations, interactive logic, and assets are fully precached locally on the user's device. 
+- **Installable**: Students can "install" the web app directly to their home screens or desktops, functioning indistinguishably from a native application.
+- **Performance**: Near-instant local performance, as simulations run directly on the device rather than relying on server-side rendering.
 
 ## 🎯 What Is It Good For?
-- **Low-Bandwidth / Remote Education**: Provides world-class, high-fidelity STEM education to students in regions with limited, intermittent, or no internet access.
+- **Low-Bandwidth / Remote Education**: Provides world-class, high-fidelity STEM education to students in regions with limited or intermittent internet access.
 - **Visualizing Abstract Concepts**: Makes invisible forces (like electromagnetic fields, molecular bonding, algorithmic sorting, or atomic structures) visible and intuitive.
 - **Safe Experimentation**: Students can explore dangerous reactions (like the Electrolysis of Molten Lead Chloride) or extreme physics scenarios without any physical risk.
 - **Cross-Disciplinary Education**: Provides a unified platform for learning not just the hard sciences, but also applied mathematics, computer programming, and English grammar/vocabulary.
