@@ -3,129 +3,129 @@ import { Activity, Pizza, Flame } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 interface LabProps {
-  onExit: () => void;
+ onExit: () => void;
 }
 
 export default function LabC6DietExercise({ onExit }: LabProps) {
-  const [caloriesIn, setCaloriesIn] = useState(2000);
-  const [caloriesOut, setCaloriesOut] = useState(2000);
+ const [caloriesIn, setCaloriesIn] = useState(2000);
+ const [caloriesOut, setCaloriesOut] = useState(2000);
 
-  const foods = [
-    { name: 'Apple', cal: 95 },
-    { name: 'Burger', cal: 500 },
-    { name: 'Pizza Slice', cal: 285 },
-    { name: 'Salad', cal: 150 },
-    { name: 'Soda', cal: 140 }
-  ];
+ const foods = [
+ { name: 'Apple', cal: 95 },
+ { name: 'Burger', cal: 500 },
+ { name: 'Pizza Slice', cal: 285 },
+ { name: 'Salad', cal: 150 },
+ { name: 'Soda', cal: 140 }
+ ];
 
-  const exercises = [
-    { name: 'Walking (30m)', cal: 150 },
-    { name: 'Running (30m)', cal: 300 },
-    { name: 'Cycling (30m)', cal: 250 },
-    { name: 'Swimming (30m)', cal: 200 },
-    { name: 'Yoga (30m)', cal: 100 }
-  ];
+ const exercises = [
+ { name: 'Walking (30m)', cal: 150 },
+ { name: 'Running (30m)', cal: 300 },
+ { name: 'Cycling (30m)', cal: 250 },
+ { name: 'Swimming (30m)', cal: 200 },
+ { name: 'Yoga (30m)', cal: 100 }
+ ];
 
-  const netCalories = caloriesIn - caloriesOut;
+ const netCalories = caloriesIn - caloriesOut;
 
-  const getStatus = () => {
-    if (netCalories > 200) return { text: 'Weight Gain', color: 'text-orange-500' };
-    if (netCalories < -200) return { text: 'Weight Loss', color: 'text-blue-500' };
-    return { text: 'Weight Maintenance', color: 'text-green-500' };
-  };
+ const getStatus = () => {
+ if (netCalories > 200) return { text: 'Weight Gain', color: 'text-orange-500' };
+ if (netCalories < -200) return { text: 'Weight Loss', color: 'text-blue-500' };
+ return { text: 'Weight Maintenance', color: 'text-green-500' };
+ };
 
-  return (
-    <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
-      <LabHeader onExit={onExit} title="Eating and Exercise Research" />
-      <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
-        
+ return (
+ <div className="flex flex-col h-screen font-sans bg-slate-50 dark:!bg-[#000000] text-slate-800 dark:text-[#ffffff]">
+  <LabHeader onExit={onExit} title="Eating and Exercise Research" />
+  <div className="flex-1 px-8 pb-8 flex flex-col lg:overflow-y-auto">
+  
 
-        <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Investigate the relationship between calories consumed and calories burned.</p>
+  <p className="text-slate-600 dark:text-[#a1a1aa] mb-8">Investigate the relationship between calories consumed and calories burned.</p>
 
-        <div className="flex gap-8 flex-1">
-          
-          <div className="w-1/3 flex flex-col gap-6">
-            {/* Calories In */}
-            <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-              <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-rose-600">
-                <Pizza className="w-5 h-5" /> Consumed (Food)
-              </h2>
-              <div className="text-4xl font-bold text-rose-500 mb-6">{caloriesIn} kcal</div>
-              <div className="space-y-2">
-                {foods.map(f => (
-                  <button 
-                    key={f.name}
-                    onClick={() => setCaloriesIn(c => c + f.cal)}
-                    className="w-full flex justify-between p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b] hover:border-rose-300 hover:bg-rose-50 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
-                  >
-                    <span className="font-medium">{f.name}</span>
-                    <span className="text-slate-500 dark:text-[#71717a]">+{f.cal}</span>
-                  </button>
-                ))}
-              </div>
-              <button onClick={() => setCaloriesIn(2000)} className="w-full mt-4 text-sm text-slate-400 hover:text-slate-600 dark:text-[#a1a1aa]">Reset to Base BMR (2000)</button>
-            </div>
-
-            {/* Calories Out */}
-            <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
-              <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-indigo-600">
-                <Flame className="w-5 h-5" /> Burned (Exercise)
-              </h2>
-              <div className="text-4xl font-bold text-indigo-500 mb-6">{caloriesOut} kcal</div>
-              <div className="space-y-2">
-                {exercises.map(e => (
-                  <button 
-                    key={e.name}
-                    onClick={() => setCaloriesOut(c => c + e.cal)}
-                    className="w-full flex justify-between p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 hover:bg-indigo-50 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
-                  >
-                    <span className="font-medium">{e.name}</span>
-                    <span className="text-slate-500 dark:text-[#71717a]">+{e.cal}</span>
-                  </button>
-                ))}
-              </div>
-              <button onClick={() => setCaloriesOut(2000)} className="w-full mt-4 text-sm text-slate-400 hover:text-slate-600 dark:text-[#a1a1aa]">Reset to Base BMR (2000)</button>
-            </div>
-          </div>
-
-          {/* Results Analysis */}
-          <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
-            <h2 className="text-2xl font-bold mb-8">Science Analysis</h2>
-
-            <div className="flex-1 flex flex-col items-center justify-center">
-              {/* Balance Scale Visualization */}
-              <div className="relative w-full max-w-md h-64 mb-12">
-                <div className="absolute bottom-0 w-4 h-32 bg-[#121212] dark:bg-[#121212] left-1/2 -translate-x-1/2 rounded-t-sm"></div>
-                <div 
-                  className="absolute bottom-32 w-full h-2 bg-slate-600 dark:bg-[#121212] rounded-full transition-transform duration-500 ease-in-out origin-center"
-                  style={{ transform: `rotate(${Math.max(-20, Math.min(20, -(caloriesIn - caloriesOut) * 0.01))}deg)` }}
-                >
-                  <div className="absolute -left-6 -top-12 w-12 h-12 bg-rose-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-rose-500/30 text-xs dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">IN</div>
-                  <div className="absolute -right-6 -top-12 w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30 text-xs dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">OUT</div>
-                </div>
-              </div>
-
-              <div className="text-center p-8 bg-slate-50 dark:bg-[#121212] rounded-2xl border border-slate-100 w-full max-w-md">
-                <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">Net Calories</div>
-                <div className={`text-5xl font-bold mb-4 ${netCalories > 0 ? 'text-rose-500' : netCalories < 0 ? 'text-indigo-500' : 'text-slate-800 dark:text-slate-100'}`}>
-                  {netCalories > 0 ? '+' : ''}{netCalories}
-                </div>
-                <div className={`text-2xl font-bold ${getStatus().color}`}>
-                  Result: {getStatus().text}
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl text-blue-900 mt-8 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-              <h3 className="font-bold flex items-center gap-2 mb-2"><Activity className="w-5 h-5" /> Concept Summary</h3>
-              <p className="leading-relaxed">
-                The human body follows the law of conservation of energy. If the energy consumed (calories from food) is greater than the energy expended (basal metabolic rate + physical activity), the excess energy is stored as fat. If expended energy is greater, the body burns stored fat to compensate.
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+  <div className="flex gap-8 flex-1">
+   
+   <div className="w-1/3 flex flex-col gap-6">
+   {/* Calories In */}
+   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+    <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-rose-600">
+    <Pizza className="w-5 h-5" /> Consumed (Food)
+    </h2>
+    <div className="text-4xl font-bold text-rose-500 mb-6">{caloriesIn} kcal</div>
+    <div className="space-y-2">
+    {foods.map(f => (
+     <button 
+     key={f.name}
+     onClick={() => setCaloriesIn(c => c + f.cal)}
+     className="w-full flex justify-between p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b] hover:border-rose-300 hover:bg-rose-50 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
+     >
+     <span className="font-medium">{f.name}</span>
+     <span className="text-slate-500 dark:text-[#71717a]">+{f.cal}</span>
+     </button>
+    ))}
     </div>
-  );
+    <button onClick={() => setCaloriesIn(2000)} className="w-full mt-4 text-sm text-slate-400 hover:text-slate-600 dark:text-[#a1a1aa]">Reset to Base BMR (2000)</button>
+   </div>
+
+   {/* Calories Out */}
+   <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-6">
+    <h2 className="font-bold text-lg mb-4 flex items-center gap-2 text-indigo-600">
+    <Flame className="w-5 h-5" /> Burned (Exercise)
+    </h2>
+    <div className="text-4xl font-bold text-indigo-500 mb-6">{caloriesOut} kcal</div>
+    <div className="space-y-2">
+    {exercises.map(e => (
+     <button 
+     key={e.name}
+     onClick={() => setCaloriesOut(c => c + e.cal)}
+     className="w-full flex justify-between p-3 rounded-lg border border-slate-200 dark:border-[#1c1b1b] hover:border-indigo-300 hover:bg-indigo-50 transition-colors dark:bg-[#121212] dark:border-[#1c1b1b]"
+     >
+     <span className="font-medium">{e.name}</span>
+     <span className="text-slate-500 dark:text-[#71717a]">+{e.cal}</span>
+     </button>
+    ))}
+    </div>
+    <button onClick={() => setCaloriesOut(2000)} className="w-full mt-4 text-sm text-slate-400 hover:text-slate-600 dark:text-[#a1a1aa]">Reset to Base BMR (2000)</button>
+   </div>
+   </div>
+
+   {/* Results Analysis */}
+   <div className="flex-1 bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 flex flex-col">
+   <h2 className="text-2xl font-bold mb-8">Science Analysis</h2>
+
+   <div className="flex-1 flex flex-col items-center justify-center">
+    {/* Balance Scale Visualization */}
+    <div className="relative w-full max-w-md h-64 mb-12">
+    <div className="absolute bottom-0 w-4 h-32 bg-[#121212] dark:bg-[#121212] left-1/2 -translate-x-1/2 rounded-t-sm"></div>
+    <div 
+     className="absolute bottom-32 w-full h-2 bg-slate-600 dark:bg-[#121212] rounded-full transition-transform duration-500 ease-in-out origin-center"
+     style={{ transform: `rotate(${Math.max(-20, Math.min(20, -(caloriesIn - caloriesOut) * 0.01))}deg)` }}
+    >
+     <div className="absolute -left-6 -top-12 w-12 h-12 bg-rose-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-rose-500/30 text-xs dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40">IN</div>
+     <div className="absolute -right-6 -top-12 w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/30 text-xs dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-indigo-500/40">OUT</div>
+    </div>
+    </div>
+
+    <div className="text-center p-8 bg-slate-50 dark:bg-[#121212] rounded-2xl border border-slate-100 w-full max-w-md">
+    <div className="text-sm font-bold text-slate-500 dark:text-[#71717a] uppercase tracking-wider mb-2">Net Calories</div>
+    <div className={`text-5xl font-bold mb-4 ${netCalories > 0 ? 'text-rose-500' : netCalories < 0 ? 'text-indigo-500' : 'text-slate-800 dark:text-slate-100'}`}>
+     {netCalories > 0 ? '+' : ''}{netCalories}
+    </div>
+    <div className={`text-2xl font-bold ${getStatus().color}`}>
+     Result: {getStatus().text}
+    </div>
+    </div>
+   </div>
+
+   <div className="bg-blue-50 border border-blue-100 p-6 rounded-xl text-blue-900 mt-8 dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
+    <h3 className="font-bold flex items-center gap-2 mb-2"><Activity className="w-5 h-5" /> Concept Summary</h3>
+    <p className="leading-relaxed">
+    The human body follows the law of conservation of energy. If the energy consumed (calories from food) is greater than the energy expended (basal metabolic rate + physical activity), the excess energy is stored as fat. If expended energy is greater, the body burns stored fat to compensate.
+    </p>
+   </div>
+   </div>
+
+  </div>
+  </div>
+ </div>
+ );
 }

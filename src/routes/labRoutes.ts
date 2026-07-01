@@ -507,6 +507,16 @@ const labComponents: Record<string, React.LazyExoticComponent<React.ComponentTyp
   LabE11PhrasesClauses: lazy(() => import('../components/LabE11PhrasesClauses')),
   LabE11SentenceStructure: lazy(() => import('../components/LabE11SentenceStructure')),
   LabE11VocabularyStylistics: lazy(() => import('../components/LabE11VocabularyStylistics')),
+
+  // Class 12 English
+  LabE12NounsPronouns: lazy(() => import('../components/LabE12NounsPronouns')),
+  LabE12AdjectivesAdverbs: lazy(() => import('../components/LabE12AdjectivesAdverbs')),
+  LabE12PrepositionsConjunctions: lazy(() => import('../components/LabE12PrepositionsConjunctions')),
+  LabE12VerbsModals: lazy(() => import('../components/LabE12VerbsModals')),
+  LabE12TensesVerbals: lazy(() => import('../components/LabE12TensesVerbals')),
+  LabE12PhrasesClauses: lazy(() => import('../components/LabE12PhrasesClauses')),
+  LabE12SentenceStructure: lazy(() => import('../components/LabE12SentenceStructure')),
+  LabE12VocabularyStylistics: lazy(() => import('../components/LabE12VocabularyStylistics')),
 };
 
 // Module ID to component name mapping
@@ -1183,6 +1193,16 @@ const moduleIdToComponent: Record<string, string> = {
   'c11e_6': 'LabE11PhrasesClauses',
   'c11e_7': 'LabE11SentenceStructure',
   'c11e_8': 'LabE11VocabularyStylistics',
+
+  // Class 12 English
+  'e12-1': 'LabE12NounsPronouns',
+  'e12-2': 'LabE12AdjectivesAdverbs',
+  'e12-3': 'LabE12PrepositionsConjunctions',
+  'e12-4': 'LabE12VerbsModals',
+  'e12-5': 'LabE12TensesVerbals',
+  'e12-6': 'LabE12PhrasesClauses',
+  'e12-7': 'LabE12SentenceStructure',
+  'e12-8': 'LabE12VocabularyStylistics',
 };
 
 // Get component by module ID

@@ -5,207 +5,222 @@ import LabHeader from './LabHeader';
 const MAX_VOL = 50;
 
 export default function LabC10SurfaceAreaRate({ onExit }: { onExit?: () => void }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [time, setTime] = useState(0);
-  const [form, setForm] = useState<'chunk' | 'powder'>('chunk');
-  const [data, setData] = useState<Array<{t: number, vol: number, form: string}>>([]);
+ const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [isPlaying, setIsPlaying] = useState(false);
+ const [time, setTime] = useState(0);
+ const [form, setForm] = useState<'chunk' | 'powder'>('chunk');
+ const [data, setData] = useState<Array<{t: number, vol: number, form: string}>>([]);
 
-  const k = form === 'chunk' ? 0.05 : 0.15;
-  const currentVol = isPlaying ? MAX_VOL * (1 - Math.exp(-k * time)) : (time > 0 ? MAX_VOL * (1 - Math.exp(-k * time)) : 0);
+ const k = form === 'chunk' ? 0.05 : 0.15;
+ const currentVol = isPlaying ? MAX_VOL * (1 - Math.exp(-k * time)) : (time > 0 ? MAX_VOL * (1 - Math.exp(-k * time)) : 0);
 
-  useEffect(() => {
-    let timer: number;
-    if (isPlaying && currentVol < MAX_VOL * 0.99) {
-      timer = window.setInterval(() => setTime(t => t + 1), 500);
-    } else if (currentVol >= MAX_VOL * 0.99) {
-      setIsPlaying(false);
-    }
-    return () => window.clearInterval(timer);
-  }, [isPlaying, currentVol]);
+ useEffect(() => {
+ let timer: number;
+ if (isPlaying && currentVol < MAX_VOL * 0.99) {
+  timer = window.setInterval(() => setTime(t => t + 1), 500);
+ } else if (currentVol >= MAX_VOL * 0.99) {
+  setIsPlaying(false);
+ }
+ return () => window.clearInterval(timer);
+ }, [isPlaying, currentVol]);
 
-  const handleReset = () => {
-    setIsPlaying(false);
-    setTime(0);
-    setData([]);
-  };
+ const handleReset = () => {
+ setIsPlaying(false);
+ setTime(0);
+ setData([]);
+ };
 
-  const recordData = () => {
-    setData(prev => [...prev, { t: time, vol: parseFloat(currentVol.toFixed(1)), form }]);
-  };
+ const recordData = () => {
+ setData(prev => [...prev, { t: time, vol: parseFloat(currentVol.toFixed(1)), form }]);
+ };
 
-  const [assQ] = useState({ v10: Math.floor(Math.random() * 20) + 10 });
-  const [answer, setAnswer] = useState('');
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+ const [assQ] = useState({ v10: Math.floor(Math.random() * 20) + 10 });
+ const [answer, setAnswer] = useState('');
+ const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
-  const checkAnswer = () => {
-    const expected = assQ.v10 / 10;
-    if (Math.abs(parseFloat(answer) - expected) < 0.1) setIsCorrect(true);
-    else setIsCorrect(false);
-  };
+ const checkAnswer = () => {
+ const expected = assQ.v10 / 10;
+ if (Math.abs(parseFloat(answer) - expected) < 0.1) setIsCorrect(true);
+ else setIsCorrect(false);
+ };
 
-  const renderGraph = () => {
-    if (data.length === 0) return <div className="h-48 flex items-center justify-center text-slate-400">No data recorded</div>;
-    const maxT = Math.max(20, ...data.map(d => d.t));
-    const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.vol / MAX_VOL) * 100}`).join(' ');
+ const renderGraph = () => {
+ if (data.length === 0) return <div className="h-48 flex items-center justify-center text-slate-400">No data recorded</div>;
+ const maxT = Math.max(20, ...data.map(d => d.t));
+ const pts = data.map(d => `${(d.t / maxT) * 100},${100 - (d.vol / MAX_VOL) * 100}`).join(' ');
 
-    return (
-      <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
-        <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
-        <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
-        <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
-        {data.map((d, i) => (
-          <circle key={i} cx={(d.t / maxT) * 100} cy={100 - (d.vol / MAX_VOL) * 100} r="2" fill="#ef4444" />
-        ))}
-        <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">Time (s)</text>
-        <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">Gas Vol (mL)</text>
-      </svg>
-    );
-  };
+ return (
+  <svg viewBox="-15 -10 130 130" className="w-full h-48 bg-slate-50 dark:bg-[#121212] border rounded-lg p-2 overflow-visible">
+  <line x1="0" y1="100" x2="100" y2="100" stroke="#94a3b8" strokeWidth="1" />
+  <line x1="0" y1="0" x2="0" y2="100" stroke="#94a3b8" strokeWidth="1" />
+  <polyline points={pts} fill="none" stroke="#2563eb" strokeWidth="2" />
+  {data.map((d, i) => (
+   <circle key={i} cx={(d.t / maxT) * 100} cy={100 - (d.vol / MAX_VOL) * 100} r="2" fill="#ef4444" />
+  ))}
+  <text x="50" y="115" fontSize="6" textAnchor="middle" fill="#64748b">Time (s)</text>
+  <text x="-10" y="50" fontSize="6" textAnchor="middle" fill="#64748b" transform="rotate(-90 -10 50)">Gas Vol (mL)</text>
+  </svg>
+ );
+ };
 
-  return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4">
+ return (
+ <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none p-4">
 <LabHeader onExit={onExit} title="Reaction Kinetics: Surface Area" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 flex-1">
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Theory & Setup</h2>
-          <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
-            Increasing the surface area of a solid reactant exposes more particles to collisions, increasing the rate of reaction. Here, we react Zinc with Hydrochloric acid to produce Hydrogen gas.
-          </p>
-          <div className="bg-slate-100 dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto">
-            Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)
-          </div>
-          
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Zinc Form</label>
-              <select 
-                value={form} 
-                onChange={(e) => { setForm(e.target.value as 'chunk' | 'powder'); handleReset(); }}
-                className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md"
-              >
-                <option value="chunk">Solid Chunk</option>
-                <option value="powder">Powdered</option>
-              </select>
-            </div>
-          </div>
-        </div>
+  
+  {/* Mobile Tab Navigation */}
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+   <button 
+    onClick={() => setActiveMobileTab('theory')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >
+    Theory
+   </button>
+   <button 
+    onClick={() => setActiveMobileTab('lab')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >Lab</button>
+  </div>
+  <div className="flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 lg:flex-1 overflow-y-auto lg:overflow-visible">
+  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4">Theory & Setup</h2>
+   <p className="text-slate-600 dark:text-[#a1a1aa] text-sm mb-4">
+   Increasing the surface area of a solid reactant exposes more particles to collisions, increasing the rate of reaction. Here, we react Zinc with Hydrochloric acid to produce Hydrogen gas.
+   </p>
+   <div className={`bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] p-4 rounded-lg mb-6 text-sm font-mono overflow-x-auto flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)
+   </div>
+   
+   <div className="space-y-6">
+   <div>
+    <label className="block text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-2">Zinc Form</label>
+    <select 
+    value={form} 
+    onChange={(e) => { setForm(e.target.value as 'chunk' | 'powder'); handleReset(); }}
+    className="w-full p-2 border border-slate-300 dark:border-[#1c1b1b] rounded-md"
+    >
+    <option value="chunk">Solid Chunk</option>
+    <option value="powder">Powdered</option>
+    </select>
+   </div>
+   </div>
+  </div>
 
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col items-center">
-          <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">Simulation Viewer</h2>
-          
-          <div className="w-full flex justify-center space-x-4 mb-6">
-            <button onClick={() => setIsPlaying(!isPlaying)} className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-              {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-              {isPlaying ? 'Pause' : 'Start'}
-            </button>
-            <button onClick={handleReset} className="flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212]">
-              <RotateCcw className="w-4 h-4 mr-2" /> Reset
-            </button>
-          </div>
+  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col items-center ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mb-4 self-start">Simulation Viewer</h2>
+   
+   <div className="w-full flex justify-center space-x-4 mb-6">
+   <button onClick={() => setIsPlaying(!isPlaying)} className={`flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40 flex-col `}>
+    {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+    {isPlaying ? 'Pause' : 'Start'}
+   </button>
+   <button onClick={handleReset} className={`flex items-center px-4 py-2 bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] rounded-lg hover:bg-slate-300 dark:bg-[#121212] flex-col `}>
+    <RotateCcw className="w-4 h-4 mr-2" /> Reset
+   </button>
+   </div>
 
-          <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              {/* Flask */}
-              <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
-              {/* Liquid */}
-              <path d="M 40 130 L 120 130 L 127 160 Q 140 180 110 180 L 50 180 Q 20 180 33 160 Z" fill="#e0f2fe" opacity="0.6" />
-              
-              {/* Zinc Reactant */}
-              {form === 'chunk' ? (
-                <rect x="65" y="150" width="30" height="20" fill="#94a3b8" rx="4" />
-              ) : (
-                <>
-                  {[...Array(15)].map((_, i) => (
-                    <circle key={i} cx={50 + (i * 4)} cy={170 + (i % 3) * 3} r="3" fill="#94a3b8" />
-                  ))}
-                </>
-              )}
+   <div className="relative w-full max-w-sm aspect-square bg-slate-50 dark:bg-[#121212] rounded-lg border border-slate-200 dark:border-[#1c1b1b] overflow-hidden">
+   <svg viewBox="0 0 200 200" className="w-full h-full">
+    {/* Flask */}
+    <path d="M 60 40 L 60 90 L 30 160 Q 20 180 50 180 L 110 180 Q 140 180 130 160 L 100 90 L 100 40 Z" fill="none" stroke="#94a3b8" strokeWidth="3" />
+    {/* Liquid */}
+    <path d="M 40 130 L 120 130 L 127 160 Q 140 180 110 180 L 50 180 Q 20 180 33 160 Z" fill="#e0f2fe" opacity="0.6" />
+    
+    {/* Zinc Reactant */}
+    {form === 'chunk' ? (
+    <rect x="65" y="150" width="30" height="20" fill="#94a3b8" rx="4" />
+    ) : (
+    <>
+     {[...Array(15)].map((_, i) => (
+     <circle key={i} cx={50 + (i * 4)} cy={170 + (i % 3) * 3} r="3" fill="#94a3b8" />
+     ))}
+    </>
+    )}
 
-              {/* Bubbles */}
-              {isPlaying && currentVol < MAX_VOL * 0.99 && (
-                <>
-                  {[...Array(form === 'powder' ? 8 : 3)].map((_, i) => (
-                    <circle key={i} cx={60 + (i * 5) + (time % 2)} cy={140 - ((time * 10 + i * 15) % 40)} r={form === 'powder' ? 1.5 : 2.5} fill="white" opacity="0.8" />
-                  ))}
-                </>
-              )}
+    {/* Bubbles */}
+    {isPlaying && currentVol < MAX_VOL * 0.99 && (
+    <>
+     {[...Array(form === 'powder' ? 8 : 3)].map((_, i) => (
+     <circle key={i} cx={60 + (i * 5) + (time % 2)} cy={140 - ((time * 10 + i * 15) % 40)} r={form === 'powder' ? 1.5 : 2.5} fill="white" opacity="0.8" />
+     ))}
+    </>
+    )}
 
-              {/* Gas Syringe Tube */}
-              <path d="M 100 60 L 140 60 L 140 80 L 100 80" fill="none" stroke="#94a3b8" strokeWidth="2" />
-              {/* Syringe Body */}
-              <rect x="140" y="50" width="50" height="40" fill="none" stroke="#94a3b8" strokeWidth="2" />
-              {/* Plunger */}
-              <rect x={140 + currentVol} y="52" width="5" height="36" fill="#475569" />
-              <line x1={145 + currentVol} y1="70" x2={190} y2="70" stroke="#475569" strokeWidth="4" />
-            </svg>
-          </div>
+    {/* Gas Syringe Tube */}
+    <path d="M 100 60 L 140 60 L 140 80 L 100 80" fill="none" stroke="#94a3b8" strokeWidth="2" />
+    {/* Syringe Body */}
+    <rect x="140" y="50" width="50" height="40" fill="none" stroke="#94a3b8" strokeWidth="2" />
+    {/* Plunger */}
+    <rect x={140 + currentVol} y="52" width="5" height="36" fill="#475569" />
+    <line x1={145 + currentVol} y1="70" x2={190} y2="70" stroke="#475569" strokeWidth="4" />
+   </svg>
+   </div>
 
-          <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center">
-            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
-              <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Time</div>
-              <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{time} s</div>
-            </div>
-            <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
-              <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Gas Volume</div>
-              <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{currentVol.toFixed(1)} mL</div>
-            </div>
-          </div>
-        </div>
+   <div className="mt-4 w-full grid grid-cols-2 gap-4 text-center ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block">
+   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Time</div>
+    <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{time} s</div>
+   </div>
+   <div className="bg-slate-100 dark:bg-[#121212] p-3 rounded-lg">
+    <div className="text-xs text-slate-500 dark:text-[#71717a] uppercase font-bold">Gas Volume</div>
+    <div className="text-xl font-mono text-slate-800 dark:text-[#ffffff]">{currentVol.toFixed(1)} mL</div>
+   </div>
+   </div>
+  </div>
 
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
-            <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
-              <Save className="w-4 h-4 mr-1" /> Record
-            </button>
-          </div>
+  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col `}>
+   <div className="flex justify-between items-center mb-4">
+   <h2 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff]">Data & Analysis</h2>
+   <button onClick={recordData} className="flex items-center px-3 py-1 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 dark:text-white dark:text-white dark:bg-green-500 dark:hover:bg-green-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-green-500/40">
+    <Save className="w-4 h-4 mr-1" /> Record
+   </button>
+   </div>
 
-          {renderGraph()}
+   {renderGraph()}
 
-          <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
-            <table className="w-full text-sm text-left">
-              <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
-                <tr>
-                  <th className="px-3 py-2 border-b">Time (s)</th>
-                  <th className="px-3 py-2 border-b">Form</th>
-                  <th className="px-3 py-2 border-b">Volume (mL)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((d, i) => (
-                  <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
-                    <td className="px-3 py-2">{d.t}</td>
-                    <td className="px-3 py-2 capitalize">{d.form}</td>
-                    <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+   <div className="mt-4 flex-1 lg:overflow-y-auto min-h-[100px] border border-slate-200 dark:border-[#1c1b1b] rounded-lg">
+   <table className="w-full text-sm text-left">
+    <thead className="bg-slate-50 dark:bg-[#121212] sticky top-0">
+    <tr>
+     <th className="px-3 py-2 border-b">Time (s)</th>
+     <th className="px-3 py-2 border-b">Form</th>
+     <th className="px-3 py-2 border-b">Volume (mL)</th>
+    </tr>
+    </thead>
+    <tbody>
+    {data.map((d, i) => (
+     <tr key={i} className="border-b last:border-0 hover:bg-slate-50 dark:bg-[#121212]">
+     <td className="px-3 py-2">{d.t}</td>
+     <td className="px-3 py-2 capitalize">{d.form}</td>
+     <td className="px-3 py-2 font-mono text-blue-600">{d.vol}</td>
+     </tr>
+    ))}
+    </tbody>
+   </table>
+   </div>
 
-          <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
-            <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
-            <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
-              Calculate the average rate of reaction (mL/s) over the first 10 seconds if the recorded volume at t=10s is {assQ.v10} mL and V=0 at t=0. (Provide answer to 1 decimal place).
-            </p>
-            <div className="flex items-center space-x-2">
-              <input 
-                type="number" 
-                value={answer}
-                onChange={e => setAnswer(e.target.value)}
-                placeholder="Rate (mL/s)" 
-                className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
-              />
-              <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
-                Check
-              </button>
-            </div>
-            {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Correct!</div>}
-            {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" /> Incorrect, try again.</div>}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+   <div className="mt-6 bg-blue-50 p-4 rounded-lg border border-blue-100 dark:bg-teal-950/20 dark:border-teal-900">
+   <h3 className="text-sm font-bold text-blue-900 mb-2 dark:text-[#ffffff]">Assessment</h3>
+   <p className="text-sm text-blue-800 mb-3 dark:text-[#ffffff]">
+    Calculate the average rate of reaction (mL/s) over the first 10 seconds if the recorded volume at t=10s is {assQ.v10} mL and V=0 at t=0. (Provide answer to 1 decimal place).
+   </p>
+   <div className="flex items-center space-x-2">
+    <input 
+    type="number" 
+    value={answer}
+    onChange={e => setAnswer(e.target.value)}
+    placeholder="Rate (mL/s)" 
+    className="flex-1 p-2 border border-blue-300 rounded-md text-sm"
+    />
+    <button onClick={checkAnswer} className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 dark:text-white dark:text-white dark:bg-blue-500 dark:hover:bg-blue-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-blue-500/40">
+    Check
+    </button>
+   </div>
+   {isCorrect === true && <div className="mt-2 text-green-600 text-sm font-bold flex items-center"><CheckCircle className="w-4 h-4 mr-1" /> Correct!</div>}
+   {isCorrect === false && <div className="mt-2 text-red-600 text-sm font-bold flex items-center"><XCircle className="w-4 h-4 mr-1" /> Incorrect, try again.</div>}
+   </div>
+  </div>
+  </div>
+ </div>
+ );
 }

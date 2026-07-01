@@ -3,267 +3,282 @@ import { CheckCircle2, XCircle, TrendingDown, Biohazard } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 export default function LabM10FunctionApplications({ onExit }: { onExit: () => void }) {
-  const [mode, setMode] = useState<'virus' | 'depreciation'>('virus');
+ const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [mode, setMode] = useState<'virus' | 'depreciation'>('virus');
 
-  // Virus state
-  const [r0, setR0] = useState(1.5);
-  const [days, setDays] = useState(0); 
+ // Virus state
+ const [r0, setR0] = useState(1.5);
+ const [days, setDays] = useState(0); 
 
-  // Depreciation state
-  const [initialValue] = useState(10000);
-  const [rate, setRate] = useState(15); 
-  const [year, setYear] = useState(5);
+ // Depreciation state
+ const [initialValue] = useState(10000);
+ const [rate, setRate] = useState(15); 
+ const [year, setYear] = useState(5);
 
-  // Assessment state
-  const [ans, setAns] = useState('');
-  const [status, setStatus] = useState<'none' | 'correct' | 'incorrect'>('none');
+ // Assessment state
+ const [ans, setAns] = useState('');
+ const [status, setStatus] = useState<'none' | 'correct' | 'incorrect'>('none');
 
-  const resetAns = () => {
-    setAns('');
-    setStatus('none');
-  };
+ const resetAns = () => {
+ setAns('');
+ setStatus('none');
+ };
 
-  const handleModeChange = (m: 'virus' | 'depreciation') => {
-    setMode(m);
-    resetAns();
-  };
+ const handleModeChange = (m: 'virus' | 'depreciation') => {
+ setMode(m);
+ resetAns();
+ };
 
-  // Virus logic
-  const gridCols = 20;
-  const gridCells = 400; // 20x20
-  const infectedCount = Math.min(gridCells, Math.floor(1 * Math.pow(r0, days)));
+ // Virus logic
+ const gridCols = 20;
+ const gridCells = 400; // 20x20
+ const infectedCount = Math.min(gridCells, Math.floor(1 * Math.pow(r0, days)));
 
-  // Depreciation logic
-  const linearValue = Math.max(0, initialValue - (initialValue * (rate/100)) * year);
-  const expValue = initialValue * Math.pow(1 - rate/100, year);
+ // Depreciation logic
+ const linearValue = Math.max(0, initialValue - (initialValue * (rate/100)) * year);
+ const expValue = initialValue * Math.pow(1 - rate/100, year);
 
-  const checkAns = () => {
-    let correct = 0;
-    if (mode === 'virus') {
-      correct = Math.ceil(Math.log(200) / Math.log(r0));
-    } else {
-      const lin = Math.max(0, initialValue - (initialValue * (rate/100)) * year);
-      const exp = initialValue * Math.pow(1 - rate/100, year);
-      correct = Math.round(Math.abs(lin - exp));
-    }
-    
-    if (Math.abs(parseFloat(ans) - correct) <= 1.0) {
-      setStatus('correct');
-    } else {
-      setStatus('incorrect');
-    }
-  };
+ const checkAns = () => {
+ let correct = 0;
+ if (mode === 'virus') {
+  correct = Math.ceil(Math.log(200) / Math.log(r0));
+ } else {
+  const lin = Math.max(0, initialValue - (initialValue * (rate/100)) * year);
+  const exp = initialValue * Math.pow(1 - rate/100, year);
+  correct = Math.round(Math.abs(lin - exp));
+ }
+ 
+ if (Math.abs(parseFloat(ans) - correct) <= 1.0) {
+  setStatus('correct');
+ } else {
+  setStatus('incorrect');
+ }
+ };
 
-  // SVG drawing for depreciation
-  const width = 400;
-  const height = 240;
-  const padding = 30;
-  const maxYear = 10;
+ // SVG drawing for depreciation
+ const width = 400;
+ const height = 240;
+ const padding = 30;
+ const maxYear = 10;
 
-  const getLinePath = (isLinear: boolean) => {
-    let path = `M ${padding} ${height - padding}`;
-    for (let y = 0; y <= maxYear; y++) {
-      const val = isLinear 
-        ? Math.max(0, initialValue - (initialValue * (rate/100)) * y)
-        : initialValue * Math.pow(1 - rate/100, y);
-      
-      const px = padding + (y / maxYear) * (width - 2 * padding);
-      const py = height - padding - (val / initialValue) * (height - 2 * padding);
-      if (y === 0) path = `M ${px} ${py}`;
-      else path += ` L ${px} ${py}`;
-    }
-    return path;
-  };
+ const getLinePath = (isLinear: boolean) => {
+ let path = `M ${padding} ${height - padding}`;
+ for (let y = 0; y <= maxYear; y++) {
+  const val = isLinear 
+  ? Math.max(0, initialValue - (initialValue * (rate/100)) * y)
+  : initialValue * Math.pow(1 - rate/100, y);
+  
+  const px = padding + (y / maxYear) * (width - 2 * padding);
+  const py = height - padding - (val / initialValue) * (height - 2 * padding);
+  if (y === 0) path = `M ${px} ${py}`;
+  else path += ` L ${px} ${py}`;
+ }
+ return path;
+ };
 
-  return (
-    <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
-      <LabHeader onExit={onExit} title="Mathematical Function Applications Lab" />
+ return (
+ <div className="flex flex-col h-screen overflow-y-auto bg-slate-50 dark:!bg-[#000000] font-sans select-none">
+  <LabHeader onExit={onExit} title="Mathematical Function Applications Lab" />
 
-      <div className="flex-1 min-w-0 grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
-        {/* Theory Column */}
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Formulas</h2>
-          <div className="flex-1 min-w-0 lg:overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-[#ffffff]">
-            {mode === 'virus' ? (
-              <>
-                <p><strong>Exponential Growth</strong> functions describe scenarios where a quantity increases by a constant factor over equal time intervals.</p>
-                <div className="bg-indigo-50 p-4 rounded-lg text-center font-mono font-bold text-indigo-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff]">
-                  N(t) = N₀ × (R₀)ᵗ
-                </div>
-                <p>In epidemiology, N₀ is the initial number of infected individuals, and R₀ (the basic reproduction number) represents how many secondary infections are generated by one infected person.</p>
-                <ul className="list-disc pl-5 space-y-1 text-sm">
-                  <li>If R₀ &gt; 1, the spread is exponential.</li>
-                  <li>If R₀ &lt; 1, the spread will die out.</li>
-                </ul>
-              </>
-            ) : (
-              <>
-                <p><strong>Depreciation</strong> models how the value of an asset decreases over time. There are two common mathematical models.</p>
-                <p className="font-semibold mt-4">1. Linear (Straight-Line)</p>
-                <div className="bg-red-50 p-3 rounded-lg text-center font-mono font-bold text-red-800 text-sm">
-                  V(t) = V₀ - (V₀ × r) × t
-                </div>
-                <p className="text-sm">Value drops by a fixed <em>amount</em> every year.</p>
-                
-                <p className="font-semibold mt-4">2. Exponential (Reducing Balance)</p>
-                <div className="bg-blue-50 p-3 rounded-lg text-center font-mono font-bold text-blue-800 text-sm dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff]">
-                  V(t) = V₀ × (1 - r)ᵗ
-                </div>
-                <p className="text-sm">Value drops by a fixed <em>percentage</em> of its current value every year.</p>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Interactive Column */}
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <div className="flex space-x-2 mb-6">
-            <button 
-              onClick={() => handleModeChange('virus')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'virus' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-            >
-              <Biohazard size={18} className="mr-2" /> Viral Spread
-            </button>
-            <button 
-              onClick={() => handleModeChange('depreciation')}
-              className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'depreciation' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
-            >
-              <TrendingDown size={18} className="mr-2" /> Depreciation
-            </button>
-          </div>
-
-          {/* Visualizer */}
-          <div className="relative h-64 bg-slate-100 dark:bg-[#121212] rounded-xl mb-6 overflow-hidden border border-slate-200 dark:border-[#1c1b1b] flex items-center justify-center p-4">
-            {mode === 'virus' ? (
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                <div className="grid gap-[2px] bg-slate-300 dark:bg-[#121212] p-2 rounded-lg" style={{ gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))` }}>
-                  {Array.from({ length: gridCells }).map((_, i) => (
-                    <div key={i} className={`w-3 h-3 sm:w-4 sm:h-4 rounded-sm ${i < infectedCount ? 'bg-indigo-600' : 'bg-slate-50 dark:bg-[#121212]'}`} />
-                  ))}
-                </div>
-                <div className="mt-4 font-bold text-slate-700 dark:text-[#ffffff] bg-slate-50 dark:bg-[#121212] px-4 py-1 rounded-full shadow-sm">
-                  Day {days}: <span className="text-indigo-600">{infectedCount}</span> Infected
-                </div>
-              </div>
-            ) : (
-              <div className="w-full h-full flex flex-col">
-                <div className="flex justify-between px-8 text-xs font-bold mb-2">
-                  <span className="text-red-500">Linear: ${Math.round(linearValue)}</span>
-                  <span className="text-blue-500">Exponential: ${Math.round(expValue)}</span>
-                </div>
-                <svg viewBox={`0 0 ${width} ${height}`} className="w-full flex-1">
-                  {/* Grid / Axes */}
-                  <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#cbd5e1" strokeWidth="2" />
-                  <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#cbd5e1" strokeWidth="2" />
-                  
-                  {/* Labels */}
-                  <text x={padding - 5} y={padding + 5} fontSize="10" textAnchor="end" fill="#64748b">$10k</text>
-                  <text x={padding - 5} y={height - padding} fontSize="10" textAnchor="end" fill="#64748b">$0</text>
-                  <text x={width - padding} y={height - padding + 15} fontSize="10" textAnchor="middle" fill="#64748b">Yr 10</text>
-                  
-                  {/* Paths */}
-                  <path d={getLinePath(true)} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
-                  <path d={getLinePath(false)} fill="none" stroke="#3b82f6" strokeWidth="3" />
-                  
-                  {/* Current year marker */}
-                  <line 
-                    x1={padding + (year / maxYear) * (width - 2 * padding)} 
-                    y1={padding} 
-                    x2={padding + (year / maxYear) * (width - 2 * padding)} 
-                    y2={height - padding} 
-                    stroke="#10b981" strokeWidth="2" strokeDasharray="4,4" 
-                  />
-                  <circle cx={padding + (year / maxYear) * (width - 2 * padding)} cy={height - padding - (expValue / initialValue) * (height - 2 * padding)} r="5" fill="#3b82f6" />
-                  <circle cx={padding + (year / maxYear) * (width - 2 * padding)} cy={height - padding - (linearValue / initialValue) * (height - 2 * padding)} r="5" fill="#ef4444" />
-                </svg>
-              </div>
-            )}
-          </div>
-
-          {/* Sliders */}
-          <div className="space-y-5">
-            {mode === 'virus' ? (
-              <>
-                <div>
-                  <div className="flex justify-between text-sm font-medium text-indigo-700 mb-1">
-                    <span>Reproduction Rate (R₀)</span>
-                    <span>{r0.toFixed(1)}</span>
-                  </div>
-                  <input type="range" min="1.1" max="3.0" step="0.1" value={r0} onChange={e => {setR0(Number(e.target.value)); resetAns()}} className="w-full accent-indigo-600" />
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-                    <span>Days Elapsed</span>
-                    <span>Day {days}</span>
-                  </div>
-                  <input type="range" min="0" max="15" step="1" value={days} onChange={e => {setDays(Number(e.target.value)); resetAns()}} className="w-full" />
-                </div>
-              </>
-            ) : (
-              <>
-                <div>
-                  <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
-                    <span>Depreciation Rate (%)</span>
-                    <span>{rate}% / year</span>
-                  </div>
-                  <input type="range" min="5" max="30" step="1" value={rate} onChange={e => {setRate(Number(e.target.value)); resetAns()}} className="w-full accent-emerald-600" />
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm font-medium text-emerald-700 mb-1">
-                    <span>Years Elapsed</span>
-                    <span>Year {year}</span>
-                  </div>
-                  <input type="range" min="0" max="10" step="1" value={year} onChange={e => {setYear(Number(e.target.value)); resetAns()}} className="w-full accent-emerald-600" />
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Assessment Column */}
-        <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
-          <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Data Analysis</h2>
-          <div className="flex-1 min-w-0 space-y-6">
-            <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
-              <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-3">
-                {mode === 'virus' 
-                  ? `If R₀ is ${r0.toFixed(1)}, on what exact day will the number of infected individuals first reach or exceed 200?` 
-                  : `At year ${year}, what is the absolute difference between the linear and exponential depreciated values?`}
-              </p>
-              <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">(Round to nearest whole number)</p>
-              
-              <div className="flex items-center space-x-3">
-                <input 
-                  type="number" 
-                  value={ans}
-                  onChange={e => setAns(e.target.value)}
-                  placeholder="e.g. 5"
-                  className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                />
-                <button 
-                  onClick={checkAns}
-                  className="px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors"
-                >
-                  Check
-                </button>
-              </div>
-
-              {status === 'correct' && (
-                <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg flex items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
-                  <CheckCircle2 size={20} className="mr-2 shrink-0" />
-                  <span className="font-medium">Correct! Great calculation.</span>
-                </div>
-              )}
-              {status === 'incorrect' && (
-                <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center">
-                  <XCircle size={20} className="mr-2 shrink-0" />
-                  <span className="font-medium">Not quite right. Try again using the formulas.</span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
+  
+  {/* Mobile Tab Navigation */}
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+   <button 
+    onClick={() => setActiveMobileTab('theory')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >
+    Theory
+   </button>
+   <button 
+    onClick={() => setActiveMobileTab('lab')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >Lab</button>
+  </div>
+  <div className="lg:flex-1 min-w-0 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 p-6 overflow-y-auto lg:overflow-visible">
+  {/* Theory Column */}
+  <div className={`bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'theory' ? 'flex' : 'hidden'} lg:flex`}>
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Theory & Formulas</h2>
+   <div className="flex-1 min-w-0 lg:overflow-y-auto pr-2 space-y-4 text-slate-700 dark:text-[#ffffff]">
+   {mode === 'virus' ? (
+    <>
+    <p><strong>Exponential Growth</strong> functions describe scenarios where a quantity increases by a constant factor over equal time intervals.</p>
+    <div className={`bg-indigo-50 p-4 rounded-lg text-center font-mono font-bold text-indigo-800 dark:bg-[#121212] dark:border-[#1c1b1b] dark:text-[#ffffff] flex-col `}>
+     N(t) = N₀ × (R₀)ᵗ
     </div>
-  );
+    <p>In epidemiology, N₀ is the initial number of infected individuals, and R₀ (the basic reproduction number) represents how many secondary infections are generated by one infected person.</p>
+    <ul className="list-disc pl-5 space-y-1 text-sm">
+     <li>If R₀ &gt; 1, the spread is exponential.</li>
+     <li>If R₀ &lt; 1, the spread will die out.</li>
+    </ul>
+    </>
+   ) : (
+    <>
+    <p><strong>Depreciation</strong> models how the value of an asset decreases over time. There are two common mathematical models.</p>
+    <p className="font-semibold mt-4">1. Linear (Straight-Line)</p>
+    <div className={`bg-red-50 p-3 rounded-lg text-center font-mono font-bold text-red-800 text-sm flex-col `}>
+     V(t) = V₀ - (V₀ × r) × t
+    </div>
+    <p className="text-sm">Value drops by a fixed <em>amount</em> every year.</p>
+    
+    <p className="font-semibold mt-4">2. Exponential (Reducing Balance)</p>
+    <div className={`bg-blue-50 p-3 rounded-lg text-center font-mono font-bold text-blue-800 text-sm dark:bg-teal-950/20 dark:border-teal-900 dark:text-[#ffffff] flex-col `}>
+     V(t) = V₀ × (1 - r)ᵗ
+    </div>
+    <p className="text-sm">Value drops by a fixed <em>percentage</em> of its current value every year.</p>
+    </>
+   )}
+   </div>
+  </div>
+
+  {/* Interactive Column */}
+  <div className={`bg-white lg:bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <div className="flex space-x-2 mb-6">
+   <button 
+    onClick={() => handleModeChange('virus')}
+    className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'virus' ? 'bg-indigo-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+   >
+    <Biohazard size={18} className="mr-2" /> Viral Spread
+   </button>
+   <button 
+    onClick={() => handleModeChange('depreciation')}
+    className={`flex-1 flex items-center justify-center py-2 rounded-lg font-medium transition-colors ${mode === 'depreciation' ? 'bg-emerald-600 text-white' : 'bg-slate-100 dark:bg-[#121212] text-slate-600 dark:text-[#ffffff] hover:bg-slate-200 dark:bg-[#121212]'}`}
+   >
+    <TrendingDown size={18} className="mr-2" /> Depreciation
+   </button>
+   </div>
+
+   {/* Visualizer */}
+   <div className={`relative h-64 bg-white lg:bg-slate-100 dark:bg-[#121212] lg:dark:bg-[#121212] rounded-xl mb-6 overflow- border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#1c1b1b] flex items-center justify-center p-4 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   {mode === 'virus' ? (
+    <div className="w-full h-full flex flex-col items-center justify-center">
+    <div className="grid gap-[2px] bg-slate-300 dark:bg-[#121212] p-2 rounded-lg" style={{ gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))` }}>
+     {Array.from({ length: gridCells }).map((_, i) => (
+     <div key={i} className={`w-3 h-3 sm:w-4 sm:h-4 rounded-sm ${i < infectedCount ? 'bg-indigo-600' : 'bg-slate-50 dark:bg-[#121212]'}`} />
+     ))}
+    </div>
+    <div className="mt-4 font-bold text-slate-700 dark:text-[#ffffff] bg-slate-50 dark:bg-[#121212] px-4 py-1 rounded-full shadow-sm">
+     Day {days}: <span className="text-indigo-600">{infectedCount}</span> Infected
+    </div>
+    </div>
+   ) : (
+    <div className="w-full h-full flex flex-col">
+    <div className="flex justify-between px-8 text-xs font-bold mb-2">
+     <span className="text-red-500">Linear: ${Math.round(linearValue)}</span>
+     <span className="text-blue-500">Exponential: ${Math.round(expValue)}</span>
+    </div>
+    <svg viewBox={`0 0 ${width} ${height}`} className="w-full flex-1">
+     {/* Grid / Axes */}
+     <line x1={padding} y1={height - padding} x2={width - padding} y2={height - padding} stroke="#cbd5e1" strokeWidth="2" />
+     <line x1={padding} y1={padding} x2={padding} y2={height - padding} stroke="#cbd5e1" strokeWidth="2" />
+     
+     {/* Labels */}
+     <text x={padding - 5} y={padding + 5} fontSize="10" textAnchor="end" fill="#64748b">$10k</text>
+     <text x={padding - 5} y={height - padding} fontSize="10" textAnchor="end" fill="#64748b">$0</text>
+     <text x={width - padding} y={height - padding + 15} fontSize="10" textAnchor="middle" fill="#64748b">Yr 10</text>
+     
+     {/* Paths */}
+     <path d={getLinePath(true)} fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
+     <path d={getLinePath(false)} fill="none" stroke="#3b82f6" strokeWidth="3" />
+     
+     {/* Current year marker */}
+     <line 
+     x1={padding + (year / maxYear) * (width - 2 * padding)} 
+     y1={padding} 
+     x2={padding + (year / maxYear) * (width - 2 * padding)} 
+     y2={height - padding} 
+     stroke="#10b981" strokeWidth="2" strokeDasharray="4,4" 
+     />
+     <circle cx={padding + (year / maxYear) * (width - 2 * padding)} cy={height - padding - (expValue / initialValue) * (height - 2 * padding)} r="5" fill="#3b82f6" />
+     <circle cx={padding + (year / maxYear) * (width - 2 * padding)} cy={height - padding - (linearValue / initialValue) * (height - 2 * padding)} r="5" fill="#ef4444" />
+    </svg>
+    </div>
+   )}
+   </div>
+
+   {/* Sliders */}
+   <div className="space-y-5">
+   {mode === 'virus' ? (
+    <>
+    <div>
+     <div className="flex justify-between text-sm font-medium text-indigo-700 mb-1">
+     <span>Reproduction Rate (R₀)</span>
+     <span>{r0.toFixed(1)}</span>
+     </div>
+     <input type="range" min="1.1" max="3.0" step="0.1" value={r0} onChange={e => {setR0(Number(e.target.value)); resetAns()}} className="w-full accent-indigo-600" />
+    </div>
+    <div>
+     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
+     <span>Days Elapsed</span>
+     <span>Day {days}</span>
+     </div>
+     <input type="range" min="0" max="15" step="1" value={days} onChange={e => {setDays(Number(e.target.value)); resetAns()}} className="w-full" />
+    </div>
+    </>
+   ) : (
+    <>
+    <div>
+     <div className="flex justify-between text-sm font-medium text-slate-700 dark:text-[#ffffff] mb-1">
+     <span>Depreciation Rate (%)</span>
+     <span>{rate}% / year</span>
+     </div>
+     <input type="range" min="5" max="30" step="1" value={rate} onChange={e => {setRate(Number(e.target.value)); resetAns()}} className="w-full accent-emerald-600" />
+    </div>
+    <div>
+     <div className="flex justify-between text-sm font-medium text-emerald-700 mb-1">
+     <span>Years Elapsed</span>
+     <span>Year {year}</span>
+     </div>
+     <input type="range" min="0" max="10" step="1" value={year} onChange={e => {setYear(Number(e.target.value)); resetAns()}} className="w-full accent-emerald-600" />
+    </div>
+    </>
+   )}
+   </div>
+  </div>
+
+  {/* Assessment Column */}
+  <div className="bg-slate-50 dark:!bg-[#121212] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] flex flex-col">
+   <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff] mb-4 border-b pb-2">Data Analysis</h2>
+   <div className="flex-1 min-w-0 space-y-6">
+   <div className="bg-slate-50 dark:bg-[#121212] p-4 rounded-lg border border-slate-200 dark:border-[#1c1b1b]">
+    <p className="text-slate-700 dark:text-[#ffffff] font-medium mb-3">
+    {mode === 'virus' 
+     ? `If R₀ is ${r0.toFixed(1)}, on what exact day will the number of infected individuals first reach or exceed 200?` 
+     : `At year ${year}, what is the absolute difference between the linear and exponential depreciated values?`}
+    </p>
+    <p className="text-xs text-slate-500 dark:text-[#71717a] mb-4">(Round to nearest whole number)</p>
+    
+    <div className="flex items-center space-x-3">
+    <input 
+     type="number" 
+     value={ans}
+     onChange={e => setAns(e.target.value)}
+     placeholder="e.g. 5"
+     className="flex-1 min-w-0 px-3 py-2 border border-slate-300 dark:border-[#1c1b1b] rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+    />
+    <button 
+     onClick={checkAns}
+     className="px-4 py-2 bg-[#121212] dark:bg-[#121212] text-white rounded-lg hover:bg-slate-700 dark:bg-[#121212] transition-colors"
+    >
+     Check
+    </button>
+    </div>
+
+    {status === 'correct' && (
+    <div className="mt-4 p-3 bg-green-50 text-green-700 rounded-lg flex items-center dark:bg-[#121212] dark:border-[#1c1b1b]">
+     <CheckCircle2 size={20} className="mr-2 shrink-0" />
+     <span className="font-medium">Correct! Great calculation.</span>
+    </div>
+    )}
+    {status === 'incorrect' && (
+    <div className="mt-4 p-3 bg-red-50 text-red-700 rounded-lg flex items-center">
+     <XCircle size={20} className="mr-2 shrink-0" />
+     <span className="font-medium">Not quite right. Try again using the formulas.</span>
+    </div>
+    )}
+   </div>
+   </div>
+  </div>
+  </div>
+ </div>
+ );
 }

@@ -533,5 +533,15 @@ export const LAB_MODULES = [
   { id: 'c11e_5', classLevel: '11', subject: 'english', title: 'Unit 5: Tenses & Verbals', desc: '12 Tenses, tense consistency, and verbals (participles, gerunds).', built: true, bg: 'from-violet-600 to-indigo-800' },
   { id: 'c11e_6', classLevel: '11', subject: 'english', title: 'Unit 6: Phrases & Clauses', desc: 'Identify phrases and independent/dependent clauses.', built: true, bg: 'from-cyan-600 to-sky-800' },
   { id: 'c11e_7', classLevel: '11', subject: 'english', title: 'Unit 7: Sentence Structure', desc: 'Sentence types and identifying misplaced modifiers.', built: true, bg: 'from-fuchsia-600 to-pink-800' },
-  { id: 'c11e_8', classLevel: '11', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Dictionary skills, connotation, idioms, and figures of speech.', built: true, bg: 'from-slate-700 to-zinc-900' }
+  { id: 'c11e_8', classLevel: '11', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Dictionary skills, connotation, idioms, and figures of speech.', built: true, bg: 'from-slate-700 to-zinc-900' },
+
+  // Class 12 English
+  { id: 'e12-1', classLevel: '12', subject: 'english', title: 'Unit 1: Nouns & Pronouns', desc: 'Noun taxonomy, pronoun agreement, and reflexive/intensive usage.', built: true, bg: 'from-blue-600 to-indigo-700' },
+  { id: 'e12-2', classLevel: '12', subject: 'english', title: 'Unit 2: Adjectives & Adverbs', desc: 'Degrees of adjectives and adverbial categorization.', built: true, bg: 'from-emerald-500 to-teal-700' },
+  { id: 'e12-3', classLevel: '12', subject: 'english', title: 'Unit 3: Prepositions & Conjunctions', desc: 'Spatial prepositions and clause-merging conjunctions.', built: true, bg: 'from-amber-500 to-orange-700' },
+  { id: 'e12-4', classLevel: '12', subject: 'english', title: 'Unit 4: Verbs & Modals', desc: 'Transitivity of actions and modal constraint logic.', built: true, bg: 'from-rose-500 to-red-700' },
+  { id: 'e12-5', classLevel: '12', subject: 'english', title: 'Unit 5: Tenses & Verbals', desc: 'Master all 12 tenses and verbal transformations.', built: true, bg: 'from-indigo-500 to-fuchsia-700' },
+  { id: 'e12-6', classLevel: '12', subject: 'english', title: 'Unit 6: Phrases & Clauses', desc: 'Dissect sentences into dependent clauses and foundational phrases.', built: true, bg: 'from-cyan-500 to-blue-700' },
+  { id: 'e12-7', classLevel: '12', subject: 'english', title: 'Unit 7: Sentence Structure', desc: 'Complex topologies and fixing dangling/misplaced modifiers.', built: true, bg: 'from-slate-600 to-zinc-800' },
+  { id: 'e12-8', classLevel: '12', subject: 'english', title: 'Unit 8: Vocabulary & Stylistics', desc: 'Denotation/connotation and rhetorical device synthesis.', built: true, bg: 'from-pink-600 to-rose-800' }
 ];

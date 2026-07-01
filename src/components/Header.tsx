@@ -74,13 +74,20 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className={`${isDark ? 'bg-[#121212] border-b border-[#1c1b1b]' : 'bg-[#faf8ff] border-b border-slate-200'} px-5 md:px-10 h-[72px] flex items-center justify-between sticky top-0 z-50 shrink-0`}>
       <div className="flex items-center gap-4 flex-1 min-w-0">
-        <button
-          onClick={onToggleSidebar}
-          className={`md:hidden p-2 -ml-2 rounded-xl transition-colors ${isDark ? 'text-slate-400 hover:text-[#6366f1] hover:bg-[#1c1b1b]' : 'text-slate-500 hover:text-blue-600 hover:bg-blue-50'}`}
-          aria-label="Toggle navigation menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={onToggleSidebar}
+            className={`p-2 -ml-2 rounded-xl transition-colors ${isDark ? 'text-slate-400 hover:text-[#4158D1] hover:bg-[#1c1b1b]' : 'text-slate-500 hover:text-[#4158D1] hover:bg-indigo-50'}`}
+            aria-label="Toggle navigation menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+          <img 
+            src="/logo.png" 
+            alt="Logo" 
+            className={`h-8 w-auto object-contain pointer-events-none ${isDark ? 'drop-shadow-[0_0_10px_rgba(168,85,247,0.4)]' : 'drop-shadow-[0_0_15px_rgba(168,85,247,0.6)]'}`}
+          />
+        </div>
 
         {/* Desktop Search Bar */}
         <div ref={searchRef} className="hidden lg:block relative w-[400px]">

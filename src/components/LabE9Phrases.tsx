@@ -1,391 +1,388 @@
 import { useState } from 'react';
 import { 
-  BookOpen, Search, Target, CheckCircle, Activity, 
-  AlertCircle, ChevronRight, Layers, Tag, Eye, Info, Check
+ BookOpen, Search, Target, CheckCircle, Activity, 
+ Info, Check, ChevronRight
 } from 'lucide-react';
 import LabHeader from './LabHeader';
 
 type PhraseType = "Adjectival Phrase" | "Adverbial Phrase" | "Noun Phrase" | "Verb Phrase";
 
 interface SentencePart {
-  type: 'text' | 'phrase';
-  id?: string;
-  content: string;
-  correctType?: PhraseType;
-  hint?: string;
+ type: 'text' | 'phrase';
+ id?: string;
+ content: string;
+ correctType?: PhraseType;
+ hint?: string;
 }
 
 interface Sentence {
-  id: number;
-  parts: SentencePart[];
+ id: number;
+ parts: SentencePart[];
 }
 
 const sentences: Sentence[] = [
-  {
-    id: 1,
-    parts: [
-      { type: 'text', content: "The ancient tree " },
-      { type: 'phrase', id: '1-p1', content: "in the dense forest", correctType: "Adjectival Phrase", hint: "Describes which tree (a noun)." },
-      { type: 'text', content: " stood " },
-      { type: 'phrase', id: '1-p2', content: "for a thousand years", correctType: "Adverbial Phrase", hint: "Describes how long it stood (modifies a verb)." },
-      { type: 'text', content: "." }
-    ]
-  },
-  {
-    id: 2,
-    parts: [
-      { type: 'text', content: "The athlete ran " },
-      { type: 'phrase', id: '2-p1', content: "with incredible speed", correctType: "Adverbial Phrase", hint: "Describes how the athlete ran." },
-      { type: 'text', content: " " },
-      { type: 'phrase', id: '2-p2', content: "towards the finish line", correctType: "Adverbial Phrase", hint: "Describes where the athlete ran." },
-      { type: 'text', content: "." }
-    ]
-  },
-  {
-    id: 3,
-    parts: [
-      { type: 'text', content: "A gift " },
-      { type: 'phrase', id: '3-p1', content: "of immense value", correctType: "Adjectival Phrase", hint: "Describes the gift (a noun)." },
-      { type: 'text', content: " was delivered " },
-      { type: 'phrase', id: '3-p2', content: "in the morning", correctType: "Adverbial Phrase", hint: "Describes when it was delivered." },
-      { type: 'text', content: "." }
-    ]
-  }
+ {
+ id: 1,
+ parts: [
+  { type: 'text', content: "The ancient tree " },
+  { type: 'phrase', id: '1-p1', content: "in the dense forest", correctType: "Adjectival Phrase", hint: "Describes which tree (a noun)." },
+  { type: 'text', content: " stood " },
+  { type: 'phrase', id: '1-p2', content: "for a thousand years", correctType: "Adverbial Phrase", hint: "Describes how long it stood (modifies a verb)." },
+  { type: 'text', content: "." }
+ ]
+ },
+ {
+ id: 2,
+ parts: [
+  { type: 'text', content: "The athlete ran " },
+  { type: 'phrase', id: '2-p1', content: "with incredible speed", correctType: "Adverbial Phrase", hint: "Describes how the athlete ran." },
+  { type: 'text', content: " " },
+  { type: 'phrase', id: '2-p2', content: "towards the finish line", correctType: "Adverbial Phrase", hint: "Describes where the athlete ran." },
+  { type: 'text', content: "." }
+ ]
+ },
+ {
+ id: 3,
+ parts: [
+  { type: 'text', content: "A gift " },
+  { type: 'phrase', id: '3-p1', content: "of immense value", correctType: "Adjectival Phrase", hint: "Describes the gift (a noun)." },
+  { type: 'text', content: " was delivered " },
+  { type: 'phrase', id: '3-p2', content: "in the morning", correctType: "Adverbial Phrase", hint: "Describes when it was delivered." },
+  { type: 'text', content: "." }
+ ]
+ }
 ];
 
 export default function LabE9Phrases({ onExit }: { onExit?: () => void }) {
-  const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
-  const [activePhraseId, setActivePhraseId] = useState<string | null>(null);
-  const [resolvedPhrases, setResolvedPhrases] = useState<Set<string>>(new Set());
-  const [logs, setLogs] = useState<{ id: number; message: string; timestamp: string; type: 'success' | 'error' }[]>([]);
+ const [activeMobileTab, setActiveMobileTab] = useState<'theory' | 'lab'>('theory');
+ const [currentSentenceIdx, setCurrentSentenceIdx] = useState(0);
+ const [activePhraseId, setActivePhraseId] = useState<string | null>(null);
+ const [resolvedPhrases, setResolvedPhrases] = useState<Set<string>>(new Set());
+ const [logs, setLogs] = useState<{ id: number; message: string; timestamp: string; type: 'success' | 'error' }[]>([]);
+ 
+ const [assessmentAnswers, setAssessmentAnswers] = useState<Record<number, number>>({});
+ const [assessmentSubmitted, setAssessmentSubmitted] = useState(false);
+
+ const currentSentence = sentences[currentSentenceIdx];
+ const activePhrasePart = currentSentence.parts.find(p => p.id === activePhraseId);
+
+ const allPhrasesInSentence = currentSentence.parts.filter(p => p.type === 'phrase');
+ const sentenceCompleted = allPhrasesInSentence.every(p => resolvedPhrases.has(p.id!));
+
+ const addLog = (message: string, type: 'success' | 'error') => {
+ setLogs(prev => [{
+  id: Date.now(),
+  message,
+  timestamp: new Date().toLocaleTimeString(),
+  type
+ }, ...prev].slice(0, 5));
+ };
+
+ const handleClassify = (selectedType: PhraseType) => {
+ if (!activePhrasePart) return;
+
+ if (selectedType === activePhrasePart.correctType) {
+  setResolvedPhrases(prev => {
+  const newSet = new Set(prev);
+  newSet.add(activePhrasePart.id!);
+  return newSet;
+  });
+  addLog(`Correctly identified "${activePhrasePart.content}" as an ${selectedType}.`, 'success');
+  setActivePhraseId(null);
+ } else {
+  addLog(`Incorrect classification for "${activePhrasePart.content}". Try again.`, 'error');
+ }
+ };
+
+ const advanceSentence = () => {
+ if (currentSentenceIdx < sentences.length - 1) {
+  setCurrentSentenceIdx(prev => prev + 1);
+  setActivePhraseId(null);
+ }
+ };
+
+ const questions = [
+ {
+  q: "Which type of phrase modifies a noun or pronoun?",
+  options: [
+  "Adverbial Phrase",
+  "Adjectival Phrase",
+  "Noun Phrase"
+  ],
+  correct: 1
+ },
+ {
+  q: "In the sentence 'She walked to the store', what is 'to the store'?",
+  options: [
+  "Adverbial Phrase (Prepositional)",
+  "Adjectival Phrase (Prepositional)",
+  "Verb Phrase"
+  ],
+  correct: 0
+ },
+ {
+  q: "Which phrase describes WHEN, WHERE, HOW, or WHY an action happened?",
+  options: [
+  "Adjectival Phrase",
+  "Noun Phrase",
+  "Adverbial Phrase"
+  ],
+  correct: 2
+ }
+ ];
+
+ const calculateScore = () => {
+ let score = 0;
+ questions.forEach((q, idx) => {
+  if (assessmentAnswers[idx] === q.correct) score++;
+ });
+ return score;
+ };
+
+ return (
+ <div className="min-h-screen bg-slate-50 dark:bg-[#121212] dark:!bg-[#000000] flex flex-col font-sans">
+  <LabHeader title="Phrase Dynamics: Adjectival & Adverbial" onExit={onExit} />
   
-  const [assessmentAnswers, setAssessmentAnswers] = useState<Record<number, number>>({});
-  const [assessmentSubmitted, setAssessmentSubmitted] = useState(false);
+  {/* Mobile Tab Navigation */}
+  <div className="lg:hidden w-full px-4 py-4 md:px-6 grid grid-cols-2 gap-2 flex-shrink-0 z-10 relative">
+   <button 
+    onClick={() => setActiveMobileTab('theory')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'theory' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >
+    Theory
+   </button>
+   <button 
+    onClick={() => setActiveMobileTab('lab')}
+    className={`w-full py-3 text-sm font-bold rounded-xl transition-all text-center ${activeMobileTab === 'lab' ? 'bg-[#4158D1] text-white shadow-md' : 'bg-white dark:bg-[#1c1b1b] text-slate-600 dark:text-gray-400 border border-slate-200 dark:border-gray-700'}`}
+   >Lab</button>
+  </div>
 
-  const currentSentence = sentences[currentSentenceIdx];
-  const activePhrasePart = currentSentence.parts.find(p => p.id === activePhraseId);
+  <main className="flex-grow p-4 md:p-6 flex flex-col lg:grid lg:grid-cols-3 gap-0 lg:gap-6 overflow-y-auto lg:overflow-visible">
+  
+  {/* Window 1: Theory */}
+  <section className={`rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#1c1b1b] ${activeMobileTab === 'theory' ? 'block' : 'hidden'} lg:block`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+   <BookOpen className="w-5 h-5 text-blue-500" />
+   Theory Guide
+   </h2>
+   <div className="prose prose-sm text-slate-600 dark:text-[#a1a1aa] overflow-y-auto h-[500px] pr-2">
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4 mb-2">1. What is a Phrase?</h3>
+   <p>A phrase is a group of words that acts as a single part of speech in a sentence. Crucially, a phrase lacks a subject and a verb working together (unlike a clause).</p>
+   
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4 mb-2">2. Adjectival Phrases</h3>
+   <p>An adjectival phrase acts like an adjective. It modifies or describes a noun or a pronoun. It provides more information about the noun, helping to specify or describe it.</p>
+   <ul className="list-disc pl-5 my-2">
+    <li><strong>Example:</strong> The book <em className="text-emerald-600 dark:text-emerald-400">on the top shelf</em> is mine. (Modifies "book")</li>
+    <li><strong>Example:</strong> A girl <em className="text-emerald-600 dark:text-emerald-400">with red hair</em> won the race. (Modifies "girl")</li>
+   </ul>
+   
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4 mb-2">3. Adverbial Phrases</h3>
+   <p>An adverbial phrase acts like an adverb. It modifies a verb, an adjective, or another adverb by telling <em>when, where, how,</em> or <em>why</em> the action occurs.</p>
+   <ul className="list-disc pl-5 my-2">
+    <li><strong>When:</strong> We will leave <em className="text-amber-600 dark:text-amber-400">in a few minutes</em>.</li>
+    <li><strong>Where:</strong> He parked his car <em className="text-amber-600 dark:text-amber-400">behind the building</em>.</li>
+    <li><strong>How:</strong> She spoke <em className="text-amber-600 dark:text-amber-400">in a soft whisper</em>.</li>
+    <li><strong>Why:</strong> I went to the store <em className="text-amber-600 dark:text-amber-400">for some milk</em>.</li>
+   </ul>
+   
+   <h3 className="text-lg font-semibold text-slate-800 dark:text-[#ffffff] mt-4 mb-2">4. Prepositional Phrases</h3>
+   <p>Often, both adjectival and adverbial phrases take the form of <strong>prepositional phrases</strong>. A prepositional phrase begins with a preposition (in, on, at, under, to, of) and ends with a noun or pronoun (the object of the preposition).</p>
+   <p>To determine if a prepositional phrase is adjectival or adverbial, look at what it modifies:</p>
+   <ul className="list-disc pl-5 my-2">
+    <li>If it modifies a noun, it's adjectival. (e.g., The boy <em className="text-blue-600 dark:text-blue-400">in the pool</em>)</li>
+    <li>If it modifies a verb, it's adverbial. (e.g., He swam <em className="text-blue-600 dark:text-blue-400">in the pool</em>)</li>
+   </ul>
+   </div>
+  </section>
 
-  const allPhrasesInSentence = currentSentence.parts.filter(p => p.type === 'phrase');
-  const sentenceCompleted = allPhrasesInSentence.every(p => resolvedPhrases.has(p.id!));
-
-  const addLog = (message: string, type: 'success' | 'error') => {
-    setLogs(prev => [{
-      id: Date.now(),
-      message,
-      timestamp: new Date().toLocaleTimeString(),
-      type
-    }, ...prev].slice(0, 5));
-  };
-
-  const handleClassify = (selectedType: PhraseType) => {
-    if (!activePhrasePart) return;
-
-    if (selectedType === activePhrasePart.correctType) {
-      setResolvedPhrases(prev => {
-        const newSet = new Set(prev);
-        newSet.add(activePhrasePart.id!);
-        return newSet;
-      });
-      addLog(`Correctly identified "${activePhrasePart.content}" as an ${selectedType}.`, 'success');
-      setActivePhraseId(null);
-    } else {
-      addLog(`Incorrect classification for "${activePhrasePart.content}". Try again.`, 'error');
-    }
-  };
-
-  const advanceSentence = () => {
-    if (currentSentenceIdx < sentences.length - 1) {
-      setCurrentSentenceIdx(prev => prev + 1);
-      setActivePhraseId(null);
-    }
-  };
-
-  const questions = [
-    {
-      q: "Which type of phrase modifies a noun or pronoun?",
-      options: [
-        "Adverbial Phrase",
-        "Adjectival Phrase",
-        "Noun Phrase"
-      ],
-      correct: 1
-    },
-    {
-      q: "In the sentence 'She walked to the store', what is 'to the store'?",
-      options: [
-        "Adverbial Phrase (Prepositional)",
-        "Adjectival Phrase (Prepositional)",
-        "Verb Phrase"
-      ],
-      correct: 0
-    },
-    {
-      q: "Which phrase describes WHEN, WHERE, HOW, or WHY an action happened?",
-      options: [
-        "Adjectival Phrase",
-        "Noun Phrase",
-        "Adverbial Phrase"
-      ],
-      correct: 2
-    }
-  ];
-
-  const calculateScore = () => {
-    let score = 0;
-    questions.forEach((q, idx) => {
-      if (assessmentAnswers[idx] === q.correct) score++;
-    });
-    return score;
-  };
-
-  return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#000000] dark:bg-slate-950 flex flex-col font-sans">
-      <LabHeader title="Phrase Dynamics: Adjectival & Adverbial" onExit={onExit} />
-      
-      <div className="flex-1 p-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
-          {/* Column 1: Theory */}
-          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 lg:overflow-y-auto max-h-[calc(100vh-8rem)]">
-            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 rounded-lg">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Theory Guide</h2>
-            </div>
-            
-            <div className="space-y-6 text-slate-600 dark:text-[#71717a] dark:text-[#a1a1aa]">
-              <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
-                  <Layers className="w-5 h-5 text-indigo-500 dark:text-indigo-400" />
-                  What is a Phrase?
-                </h3>
-                <p className="text-sm">A phrase is a group of words that acts as a single part of speech in a sentence. It lacks a subject and a verb working together.</p>
-              </section>
-
-              <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
-                  <Tag className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
-                  Adjectival Phrases
-                </h3>
-                <p className="text-sm mb-3">An adjectival phrase acts like an adjective. It modifies or describes a noun or a pronoun.</p>
-                <div className="bg-emerald-50 dark:bg-emerald-900 p-3 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                  <p className="text-sm font-medium text-emerald-800 dark:text-emerald-200 dark:text-emerald-300 mb-1">Example:</p>
-                  <p className="text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#71717a]">
-                    The boy <span className="font-bold text-emerald-600 dark:text-emerald-400 dark:text-emerald-400">in the red shirt</span> is my brother.
-                  </p>
-                  <p className="text-xs mt-2 italic text-emerald-700 dark:text-emerald-300 dark:text-emerald-300/80 dark:text-emerald-400/80">"in the red shirt" describes the noun "boy".</p>
-                </div>
-              </section>
-
-              <section>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2 flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-amber-500 dark:text-amber-400" />
-                  Adverbial Phrases
-                </h3>
-                <p className="text-sm mb-3">An adverbial phrase acts like an adverb. It modifies a verb, an adjective, or another adverb by telling <em>when, where, how,</em> or <em>why</em>.</p>
-                <div className="bg-amber-50 dark:bg-amber-900 p-3 rounded-lg border border-amber-100 dark:border-amber-900/30">
-                  <p className="text-sm font-medium text-amber-800 dark:text-amber-200 dark:text-amber-300 mb-1">Example:</p>
-                  <p className="text-sm text-slate-700 dark:text-[#a1a1aa] dark:text-[#71717a]">
-                    She painted the canvas <span className="font-bold text-amber-600 dark:text-amber-400 dark:text-amber-400">with great care</span>.
-                  </p>
-                  <p className="text-xs mt-2 italic text-amber-700 dark:text-amber-300 dark:text-amber-300/80 dark:text-amber-400/80">"with great care" tells how she painted (modifies the verb).</p>
-                </div>
-              </section>
-
-              <section>
-                <div className="bg-blue-50 dark:bg-blue-900 p-4 rounded-xl border border-blue-100 dark:border-blue-900/30">
-                  <h4 className="font-medium text-blue-800 dark:text-blue-200 dark:text-blue-300 text-sm mb-1 flex items-center gap-2">
-                    <Info className="w-4 h-4" />
-                    Prepositional Phrases
-                  </h4>
-                  <p className="text-xs">A prepositional phrase begins with a preposition (in, on, at, under, to, of) and ends with a noun. It can function as either an adjectival phrase or an adverbial phrase depending on what it modifies.</p>
-                </div>
-              </section>
-            </div>
-          </div>
-
-          {/* Column 2: Simulation */}
-          <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex flex-col">
-            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-400 rounded-lg">
-                  <Search className="w-6 h-6" />
-                </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Dissection Engine</h2>
-              </div>
-              <div className="text-sm font-medium text-slate-500 dark:text-[#71717a] bg-slate-100 dark:bg-[#121212] dark:bg-[#121212] px-3 py-1 rounded-full">
-                Sentence {currentSentenceIdx + 1} of {sentences.length}
-              </div>
-            </div>
-
-            <div className="flex-1 flex flex-col">
-              <div className="mb-6 p-6 bg-slate-50 dark:!bg-[#121212] dark:!bg-[#121212] rounded-xl border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] text-lg leading-relaxed text-slate-800 dark:text-[#a1a1aa] shadow-sm">
-                {currentSentence.parts.map((part, i) => {
-                  if (part.type === 'text') {
-                    return <span key={i}>{part.content}</span>;
-                  } else {
-                    const isResolved = resolvedPhrases.has(part.id!);
-                    const isActive = activePhraseId === part.id;
-                    return (
-                      <button
-                        key={i}
-                        onClick={() => !isResolved && setActivePhraseId(part.id!)}
-                        className={`inline-block px-2 py-0.5 rounded mx-1 transition-all font-medium border-b-2
-                          ${isResolved 
-                            ? 'bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 border-emerald-400 dark:bg-emerald-900 dark:text-emerald-300 dark:border-emerald-600 cursor-default' 
-                            : isActive
-                              ? 'bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 border-indigo-400 dark:bg-indigo-900 dark:text-indigo-300 dark:border-indigo-500 animate-pulse'
-                              : 'bg-slate-200 dark:bg-[#121212] text-slate-700 dark:text-[#ffffff] border-slate-400 dark:bg-slate-700 dark:text-[#ffffff] dark:border-slate-500 hover:bg-slate-300 dark:bg-[#121212] dark:hover:bg-slate-600 cursor-pointer'
-                          }
-                        `}
-                      >
-                        {part.content}
-                        {isResolved && <Check className="w-4 h-4 inline ml-1" />}
-                      </button>
-                    );
-                  }
-                })}
-              </div>
-
-              {activePhrasePart ? (
-                <div className="bg-indigo-50 dark:bg-indigo-900 rounded-xl p-5 border border-indigo-100 dark:border-indigo-900/30 animate-in slide-in-from-bottom-4">
-                  <h3 className="text-indigo-900 dark:text-indigo-100 dark:text-indigo-300 font-bold mb-4 flex items-center gap-2">
-                    <Target className="w-5 h-5" />
-                    Classify: "{activePhrasePart.content}"
-                  </h3>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-4">
-                    {(["Adjectival Phrase", "Adverbial Phrase", "Noun Phrase", "Verb Phrase"] as PhraseType[]).map(type => (
-                      <button
-                        key={type}
-                        onClick={() => handleClassify(type)}
-                        className="py-3 px-4 bg-white dark:bg-[#121212] border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] rounded-lg text-sm font-medium text-slate-700 dark:text-[#a1a1aa] hover:border-indigo-400 hover:text-indigo-600 dark:text-indigo-400 dark:hover:border-indigo-500 transition-colors text-left"
-                      >
-                        {type}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="flex items-start gap-2 text-sm text-indigo-700 dark:text-indigo-300 dark:text-indigo-400 bg-indigo-100 dark:bg-indigo-900 dark:bg-indigo-900/50/50 dark:bg-indigo-900 p-3 rounded-lg">
-                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                    <p><strong>Hint:</strong> {activePhrasePart.hint}</p>
-                  </div>
-                </div>
-              ) : sentenceCompleted ? (
-                <div className="text-center p-8 bg-emerald-50 dark:bg-emerald-900 rounded-xl border border-emerald-100 dark:border-emerald-900/50 animate-in zoom-in-95">
-                  <CheckCircle className="w-12 h-12 text-emerald-500 dark:text-emerald-400 mx-auto mb-3" />
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-4">Sentence Analyzed</h3>
-                  {currentSentenceIdx < sentences.length - 1 ? (
-                    <button
-                      onClick={advanceSentence}
-                      className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-colors flex items-center gap-2 mx-auto dark:text-white dark:text-white dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-emerald-500/40"
-                    >
-                      Next Sentence <ChevronRight className="w-4 h-4" />
-                    </button>
-                  ) : (
-                    <p className="text-emerald-700 dark:text-emerald-300 dark:text-emerald-400 font-medium">All sentences completely dissected!</p>
-                  )}
-                </div>
-              ) : (
-                <div className="flex-1 flex flex-col items-center justify-center text-slate-400 dark:text-[#71717a]">
-                  <Search className="w-12 h-12 mb-3 opacity-20" />
-                  <p>Click on a highlighted phrase to classify it.</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Column 3: Assessment & Logging */}
-          <div className="flex flex-col gap-6">
-            {/* Logs */}
-            <div className="bg-[#000000] rounded-2xl shadow-sm border border-[#1c1b1b] p-6 flex-1 max-h-[300px] flex flex-col">
-              <div className="flex items-center gap-2 mb-4">
-                <Activity className="w-5 h-5 text-blue-400" />
-                <h2 className="text-lg font-bold text-slate-100">Dissection Logs</h2>
-              </div>
-              <div className="flex-1 lg:overflow-y-auto space-y-3 pr-2">
-                {logs.length === 0 && (
-                  <p className="text-slate-500 dark:text-[#71717a] text-sm italic">No dissection actions recorded...</p>
-                )}
-                {logs.map(log => (
-                  <div key={log.id} className="flex gap-3 text-sm">
-                    <span className="text-slate-500 dark:text-[#71717a] font-mono shrink-0">[{log.timestamp}]</span>
-                    <span className={log.type === 'success' ? 'text-emerald-400' : 'text-red-400'}>
-                      {log.message}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Assessment */}
-            <div className="bg-white dark:!bg-[#121212] dark:!bg-[#121212] rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900 p-6 flex-1 lg:overflow-y-auto">
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-[#1c1b1b]/50 dark:border-[#1c1b1b] dark:border-neutral-900">
-                <div className="p-2 bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 rounded-lg">
-                  <Target className="w-6 h-6" />
-                </div>
-                <h2 className="text-xl font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">Assessment</h2>
-              </div>
-
-              {!assessmentSubmitted ? (
-                <div className="space-y-6">
-                  {questions.map((q, qIdx) => (
-                    <div key={qIdx} className="space-y-3">
-                      <p className="text-sm font-medium text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa]">
-                        {qIdx + 1}. {q.q}
-                      </p>
-                      <div className="space-y-2">
-                        {q.options.map((opt, oIdx) => (
-                          <label key={oIdx} className="flex items-start gap-3 cursor-pointer group">
-                            <input
-                              type="radio"
-                              name={`phrase-q-${qIdx}`}
-                              className="mt-1 w-4 h-4 text-rose-600 dark:text-rose-400 bg-slate-100 dark:bg-[#121212] border-slate-300 dark:border-[#1c1b1b] dark:bg-[#121212] dark:border-[#1c1b1b]"
-                              checked={assessmentAnswers[qIdx] === oIdx}
-                              onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
-                            />
-                            <span className="text-sm text-slate-600 dark:text-[#71717a] group-hover:text-slate-900 dark:text-[#a1a1aa] dark:group-hover:text-slate-200">
-                              {opt}
-                            </span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                  <button
-                    onClick={() => setAssessmentSubmitted(true)}
-                    disabled={Object.keys(assessmentAnswers).length < questions.length}
-                    className="w-full py-2 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:disabled:bg-[#121212] disabled:cursor-not-allowed text-white rounded-xl font-medium transition-colors dark:bg-rose-500 dark:hover:bg-rose-400 dark:text-white dark:border-transparent dark:shadow-lg dark:shadow-rose-500/40"
-                  >
-                    Submit Evaluation
-                  </button>
-                </div>
-              ) : (
-                <div className="text-center py-8">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 dark:bg-rose-900 text-rose-600 dark:text-rose-400 mb-4">
-                    <span className="text-3xl font-bold">{calculateScore()}/{questions.length}</span>
-                  </div>
-                  <h3 className="text-lg font-bold text-slate-800 dark:text-[#a1a1aa] dark:text-[#a1a1aa] mb-2">Assessment Complete</h3>
-                  <p className="text-slate-600 dark:text-[#71717a] mb-6">
-                    {calculateScore() === questions.length ? 'Masterful syntactic dissection!' : 'Review the theory and try again.'}
-                  </p>
-                  <button
-                    onClick={() => {
-                      setAssessmentSubmitted(false);
-                      setAssessmentAnswers({});
-                    }}
-                    className="text-sm text-rose-600 dark:text-rose-400 font-medium hover:underline"
-                  >
-                    Retake Assessment
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-
-        </div>
-      </div>
+  {/* Window 2: Controls */}
+  <section className={`bg-white lg:bg-slate-50 dark:bg-[#121212] lg:dark:bg-[#1c1b1b] rounded-xl shadow-sm p-6 border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] flex flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex rounded-t-none lg:rounded-t-xl border-t-0 lg:border-t`}>
+   <h2 className="text-xl font-bold text-slate-800 dark:text-[#ffffff] mb-4 flex items-center gap-2">
+   <Activity className="w-5 h-5 text-indigo-500" />
+   Classification Controls
+   </h2>
+   
+   {/* Control Panel / Classify UI */}
+   <div className={`rounded-xl border border-slate-200 dark:border-[#2a2a2a] lg:dark:border-[#2a2a2a] p-4 mb-4 shrink-0 flex-col ${activeMobileTab === 'lab' ? 'flex' : 'hidden'} lg:flex order-first lg:order-none rounded-b-none lg:rounded-b-xl border-b-0 lg:border-b`}>
+   {activePhrasePart ? (
+    <div className="animate-in fade-in slide-in-from-top-2">
+    <h3 className="text-indigo-900 dark:text-indigo-300 font-bold mb-3 flex items-center gap-2">
+     <Target className="w-4 h-4" />
+     Classify: "{activePhrasePart.content}"
+    </h3>
+    <div className="grid grid-cols-2 gap-2 mb-3">
+     {(["Adjectival Phrase", "Adverbial Phrase", "Noun Phrase", "Verb Phrase"] as PhraseType[]).map(type => (
+     <button
+      key={type}
+      onClick={() => handleClassify(type)}
+      className={`py-2 px-3 bg-slate-50 dark:bg-[#1c1b1b] border border-slate-200 dark:border-[#2a2a2a] rounded-lg text-sm font-medium text-slate-700 dark:text-[#a1a1aa] hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 dark:hover:border-indigo-500 transition-colors text-left flex-col `}
+     >
+      {type}
+     </button>
+     ))}
     </div>
-  );
+    <div className={`flex items-start gap-2 text-sm text-indigo-700 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900/30 p-2.5 rounded-lg border border-indigo-100 dark:border-indigo-800/50 flex-col `}>
+     <Info className="w-4 h-4 shrink-0 mt-0.5" />
+     <p><strong>Hint:</strong> {activePhrasePart.hint}</p>
+    </div>
+    </div>
+   ) : (
+    <div className="flex flex-col items-center justify-center text-slate-400 dark:text-[#71717a] py-6">
+    <Target className="w-8 h-8 mb-2 opacity-50" />
+    <p className="text-sm text-center">Click a highlighted phrase in the simulation to classify it.</p>
+    </div>
+   )}
+   </div>
+
+   {/* Logs */}
+   <div className="rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 flex-1 flex flex-col min-h-[150px] mb-4 overflow-hidden">
+   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-2 flex items-center gap-2">
+    <Activity className="w-4 h-4 text-emerald-500" />
+    Action Logs
+   </h3>
+   <div className="flex-1 overflow-y-auto space-y-2 pr-2 text-sm">
+    {logs.length === 0 && (
+    <p className="text-slate-500 dark:text-[#71717a] italic">No actions recorded...</p>
+    )}
+    {logs.map(log => (
+    <div key={log.id} className="flex gap-2">
+     <span className="text-slate-400 dark:text-[#52525b] font-mono shrink-0">[{log.timestamp}]</span>
+     <span className={log.type === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}>
+     {log.message}
+     </span>
+    </div>
+    ))}
+   </div>
+   </div>
+
+   {/* Assessment */}
+   <div className="rounded-xl border border-slate-200 dark:border-[#2a2a2a] p-4 shrink-0">
+   <h3 className="text-sm font-bold text-slate-800 dark:text-[#ffffff] mb-3 flex items-center gap-2">
+    <CheckCircle className="w-4 h-4 text-rose-500" />
+    Quick Assessment
+   </h3>
+   {!assessmentSubmitted ? (
+    <div className="space-y-4 max-h-[250px] overflow-y-auto pr-2">
+    {questions.map((q, qIdx) => (
+     <div key={qIdx} className="space-y-2">
+     <p className="text-xs font-medium text-slate-800 dark:text-[#ffffff]">
+      {qIdx + 1}. {q.q}
+     </p>
+     <div className="space-y-1">
+      {q.options.map((opt, oIdx) => (
+      <label key={oIdx} className="flex items-start gap-2 cursor-pointer group">
+       <input
+       type="radio"
+       name={`phrase-q-${qIdx}`}
+       className="mt-0.5 w-3.5 h-3.5 text-rose-600 bg-slate-100 border-slate-300 dark:bg-[#1c1b1b] dark:border-[#2a2a2a]"
+       checked={assessmentAnswers[qIdx] === oIdx}
+       onChange={() => setAssessmentAnswers(prev => ({ ...prev, [qIdx]: oIdx }))}
+       />
+       <span className="text-xs text-slate-600 dark:text-[#a1a1aa] group-hover:text-slate-900 dark:group-hover:text-[#ffffff]">
+       {opt}
+       </span>
+      </label>
+      ))}
+     </div>
+     </div>
+    ))}
+    <button
+     onClick={() => setAssessmentSubmitted(true)}
+     disabled={Object.keys(assessmentAnswers).length < questions.length}
+     className="w-full py-1.5 bg-rose-600 hover:bg-rose-700 disabled:bg-slate-300 dark:disabled:bg-[#1c1b1b] disabled:text-slate-500 dark:disabled:text-[#71717a] disabled:cursor-not-allowed text-white rounded-lg text-sm font-medium transition-colors"
+    >
+     Submit
+    </button>
+    </div>
+   ) : (
+    <div className="text-center py-2">
+    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 mb-2">
+     <span className="text-lg font-bold">{calculateScore()}/{questions.length}</span>
+    </div>
+    <p className="text-xs text-slate-600 dark:text-[#a1a1aa] mb-3">
+     {calculateScore() === questions.length ? 'Perfect score!' : 'Review the theory and try again.'}
+    </p>
+    <button
+     onClick={() => {
+     setAssessmentSubmitted(false);
+     setAssessmentAnswers({});
+     }}
+     className="text-xs text-rose-600 dark:text-rose-400 font-medium hover:underline"
+    >
+     Retake Assessment
+    </button>
+    </div>
+   )}
+   </div>
+  </section>
+
+  {/* Window 3: Simulation */}
+  <section className={`bg-slate-100 dark:bg-[#0a0a0a] rounded-xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] relative flex items-center justify-center p-8 overflow-hidden min-h-[500px] `}>
+   <div className="absolute top-4 left-4 right-4 flex items-center justify-between pb-4 border-b border-slate-200 dark:border-[#1c1b1b] z-20">
+   <div className="flex items-center gap-2">
+    <Search className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+    <h2 className="text-lg font-bold text-slate-800 dark:text-[#ffffff]">Dissection Engine</h2>
+   </div>
+   <div className="text-xs font-medium text-slate-600 dark:text-[#a1a1aa] border border-slate-200 dark:border-[#1c1b1b] px-3 py-1 rounded-full shadow-sm">
+    Sentence {currentSentenceIdx + 1} of {sentences.length}
+   </div>
+   </div>
+
+   <div className="w-full flex flex-col items-center justify-center relative z-10 mt-12">
+   {/* The sentence container */}
+   <div className="w-full max-w-2xl rounded-2xl shadow-sm border border-slate-200 dark:border-[#1c1b1b] p-8 text-center leading-loose text-xl lg:text-2xl text-slate-800 dark:text-[#ffffff] transition-all duration-300">
+    {currentSentence.parts.map((part, i) => {
+    if (part.type === 'text') {
+     return <span key={i} className="mx-1">{part.content}</span>;
+    } else {
+     const isResolved = resolvedPhrases.has(part.id!);
+     const isActive = activePhraseId === part.id;
+     return (
+     <button
+      key={i}
+      onClick={() => !isResolved && setActivePhraseId(part.id!)}
+      className={`inline-block px-3 py-1 rounded-lg mx-1 transition-all font-medium border-b-4 ${isResolved ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border-emerald-400 dark:border-emerald-600 cursor-default scale-95' : isActive ? 'bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 border-indigo-400 dark:border-indigo-500 scale-105 shadow-md' : 'bg-slate-200 dark:bg-[#1c1b1b] text-slate-700 dark:text-slate-300 border-slate-400 dark:border-[#2a2a2a] hover:bg-slate-300 dark:hover:bg-[#2a2a2a] cursor-pointer' }`}
+     >
+      {part.content}
+      {isResolved && <Check className="w-5 h-5 inline ml-2 mb-0.5" />}
+     </button>
+     );
+    }
+    })}
+   </div>
+
+   {/* Completion State */}
+   {sentenceCompleted && (
+    <div className="mt-12 text-center animate-in fade-in slide-in-from-bottom-4">
+    <div className="flex items-center justify-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-lg mb-4">
+     <CheckCircle className="w-6 h-6" />
+     <span>Sentence Analyzed Successfully!</span>
+    </div>
+    {currentSentenceIdx < sentences.length - 1 ? (
+     <button
+     onClick={advanceSentence}
+     className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 mx-auto"
+     >
+     Next Sentence <ChevronRight className="w-5 h-5" />
+     </button>
+    ) : (
+     <div className="px-6 py-3 bg-emerald-100 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-800 rounded-xl text-emerald-800 dark:text-emerald-300 font-bold inline-block">
+     All sentences completely dissected! 🎉
+     </div>
+    )}
+    </div>
+   )}
+   </div>
+
+   {/* Decorative background elements */}
+   <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-20 dark:opacity-10 z-0">
+   <div className="absolute top-[-10%] left-[-10%] w-64 h-64 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+   <div className="absolute top-[-10%] right-[-10%] w-64 h-64 bg-indigo-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{ animationDelay: '2s' }}></div>
+   <div className="absolute bottom-[-20%] left-[20%] w-64 h-64 bg-emerald-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse" style={{ animationDelay: '4s' }}></div>
+   </div>
+  </section>
+  </main>
+ </div>
+ );
 }
+
