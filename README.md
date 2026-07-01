@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://virtuallab-seven.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Try_It-brightgreen?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"></a>
-  <a href="https://github.com/Mashhood16/virtuallab"><img src="https://img.shields.io/badge/Version-1.0-blue?style=for-the-badge&logo=github" alt="Version"></a>
+  <a href="https://github.com/Mashhood16/virtuallab"><img src="https://img.shields.io/badge/Version-beta-blue?style=for-the-badge&logo=github" alt="Version"></a>
   <img src="https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
